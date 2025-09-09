@@ -40,7 +40,7 @@ nav ul a {
 }
 
 nav ul a:hover {
-    color: #007bff;
+    color: #f65621;
 }
 
 /* Carousel Section - The Sliding Effect */
@@ -55,7 +55,7 @@ nav ul a:hover {
     width: 400%; /* 4 images * 100% per image */
     height: 100%;
     display: flex;
-    animation: slideAnimation 48s infinite; /* 12s per image * 4 images = 48s */
+    animation: slideAnimation 40s infinite; /* 10s per image * 4 images = 40s */
 }
 
 .slides img {
@@ -130,7 +130,7 @@ h2 {
 
 /* Footer & Contact Section */
 footer {
-    background-color: #333;
+    background-color: #232026;
     color: #fff;
     text-align: center;
     padding: 2rem;
