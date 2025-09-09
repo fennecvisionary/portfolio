@@ -10,27 +10,59 @@ header nav ul { list-style:none; display:flex; gap:20px; margin:0; padding:0; }
 header nav ul li a { color:#fff; }
 
 .carousel {
-  /* لضمان أن العرض لا يتجاوز أبعاد الحاوية */
   width: 100%;
+  height: 500px; /* يمكن تغيير هذا الارتفاع حسب الحاجة */
   overflow: hidden;
+  position: relative;
 }
 
 .slides {
-  /* لجعل الصور تظهر في سطر واحد بدلاً من عمود */
+  width: 400%; /* 4 صور × 100% لكل صورة */
+  height: 100%;
   display: flex;
-  /* لإيقاف التفاف النص */
-  white-space: nowrap;
-  /* لتسهيل الانتقال بين الصور */
-  transition: transform 0.5s ease-in-out;
+  animation: slideAnimation 48s infinite; /* 12s لكل صورة * 4 صور = 48s */
 }
 
 .slides img {
-  /* لعرض الصورة بأبعادها الحقيقية */
-  width: auto;
-  height: auto;
-  /* لضمان أن كل صورة تأخذ مساحتها الكاملة */
-  flex-shrink: 0;
-  flex-grow: 0;
+  width: 25%; /* 100% / 4 صور */
+  height: 100%;
+  object-fit: cover; /* للحفاظ على أبعاد الصورة وتغطية المساحة */
+  transition: transform 0.5s ease-in-out;
+}
+
+/* الإضافة الجميلة: تأثير التكبير عند التوقف */
+.slides img:hover {
+  transform: scale(1.05); /* تكبير الصورة بنسبة 5% */
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0); /* بداية من الصورة الأولى */
+  }
+  20% {
+    transform: translateX(0); /* بقاء على الصورة الأولى */
+  }
+  25% {
+    transform: translateX(-25%); /* الانزلاق للصورة الثانية */
+  }
+  45% {
+    transform: translateX(-25%); /* بقاء على الصورة الثانية */
+  }
+  50% {
+    transform: translateX(-50%); /* الانزلاق للصورة الثالثة */
+  }
+  70% {
+    transform: translateX(-50%); /* بقاء على الصورة الثالثة */
+  }
+  75% {
+    transform: translateX(-75%); /* الانزلاق للصورة الرابعة */
+  }
+  95% {
+    transform: translateX(-75%); /* بقاء على الصورة الرابعة */
+  }
+  100% {
+    transform: translateX(-100%); /* انزلاق سريع للبداية */
+  }
 }
 
 /* My Services */
