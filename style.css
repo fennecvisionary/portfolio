@@ -55,7 +55,7 @@ nav ul a:hover {
     width: 400%;
     height: 100%;
     display: flex;
-    animation: slideAnimation 48s infinite;
+    animation: slideAnimation 40s infinite; /* كل صورة 10 ثواني */
 }
 
 .slides img {
@@ -66,13 +66,9 @@ nav ul a:hover {
 
 @keyframes slideAnimation {
     0% { transform: translateX(0); }
-    20% { transform: translateX(0); }
     25% { transform: translateX(-25%); }
-    45% { transform: translateX(-25%); }
     50% { transform: translateX(-50%); }
-    70% { transform: translateX(-50%); }
     75% { transform: translateX(-75%); }
-    95% { transform: translateX(-75%); }
     100% { transform: translateX(0); }
 }
 
@@ -89,10 +85,8 @@ h2 {
 }
 
 .services-grid,
-.tools-grid,
 .grid {
     display: grid;
-    /* Adjusted minmax for better responsiveness and item sizing */
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
     max-width: 1200px;
@@ -100,7 +94,6 @@ h2 {
 }
 
 .service-item,
-.tool-item,
 .item {
     background-color: #fff;
     padding: 2rem;
@@ -110,30 +103,65 @@ h2 {
 }
 
 .service-item:hover,
-.tool-item:hover,
 .item:hover {
     transform: translateY(-10px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Unified styling for icons */
-.service-item i,
-.tool-item i {
+.service-item i {
     font-size: 3rem;
     color: #f75723;
     margin-bottom: 1rem;
 }
 
-/*
-Improved image handling for 'Our Works'
-This will make images appear in their entirety without cropping or distortion,
-while maintaining a consistent grid layout.
-*/
+/* Tools Section */
+#tools {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+#tools h2 {
+    color: #f75723;
+    margin-bottom: 30px;
+}
+
+.tools-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap; /* الالتفاف عند الشاشات الصغيرة */
+}
+
+.tool-item {
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.tool-item img {
+    width: 60px; /* حجم الأيقونات صغير */
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 5px;
+    transition: transform 0.3s;
+}
+
+.tool-item p {
+    font-size: 0.8rem;
+    margin: 0;
+    color: #fff;
+}
+
+.tool-item:hover img {
+    transform: scale(1.2); /* تكبير عند المرور */
+}
+
+/* Our Works */
 .item {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 250px; /* You can adjust this height to your preference */
+    height: 250px;
 }
 
 .item img {
@@ -171,3 +199,5 @@ footer a {
 .copy {
     margin-top: 1rem;
 }
+
+
