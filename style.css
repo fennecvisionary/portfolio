@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #232027;
+  color: #fff;
+}
+a { color: #fb5d30; text-decoration: none; }
+a:hover { text-decoration: underline; }
+header, footer { text-align: center; padding: 20px; }
+.slider { width: 100%; height: 300px; background: #333; display: flex; align-items: center; justify-content: center; }
+.slider img { max-height: 100%; }
+.portfolio { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; }
+.portfolio img { width: 100%; border-radius: 8px; }
+.contact { text-align: center; padding: 20px; }
+.contact a { margin: 0 10px; font-weight: bold; }
