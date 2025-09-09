@@ -18,7 +18,7 @@ header {
 }
 
 .logo img {
-    height: 50px;
+    height: 70px;
 }
 
 nav ul {
@@ -118,7 +118,7 @@ h2 {
 .service-item i,
 .tool-item i {
     font-size: 3rem;
-    color: #007bff;
+    color: #f75723;
     margin-bottom: 1rem;
 }
 
@@ -137,7 +137,7 @@ footer {
 }
 
 footer a {
-    color: #007bff;
+    color: #f75723;
     text-decoration: none;
 }
 
