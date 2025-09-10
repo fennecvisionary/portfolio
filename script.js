@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize AOS library for animations
     AOS.init();
@@ -170,4 +169,97 @@ document.addEventListener('DOMContentLoaded', () => {
         applyLanguage(selectedLang);
         setCookie('language', selectedLang, 365);
     });
+
+    // --- New Features for the Portfolio Items ---
+    
+    // Function to initialize data from localStorage or set defaults
+    function initializeData(workId) {
+        const data = localStorage.getItem(workId);
+        if (data) {
+            return JSON.parse(data);
+        }
+        return { likes: 0, views: 0, liked: false };
+    }
+
+    // Function to update the DOM with new data
+    function updateDOM(workId, data) {
+        const item = document.querySelector(`.item[data-work-id="${workId}"]`);
+        if (item) {
+            const likeCounter = item.querySelector('.like-btn .counter');
+            const viewCounter = item.querySelector('.view-count .counter');
+            const likeButton = item.querySelector('.like-btn');
+            
+            if (likeCounter) likeCounter.textContent = data.likes;
+            if (viewCounter) viewCounter.textContent = data.views;
+            
+            // Set the liked state
+            if (likeButton) {
+                if (data.liked) {
+                    likeButton.classList.add('liked');
+                    likeButton.querySelector('i').classList.replace('far', 'fas');
+                } else {
+                    likeButton.classList.remove('liked');
+                    likeButton.querySelector('i').classList.replace('fas', 'far');
+                }
+            }
+        }
+    }
+
+    // Event delegation for the portfolio grid
+    const worksSection = document.getElementById('works');
+    if (worksSection) {
+        worksSection.addEventListener('click', (event) => {
+            const target = event.target.closest('.action-btn');
+            if (!target) return;
+
+            const item = target.closest('.item');
+            if (!item) return;
+
+            const workId = item.getAttribute('data-work-id');
+            let data = initializeData(workId);
+
+            if (target.classList.contains('like-btn')) {
+                if (data.liked) {
+                    data.likes--;
+                    data.liked = false;
+                } else {
+                    data.likes++;
+                    data.liked = true;
+                }
+            } else if (target.classList.contains('share-btn')) {
+                if (navigator.share) {
+                    const pageTitle = document.title;
+                    const pageUrl = window.location.href;
+                    const workUrl = item.querySelector('img').src;
+                    navigator.share({
+                        title: pageTitle,
+                        url: workUrl || pageUrl
+                    }).then(() => {
+                        console.log('Thanks for sharing!');
+                    }).catch(console.error);
+                } else {
+                    alert("Sharing is not supported on this browser.");
+                }
+            }
+            
+            // Save the updated data
+            localStorage.setItem(workId, JSON.stringify(data));
+            // Update the DOM
+            updateDOM(workId, data);
+        });
+
+        // Initialize views and counters on page load
+        document.querySelectorAll('.item').forEach(item => {
+            const workId = item.getAttribute('data-work-id');
+            let data = initializeData(workId);
+            
+            // Increment view count on page load
+            data.views++;
+            localStorage.setItem(workId, JSON.stringify(data));
+            
+            // Update counters on the page
+            updateDOM(workId, data);
+        });
+    }
+
 });
