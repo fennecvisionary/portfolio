@@ -273,6 +273,7 @@ section {
     height: 300px; /* Consistent height for portfolio images */
     overflow: hidden;
     border: none;
+    position: relative; /* Essential for overlay positioning */
 }
 
 /* Style for the anchor tag within a portfolio item, for Lightbox */
@@ -295,6 +296,80 @@ section {
     transform: scale(1.1);
 }
 
+/* --- New CSS for the Overlay and Buttons --- */
+.item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay .overlay-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.overlay .action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.overlay .action-btn:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.overlay .action-btn .fas, .overlay .action-btn .far {
+    font-size: 1.2rem;
+}
+
+/* Style for filled heart icon */
+.overlay .like-btn.liked i {
+    color: var(--primary-color);
+    font-weight: 900; /* Makes the icon solid on like */
+}
+
+/* View count styling */
+.view-count {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.9rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+body.ar .view-count {
+    direction: rtl; /* Ensures the icon is on the right */
+    margin-left: auto;
+}
+
+body.ar .overlay .overlay-buttons {
+    flex-direction: row-reverse;
+}
+
 /* Footer & Contact Section */
 footer {
     background-color: var(--secondary-color);
@@ -315,11 +390,12 @@ footer a:hover {
 
 .socials a {
     font-size: 1.8rem;
-    color: var(--dark-text-color);
+    color: var(--dark-text-color); /* Correcting the color for dark mode */
     margin: 0 0.7rem;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* Specific hover colors for social icons */
 .socials .facebook:hover { color: #3b5998; }
 .socials .instagram:hover { color: #e1306c; }
 .socials .whatsapp:hover { color: #25d366; }
