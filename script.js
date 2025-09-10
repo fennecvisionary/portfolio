@@ -1,491 +1,206 @@
-/* CSS Custom Properties for theming */
-:root {
-    --light-bg-color: #f0f2f5;
-    --light-card-bg: #ffffff;
-    --light-text-color: #333333;
-    --light-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-
-    --dark-bg-color: #1a1a1a;
-    --dark-card-bg: #2d2d2d;
-    --dark-text-color: #e0e0e0;
-    --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-
-    --primary-color: #f75723; /* Orange */
-    --secondary-color: #2a2a2a; /* Dark Gray */
-    --font-family-body: 'Cairo', sans-serif;
-    --font-family-heading: 'Cairo', sans-serif;
-}
-
-/* Base Styles & Theming */
-html {
-    scroll-behavior: smooth; /* Smooth scrolling */
-}
-
-body {
-    margin: 0;
-    font-family: var(--font-family-body);
-    line-height: 1.6;
-    transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-.light-mode {
-    background-color: var(--light-bg-color);
-    color: var(--light-text-color);
-}
-
-.dark-mode {
-    background-color: var(--dark-bg-color);
-    color: var(--dark-text-color);
-}
-
-.dark-mode .site-header,
-.dark-mode .service-item,
-.dark-mode .item {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
-}
-
-.dark-mode .service-item,
-.dark-mode .item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.dark-mode h2,
-.dark-mode .main-nav a:hover,
-.dark-mode .service-item i,
-.dark-mode .socials a {
-    color: var(--primary-color);
-}
-
-.dark-mode .main-nav a {
-    color: var(--dark-text-color);
-}
-
-h2 {
-    font-family: var(--font-family-heading);
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
-}
-
-/* Arabic Language Styles */
-body.ar {
-    direction: rtl;
-    text-align: right;
-}
-
-body.ar .site-header {
-    flex-direction: row-reverse;
-}
-
-body.ar .main-nav ul {
-    flex-direction: row-reverse;
-}
-
-body.ar .main-nav li {
-    margin-left: 0;
-    margin-right: 1.5rem;
-}
-
-/* Header & Navigation */
-.site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--light-card-bg);
-    box-shadow: var(--light-shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.logo img {
-    height: 50px;
-    vertical-align: middle;
-}
-
-.main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.main-nav li {
-    margin-left: 1.5rem;
-}
-
-.main-nav a {
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-}
-
-.main-nav a:hover {
-    color: var(--primary-color);
-}
-
-.header-controls {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-}
-
-#mode-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--primary-color);
-    transition: transform 0.3s ease;
-}
-
-#mode-toggle:hover {
-    transform: scale(1.1);
-}
-
-#language-select {
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
-    background: var(--light-card-bg);
-    color: var(--primary-color);
-    cursor: pointer;
-}
-
-.dark-mode #language-select {
-    background: var(--dark-card-bg);
-    color: var(--primary-color);
-}
-
-/* Carousel Section */
-.carousel {
-    width: 100%;
-    height: 60vh;
-    overflow: hidden;
-    position: relative;
-}
-
-.slides {
-    width: 400%;
-    height: 100%;
-    display: flex;
-    animation: slideAnimation 30s infinite ease-in-out;
-}
-
-.slides figure {
-    width: 25%;
-    height: 100%;
-    margin: 0;
-}
-
-.slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-@keyframes slideAnimation {
-    0%, 20% { transform: translateX(0); }
-    25%, 45% { transform: translateX(-25%); }
-    50%, 70% { transform: translateX(-50%); }
-    75%, 95% { transform: translateX(-75%); }
-    100% { transform: translateX(0); }
-}
-
-/* General Sections & Grids */
-section {
-    padding: 4rem 2rem;
-    text-align: center;
-}
-
-/* Default grid for smaller screens (1 column or auto-fit), then adjusted by media queries */
-.services-grid, .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.service-item, .item {
-    background-color: var(--light-card-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: var(--light-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-    color: inherit;
-}
-
-.service-item:hover, .item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.service-item i {
-    font-size: 3.5rem;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    display: block;
-}
-
-/* Tools Section */
-#tools {
-    background-color: var(--secondary-color);
-    color: var(--light-text-color);
-}
-
-#tools h2 {
-    color: var(--primary-color);
-}
-
-.tools-grid {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-}
-
-.tool-item img {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
-}
-
-.tool-item:hover img {
-    transform: scale(1.1);
-}
-
-.tool-item p {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    color: var(--light-text-color);
-}
-
-/* Our Works (Portfolio) */
-.item {
-    padding: 0;
-    height: 300px; /* Consistent height for portfolio images */
-    overflow: hidden;
-    border: none;
-    position: relative; /* Essential for overlay positioning */
-    border-radius: 12px; /* Apply border-radius directly to the item */
-}
-
-/* Style for the anchor tag within a portfolio item, for Lightbox */
-.portfolio .item a {
-    display: block; /* Make the anchor fill the entire container */
-    width: 100%;
-    height: 100%;
-}
-
-.portfolio .item a img {
-    /* Ensure the image inside the anchor tag fills it completely */
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px; /* Maintain border-radius on image */
-    transition: transform 0.5s ease;
-}
-
-.portfolio .item a img:hover {
-    transform: scale(1.1);
-}
-
-/* --- New CSS for the Overlay and Buttons --- */
-.item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: flex-end; /* Align to the bottom */
-    padding: 1rem;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.item:hover .overlay {
-    opacity: 1;
-}
-
-.overlay .overlay-actions { /* New container for all action buttons and view count */
-    display: flex; /* Make it a flex container to align items horizontally */
-    gap: 10px;
-    align-items: center; /* Vertically align the items within this container */
-    padding: 5px 10px;
-    border-radius: 20px;
-    margin-bottom: 20px; /* Adjust as needed to move it up */
-}
-
-.overlay .action-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 1.2rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.overlay .action-btn:hover {
-    color: var(--primary-color);
-    transform: scale(1.1);
-}
-
-.overlay .action-btn .fas, .overlay .action-btn .far {
-    font-size: 1.2rem;
-}
-
-/* Style for filled heart icon */
-.overlay .like-btn.liked i {
-    color: var(--primary-color);
-    font-weight: 900; /* Makes the icon solid on like */
-}
-
-/* View count styling */
-.view-count {
-    display: flex; /* Make it a flex container to align items horizontally */
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9rem;
-    color: white;
-}
-
-body.ar .overlay-actions {
-    flex-direction: row-reverse; /* For RTL support */
-}
-
-/* Footer & Contact Section */
-footer {
-    background-color: var(--secondary-color);
-    color: var(--dark-text-color);
-    text-align: center;
-    padding: 2rem;
-}
-
-footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: var(--dark-text-color);
-}
-
-.socials a {
-    font-size: 1.8rem;
-    color: var(--dark-text-color); /* Correcting the color for dark mode */
-    margin: 0 0.7rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-/* Specific hover colors for social icons */
-.socials .facebook:hover { color: #3b5998; }
-.socials .instagram:hover { color: #e1306c; }
-.socials .whatsapp:hover { color: #25d366; }
-.socials .tiktok:hover { color: #fe2c55; }
-
-.copy {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    opacity: 0.7;
-}
-
-/* Fix for the Skip link to be hidden until it's in focus */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 8px;
-    z-index: 1000;
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
-/* Media Queries for responsiveness */
-
-/* Larger screens: 4 columns for services and portfolio */
-@media (min-width: 1025px) {
-    .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .portfolio .grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-/* Tablets and medium screens (769px to 1024px): 2 columns for services and portfolio */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .portfolio .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Mobile screens (up to 768px): 1 column for services and portfolio */
-@media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS library for animations
+    AOS.init();
+    
+    const modeToggle = document.getElementById('mode-toggle');
+    const languageSelect = document.getElementById('language-select');
+    const body = document.body;
+
+    // Translation data
+    const translations = {
+        en: {
+            // General
+            skip_link: 'Skip to main content',
+            // Navigation
+            nav_services: 'My Services',
+            nav_tools: 'Tools',
+            nav_works: 'Our Works',
+            nav_contact: 'Contact',
+            // Sections
+            services_title: 'My Services',
+            tools_title: 'Tools',
+            nav_about: 'About',
+            works_title: 'From Our Works',
+            contact_title: 'Contact Me',
+            // Services
+            service_logo: 'Logo Design',
+            service_card: 'Business Card',
+            service_brochure: 'Flyer and Brochure',
+            service_invoice: 'Invoice',
+            service_catalog: 'Catalog',
+            service_social: 'Social Media Templates',
+            service_packaging: 'Packaging Design',
+            service_tshirt: 'T-shirt and Hoodie',
+            // Contact Info
+            contact_phone_label: 'Phone:',
+            contact_email_label: 'Email:'
+        },
+        ar: {
+            // General
+            skip_link: 'تخطي إلى المحتوى الرئيسي',
+            // Navigation
+            nav_services: 'خدماتي',
+            nav_tools: 'أدواتي',
+            nav_works: 'أعمالي',
+            nav_contact: 'تواصل معي',
+            nav_about: 'من نحن',
+            // Sections
+            services_title: 'خدماتي',
+            tools_title: 'أدواتي',
+            works_title: 'من أعمالي',
+            contact_title: 'تواصل معي',
+            // Services
+            service_logo: 'تصميم الشعارات',
+            service_card: 'بطاقات العمل',
+            service_brochure: 'الفلاير والبروشور',
+            service_invoice: 'الفواتير',
+            service_catalog: 'الكتالوجات',
+            service_social: 'قوالب السوشيال ميديا',
+            service_packaging: 'تصميم التغليف',
+            service_tshirt: 'القمصان والهوديز',
+            // Contact Info
+            contact_phone_label: 'الهاتف:',
+            contact_email_label: 'البريد الإلكتروني:'
+        },
+        fr: {
+            // General
+            skip_link: 'Passer au contenu principal',
+            // Navigation
+            nav_services: 'Mes services',
+            nav_tools: 'Outils',
+            nav_works: 'Mes travaux',
+            nav_contact: 'Me contacter',
+            nav_about: 'À propos',
+            // Sections
+            services_title: 'Mes services',
+            tools_title: 'Mes outils',
+            works_title: 'Mes travaux',
+            contact_title: 'Me contacter',
+            // Services
+            service_logo: 'Création de logo',
+            service_card: 'Cartes de visite',
+            service_brochure: 'Dépliants et brochures',
+            service_invoice: 'Factures',
+            service_catalog: 'Catalogues',
+            service_social: 'Modèles de médias sociaux',
+            service_packaging: 'Conception d\'emballages',
+            service_tshirt: 'T-shirts et sweats à capuche',
+            // Contact Info
+            contact_phone_label: 'Téléphone:',
+            contact_email_label: 'E-mail:'
+        }
+    };
+    
+    // Helper function to set cookies
+    function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
     }
 
-    .main-nav {
-        margin-top: 1rem;
+    // Helper function to get cookies
+    function getCookie(name) {
+        const cname = name + "=";
+        const decodedCookie = decodeURIComponent(document.cookie);
+        const ca = decodedCookie.split(';');
+        for(let i = 0; i <ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(cname) === 0) {
+                return c.substring(cname.length, c.length);
+            }
+        }
+        return "";
     }
 
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+    // Function to apply language based on translations object
+    function applyLanguage(lang) {
+        document.querySelectorAll('[data-lang-key]').forEach(element => {
+            const key = element.getAttribute('data-lang-key');
+            if (translations[lang] && translations[lang][key]) {
+                const anchor = element.querySelector('a');
+                if (anchor) {
+                    element.textContent = translations[lang][key] + ' ';
+                    element.appendChild(anchor);
+                } else {
+                    element.textContent = translations[lang][key];
+                }
+            }
+        });
     }
 
-    .main-nav li {
-        margin: 0.5rem 1rem;
-    }
+    // Initialize with saved preferences
+    const savedMode = getCookie('mode');
+    const savedLang = getCookie('language') || 'en';
 
-    .carousel {
-        height: 40vh;
+    if (savedMode) {
+        body.classList.add(savedMode);
+        if (savedMode === 'dark-mode') {
+            modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
     }
+    
+    languageSelect.value = savedLang;
+    applyLanguage(savedLang);
 
-    h2 {
-        font-size: 2rem;
-    }
+    // Event listeners
+    modeToggle.addEventListener('click', () => {
+        if (body.classList.contains('light-mode')) {
+            body.classList.replace('light-mode', 'dark-mode');
+            modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            setCookie('mode', 'dark-mode', 365);
+        } else {
+            body.classList.replace('dark-mode', 'light-mode');
+            modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            setCookie('mode', 'light-mode', 365);
+        }
+    });
 
-    .services-grid, .grid {
-        grid-template-columns: 1fr;
-    }
-}
-/* Update the existing CSS for the overlay to make it semi-transparent */
-.item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 15px; /* Adjust if needed to match image border-radius */
-}
+    languageSelect.addEventListener('change', (event) => {
+        const selectedLang = event.target.value;
+        applyLanguage(selectedLang);
+        setCookie('language', selectedLang, 365);
+    });
+
+    // Handle share button functionality
+    document.querySelectorAll('.share-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const workItem = button.closest('.item');
+            const workTitle = workItem.querySelector('img').alt;
+            const workURL = window.location.href;
+            const shareText = `Check out this work: ${workTitle} on my portfolio!`;
+
+            if (navigator.share) {
+                navigator.share({
+                    title: workTitle,
+                    text: shareText,
+                    url: workURL
+                }).then(() => {
+                    console.log('Successfully shared!');
+                }).catch((error) => {
+                    console.log('Error sharing:', error);
+                });
+            } else {
+                // Fallback for browsers that do not support the Web Share API
+                alert('Sharing is not supported on this browser. Please copy the URL manually.');
+            }
+        });
+    });
+
+    // Handle view count increment
+    document.querySelectorAll('.item').forEach(item => {
+        const viewCount = item.querySelector('.view-count .counter');
+        let views = parseInt(viewCount.textContent);
+        
+        // This is a simple client-side increment. For a real site, this would require a backend.
+        // We'll increment the view count when the user clicks to view the full image.
+        const lightboxLink = item.querySelector('a[data-lightbox]');
+        lightboxLink.addEventListener('click', () => {
+            views++;
+            viewCount.textContent = views;
+        });
+    });
+});
