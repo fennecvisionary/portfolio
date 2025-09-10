@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Sections
             services_title: 'My Services',
             tools_title: 'Tools',
+            nav_about: 'About',
             works_title: 'From Our Works',
             contact_title: 'Contact Me',
             // Services
@@ -42,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_tools: 'أدواتي',
             nav_works: 'أعمالي',
             nav_contact: 'تواصل معي',
+            nav_about: 'من نحن',
             // Sections
             services_title: 'خدماتي',
             tools_title: 'أدواتي',
@@ -68,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nav_tools: 'Outils',
             nav_works: 'Mes travaux',
             nav_contact: 'Me contacter',
+            nav_about: 'À propos',
             // Sections
             services_title: 'Mes services',
             tools_title: 'Mes outils',
@@ -199,5 +202,41 @@ document.addEventListener('DOMContentLoaded', () => {
             views++;
             viewCount.textContent = views;
         });
+    });
+
+    // New logic for handling Disqus comments on lightbox open
+    $(document).on('lightbox_opened', function(event, image) {
+        // Find the work item corresponding to the opened image
+        const workItem = $('a[data-lightbox="works-set"][href="' + image.currentImage + '"]').closest('.item');
+        const workId = workItem.data('work-id');
+        const workURL = workItem.data('lightbox-url') || window.location.href + '#' + workId;
+
+        // Create the Disqus container
+        const disqusContainer = $('<div>').attr('id', 'disqus_thread').css('margin-top', '20px');
+        $('.lb-outerContainer').append(disqusContainer);
+
+        // Load Disqus
+        window.disqus_config = function () {
+            this.page.url = workURL;
+            this.page.identifier = workId;
+        };
+
+        const d = document, s = d.createElement('script');
+        s.src = 'https://fennecvisionary.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        s.onload = function() {
+            if (window.DISQUS) {
+                window.DISQUS.reset({
+                    reload: true,
+                    config: window.disqus_config
+                });
+            }
+        };
+        (d.head || d.body).appendChild(s);
+    });
+    
+    // Clear the Disqus container when Lightbox is closed
+    $(document).on( 'lightbox_close', function() {
+        $('#disqus_thread').remove();
     });
 });
