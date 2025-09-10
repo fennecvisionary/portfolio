@@ -295,7 +295,6 @@ section {
     transform: scale(1.1);
 }
 
-
 /* Footer & Contact Section */
 footer {
     background-color: var(--secondary-color);
@@ -330,6 +329,22 @@ footer a:hover {
     margin-top: 1.5rem;
     font-size: 0.9rem;
     opacity: 0.7;
+}
+
+/* Fix for the Skip link to be hidden until it's in focus */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 1000;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
 }
 
 /* Media Queries for responsiveness */
