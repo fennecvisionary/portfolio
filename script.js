@@ -204,39 +204,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // New logic for handling Disqus comments on lightbox open
+    // Add a listener for the lightbox open event
     $(document).on('lightbox_opened', function(event, image) {
         // Find the work item corresponding to the opened image
-        const workItem = $('a[data-lightbox="works-set"][href="' + image.currentImage + '"]').closest('.item');
-        const workId = workItem.data('work-id');
-        const workURL = workItem.data('lightbox-url') || window.location.href + '#' + workId;
+        const workItem = $(`a[href="${image.currentImageURL}"]`).closest('.item');
+        if (workItem.length) {
+            const workId = workItem.data('work-id');
+            const workURL = `https://fennecvisionary.github.io/portfolio/#${workId}`;
 
-        // Create the Disqus container
-        const disqusContainer = $('<div>').attr('id', 'disqus_thread').css('margin-top', '20px');
-        $('.lb-outerContainer').append(disqusContainer);
+            // Create the Disqus container
+            const disqusContainer = $('<div>').attr('id', 'disqus_thread').css('margin-top', '20px');
+            $('.lb-outerContainer').append(disqusContainer);
 
-        // Load Disqus
-        window.disqus_config = function () {
-            this.page.url = workURL;
-            this.page.identifier = workId;
-        };
+            // Load Disqus
+            window.disqus_config = function () {
+                this.page.url = workURL;
+                this.page.identifier = workId;
+            };
 
-        const d = document, s = d.createElement('script');
-        s.src = 'https://fennecvisionary.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        s.onload = function() {
-            if (window.DISQUS) {
-                window.DISQUS.reset({
-                    reload: true,
-                    config: window.disqus_config
-                });
-            }
-        };
-        (d.head || d.body).appendChild(s);
+            const d = document, s = d.createElement('script');
+            s.src = 'https://fennecvisionary.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            s.async = true;
+            s.onload = function() {
+                if (window.DISQUS) {
+                    window.DISQUS.reset({
+                        reload: true,
+                        config: window.disqus_config
+                    });
+                }
+            };
+            (d.head || d.body).appendChild(s);
+        }
     });
-    
+
     // Clear the Disqus container when Lightbox is closed
     $(document).on( 'lightbox_close', function() {
         $('#disqus_thread').remove();
+        const disqusScript = document.querySelector('script[src*="disqus.com"]');
+        if(disqusScript) disqusScript.remove();
     });
 });
