@@ -204,3 +204,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+// Functionality for the Work Details Carousel
+document.addEventListener('DOMContentLoaded', () => {
+    const workCarouselContainers = document.querySelectorAll('.carousel-container');
+
+    workCarouselContainers.forEach(container => {
+        const carouselSlide = container.querySelector('.carousel-slide');
+        const carouselDots = container.querySelectorAll('.carousel-dots .dot');
+        const slideImages = carouselSlide.querySelectorAll('img');
+
+        let currentSlide = 0;
+        const totalSlides = slideImages.length;
+        
+        if (totalSlides > 0) {
+            const slideWidth = slideImages[0].clientWidth;
+            // Set the initial width of the carousel slide container
+            carouselSlide.style.width = `${slideWidth * totalSlides}px`;
+
+            // Function to update the carousel position and active dot
+            const updateCarousel = () => {
+                carouselSlide.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+                
+                carouselDots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+                });
+            };
+
+            // Add click event listeners to the dots
+            carouselDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+
+            // Optional: Auto-slide functionality
+            // Uncomment the lines below to enable auto-sliding
+            // setInterval(() => {
+            //     currentSlide = (currentSlide + 1) % totalSlides;
+            //     updateCarousel();
+            // }, 5000); // Change image every 5 seconds
+        }
+    });
+});
