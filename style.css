@@ -17,6 +17,10 @@
 }
 
 /* Base Styles & Theming */
+html {
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
 body {
     margin: 0;
     font-family: var(--font-family-body);
@@ -198,24 +202,14 @@ section {
     text-align: center;
 }
 
+/* Default grid for smaller screens (1 column or auto-fit), then adjusted by media queries */
 .services-grid, .grid {
     display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
     gap: 2rem;
     max-width: 1200px;
     margin: 0 auto;
 }
-
-/* Main change: 4 columns for services on large screens, 2 on tablets, and 1 on mobile */
-.services-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
-
-@media (min-width: 1025px) {
-    .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
 
 .service-item, .item {
     background-color: var(--light-card-bg);
@@ -273,25 +267,34 @@ section {
     color: var(--light-text-color);
 }
 
-/* Our Works */
+/* Our Works (Portfolio) */
 .item {
     padding: 0;
-    height: 300px;
+    height: 300px; /* Consistent height for portfolio images */
     overflow: hidden;
     border: none;
 }
 
-.item img {
+/* Style for the anchor tag within a portfolio item, for Lightbox */
+.portfolio .item a {
+    display: block; /* Make the anchor fill the entire container */
+    width: 100%;
+    height: 100%;
+}
+
+.portfolio .item a img {
+    /* Ensure the image inside the anchor tag fills it completely */
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
+    border-radius: 12px; /* Maintain border-radius on image */
     transition: transform 0.5s ease;
 }
 
-.item img:hover {
+.portfolio .item a img:hover {
     transform: scale(1.1);
 }
+
 
 /* Footer & Contact Section */
 footer {
@@ -330,22 +333,28 @@ footer a:hover {
 }
 
 /* Media Queries for responsiveness */
-@media (min-width: 1201px) {
+
+/* Larger screens: 4 columns for services and portfolio */
+@media (min-width: 1025px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
     .portfolio .grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }
 
-@media (max-width: 1200px) and (min-width: 769px) {
+/* Tablets and medium screens (769px to 1024px): 2 columns for services and portfolio */
+@media (max-width: 1024px) and (min-width: 769px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
     .portfolio .grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
+/* Mobile screens (up to 768px): 1 column for services and portfolio */
 @media (max-width: 768px) {
     .site-header {
         flex-direction: column;
