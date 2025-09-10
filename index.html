@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
 </head>
 <body class="light-mode">
 
@@ -40,7 +43,6 @@
 </header>
 
 <main id="main-content">
-    
     <section class="carousel" aria-label="Portfolio Image Carousel">
         <div class="slides">
             <figure>
@@ -59,31 +61,31 @@
     </section>
 
     <section id="services">
-        <h2 data-lang-key="services_title">My Services</h2>
+        <h2 data-aos="fade-up" data-lang-key="services_title">My Services</h2>
         <div class="services-grid">
-            <a href="#service-logo" class="service-item"><i class="fas fa-pencil-ruler"></i><p data-lang-key="service_logo">Logo Design</p></a>
-            <a href="#service-card" class="service-item"><i class="fas fa-id-card"></i><p data-lang-key="service_card">Business Card</p></a>
-            <a href="#service-brochure" class="service-item"><i class="fas fa-file-alt"></i><p data-lang-key="service_brochure">Flyer and Brochure</p></a>
-            <a href="#service-invoice" class="service-item"><i class="fas fa-file-invoice-dollar"></i><p data-lang-key="service_invoice">Invoice</p></a>
-            <a href="#service-catalog" class="service-item"><i class="fas fa-book-open"></i><p data-lang-key="service_catalog">Catalog</p></a>
-            <a href="#service-social" class="service-item"><i class="fas fa-share-alt"></i><p data-lang-key="service_social">Social Media Templates</p></a>
-            <a href="#service-bottle" class="service-item"><i class="fas fa-box"></i><p data-lang-key="service_packaging">Packaging Design</p></a>
-            <a href="#service-tshirt" class="service-item"><i class="fas fa-tshirt"></i><p data-lang-key="service_tshirt">T-shirt and Hoodie</p></a>
+            <a href="#service-logo" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-pencil-ruler"></i><p data-lang-key="service_logo">Logo Design</p></a>
+            <a href="#service-card" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-id-card"></i><p data-lang-key="service_card">Business Card</p></a>
+            <a href="#service-brochure" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-file-alt"></i><p data-lang-key="service_brochure">Flyer and Brochure</p></a>
+            <a href="#service-invoice" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-file-invoice-dollar"></i><p data-lang-key="service_invoice">Invoice</p></a>
+            <a href="#service-catalog" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-book-open"></i><p data-lang-key="service_catalog">Catalog</p></a>
+            <a href="#service-social" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-share-alt"></i><p data-lang-key="service_social">Social Media Templates</p></a>
+            <a href="#service-bottle" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-box"></i><p data-lang-key="service_packaging">Packaging Design</p></a>
+            <a href="#service-tshirt" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-tshirt"></i><p data-lang-key="service_tshirt">T-shirt and Hoodie</p></a>
         </div>
     </section>
 
     <section id="tools">
-        <h2 data-lang-key="tools_title">Tools</h2>
+        <h2 data-aos="fade-up" data-lang-key="tools_title">Tools</h2>
         <div class="tools-grid">
-            <div class="tool-item">
+            <div class="tool-item" data-aos="zoom-in" data-aos-delay="100">
                 <img src="images/illustrator-icon.png" alt="Adobe Illustrator Icon" loading="lazy">
                 <p>Illustrator</p>
             </div>
-            <div class="tool-item">
+            <div class="tool-item" data-aos="zoom-in" data-aos-delay="200">
                 <img src="images/photoshop-icon.png" alt="Adobe Photoshop Icon" loading="lazy">
                 <p>Photoshop</p>
             </div>
-            <div class="tool-item">
+            <div class="tool-item" data-aos="zoom-in" data-aos-delay="300">
                 <img src="images/indesign-icon.png" alt="Adobe InDesign Icon" loading="lazy">
                 <p>InDesign</p>
             </div>
@@ -91,28 +93,58 @@
     </section>
 
     <section id="works" class="portfolio">
-        <h2 data-lang-key="works_title">From Our Works</h2>
+        <h2 data-aos="fade-up" data-lang-key="works_title">From Our Works</h2>
         <div class="grid">
-            <div class="item"><img src="images/work1.jpg" alt="A clean, minimalist logo for a tech company." loading="lazy"></div>
-            <div class="item"><img src="images/work2.jpg" alt="Vibrant packaging design for a new juice brand." loading="lazy"></div>
-            <div class="item"><img src="images/work3.jpg" alt="Professional business card design for a freelance consultant." loading="lazy"></div>
-            <div class="item"><img src="images/work4.jpg" alt="Eye-catching social media template for a lifestyle brand." loading="lazy"></div>
-            <div class="item"><img src="images/work5.jpg" alt="Modern corporate flyer design." loading="lazy"></div>
-            <div class="item"><img src="images/work6.jpg" alt="Creative t-shirt design with unique typography." loading="lazy"></div>
-            <div class="item"><img src="images/work7.jpg" alt="Digital illustration of a cityscape at night." loading="lazy"></div>
-            <div class="item"><img src="images/work8.jpg" alt="Modern website layout design." loading="lazy"></div>
+            <div class="item" data-aos="fade-up">
+                <a href="images/work1.jpg" data-lightbox="works-set" data-title="A clean, minimalist logo for a tech company.">
+                    <img src="images/work1.jpg" alt="A clean, minimalist logo for a tech company." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up" data-aos-delay="100">
+                <a href="images/work2.jpg" data-lightbox="works-set" data-title="Vibrant packaging design for a new juice brand.">
+                    <img src="images/work2.jpg" alt="Vibrant packaging design for a new juice brand." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up" data-aos-delay="200">
+                <a href="images/work3.jpg" data-lightbox="works-set" data-title="Professional business card design for a freelance consultant.">
+                    <img src="images/work3.jpg" alt="Professional business card design for a freelance consultant." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up" data-aos-delay="300">
+                <a href="images/work4.jpg" data-lightbox="works-set" data-title="Eye-catching social media template for a lifestyle brand.">
+                    <img src="images/work4.jpg" alt="Eye-catching social media template for a lifestyle brand." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up">
+                <a href="images/work5.jpg" data-lightbox="works-set" data-title="Modern corporate flyer design.">
+                    <img src="images/work5.jpg" alt="Modern corporate flyer design." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up" data-aos-delay="100">
+                <a href="images/work6.jpg" data-lightbox="works-set" data-title="Creative t-shirt design with unique typography." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up" data-aos-delay="200">
+                <a href="images/work7.jpg" data-lightbox="works-set" data-title="Digital illustration of a cityscape at night.">
+                    <img src="images/work7.jpg" alt="Digital illustration of a cityscape at night." loading="lazy">
+                </a>
+            </div>
+            <div class="item" data-aos="fade-up" data-aos-delay="300">
+                <a href="images/work8.jpg" data-lightbox="works-set" data-title="Modern website layout design.">
+                    <img src="images/work8.jpg" alt="Modern website layout design." loading="lazy">
+                </a>
+            </div>
         </div>
     </section>
-
 </main>
 
 <footer id="contact">
-    <h2 data-lang-key="contact_title">Contact Me</h2>
-    <address>
+    <h2 data-aos="fade-up" data-lang-key="contact_title">Contact Me</h2>
+    <address data-aos="fade-up" data-aos-delay="100">
         <p data-lang-key="contact_phone_label">Phone: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
         <p data-lang-key="contact_email_label">Email: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
     </address>
-    <div class="socials">
+    <div class="socials" data-aos="fade-up" data-aos-delay="200">
         <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Facebook" class="facebook"><i class="fab fa-facebook"></i></a>
         <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
@@ -121,9 +153,9 @@
     <p class="copy">© 2025 Fennec Visionary. All rights reserved.</p>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <script src="script.js"></script>
-
 </body>
 </html>
-
-
