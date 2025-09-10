@@ -40,7 +40,28 @@
 <main id="main-content">
     <section class="work-details">
         <h1 class="work-title">شعار نظيف وبسيط لشركة تقنية</h1>
-        <img src="../images/work1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" class="work-image">
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work1.jpg" alt="صورة الشعار النهائية" loading="lazy">
+                <img src="../images/work1_mockup.jpg" alt="الشعار على نموذج افتراضي" loading="lazy">
+                <img src="../images/work1_concept.jpg" alt="مفهوم الشعار الأولي" loading="lazy">
+                <img src="../images/work1_color_palette.jpg" alt="لوحة الألوان المستخدمة" loading="lazy">
+                <img src="../images/work1_on_merchandise.jpg" alt="الشعار على منتجات مختلفة" loading="lazy">
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تم تصميم هذا الشعار لشركة تقنية ناشئة، يجمع بين البساطة والحداثة ليعكس الابتكار والاحترافية. تم استخدام خطوط نظيفة وألوان هادئة لخلق هوية بصرية قوية وسهلة التذكر.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe Illustrator, Adobe Photoshop</p>
+        </div>
     </section>
 
     <div id="disqus_thread"></div>
@@ -73,7 +94,42 @@
     </div>
     <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
 </footer>
+<script>
+    const carouselSlide = document.querySelector('.carousel-slide');
+    const carouselDots = document.querySelectorAll('.carousel-dots .dot');
+    const slideImages = document.querySelectorAll('.carousel-slide img');
 
+    let currentSlide = 0;
+    const totalSlides = slideImages.length;
+    const slideWidth = slideImages[0].clientWidth;
+
+    // Set the initial width of the carousel slide container
+    carouselSlide.style.width = `${slideWidth * totalSlides}px`;
+
+    // Function to update the carousel position and active dot
+    const updateCarousel = () => {
+        carouselSlide.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+        
+        carouselDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    };
+
+    // Add click event listeners to the dots
+    carouselDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+
+    // Optional: Auto-slide functionality (uncomment to activate)
+    // setInterval(() => {
+    //     currentSlide = (currentSlide + 1) % totalSlides;
+    //     updateCarousel();
+    // }, 5000); // Change image every 5 seconds
+    
+</script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="../script.js"></script>
