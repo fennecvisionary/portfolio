@@ -162,22 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setCookie('language', selectedLang, 365);
     });
 
-    // Handle like button functionality
-    document.querySelectorAll('.like-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            const counter = button.querySelector('.counter');
-            let count = parseInt(counter.textContent);
-            if (!button.classList.contains('liked')) {
-                count++;
-                button.classList.add('liked');
-            } else {
-                count--;
-                button.classList.remove('liked');
-            }
-            counter.textContent = count;
-        });
-    });
-
     // Handle share button functionality
     document.querySelectorAll('.share-btn').forEach(button => {
         button.addEventListener('click', () => {
