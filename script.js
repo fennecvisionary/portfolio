@@ -64,44 +64,44 @@ document.addEventListener('DOMContentLoaded', () => {
             // General
             skip_link: 'Passer au contenu principal',
             // Navigation
-            nav_services: 'Mes Services',
+            nav_services: 'Mes services',
             nav_tools: 'Outils',
-            nav_works: 'Nos Travaux',
-            nav_contact: 'Contact',
+            nav_works: 'Mes travaux',
+            nav_contact: 'Me contacter',
             // Sections
-            services_title: 'Mes Services',
-            tools_title: 'Outils',
-            works_title: 'De Nos Travaux',
-            contact_title: 'Contactez-moi',
+            services_title: 'Mes services',
+            tools_title: 'Mes outils',
+            works_title: 'Mes travaux',
+            contact_title: 'Me contacter',
             // Services
-            service_logo: 'Conception de Logo',
-            service_card: 'Carte de Visite',
-            service_brochure: 'Flyer et Brochure',
-            service_invoice: 'Facture',
-            service_catalog: 'Catalogue',
-            service_social: 'Modèles de Réseaux Sociaux',
-            service_packaging: 'Conception d\'emballage',
-            service_tshirt: 'T-shirt et Hoodie',
+            service_logo: 'Création de logo',
+            service_card: 'Cartes de visite',
+            service_brochure: 'Dépliants et brochures',
+            service_invoice: 'Factures',
+            service_catalog: 'Catalogues',
+            service_social: 'Modèles de médias sociaux',
+            service_packaging: 'Conception d\'emballages',
+            service_tshirt: 'T-shirts et sweats à capuche',
             // Contact Info
             contact_phone_label: 'Téléphone:',
             contact_email_label: 'E-mail:'
         }
     };
-
-    // Helper function to set a cookie
+    
+    // Helper function to set cookies
     function setCookie(name, value, days) {
         const d = new Date();
         d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-        const expires = 'expires=' + d.toUTCString();
-        document.cookie = name + '=' + value + ';' + expires + ';path=/';
+        const expires = "expires=" + d.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/";
     }
 
-    // Helper function to get a cookie
+    // Helper function to get cookies
     function getCookie(name) {
-        const cname = name + '=';
+        const cname = name + "=";
         const decodedCookie = decodeURIComponent(document.cookie);
         const ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
+        for(let i = 0; i <ca.length; i++) {
             let c = ca[i];
             while (c.charAt(0) === ' ') {
                 c = c.substring(1);
@@ -110,19 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 return c.substring(cname.length, c.length);
             }
         }
-        return '';
+        return "";
     }
 
-    // Function to apply language based on selection
+    // Function to apply language based on translations object
     function applyLanguage(lang) {
-        // Set body direction and classes
-        if (lang === 'ar') {
-            body.classList.add('ar');
-        } else {
-            body.classList.remove('ar');
-        }
-
-        // Apply translations to all elements with data-lang-key
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             if (translations[lang] && translations[lang][key]) {
@@ -170,96 +162,58 @@ document.addEventListener('DOMContentLoaded', () => {
         setCookie('language', selectedLang, 365);
     });
 
-    // --- New Features for the Portfolio Items ---
-    
-    // Function to initialize data from localStorage or set defaults
-    function initializeData(workId) {
-        const data = localStorage.getItem(workId);
-        if (data) {
-            return JSON.parse(data);
-        }
-        return { likes: 0, views: 0, liked: false };
-    }
-
-    // Function to update the DOM with new data
-    function updateDOM(workId, data) {
-        const item = document.querySelector(`.item[data-work-id="${workId}"]`);
-        if (item) {
-            const likeCounter = item.querySelector('.like-btn .counter');
-            const viewCounter = item.querySelector('.view-count .counter');
-            const likeButton = item.querySelector('.like-btn');
-            
-            if (likeCounter) likeCounter.textContent = data.likes;
-            if (viewCounter) viewCounter.textContent = data.views;
-            
-            // Set the liked state
-            if (likeButton) {
-                if (data.liked) {
-                    likeButton.classList.add('liked');
-                    likeButton.querySelector('i').classList.replace('far', 'fas');
-                } else {
-                    likeButton.classList.remove('liked');
-                    likeButton.querySelector('i').classList.replace('fas', 'far');
-                }
+    // Handle like button functionality
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const counter = button.querySelector('.counter');
+            let count = parseInt(counter.textContent);
+            if (!button.classList.contains('liked')) {
+                count++;
+                button.classList.add('liked');
+            } else {
+                count--;
+                button.classList.remove('liked');
             }
-        }
-    }
+            counter.textContent = count;
+        });
+    });
 
-    // Event delegation for the portfolio grid
-    const worksSection = document.getElementById('works');
-    if (worksSection) {
-        worksSection.addEventListener('click', (event) => {
-            const target = event.target.closest('.action-btn');
-            if (!target) return;
+    // Handle share button functionality
+    document.querySelectorAll('.share-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const workItem = button.closest('.item');
+            const workTitle = workItem.querySelector('img').alt;
+            const workURL = window.location.href;
+            const shareText = `Check out this work: ${workTitle} on my portfolio!`;
 
-            const item = target.closest('.item');
-            if (!item) return;
-
-            const workId = item.getAttribute('data-work-id');
-            let data = initializeData(workId);
-
-            if (target.classList.contains('like-btn')) {
-                if (data.liked) {
-                    data.likes--;
-                    data.liked = false;
-                } else {
-                    data.likes++;
-                    data.liked = true;
-                }
-            } else if (target.classList.contains('share-btn')) {
-                if (navigator.share) {
-                    const pageTitle = document.title;
-                    const pageUrl = window.location.href;
-                    const workUrl = item.querySelector('img').src;
-                    navigator.share({
-                        title: pageTitle,
-                        url: workUrl || pageUrl
-                    }).then(() => {
-                        console.log('Thanks for sharing!');
-                    }).catch(console.error);
-                } else {
-                    alert("Sharing is not supported on this browser.");
-                }
+            if (navigator.share) {
+                navigator.share({
+                    title: workTitle,
+                    text: shareText,
+                    url: workURL
+                }).then(() => {
+                    console.log('Successfully shared!');
+                }).catch((error) => {
+                    console.log('Error sharing:', error);
+                });
+            } else {
+                // Fallback for browsers that do not support the Web Share API
+                alert('Sharing is not supported on this browser. Please copy the URL manually.');
             }
-            
-            // Save the updated data
-            localStorage.setItem(workId, JSON.stringify(data));
-            // Update the DOM
-            updateDOM(workId, data);
         });
+    });
 
-        // Initialize views and counters on page load
-        document.querySelectorAll('.item').forEach(item => {
-            const workId = item.getAttribute('data-work-id');
-            let data = initializeData(workId);
-            
-            // Increment view count on page load
-            data.views++;
-            localStorage.setItem(workId, JSON.stringify(data));
-            
-            // Update counters on the page
-            updateDOM(workId, data);
+    // Handle view count increment
+    document.querySelectorAll('.item').forEach(item => {
+        const viewCount = item.querySelector('.view-count .counter');
+        let views = parseInt(viewCount.textContent);
+        
+        // This is a simple client-side increment. For a real site, this would require a backend.
+        // We'll increment the view count when the user clicks to view the full image.
+        const lightboxLink = item.querySelector('a[data-lightbox]');
+        lightboxLink.addEventListener('click', () => {
+            views++;
+            viewCount.textContent = views;
         });
-    }
-
+    });
 });
