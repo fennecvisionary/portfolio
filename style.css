@@ -297,73 +297,22 @@ section {
     transform: scale(1.1);
 }
 
-/* --- New CSS for the Overlay and Buttons --- */
+/* Final CSS for the Transparent Overlay */
 .item .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: flex-end; /* Align to the bottom */
-    padding: 1rem;
-    opacity: 0;
+    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
+    opacity: 0; /* Starts as completely transparent */
     transition: opacity 0.3s ease;
+    border-radius: 12px; /* Matches the item's border-radius */
 }
 
+/* Make the overlay visible on hover */
 .item:hover .overlay {
-    opacity: 1;
-}
-
-.overlay .overlay-actions { /* New container for all action buttons and view count */
-    display: flex; /* Make it a flex container to align items horizontally */
-    gap: 10px;
-    align-items: center; /* Vertically align the items within this container */
-    padding: 5px 10px;
-    border-radius: 20px;
-    margin-bottom: 20px; /* Adjust as needed to move it up */
-}
-
-.overlay .action-btn {
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: white;
-    font-size: 1.2rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.overlay .action-btn:hover {
-    color: var(--primary-color);
-    transform: scale(1.1);
-}
-
-.overlay .action-btn .fas, .overlay .action-btn .far {
-    font-size: 1.2rem;
-}
-
-/* Style for filled heart icon */
-.overlay .like-btn.liked i {
-    color: var(--primary-color);
-    font-weight: 900; /* Makes the icon solid on like */
-}
-
-/* View count styling */
-.view-count {
-    display: flex; /* Make it a flex container to align items horizontally */
-    align-items: center;
-    gap: 5px;
-    font-size: 0.9rem;
-    color: white;
-}
-
-body.ar .overlay-actions {
-    flex-direction: row-reverse; /* For RTL support */
+    opacity: 1; /* Fully visible on hover */
 }
 
 /* Footer & Contact Section */
@@ -472,92 +421,4 @@ footer a:hover {
     .services-grid, .grid {
         grid-template-columns: 1fr;
     }
-}
-/* Update the existing CSS for the overlay to make it semi-transparent */
-.item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    border-radius: 15px; /* Adjust if needed to match image border-radius */
-}
-/* Updated CSS for the 'View Details' button (now a centered, elegant icon) */
-.item .overlay .details-link {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centered perfectly in the middle */
-    width: 55px; /* Adjust size for the icon */
-    height: 55px; /* Adjust size for the icon */
-    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
-    border: 2px solid white; /* A clean white border */
-    border-radius: 50%; /* Make it a circle */
-    display: flex; /* Use flexbox to center the icon */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    font-size: 1.5rem; /* Size of the icon */
-    color: white;
-    text-decoration: none;
-    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
-    opacity: 0; /* Starts as completely transparent */
-    pointer-events: none; /* Initially, it's not clickable */
-}
-
-/* Add a frosted glass effect for modern look */
-.item .overlay .details-link {
-    -webkit-backdrop-filter: blur(5px);
-    backdrop-filter: blur(5px);
-}
-
-/* Make the button visible and clickable on hover */
-.item:hover .overlay .details-link {
-    opacity: 1;
-    pointer-events: auto; /* Make it clickable */
-}
-
-/* Hover effect on the button itself */
-.item .overlay .details-link:hover {
-    background-color: rgba(255, 255, 255, 0.4); /* Make it a bit more visible on hover */
-    transform: translate(-50%, -50%) scale(1.1); /* Slightly enlarge on hover */
-}
-/* Update the existing CSS for the overlay to make it semi-transparent */
-.item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0; /* Starts as completely transparent */
-    transition: opacity 0.3s ease;
-    border-radius: 15px; /* Adjust if needed to match image border-radius */
-}
-/* Clean and correct CSS for the transparent overlay */
-.item .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
-    opacity: 0; /* Starts as completely transparent */
-    transition: opacity 0.3s ease;
-    border-radius: 12px; /* Matches the item's border-radius */
-    pointer-events: none; /* Allows clicks to pass through to the image link */
-}
-
-/* Make the overlay visible on hover */
-.item:hover .overlay {
-    opacity: 1; /* Fully visible on hover */
 }
