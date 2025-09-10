@@ -244,4 +244,181 @@ section {
 }
 
 .tools-grid {
-    display: flex
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.tool-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.tool-item:hover img {
+    transform: scale(1.1);
+}
+
+.tool-item p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: var(--light-text-color);
+}
+
+/* Our Works (Portfolio) */
+.item {
+    padding: 0;
+    height: 300px; /* Consistent height for portfolio images */
+    overflow: hidden;
+    border: none;
+    position: relative; /* Essential for overlay positioning */
+    border-radius: 12px; /* Apply border-radius directly to the item */
+}
+
+/* Style for the anchor tag within a portfolio item, for Lightbox */
+.portfolio .item a {
+    display: block; /* Make the anchor fill the entire container */
+    width: 100%;
+    height: 100%;
+}
+
+.portfolio .item a img {
+    /* Ensure the image inside the anchor tag fills it completely */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px; /* Maintain border-radius on image */
+    transition: transform 0.5s ease;
+}
+
+.portfolio .item a img:hover {
+    transform: scale(1.1);
+}
+
+/* Final CSS for the Transparent Overlay */
+.item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
+    opacity: 0; /* Starts as completely transparent */
+    transition: opacity 0.3s ease;
+    border-radius: 12px; /* Matches the item's border-radius */
+}
+
+/* Make the overlay visible on hover */
+.item:hover .overlay {
+    opacity: 1; /* Fully visible on hover */
+}
+
+/* Footer & Contact Section */
+footer {
+    background-color: var(--secondary-color);
+    color: var(--dark-text-color);
+    text-align: center;
+    padding: 2rem;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--dark-text-color);
+}
+
+.socials a {
+    font-size: 1.8rem;
+    color: var(--dark-text-color); /* Correcting the color for dark mode */
+    margin: 0 0.7rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Specific hover colors for social icons */
+.socials .facebook:hover { color: #3b5998; }
+.socials .instagram:hover { color: #e1306c; }
+.socials .whatsapp:hover { color: #25d366; }
+.socials .tiktok:hover { color: #fe2c55; }
+
+.copy {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+/* Fix for the Skip link to be hidden until it's in focus */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 1000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Media Queries for responsiveness */
+
+/* Larger screens: 4 columns for services and portfolio */
+@media (min-width: 1025px) {
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .portfolio .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Tablets and medium screens (769px to 1024px): 2 columns for services and portfolio */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .portfolio .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile screens (up to 768px): 1 column for services and portfolio */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .main-nav {
+        margin-top: 1rem;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-nav li {
+        margin: 0.5rem 1rem;
+    }
+
+    .carousel {
+        height: 40vh;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .services-grid, .grid {
+        grid-template-columns: 1fr;
+    }
+}
