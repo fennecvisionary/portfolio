@@ -217,33 +217,35 @@ document.addEventListener('DOMContentLoaded', () => {
         const totalSlides = slideImages.length;
         
         if (totalSlides > 0) {
-            const slideWidth = slideImages[0].clientWidth;
-            // Set the initial width of the carousel slide container
-            carouselSlide.style.width = `${slideWidth * totalSlides}px`;
-
-            // Function to update the carousel position and active dot
-            const updateCarousel = () => {
-                carouselSlide.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+            // Wait for images to load before calculating width
+            window.addEventListener('load', () => {
+                const slideWidth = slideImages[0].clientWidth;
+                carouselSlide.style.width = `${slideWidth * totalSlides}px`;
                 
+                // Function to update the carousel position and active dot
+                const updateCarousel = () => {
+                    carouselSlide.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+                    
+                    carouselDots.forEach((dot, index) => {
+                        dot.classList.toggle('active', index === currentSlide);
+                    });
+                };
+    
+                // Add click event listeners to the dots
                 carouselDots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
+                    dot.addEventListener('click', () => {
+                        currentSlide = index;
+                        updateCarousel();
+                    });
                 });
-            };
-
-            // Add click event listeners to the dots
-            carouselDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    currentSlide = index;
-                    updateCarousel();
-                });
+    
+                // Optional: Auto-slide functionality
+                // Uncomment the lines below to enable auto-sliding
+                // setInterval(() => {
+                //     currentSlide = (currentSlide + 1) % totalSlides;
+                //     updateCarousel();
+                // }, 5000); // Change image every 5 seconds
             });
-
-            // Optional: Auto-slide functionality
-            // Uncomment the lines below to enable auto-sliding
-            // setInterval(() => {
-            //     currentSlide = (currentSlide + 1) % totalSlides;
-            //     updateCarousel();
-            // }, 5000); // Change image every 5 seconds
         }
     });
 });
