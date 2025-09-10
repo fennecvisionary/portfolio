@@ -473,3 +473,32 @@ footer a:hover {
         grid-template-columns: 1fr;
     }
 }
+/* New CSS for the 'View Details' button */
+.item .overlay .details-link {
+    position: absolute;
+    bottom: 1.5rem; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    pointer-events: none; /* Initially, it's not clickable */
+}
+
+/* Make the button visible and clickable on hover */
+.item:hover .overlay .details-link {
+    opacity: 1;
+    transform: translate(-50%, -10px);
+    pointer-events: auto; /* Make it clickable */
+}
+
+/* Hover effect on the button itself */
+.item .overlay .details-link:hover {
+    background-color: #d8451b; /* A slightly darker shade of the primary color */
+}
