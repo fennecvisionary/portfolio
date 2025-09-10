@@ -528,3 +528,36 @@ footer a:hover {
     background-color: rgba(255, 255, 255, 0.4); /* Make it a bit more visible on hover */
     transform: translate(-50%, -50%) scale(1.1); /* Slightly enlarge on hover */
 }
+/* Update the existing CSS for the overlay to make it semi-transparent */
+.item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Starts as completely transparent */
+    transition: opacity 0.3s ease;
+    border-radius: 15px; /* Adjust if needed to match image border-radius */
+}
+/* Clean and correct CSS for the transparent overlay */
+.item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(247, 87, 35, 0.6); /* Semi-transparent orange overlay */
+    opacity: 0; /* Starts as completely transparent */
+    transition: opacity 0.3s ease;
+    border-radius: 12px; /* Matches the item's border-radius */
+    pointer-events: none; /* Allows clicks to pass through to the image link */
+}
+
+/* Make the overlay visible on hover */
+.item:hover .overlay {
+    opacity: 1; /* Fully visible on hover */
+}
