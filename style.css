@@ -489,3 +489,42 @@ footer a:hover {
     transition: opacity 0.3s ease;
     border-radius: 15px; /* Adjust if needed to match image border-radius */
 }
+/* Updated CSS for the 'View Details' button (now a centered, elegant icon) */
+.item .overlay .details-link {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centered perfectly in the middle */
+    width: 55px; /* Adjust size for the icon */
+    height: 55px; /* Adjust size for the icon */
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+    border: 2px solid white; /* A clean white border */
+    border-radius: 50%; /* Make it a circle */
+    display: flex; /* Use flexbox to center the icon */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    font-size: 1.5rem; /* Size of the icon */
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Starts as completely transparent */
+    pointer-events: none; /* Initially, it's not clickable */
+}
+
+/* Add a frosted glass effect for modern look */
+.item .overlay .details-link {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+/* Make the button visible and clickable on hover */
+.item:hover .overlay .details-link {
+    opacity: 1;
+    pointer-events: auto; /* Make it clickable */
+}
+
+/* Hover effect on the button itself */
+.item .overlay .details-link:hover {
+    background-color: rgba(255, 255, 255, 0.4); /* Make it a bit more visible on hover */
+    transform: translate(-50%, -50%) scale(1.1); /* Slightly enlarge on hover */
+}
