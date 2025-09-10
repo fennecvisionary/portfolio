@@ -1,157 +1,236 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fennec Visionary - Portfolio</title>
-    <meta name="description" content="Explore the professional portfolio of Fennec Visionary, a graphic designer specializing in branding and digital art.">
+    <title>Fennec Visionary - معرض الأعمال</title>
+    <meta name="description" content="استكشف المعرض الاحترافي لـ Fennec Visionary، مصمم جرافيك متخصص في العلامات التجارية والفن الرقمي.">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
 </head>
-<body class="light-mode">
+<body class="light-mode ar">
 
-<a href="#main-content" class="skip-link" data-lang-key="skip_link">Skip to main content</a>
+<a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
 
 <header class="site-header">
     <div class="logo">
         <a href="/">
-            <img src="images/logo.png" alt="Fennec Visionary Logo" loading="lazy">
+            <img src="images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
         </a>
     </div>
-    <nav class="main-nav" aria-label="Main navigation">
+    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
         <ul role="list">
-            <li role="listitem"><a href="#services" data-lang-key="nav_services">My Services</a></li>
-            <li role="listitem"><a href="#tools" data-lang-key="nav_tools">Tools</a></li>
-            <li role="listitem"><a href="#works" data-lang-key="nav_works">Our Works</a></li>
-            <li role="listitem"><a href="#contact" data-lang-key="nav_contact">Contact</a></li>
+            <li role="listitem"><a href="#services" data-lang-key="nav_services">خدماتي</a></li>
+            <li role="listitem"><a href="#tools" data-lang-key="nav_tools">أدواتي</a></li>
+            <li role="listitem"><a href="#works" data-lang-key="nav_works">أعمالي</a></li>
+            <li role="listitem"><a href="#contact" data-lang-key="nav_contact">تواصل معي</a></li>
         </ul>
     </nav>
     <div class="header-controls">
         <select id="language-select">
             <option value="en">EN</option>
-            <option value="ar">AR</option>
+            <option value="ar" selected>AR</option>
             <option value="fr">FR</option>
         </select>
-        <button id="mode-toggle" aria-label="Toggle dark mode">
+        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
             <i class="fas fa-moon"></i>
         </button>
     </div>
 </header>
 
 <main id="main-content">
-    <section class="carousel" aria-label="Portfolio Image Carousel">
+    <section class="carousel" aria-label="دوارة صور معرض الأعمال">
         <div class="slides">
             <figure>
-                <img src="images/work1.jpg" alt="A clean, minimalist logo for a tech company." loading="eager">
+                <img src="images/work1.jpg" alt="شعار نظيف وبسيط لشركة تقنية." loading="eager">
             </figure>
             <figure>
-                <img src="images/work2.jpg" alt="Vibrant packaging design for a new juice brand." loading="lazy">
+                <img src="images/work2.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
             </figure>
             <figure>
-                <img src="images/work3.jpg" alt="Professional business card design for a freelance consultant." loading="lazy">
+                <img src="images/work3.jpg" alt="تصميم بطاقة عمل احترافية لمستشار مستقل." loading="lazy">
             </figure>
             <figure>
-                <img src="images/work4.jpg" alt="Eye-catching social media template for a lifestyle brand." loading="lazy">
+                <img src="images/work4.jpg" alt="قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة." loading="lazy">
             </figure>
         </div>
     </section>
 
     <section id="services">
-        <h2 data-aos="fade-up" data-lang-key="services_title">My Services</h2>
+        <h2 data-aos="fade-up" data-lang-key="services_title">خدماتي</h2>
         <div class="services-grid">
-            <a href="#service-logo" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-pencil-ruler"></i><p data-lang-key="service_logo">Logo Design</p></a>
-            <a href="#service-card" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-id-card"></i><p data-lang-key="service_card">Business Card</p></a>
-            <a href="#service-brochure" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-file-alt"></i><p data-lang-key="service_brochure">Flyer and Brochure</p></a>
-            <a href="#service-invoice" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-file-invoice-dollar"></i><p data-lang-key="service_invoice">Invoice</p></a>
-            <a href="#service-catalog" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-book-open"></i><p data-lang-key="service_catalog">Catalog</p></a>
-            <a href="#service-social" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-share-alt"></i><p data-lang-key="service_social">Social Media Templates</p></a>
-            <a href="#service-bottle" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-box"></i><p data-lang-key="service_packaging">Packaging Design</p></a>
-            <a href="#service-tshirt" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-tshirt"></i><p data-lang-key="service_tshirt">T-shirt and Hoodie</p></a>
+            <a href="#service-logo" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-pencil-ruler"></i><p data-lang-key="service_logo">تصميم الشعارات</p></a>
+            <a href="#service-card" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-id-card"></i><p data-lang-key="service_card">بطاقات العمل</p></a>
+            <a href="#service-brochure" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-file-alt"></i><p data-lang-key="service_brochure">الفلاير والبروشور</p></a>
+            <a href="#service-invoice" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-file-invoice-dollar"></i><p data-lang-key="service_invoice">الفواتير</p></a>
+            <a href="#service-catalog" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-book-open"></i><p data-lang-key="service_catalog">الكتالوجات</p></a>
+            <a href="#service-social" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-share-alt"></i><p data-lang-key="service_social">قوالب السوشيال ميديا</p></a>
+            <a href="#service-bottle" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-box"></i><p data-lang-key="service_packaging">تصميم التغليف</p></a>
+            <a href="#service-tshirt" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-tshirt"></i><p data-lang-key="service_tshirt">القمصان والهوديز</p></a>
         </div>
     </section>
 
     <section id="tools">
-        <h2 data-aos="fade-up" data-lang-key="tools_title">Tools</h2>
+        <h2 data-aos="fade-up" data-lang-key="tools_title">أدواتي</h2>
         <div class="tools-grid">
             <div class="tool-item" data-aos="zoom-in" data-aos-delay="100">
-                <img src="images/illustrator-icon.png" alt="Adobe Illustrator Icon" loading="lazy">
+                <img src="images/illustrator-icon.png" alt="أيقونة Adobe Illustrator" loading="lazy">
                 <p>Illustrator</p>
             </div>
             <div class="tool-item" data-aos="zoom-in" data-aos-delay="200">
-                <img src="images/photoshop-icon.png" alt="Adobe Photoshop Icon" loading="lazy">
+                <img src="images/photoshop-icon.png" alt="أيقونة Adobe Photoshop" loading="lazy">
                 <p>Photoshop</p>
             </div>
             <div class="tool-item" data-aos="zoom-in" data-aos-delay="300">
-                <img src="images/indesign-icon.png" alt="Adobe InDesign Icon" loading="lazy">
+                <img src="images/indesign-icon.png" alt="أيقونة Adobe InDesign" loading="lazy">
                 <p>InDesign</p>
             </div>
         </div>
     </section>
 
     <section id="works" class="portfolio">
-        <h2 data-aos="fade-up" data-lang-key="works_title">From Our Works</h2>
+        <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
         <div class="grid">
-            <div class="item" data-aos="fade-up">
-                <a href="images/work1.jpg" data-lightbox="works-set" data-title="A clean, minimalist logo for a tech company.">
-                    <img src="images/work1.jpg" alt="A clean, minimalist logo for a tech company." loading="lazy">
+            <div class="item" data-aos="fade-up" data-work-id="work1">
+                <a href="images/work1.jpg" data-lightbox="works-set" data-title="شعار نظيف وبسيط لشركة تقنية.">
+                    <img src="images/work1.jpg" alt="شعار نظيف وبسيط لشركة تقنية." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="item" data-aos="fade-up" data-aos-delay="100">
-                <a href="images/work2.jpg" data-lightbox="works-set" data-title="Vibrant packaging design for a new juice brand.">
-                    <img src="images/work2.jpg" alt="Vibrant packaging design for a new juice brand." loading="lazy">
+            <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work2">
+                <a href="images/work2.jpg" data-lightbox="works-set" data-title="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر.">
+                    <img src="images/work2.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="item" data-aos="fade-up" data-aos-delay="200">
-                <a href="images/work3.jpg" data-lightbox="works-set" data-title="Professional business card design for a freelance consultant.">
-                    <img src="images/work3.jpg" alt="Professional business card design for a freelance consultant." loading="lazy">
+            <div class="item" data-aos="fade-up" data-aos-delay="200" data-work-id="work3">
+                <a href="images/work3.jpg" data-lightbox="works-set" data-title="تصميم بطاقة عمل احترافية لمستشار مستقل.">
+                    <img src="images/work3.jpg" alt="تصميم بطاقة عمل احترافية لمستشار مستقل." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="item" data-aos="fade-up" data-aos-delay="300">
-                <a href="images/work4.jpg" data-lightbox="works-set" data-title="Eye-catching social media template for a lifestyle brand.">
-                    <img src="images/work4.jpg" alt="Eye-catching social media template for a lifestyle brand." loading="lazy">
+            <div class="item" data-aos="fade-up" data-aos-delay="300" data-work-id="work4">
+                <a href="images/work4.jpg" data-lightbox="works-set" data-title="قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة.">
+                    <img src="images/work4.jpg" alt="قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="item" data-aos="fade-up">
-                <a href="images/work5.jpg" data-lightbox="works-set" data-title="Modern corporate flyer design.">
-                    <img src="images/work5.jpg" alt="Modern corporate flyer design." loading="lazy">
+            <div class="item" data-aos="fade-up" data-work-id="work5">
+                <a href="images/work5.jpg" data-lightbox="works-set" data-title="تصميم نشرة إعلانية عصرية للشركات.">
+                    <img src="images/work5.jpg" alt="تصميم نشرة إعلانية عصرية للشركات." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="item" data-aos="fade-up" data-aos-delay="100">
-           <a href="images/work6.jpg" data-lightbox="works-set" data-title="Creative t-shirt design with unique typography.">
-                  <img src="images/work6.jpg" alt="Creative t-shirt design with unique typography." loading="lazy">
-               </a>
+            <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work6">
+               <a href="images/work6.jpg" data-lightbox="works-set" data-title="تصميم تي شيرت إبداعي بطباعة فريدة.">
+                    <img src="images/work6.jpg" alt="تصميم تي شيرت إبداعي بطباعة فريدة." loading="lazy">
+                </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div> 
-            <div class="item" data-aos="fade-up" data-aos-delay="200">
-                <a href="images/work7.jpg" data-lightbox="works-set" data-title="Digital illustration of a cityscape at night.">
-                    <img src="images/work7.jpg" alt="Digital illustration of a cityscape at night." loading="lazy">
+            <div class="item" data-aos="fade-up" data-aos-delay="200" data-work-id="work7">
+                <a href="images/work7.jpg" data-lightbox="works-set" data-title="رسم توضيحي رقمي لمدينة ليلًا.">
+                    <img src="images/work7.jpg" alt="رسم توضيحي رقمي لمدينة ليلًا." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
-            <div class="item" data-aos="fade-up" data-aos-delay="300">
-                <a href="images/work8.jpg" data-lightbox="works-set" data-title="Modern website layout design.">
-                    <img src="images/work8.jpg" alt="Modern website layout design." loading="lazy">
+            <div class="item" data-aos="fade-up" data-aos-delay="300" data-work-id="work8">
+                <a href="images/work8.jpg" data-lightbox="works-set" data-title="تصميم تخطيط موقع إلكتروني عصري.">
+                    <img src="images/work8.jpg" alt="تصميم تخطيط موقع إلكتروني عصري." loading="lazy">
                 </a>
+                <div class="overlay">
+                    <div class="overlay-buttons">
+                        <button class="action-btn like-btn" aria-label="أعجبني"><i class="far fa-heart"></i><span class="counter">0</span></button>
+                        <button class="action-btn comment-btn" aria-label="أضف تعليق"><i class="far fa-comment-alt"></i></button>
+                        <button class="action-btn share-btn" aria-label="مشاركة"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="view-count" aria-label="عدد المشاهدات">
+                        <i class="fas fa-eye"></i> <span class="counter">0</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 </main>
 
 <footer id="contact">
-    <h2 data-aos="fade-up" data-lang-key="contact_title">Contact Me</h2>
+    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
     <address data-aos="fade-up" data-aos-delay="100">
-        <p data-lang-key="contact_phone_label">Phone: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
-        <p data-lang-key="contact_email_label">Email: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
+        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
+        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
     </address>
     <div class="socials" data-aos="fade-up" data-aos-delay="200">
-        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Facebook" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="Visit us on Instagram" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="Visit us on TikTok" class="tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
-    <p class="copy">© 2025 Fennec Visionary. All rights reserved.</p>
+    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
