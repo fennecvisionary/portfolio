@@ -1,4 +1,8 @@
+
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize AOS library for animations
+    AOS.init();
+    
     const modeToggle = document.getElementById('mode-toggle');
     const languageSelect = document.getElementById('language-select');
     const body = document.body;
@@ -123,7 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('[data-lang-key]').forEach(element => {
             const key = element.getAttribute('data-lang-key');
             if (translations[lang] && translations[lang][key]) {
-                // Check if the element has an anchor tag
                 const anchor = element.querySelector('a');
                 if (anchor) {
                     element.textContent = translations[lang][key] + ' ';
