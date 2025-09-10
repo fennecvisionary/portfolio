@@ -274,6 +274,7 @@ section {
     overflow: hidden;
     border: none;
     position: relative; /* Essential for overlay positioning */
+    border-radius: 12px; /* Apply border-radius directly to the item */
 }
 
 /* Style for the anchor tag within a portfolio item, for Lightbox */
@@ -305,8 +306,8 @@ section {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-end; /* Align to the bottom */
     padding: 1rem;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -316,9 +317,13 @@ section {
     opacity: 1;
 }
 
-.overlay .overlay-buttons {
-    display: flex;
+.overlay .overlay-actions { /* New container for all action buttons and view count */
+    display: flex; /* Make it a flex container to align items horizontally */
     gap: 10px;
+    align-items: center; /* Vertically align the items within this container */
+    padding: 5px 10px;
+    border-radius: 20px;
+    margin-bottom: 20px; /* Adjust as needed to move it up */
 }
 
 .overlay .action-btn {
@@ -350,24 +355,15 @@ section {
 
 /* View count styling */
 .view-count {
-    display: flex;
+    display: flex; /* Make it a flex container to align items horizontally */
     align-items: center;
     gap: 5px;
     font-size: 0.9rem;
     color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 5px 10px;
-    border-radius: 20px;
-    margin-top: 10px;
 }
 
-body.ar .view-count {
-    direction: rtl; /* Ensures the icon is on the right */
-    margin-left: auto;
-}
-
-body.ar .overlay .overlay-buttons {
-    flex-direction: row-reverse;
+body.ar .overlay-actions {
+    flex-direction: row-reverse; /* For RTL support */
 }
 
 /* Footer & Contact Section */
@@ -416,7 +412,6 @@ footer a:hover {
     color: white;
     padding: 8px;
     z-index: 1000;
-    transition: top 0.3s;
 }
 
 .skip-link:focus {
