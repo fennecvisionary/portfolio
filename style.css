@@ -591,3 +591,46 @@ footer a:hover {
         grid-template-columns: 1fr;
     }
 }
+/* Styling for carousel navigation arrows */
+.work-details {
+    position: relative;
+}
+
+.work-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    z-index: 10;
+}
+
+.nav-button {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 1rem;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    opacity: 0; /* Hide arrows by default */
+}
+
+.work-details:hover .nav-button {
+    opacity: 1; /* Show arrows on hover */
+}
+
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Ensure the arrows are properly positioned and visible on hover */
+@media (max-width: 768px) {
+    .nav-button {
+        opacity: 1; /* Always visible on smaller screens for easy navigation */
+    }
+}
