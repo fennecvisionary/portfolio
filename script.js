@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize with saved preferences
     const savedMode = getCookie('mode');
-    const savedLang = getCookie('language') || 'en';
+    const savedLang = getCookie('language') || 'ar';
 
     if (savedMode) {
         body.classList.add(savedMode);
@@ -165,43 +165,79 @@ document.addEventListener('DOMContentLoaded', () => {
         setCookie('language', selectedLang, 365);
     });
 
-    // Handle share button functionality
-    document.querySelectorAll('.share-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            const workItem = button.closest('.item');
-            const workTitle = workItem.querySelector('img').alt;
-            const workURL = window.location.href;
-            const shareText = `Check out this work: ${workTitle} on my portfolio!`;
+    // Pagination logic
+    const portfolioGrid = document.querySelector('.portfolio .grid');
+    const paginationContainer = document.querySelector('.pagination');
+    const workItems = Array.from(portfolioGrid.querySelectorAll('.item'));
+    const itemsPerPage = 16;
+    let currentPage = 1;
 
-            if (navigator.share) {
-                navigator.share({
-                    title: workTitle,
-                    text: shareText,
-                    url: workURL
-                }).then(() => {
-                    console.log('Successfully shared!');
-                }).catch((error) => {
-                    console.log('Error sharing:', error);
-                });
-            } else {
-                // Fallback for browsers that do not support the Web Share API
-                alert('Sharing is not supported on this browser. Please copy the URL manually.');
-            }
-        });
-    });
+    function displayWorks(page) {
+        portfolioGrid.innerHTML = '';
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const itemsToShow = workItems.slice(start, end);
+        itemsToShow.forEach(item => portfolioGrid.appendChild(item));
+    }
 
-    // Handle view count increment
-    document.querySelectorAll('.item').forEach(item => {
-        const viewCount = item.querySelector('.view-count .counter');
-        let views = parseInt(viewCount.textContent);
+    function setupPagination() {
+        paginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(workItems.length / itemsPerPage);
         
-        // This is a simple client-side increment. For a real site, this would require a backend.
-        // We'll increment the view count when the user clicks to view the full image.
-        const lightboxLink = item.querySelector('a[data-lightbox]');
-        lightboxLink.addEventListener('click', () => {
-            views++;
-            viewCount.textContent = views;
-        });
-    });
-});
+        if (pageCount <= 1) {
+            paginationContainer.style.display = 'none';
+            return;
+        }
 
+        for (let i = 1; i <= pageCount; i++) {
+            const pageLink = document.createElement('a');
+            pageLink.href = '#';
+            pageLink.textContent = i;
+            pageLink.classList.add('page-link');
+            if (i === currentPage) {
+                pageLink.classList.add('active');
+            }
+            pageLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = i;
+                displayWorks(currentPage);
+                document.querySelectorAll('.page-link').forEach(link => link.classList.remove('active'));
+                pageLink.classList.add('active');
+            });
+            paginationContainer.appendChild(pageLink);
+        }
+    }
+
+    // Search bar logic
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    function filterWorks(query) {
+        const filteredWorks = workItems.filter(item => {
+            const workTitle = item.querySelector('a[data-title]').getAttribute('data-title');
+            return workTitle.toLowerCase().includes(query.toLowerCase());
+        });
+        
+        portfolioGrid.innerHTML = '';
+        if (filteredWorks.length > 0) {
+            filteredWorks.forEach(item => portfolioGrid.appendChild(item));
+        } else {
+            portfolioGrid.innerHTML = '<p class="no-results">لا توجد نتائج مطابقة لبحثك.</p>';
+        }
+        paginationContainer.style.display = 'none'; // Hide pagination during search
+    }
+
+    searchButton.addEventListener('click', () => {
+        filterWorks(searchInput.value.trim());
+    });
+
+    searchInput.addEventListener('keyup', (event) => {
+        if (event.key === 'Enter') {
+            filterWorks(searchInput.value.trim());
+        }
+    });
+
+    // Initial display
+    displayWorks(currentPage);
+    setupPagination();
+});
