@@ -160,55 +160,23 @@ body.ar .main-nav li {
     color: var(--primary-color);
 }
 
-/* Search Bar */
 .search-container {
     display: flex;
     justify-content: center;
-    padding: 1rem 2rem;
+    padding: 2rem 4rem; /* تم زيادة الهوامش لتكبير الخلفية */
     background-color: var(--light-card-bg);
     box-shadow: var(--light-shadow);
     z-index: 99;
+    transition: box-shadow 0.3s ease; /* إضافة انتقال سلس لتأثير الظل */
 }
 
-#searchInput {
-    padding: 0.5rem;
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    width: 300px;
-    transition: border-color 0.3s ease;
+.search-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* تأثير ظل أعمق عند التمرير */
 }
 
-#searchInput:focus {
-    outline: none;
-    border-color: var(--secondary-color);
+.dark-mode .search-container:hover {
+    box-shadow: var(--dark-shadow); /* يمكنك تعديل الظل لوضع الليل إذا لزم الأمر */
 }
-
-#searchButton {
-    background-color: var(--primary-color);
-    color: #fff;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-left: 10px;
-    transition: background-color 0.3s ease;
-}
-
-#searchButton:hover {
-    background-color: #d84b1d;
-}
-
-.dark-mode .search-container {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
-}
-
-.dark-mode #searchInput {
-    background-color: var(--dark-bg-color);
-    color: var(--dark-text-color);
-    border-color: var(--primary-color);
-}
-
 
 /* Carousel Section */
 .carousel {
