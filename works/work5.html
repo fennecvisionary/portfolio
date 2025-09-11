@@ -52,24 +52,56 @@
         
         <div class="carousel-container">
             <div class="carousel-slide">
-                <img src="../images/w5/1.jpg" alt="صورة للنشرة الإعلانية" loading="lazy">
-                <img src="../images/w5/2.jpg" alt="نموذج افتراضي للنشرة" loading="lazy">
-                 <img src="../images/w5/3.jpg" alt="نموذج افتراضي للنشرة" loading="lazy">
+                <img src="../images/work5.jpg" alt="صورة للنشرة الإعلانية" loading="lazy">
+                <img src="../images/work5_mockup.jpg" alt="نموذج افتراضي للنشرة الإعلانية" loading="lazy">
+                <img src="../images/work5_details.jpg" alt="لقطة قريبة لتفاصيل النشرة" loading="lazy">
             </div>
             <div class="carousel-dots">
                 <span class="dot active"></span>
+                <span class="dot"></span>
                 <span class="dot"></span>
             </div>
         </div>
 
         <div class="project-description">
-            <p><strong>عن المشروع:</strong> تصميم نشرة إعلانية (Flyer) لشركة خدمات مالية. تم التركيز على تنظيم المعلومات بطريقة واضحة وجذابة، باستخدام الألوان الخاصة بالعلامة التجارية وخطوط حديثة.</p>
+            <p><strong>عن المشروع:</strong> تصميم نشرة إعلانية أنيقة وعصرية، تستخدم لترويج خدمات شركة ما. يركز التصميم على تنظيم المحتوى بطريقة جذابة وسهلة القراءة، مع استخدام الألوان الجريئة والخطوط الواضحة.</p>
             <p><strong>الأدوات المستخدمة:</strong> Adobe InDesign, Adobe Illustrator</p>
         </div>
     </section>
-
+    
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function () {
-            this.page.url = window.location.href
+            this.page.url = window.location.href;
+            this.page.identifier = "work5";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://fennecvisionary.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
 
+<footer id="contact">
+    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
+    <address data-aos="fade-up" data-aos-delay="100">
+        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
+        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
+    </address>
+    <div class="socials" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../script.js"></script>
+</body>
+</html>
