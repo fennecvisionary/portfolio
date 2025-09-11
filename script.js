@@ -240,4 +240,67 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial display
     displayWorks(currentPage);
     setupPagination();
+
+    /* ----- Work Details Carousel Logic ----- */
+    const carousels = document.querySelectorAll('.carousel-container');
+
+    carousels.forEach(carousel => {
+        const slides = carousel.querySelector('.carousel-slide');
+        const dotsContainer = carousel.querySelector('.carousel-dots');
+        const images = slides.querySelectorAll('img');
+        const totalImages = images.length;
+        let currentSlide = 0;
+
+        // Create dots
+        if (dotsContainer) {
+            for (let i = 0; i < totalImages; i++) {
+                const dot = document.createElement('span');
+                dot.classList.add('dot');
+                if (i === 0) {
+                    dot.classList.add('active');
+                }
+                dot.addEventListener('click', () => {
+                    showSlide(i);
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+        function showSlide(index) {
+            if (index >= totalImages) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = totalImages - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            // Move the slides
+            const offset = -currentSlide * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+
+            // Update active dot
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentSlide].classList.add('active');
+            }
+        }
+
+        // Add navigation buttons logic (if they exist in HTML)
+        const nextButton = carousel.querySelector('.next-btn');
+        const prevButton = carousel.querySelector('.prev-btn');
+
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                showSlide(currentSlide + 1);
+            });
+        }
+        
+        if (prevButton) {
+            prevButton.addEventListener('click', () => {
+                showSlide(currentSlide - 1);
+            });
+        }
+    });
 });
