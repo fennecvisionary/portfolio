@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شعار نظيف وبسيط لشركة تقنية - Fennec Visionary</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        /* CSS الخاص بدوارة الصور */
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel-slide {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-container:hover .carousel-controls {
+            opacity: 1;
+        }
+
+        .prev-btn, .next-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .prev-btn:hover, .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-dots {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+    </style>
+</head>
+<body class="light-mode ar">
+
+<header class="site-header">
+    <div class="logo">
+        <a href="../">
+            <img src="../images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
+        </a>
+    </div>
+    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
+        <ul role="list">
+            <li role="listitem"><a href="../#services" data-lang-key="nav_services">خدماتي</a></li>
+            <li role="listitem"><a href="../#tools" data-lang-key="nav_tools">أدواتي</a></li>
+            <li role="listitem"><a href="../#works" data-lang-key="nav_works">أعمالي</a></li>
+            <li role="listitem"><a href="../#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+        </ul>
+    </nav>
+    <div class="header-controls">
+        <select id="language-select">
+            <option value="en">EN</option>
+            <option value="ar" selected>AR</option>
+            <option value="fr">FR</option>
+        </select>
+        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
+
+<main id="main-content">
+    <section class="work-details">
+        <h1 class="work-title">شعار نظيف وبسيط لشركة تقنية</h1>
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="#" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-right"></i></a>
+            <a id="next-work" href="../works/work2.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-left"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/w1/1.jpg" alt="صورة الشعار النهائية" loading="lazy">
+                <img src="../images/w1/2.jpg" alt="الشعار على نموذج افتراضي" loading="lazy">
+                <img src="../images/w1/3.jpg" alt="مفهوم الشعار الأولي" loading="lazy">
+                <img src="../images/w1/4.jpg" alt="لوحة الألوان المستخدمة" loading="lazy">
+                <img src="../images/w1/5.jpg" alt="الشعار على منتجات مختلفة" loading="lazy">
+            </div>
+            <div class="carousel-controls">
+                <button class="prev-btn" aria-label="عرض الصورة السابقة"><i class="fas fa-chevron-right"></i></button>
+                <button class="next-btn" aria-label="عرض الصورة التالية"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تم تصميم هذا الشعار لشركة تقنية ناشئة، يجمع بين البساطة والحداثة ليعكس الابتكار والاحترافية. تم استخدام خطوط نظيفة وألوان هادئة لخلق هوية بصرية قوية وسهلة التذكر.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe Illustrator, Adobe Photoshop</p>
+        </div>
+    </section>
+
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = "work1";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://fennecvisionary.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
+
+<footer id="contact">
+    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
+    <address data-aos="fade-up" data-aos-delay="100">
+        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
+        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
+    </address>
+    <div class="socials" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../script.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const carouselSlide = document.querySelector('.carousel-slide');
+        const carouselImages = document.querySelectorAll('.carousel-slide img');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        const dots = document.querySelectorAll('.dot');
+        
+        let counter = 0;
+        const size = carouselImages[0].clientWidth;
+
+        const updateDots = () => {
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[counter].classList.add('active');
+        };
+
+        const slideTo = (index) => {
+            carouselSlide.style.transform = 'translateX(' + (-size * index) + 'px)';
+            updateDots();
+        };
+
+        // زر التالي
+        nextBtn.addEventListener('click', () => {
+            if (counter >= carouselImages.length - 1) {
+                counter = 0;
+            } else {
+                counter++;
+            }
+            slideTo(counter);
+        });
+
+        // زر السابق
+        prevBtn.addEventListener('click', () => {
+            if (counter <= 0) {
+                counter = carouselImages.length - 1;
+            } else {
+                counter--;
+            }
+            slideTo(counter);
+        });
+
+        // التنقل عبر النقاط
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                counter = index;
+                slideTo(counter);
+            });
+        });
+
+        // تحديث الحجم عند تغيير حجم الشاشة
+        window.addEventListener('resize', () => {
+            const newSize = carouselImages[0].clientWidth;
+            carouselSlide.style.transition = 'none'; // تعطيل الانتقال أثناء تغيير الحجم
+            carouselSlide.style.transform = 'translateX(' + (-newSize * counter) + 'px)';
+            setTimeout(() => {
+                carouselSlide.style.transition = 'transform 0.5s ease-in-out';
+            }, 10);
+        });
+    });
+</script>
+</body>
+</html>
