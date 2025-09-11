@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تصميم تخطيط موقع إلكتروني عصري. - Fennec Visionary</title>
+    <title>تصميم تخطيط موقع إلكتروني عصري - Fennec Visionary</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -36,11 +36,35 @@
         </button>
     </div>
 </header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
 
 <main id="main-content">
     <section class="work-details">
-        <h1 class="work-title">تصميم تخطيط موقع إلكتروني عصري.</h1>
-        <img src="../images/work8.jpg" alt="تصميم تخطيط موقع إلكتروني عصري." class="work-image">
+        <h1 class="work-title">تصميم تخطيط موقع إلكتروني عصري</h1>
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="../works/work7.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
+            <a id="next-work" href="#" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work8.jpg" alt="صورة لتخطيط الموقع الإلكتروني" loading="lazy">
+                <img src="../images/work8_mockup.jpg" alt="تخطيط الموقع على شاشة حاسوب" loading="lazy">
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تصميم تخطيط (Layout) لموقع إلكتروني لشركة عقارية. الهدف كان إنشاء واجهة مستخدم نظيفة وسهلة الاستخدام، مع التركيز على تجربة المستخدم (UX) وجاذبية التصميم (UI).</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe XD, Adobe Photoshop</p>
+        </div>
     </section>
 
     <div id="disqus_thread"></div>
