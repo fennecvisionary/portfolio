@@ -22,6 +22,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
+    <style>
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            padding: 0 15px;
+        }
+        .search-container input {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 25px;
+            font-size: 1rem;
+            width: 300px;
+            transition: all 0.3s ease;
+        }
+        .search-container input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px rgba(247, 87, 35, 0.5);
+        }
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-left: -40px;
+        }
+    </style>
 </head>
 <body class="light-mode ar">
 
@@ -114,17 +145,15 @@
                 <img src="images/w1/1.jpg" alt="شعار نظيف وبسيط لشركة تقنية." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w1.html" class="details-link" aria-label="شاهد تفاصيل العمل 1"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work1.html" class="details-link" aria-label="شاهد تفاصيل العمل 1"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work2">
             <a href="images/w2/1.jpg" data-lightbox="works-set" data-title="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر.">
-             <img src="images/w2/1.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
-             <img src="images/w2/2.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
-             <img src="images/w2/3.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
+                <img src="images/w2/1.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w2.html" class="details-link" aria-label="شاهد تفاصيل العمل 2"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work2.html" class="details-link" aria-label="شاهد تفاصيل العمل 2"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         <div class="item" data-aos="fade-up" data-aos-delay="200" data-work-id="work3">
@@ -132,7 +161,7 @@
                 <img src="images/w3/1.jpg" alt="تصميم بطاقة عمل احترافية لمستشار مستقل." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w3.html" class="details-link" aria-label="شاهد تفاصيل العمل 3"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work3.html" class="details-link" aria-label="شاهد تفاصيل العمل 3"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         <div class="item" data-aos="fade-up" data-aos-delay="300" data-work-id="work4">
@@ -140,7 +169,7 @@
                 <img src="images/w4/1.jpg" alt="قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w4.html" class="details-link" aria-label="شاهد تفاصيل العمل 4"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work4.html" class="details-link" aria-label="شاهد تفاصيل العمل 4"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         <div class="item" data-aos="fade-up" data-work-id="work5">
@@ -148,7 +177,7 @@
                 <img src="images/w5/1.jpg" alt="تصميم نشرة إعلانية عصرية للشركات." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w5.html" class="details-link" aria-label="شاهد تفاصيل العمل 5"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work5.html" class="details-link" aria-label="شاهد تفاصيل العمل 5"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work6">
@@ -156,7 +185,7 @@
                 <img src="images/w6/1.jpg" alt="تصميم تي شيرت إبداعي بطباعة فريدة." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w6.html" class="details-link" aria-label="شاهد تفاصيل العمل 6"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work6.html" class="details-link" aria-label="شاهد تفاصيل العمل 6"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div> 
         <div class="item" data-aos="fade-up" data-aos-delay="200" data-work-id="work7">
@@ -164,7 +193,7 @@
                 <img src="images/w7/1.jpg" alt="رسم توضيحي رقمي لمدينة ليلًا." loading="lazy">
             </a>
             <div class="overlay">
-                <a href="works/w7.html" class="details-link" aria-label="شاهد تفاصيل العمل 7"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work7.html" class="details-link" aria-label="شاهد تفاصيل العمل 7"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
         <div class="item" data-aos="fade-up" data-aos-delay="300" data-work-id="work8">
@@ -172,10 +201,10 @@
                 <img src="images/w8/1.jpg" alt="تصميم تخطيط موقع إلكتروني عصري.">
             </a>
             <div class="overlay">
-                <a href="works/w8.html" class="details-link" aria-label="شاهد تفاصيل العمل 8"><i class="fas fa-arrow-up-right-from-square"></i></a>
+                <a href="works/work8.html" class="details-link" aria-label="شاهد تفاصيل العمل 8"><i class="fas fa-arrow-up-right-from-square"></i></a>
             </div>
         </div>
-    </div>
+        </div>
     <div class="pagination"></div>
 </section>
   
