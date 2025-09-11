@@ -3,114 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل العمل: تصميم قوالب سوشيال ميديا</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة - Fennec Visionary</title>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-<body class="light-mode">
-    <a href="#main-content" class="skip-link">تخطي إلى المحتوى الرئيسي</a>
+<body class="light-mode ar">
 
-    <header class="site-header">
-        <div class="logo">
-            <a href="../index.html"><img src="../images/logo.png" alt="شعار Fennec Visionary"></a>
-        </div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="../index.html#services" data-lang-key="nav_services">خدماتي</a></li>
-                <li><a href="../index.html#tools" data-lang-key="nav_tools">أدواتي</a></li>
-                <li><a href="../index.html#works" data-lang-key="nav_works">أعمالي</a></li>
-                <li><a href="../index.html#contact" data-lang-key="nav_contact">تواصل معي</a></li>
-            </ul>
-        </nav>
-        <div class="header-controls">
-            <button id="mode-toggle" aria-label="تبديل الوضع الليلي/النهاري"><i class="fas fa-moon"></i></button>
-            <select id="language-select" aria-label="اختر لغة الموقع">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
-                <option value="fr">Français</option>
-            </select>
-        </div>
-    </header>
+<header class="site-header">
+    <div class="logo">
+        <a href="../">
+            <img src="../images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
+        </a>
+    </div>
+    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
+        <ul role="list">
+            <li role="listitem"><a href="../#services" data-lang-key="nav_services">خدماتي</a></li>
+            <li role="listitem"><a href="../#tools" data-lang-key="nav_tools">أدواتي</a></li>
+            <li role="listitem"><a href="../#works" data-lang-key="nav_works">أعمالي</a></li>
+            <li role="listitem"><a href="../#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+        </ul>
+    </nav>
+    <div class="header-controls">
+        <select id="language-select">
+            <option value="en">EN</option>
+            <option value="ar" selected>AR</option>
+            <option value="fr">FR</option>
+        </select>
+        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
 
-    <main id="main-content">
-        <section class="work-details" data-aos="fade-up">
-            <h1 class="work-title">تصميم قوالب سوشيال ميديا</h1>
-            <div class="carousel-container" data-aos="zoom-in" data-aos-delay="200">
-                <div class="carousel-slide">
-                    <img src="../images/w4/1.jpg" alt="قالب سوشيال ميديا رقم 1">
-                    <img src="../images/w4/2.jpg" alt="قالب سوشيال ميديا رقم 2">
-                    <img src="../images/w4/3.jpg" alt="قالب سوشيال ميديا رقم 3">
-                </div>
-                <div class="work-navigation">
-                    <button class="nav-button prev"><i class="fas fa-arrow-left"></i></button>
-                    <div class="carousel-dots"></div>
-                    <button class="nav-button next"><i class="fas fa-arrow-right"></i></button>
-                </div>
+<main id="main-content">
+    <section class="work-details">
+        <h1 class="work-title">قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة</h1>
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="../works/work3.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
+            <a id="next-work" href="../works/work5.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work4.jpg" alt="صورة لقالب وسائل التواصل الاجتماعي" loading="lazy">
+                <img src="../images/work4_mockup.jpg" alt="نموذج افتراضي لقالب وسائل التواصل الاجتماعي" loading="lazy">
+                <img src="../images/work4_details.jpg" alt="لقطة قريبة لتفاصيل القالب" loading="lazy">
             </div>
-
-            <div class="project-description" data-aos="fade-up" data-aos-delay="300">
-                <p>
-                    تم تصميم هذه القوالب لشركة تسويق رقمي، بهدف توحيد هويتهم البصرية على جميع منصات التواصل الاجتماعي. تضمن المشروع تصميم قوالب لـ Facebook و Instagram و Twitter، مع التركيز على المرونة لسهولة التعديل عليها من قبل فريق العميل.
-                </p>
-                <p>
-                    تضمنت القوالب تصميمات جذابة ومتناسقة مع الألوان والخطوط الخاصة بالعلامة التجارية، مما يضمن ظهورًا احترافيًا ومتجانسًا عبر الإنترنت.
-                </p>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="socials">
-            <a href="#" class="facebook" aria-label="تابعنا على فيسبوك"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="instagram" aria-label="تابعنا على إنستغرام"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="whatsapp" aria-label="تواصل معنا عبر واتساب"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" class="tiktok" aria-label="تابعنا على تيك توك"><i class="fab fa-tiktok"></i></a>
         </div>
-        <p class="copy" data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
-    </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="../script.js"></script>
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تصميم سلسلة من القوالب الجاهزة للاستخدام على وسائل التواصل الاجتماعي، مصممة لعلامة تجارية تركز على أسلوب الحياة. تهدف القوالب إلى الحفاظ على هوية بصرية موحدة ومتسقة عبر جميع المنصات.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe Photoshop</p>
+        </div>
+    </section>
+    
+    <div id="disqus_thread"></div>
     <script>
-        const carousel = document.querySelector('.carousel-slide');
-        const prevButton = document.querySelector('.nav-button.prev');
-        const nextButton = document.querySelector('.nav-button.next');
-        const dotsContainer = document.querySelector('.carousel-dots');
-        const images = document.querySelectorAll('.carousel-slide img');
-        let currentIndex = 0;
-
-        images.forEach((_, index) => {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => {
-                moveToSlide(index);
-            });
-            dotsContainer.appendChild(dot);
-        });
-
-        function moveToSlide(index) {
-            carousel.style.transform = `translateX(-${index * 100}%)`;
-            document.querySelectorAll('.dot').forEach(dot => dot.classList.remove('active'));
-            document.querySelectorAll('.dot')[index].classList.add('active');
-            currentIndex = index;
-        }
-
-        prevButton.addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + images.length) % images.length;
-            moveToSlide(currentIndex);
-        });
-
-        nextButton.addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % images.length;
-            moveToSlide(currentIndex);
-        });
+        var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = "work4";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://fennecvisionary.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
     </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
+
+<footer id="contact">
+    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
+    <address data-aos="fade-up" data-aos-delay="100">
+        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
+        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
+    </address>
+    <div class="socials" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="../script.js"></script>
 </body>
 </html>
-
-
