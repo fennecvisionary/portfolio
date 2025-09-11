@@ -36,11 +36,41 @@
         </button>
     </div>
 </header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
 
 <main id="main-content">
     <section class="work-details">
         <h1 class="work-title">شعار نظيف وبسيط لشركة تقنية</h1>
-        <img src="../images/work1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" class="work-image">
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="#" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
+            <a id="next-work" href="../works/work2.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work1.jpg" alt="صورة الشعار النهائية" loading="lazy">
+                <img src="../images/work1_mockup.jpg" alt="الشعار على نموذج افتراضي" loading="lazy">
+                <img src="../images/work1_concept.jpg" alt="مفهوم الشعار الأولي" loading="lazy">
+                <img src="../images/work1_color_palette.jpg" alt="لوحة الألوان المستخدمة" loading="lazy">
+                <img src="../images/work1_on_merchandise.jpg" alt="الشعار على منتجات مختلفة" loading="lazy">
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تم تصميم هذا الشعار لشركة تقنية ناشئة، يجمع بين البساطة والحداثة ليعكس الابتكار والاحترافية. تم استخدام خطوط نظيفة وألوان هادئة لخلق هوية بصرية قوية وسهلة التذكر.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe Illustrator, Adobe Photoshop</p>
+        </div>
     </section>
 
     <div id="disqus_thread"></div>
