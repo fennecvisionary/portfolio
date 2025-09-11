@@ -591,18 +591,16 @@ footer a:hover {
         grid-template-columns: 1fr;
     }
 }
-
-/* تعديل أنماط أسهم التنقل في معرض الصور */
-.carousel-container {
+/* Styling for carousel navigation arrows */
+.work-details {
     position: relative;
 }
 
 .work-navigation {
     position: absolute;
     top: 50%;
-    left: 0;
-    right: 0;
     transform: translateY(-50%);
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -612,28 +610,27 @@ footer a:hover {
 }
 
 .nav-button {
-    background-color: rgba(247, 87, 35, 0.7); /* لون برتقالي شفاف */
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 0.8rem 1.2rem;
+    padding: 1rem;
     border-radius: 50%;
     text-decoration: none;
     font-size: 1.5rem;
     transition: background-color 0.3s ease, opacity 0.3s ease;
-    opacity: 0; /* إخفاء الأسهم افتراضيًا */
+    opacity: 0; /* Hide arrows by default */
 }
 
-/* إظهار الأسهم عند تمرير الفأرة فوق معرض الصور */
-.carousel-container:hover .nav-button {
-    opacity: 1;
+.work-details:hover .nav-button {
+    opacity: 1; /* Show arrows on hover */
 }
 
 .nav-button:hover {
-    background-color: rgba(247, 87, 35, 1); /* لون برتقالي معتم عند التمرير */
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* لجعل الأسهم مرئية دائمًا على الشاشات الصغيرة */
+/* Ensure the arrows are properly positioned and visible on hover */
 @media (max-width: 768px) {
     .nav-button {
-        opacity: 1;
+        opacity: 1; /* Always visible on smaller screens for easy navigation */
     }
 }
