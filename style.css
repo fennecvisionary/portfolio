@@ -92,7 +92,7 @@ body.ar .main-nav li {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
     background-color: var(--light-card-bg);
     box-shadow: var(--light-shadow);
     position: sticky;
@@ -146,13 +146,27 @@ body.ar .main-nav li {
 }
 
 #language-select {
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    padding: 0.25rem 0.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 0.25rem 0.75rem;
     font-size: 1rem;
     background: var(--light-card-bg);
     color: var(--primary-color);
     cursor: pointer;
+    transition: all 0.4s ease-in-out; /* انتقال أطول وأكثر سلاسة */
+}
+
+#language-select:hover {
+    background-color: var(--primary-color); /* تغيير الخلفية إلى اللون الأساسي */
+    color: var(--light-card-bg); /* تغيير لون النص ليتناسب مع الخلفية الجديدة */
+    transform: translateY(-2px); /* حركة صعود طفيفة */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* ظل أكثر بروزًا */
+}
+
+#language-select:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 8px rgba(247, 87, 35, 0.4);
 }
 
 .dark-mode #language-select {
@@ -160,22 +174,59 @@ body.ar .main-nav li {
     color: var(--primary-color);
 }
 
+.dark-mode #language-select:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-card-bg); /* تغيير لون النص ليتناسب مع الخلفية الجديدة */
+}
+/* Search Bar */
+
 .search-container {
     display: flex;
     justify-content: center;
-    padding: 2rem 4rem; /* تم زيادة الهوامش لتكبير الخلفية */
-    background-color: transparent(--light-card-bg);
-    box-shadow: none(--light-shadow);
+    padding: 1rem 2rem;
+    background-color: transparent; /* جعل الخلفية شفافة */
+    box-shadow: none; /* إزالة الظل */
     z-index: 99;
-    transition: box-shadow 0.3s ease; /* إضافة انتقال سلس لتأثير الظل */
 }
 
-.search-container:hover {
-    box-shadow: 0 8px 16px (0, 0, 0, 0.2); /* تأثير ظل أعمق عند التمرير */
+#searchInput {
+    padding: 0.5rem;
+    border: 2px solid var(--primary-color); /* إطار بسمك 2 بكسل */
+    border-radius: 20px; /* إطار دائري */
+    width: 300px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* انتقال سلس عند التفاعل */
 }
 
-.dark-mode .search-container:hover {
-    box-shadow: none(--dark-shadow); /* يمكنك تعديل الظل لوضع الليل إذا لزم الأمر */
+#searchInput:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 8px rgba(247, 87, 35, 0.4); /* ظل خفيف وجميل عند التركيز */
+}
+
+#searchButton {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 100px; /* جعل الزر دائريًا ليتناسب مع حقل البحث */
+    cursor: pointer;
+    margin-left: 0px; /* تم زيادة المسافة بين الزر وحقل البحث */
+    transition: background-color 0.3s ease;
+}
+
+#searchButton:hover {
+    background-color: #d84b1d; /* لون أغمق عند التمرير */
+}
+
+.dark-mode .search-container {
+    background-color: transparent;
+    box-shadow: none;
+}
+
+.dark-mode #searchInput {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+    border-color: var(--primary-color);
 }
 
 /* Carousel Section */
@@ -572,4 +623,40 @@ footer a:hover {
     .services-grid, .grid {
         grid-template-columns: 1fr;
     }
+}
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 10px;
+    padding: 1rem 0;
+    flex-wrap: wrap;
+}
+
+.page-link {
+    display: inline-block;
+    padding: 10px 14px; /* تم تعديل الهوامش لتحقيق شكل دائري أفضل */
+    text-decoration: none;
+    color: var(--primary-color);
+    background-color: var(--light-card-bg);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%; /* جعل الإطار دائريًا */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.page-link.active, .page-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.dark-mode .page-link {
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text-color);
+    border-color: var(--primary-color);
+}
+
+.dark-mode .page-link.active, .dark-mode .page-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
 }
