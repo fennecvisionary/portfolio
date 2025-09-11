@@ -8,60 +8,73 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-</head>
-<body class="light-mode ar">
+    <style>
+        /* CSS الخاص بدوارة الصور */
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
 
-<header class="site-header">
-    <div class="logo">
-        <a href="../">
-            <img src="../images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
-        </a>
-    </div>
-    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
-        <ul role="list">
-            <li role="listitem"><a href="../#services" data-lang-key="nav_services">خدماتي</a></li>
-            <li role="listitem"><a href="../#tools" data-lang-key="nav_tools">أدواتي</a></li>
-            <li role="listitem"><a href="../#works" data-lang-key="nav_works">أعمالي</a></li>
-            <li role="listitem"><a href="../#contact" data-lang-key="nav_contact">تواصل معي</a></li>
-        </ul>
-    </nav>
-    <div class="header-controls">
-        <select id="language-select">
-            <option value="en">EN</option>
-            <option value="ar" selected>AR</option>
-            <option value="fr">FR</option>
-        </select>
-        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-</header>
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
-    <button id="searchButton"><i class="fas fa-search"></i></button>
-</div>
+        .carousel-slide {
+            display: flex;
+            width: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
 
-<main id="main-content">
-    <section class="work-details">
-        <h1 class="work-title">تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر</h1>
+        .carousel-slide img {
+            width: 100%;
+            flex-shrink: 0;
+            display: block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .carousel-container:hover .carousel-controls {
+            opacity: 1;
+        }
+
+        .prev-btn, .next-btn {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
         
-        <div class="work-navigation">
-            <a id="prev-work" href="../works/work1.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
-            <a id="next-work" href="../works/work3.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
-        </div>
-        
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img src="../images/work2.jpg" alt="صورة لتصميم عبوة العصير" loading="lazy">
-                <img src="../images/work2_mockup.jpg" alt="تصميم العبوة على نموذج ثلاثي الأبعاد" loading="lazy">
-                <img src="../images/work2_concept.jpg" alt="المفاهيم الأولية لتصميم العبوة" loading="lazy">
-            </div>
-            <div class="carousel-dots">
-                <span class="dot active"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
+        .prev-btn:hover, .next-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
 
-        <div class="project-description">
-            <p><strong>عن المشروع:</strong> تصميم
+        .carousel-dots {
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .dot {
+            height: 10px;
+            width: 10px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline
