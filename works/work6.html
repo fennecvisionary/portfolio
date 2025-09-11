@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تصميم تي شيرت إبداعي بطباعة فريدة. - Fennec Visionary</title>
+    <title>تصميم تي شيرت إبداعي بطباعة فريدة - Fennec Visionary</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -29,17 +29,44 @@
         <select id="language-select">
             <option value="en">EN</option>
             <option value="ar" selected>AR</option>
+            <option value="fr">FR</option>
         </select>
         <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
             <i class="fas fa-moon"></i>
         </button>
     </div>
 </header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
 
 <main id="main-content">
     <section class="work-details">
-        <h1 class="work-title">تصميم تي شيرت إبداعي بطباعة فريدة.</h1>
-        <img src="../images/work6.jpg" alt="تصميم تي شيرت إبداعي بطباعة فريدة." class="work-image">
+        <h1 class="work-title">تصميم تي شيرت إبداعي بطباعة فريدة</h1>
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="../works/work5.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
+            <a id="next-work" href="../works/work7.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work6.jpg" alt="صورة لتصميم التي شيرت" loading="lazy">
+                <img src="../images/work6_mockup.jpg" alt="نموذج افتراضي لتي شيرت" loading="lazy">
+                <img src="../images/work6_details.jpg" alt="لقطة قريبة لتفاصيل التصميم" loading="lazy">
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تصميم رسم توضيحي فريد لطباعته على تي شيرت. تم استخدام أسلوب فني جريء وألوان متناسقة لتوفير تصميم ملفت للنظر ومبتكر.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe Illustrator</p>
+        </div>
     </section>
 
     <div id="disqus_thread"></div>
