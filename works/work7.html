@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رسم توضيحي رقمي لمدينة ليلًا. - Fennec Visionary</title>
+    <title>رسم توضيحي رقمي لمدينة ليلًا - Fennec Visionary</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -36,11 +36,33 @@
         </button>
     </div>
 </header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
 
 <main id="main-content">
     <section class="work-details">
-        <h1 class="work-title">رسم توضيحي رقمي لمدينة ليلًا.</h1>
-        <img src="../images/work7.jpg" alt="رسم توضيحي رقمي لمدينة ليلًا." class="work-image">
+        <h1 class="work-title">رسم توضيحي رقمي لمدينة ليلًا</h1>
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="../works/work6.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
+            <a id="next-work" href="../works/work8.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work7.jpg" alt="الرسم التوضيحي لمدينة ليلًا" loading="lazy">
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> رسم توضيحي رقمي لمدينة ليلًا بأسلوب فني فريد. تم استخدام الألوان الداكنة مع إضاءات نيون لإضافة عمق وجو غامض للعمل الفني.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe Photoshop</p>
+        </div>
     </section>
 
     <div id="disqus_thread"></div>
