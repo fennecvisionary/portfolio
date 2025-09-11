@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,11 +19,11 @@
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
 </head>
-<body class="light-mode ar">
+<body class="light-mode rtl">
 
 <a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
 
@@ -42,7 +42,7 @@
         </ul>
     </nav>
     <div class="header-controls">
-        <select id="language-select">
+        <select id="language-select" aria-label="اختر اللغة">
             <option value="en">EN</option>
             <option value="ar" selected>AR</option>
             <option value="fr">FR</option>
@@ -52,24 +52,30 @@
         </button>
     </div>
 </header>
+
 <div class="search-container">
-    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
+    <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
 </div>
 
 <main id="main-content">
-    <section class="carousel" aria-label="دوارة صور معرض الأعمال">
+    <section class="carousel" aria-label="معرض أعمال Fennec Visionary">
         <div class="slides">
-            <figure id="slider1">
-                <img src="images/work1.jpg" alt="شعار نظيف وبسيط لشركة تقنية." loading="eager">
+            <figure>
+                <img src="images/w1/1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" loading="eager">
+                <figcaption class="visually-hidden">شعار تقني حديث</figcaption>
             </figure>
-            <figure id="slider2">
-                <img src="images/work2.jpg" alt="تصميم تغليف حيوي لعلامة تجارية جديدة للعصائر." loading="lazy">
+            <figure>
+                <img src="images/w2/1.jpg" alt="تصميم تغليف عصائر طبيعية" loading="lazy">
+                <figcaption class="visually-hidden">تصميم تغليف عصائر</figcaption>
             </figure>
-            <figure id="slider3">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل احترافية لمستشار مستقل." loading="lazy">
+            <figure>
+                <img src="images/w3/1.jpg" alt="بطاقة عمل احترافية" loading="lazy">
+                <figcaption class="visually-hidden">بطاقة عمل مهنية</figcaption>
             </figure>
-            <figure id="slider4">
-                <img src="images/work4.jpg" alt="قالب لوسائل التواصل الاجتماعي لعلامة تجارية لأسلوب الحياة." loading="lazy">
+            <figure>
+                <img src="images/w4/1.jpg" alt="تصميم منشور وسائل تواصل اجتماعي" loading="lazy">
+                <figcaption class="visually-hidden">تصميم وسائل تواصل اجتماعي</figcaption>
             </figure>
         </div>
     </section>
@@ -77,14 +83,38 @@
     <section id="services">
         <h2 data-aos="fade-up" data-lang-key="services_title">خدماتي</h2>
         <div class="services-grid">
-            <a href="#service-logo" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-pencil-ruler"></i><p data-lang-key="service_logo">تصميم الشعارات</p></a>
-            <a href="#service-card" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-id-card"></i><p data-lang-key="service_card">بطاقات العمل</p></a>
-            <a href="#service-brochure" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-file-alt"></i><p data-lang-key="service_brochure">الفلاير والبروشور</p></a>
-            <a href="#service-invoice" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-file-invoice-dollar"></i><p data-lang-key="service_invoice">الفواتير</p></a>
-            <a href="#service-catalog" class="service-item" data-aos="fade-up" data-aos-delay="100"><i class="fas fa-book-open"></i><p data-lang-key="service_catalog">الكتالوجات</p></a>
-            <a href="#service-social" class="service-item" data-aos="fade-up" data-aos-delay="200"><i class="fas fa-share-alt"></i><p data-lang-key="service_social">قوالب السوشيال ميديا</p></a>
-            <a href="#service-packaging" class="service-item" data-aos="fade-up" data-aos-delay="300"><i class="fas fa-box"></i><p data-lang-key="service_packaging">تصميم التغليف</p></a>
-            <a href="#service-tshirt" class="service-item" data-aos="fade-up" data-aos-delay="400"><i class="fas fa-tshirt"></i><p data-lang-key="service_tshirt">القمصان والهوديز</p></a>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-pencil-ruler"></i>
+                <p data-lang-key="service_logo">تصميم الشعارات</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-id-card"></i>
+                <p data-lang-key="service_card">بطاقات العمل</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-file-alt"></i>
+                <p data-lang-key="service_brochure">الفلاير والبروشور</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <p data-lang-key="service_invoice">الفواتير</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-book-open"></i>
+                <p data-lang-key="service_catalog">الكتالوجات</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-share-alt"></i>
+                <p data-lang-key="service_social">قوالب السوشيال ميديا</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-box"></i>
+                <p data-lang-key="service_packaging">تصميم التغليف</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-tshirt"></i>
+                <p data-lang-key="service_tshirt">القمصان والهوديز</p>
+            </div>
         </div>
     </section>
 
@@ -105,812 +135,16 @@
             </div>
         </div>
     </section>
-<section id="works" class="portfolio">
-    <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
-    <div class="grid">
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work1">
-            <a href="works/work1.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 1" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work1.html" class="details-link" aria-label="شاهد تفاصيل العمل 1"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work2">
-            <a href="works/work2.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 2" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work2.html" class="details-link" aria-label="شاهد تفاصيل العمل 2"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work3">
-            <a href="works/work3.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 3" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work3.html" class="details-link" aria-label="شاهد تفاصيل العمل 3"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work4">
-            <a href="works/work4.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 4" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work4.html" class="details-link" aria-label="شاهد تفاصيل العمل 4"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work5">
-            <a href="works/work5.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 5" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work5.html" class="details-link" aria-label="شاهد تفاصيل العمل 5"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work6">
-            <a href="works/work6.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 6" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work6.html" class="details-link" aria-label="شاهد تفاصيل العمل 6"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div> 
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work7">
-            <a href="works/work7.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 7" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work7.html" class="details-link" aria-label="شاهد تفاصيل العمل 7"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work8">
-            <a href="works/work8.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 8" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work8.html" class="details-link" aria-label="شاهد تفاصيل العمل 8"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work9">
-            <a href="works/work9.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 9" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work9.html" class="details-link" aria-label="شاهد تفاصيل العمل 9"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work10">
-            <a href="works/work10.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 10" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work10.html" class="details-link" aria-label="شاهد تفاصيل العمل 10"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work11">
-            <a href="works/work11.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 11" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work11.html" class="details-link" aria-label="شاهد تفاصيل العمل 11"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work12">
-            <a href="works/work4.jpg" alt="تصميم وسائل تواصل العمل 12" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work12.html" class="details-link" aria-label="شاهد تفاصيل العمل 12"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work13">
-            <a href="works/work13.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 13" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work13.html" class="details-link" aria-label="شاهد تفاصيل العمل 13"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work14">
-            <a href="works/work14.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 14" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work14.html" class="details-link" aria-label="شاهد تفاصيل العمل 14"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work15">
-            <a href="works/work15.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 15" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work15.html" class="details-link" aria-label="شاهد تفاصيل العمل 15"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work16">
-            <a href="works/work16.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 16" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work16.html" class="details-link" aria-label="شاهد تفاصيل العمل 16"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work17">
-            <a href="works/work17.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 17" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work17.html" class="details-link" aria-label="شاهد تفاصيل العمل 17"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work18">
-            <a href="works/work18.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 18" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work18.html" class="details-link" aria-label="شاهد تفاصيل العمل 18"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work19">
-            <a href="works/work19.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 19" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work19.html" class="details-link" aria-label="شاهد تفاصيل العمل 19"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work20">
-            <a href="works/work20.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 20" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work20.html" class="details-link" aria-label="شاهد تفاصيل العمل 20"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work21">
-            <a href="works/work21.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 21" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work21.html" class="details-link" aria-label="شاهد تفاصيل العمل 21"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work22">
-            <a href="works/work22.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 22" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work22.html" class="details-link" aria-label="شاهد تفاصيل العمل 22"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work23">
-            <a href="works/work23.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 23" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work23.html" class="details-link" aria-label="شاهد تفاصيل العمل 23"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work24">
-            <a href="works/work24.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 24" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work24.html" class="details-link" aria-label="شاهد تفاصيل العمل 24"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work25">
-            <a href="works/work25.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 25" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work25.html" class="details-link" aria-label="شاهد تفاصيل العمل 25"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work26">
-            <a href="works/work26.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 26" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work26.html" class="details-link" aria-label="شاهد تفاصيل العمل 26"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work27">
-            <a href="works/work27.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 27" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work27.html" class="details-link" aria-label="شاهد تفاصيل العمل 27"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work28">
-            <a href="works/work28.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 28" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work28.html" class="details-link" aria-label="شاهد تفاصيل العمل 28"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work29">
-            <a href="works/work29.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 29" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work29.html" class="details-link" aria-label="شاهد تفاصيل العمل 29"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work30">
-            <a href="works/work30.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 30" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work30.html" class="details-link" aria-label="شاهد تفاصيل العمل 30"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work31">
-            <a href="works/work31.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 31" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work31.html" class="details-link" aria-label="شاهد تفاصيل العمل 31"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work32">
-            <a href="works/work32.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 32" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work32.html" class="details-link" aria-label="شاهد تفاصيل العمل 32"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work33">
-            <a href="works/work33.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 33" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work33.html" class="details-link" aria-label="شاهد تفاصيل العمل 33"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work34">
-            <a href="works/work34.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 34" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work34.html" class="details-link" aria-label="شاهد تفاصيل العمل 34"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work35">
-            <a href="works/work35.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 35" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work35.html" class="details-link" aria-label="شاهد تفاصيل العمل 35"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work36">
-            <a href="works/work36.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 36" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work36.html" class="details-link" aria-label="شاهد تفاصيل العمل 36"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work37">
-            <a href="works/work37.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 37" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work37.html" class="details-link" aria-label="شاهد تفاصيل العمل 37"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work38">
-            <a href="works/work38.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 38" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work38.html" class="details-link" aria-label="شاهد تفاصيل العمل 38"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work39">
-            <a href="works/work39.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 39" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work39.html" class="details-link" aria-label="شاهد تفاصيل العمل 39"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work40">
-            <a href="works/work40.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 40" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work40.html" class="details-link" aria-label="شاهد تفاصيل العمل 40"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work41">
-            <a href="works/work41.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 41" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work41.html" class="details-link" aria-label="شاهد تفاصيل العمل 41"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work42">
-            <a href="works/work42.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 42" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work42.html" class="details-link" aria-label="شاهد تفاصيل العمل 42"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work43">
-            <a href="works/work43.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 43" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work43.html" class="details-link" aria-label="شاهد تفاصيل العمل 43"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work44">
-            <a href="works/work44.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 44" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work44.html" class="details-link" aria-label="شاهد تفاصيل العمل 44"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work45">
-            <a href="works/work45.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 45" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work45.html" class="details-link" aria-label="شاهد تفاصيل العمل 45"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work46">
-            <a href="works/work46.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 46" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work46.html" class="details-link" aria-label="شاهد تفاصيل العمل 46"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work47">
-            <a href="works/work47.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 47" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work47.html" class="details-link" aria-label="شاهد تفاصيل العمل 47"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work48">
-            <a href="works/work48.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 48" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work48.html" class="details-link" aria-label="شاهد تفاصيل العمل 48"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work49">
-            <a href="works/work49.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 49" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work49.html" class="details-link" aria-label="شاهد تفاصيل العمل 49"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work50">
-            <a href="works/work50.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 50" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work50.html" class="details-link" aria-label="شاهد تفاصيل العمل 50"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work51">
-            <a href="works/work51.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 51" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work51.html" class="details-link" aria-label="شاهد تفاصيل العمل 51"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work52">
-            <a href="works/work52.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 52" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work52.html" class="details-link" aria-label="شاهد تفاصيل العمل 52"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work53">
-            <a href="works/work53.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 53" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work53.html" class="details-link" aria-label="شاهد تفاصيل العمل 53"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work54">
-            <a href="works/work54.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 54" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work54.html" class="details-link" aria-label="شاهد تفاصيل العمل 54"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work55">
-            <a href="works/work55.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 55" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work55.html" class="details-link" aria-label="شاهد تفاصيل العمل 55"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work56">
-            <a href="works/work56.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 56" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work56.html" class="details-link" aria-label="شاهد تفاصيل العمل 56"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work57">
-            <a href="works/work57.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 57" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work57.html" class="details-link" aria-label="شاهد تفاصيل العمل 57"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work58">
-            <a href="works/work58.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 58" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work58.html" class="details-link" aria-label="شاهد تفاصيل العمل 58"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work59">
-            <a href="works/work59.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 59" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work59.html" class="details-link" aria-label="شاهد تفاصيل العمل 59"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work60">
-            <a href="works/work60.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 60" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work60.html" class="details-link" aria-label="شاهد تفاصيل العمل 60"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work61">
-            <a href="works/work61.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 61" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work61.html" class="details-link" aria-label="شاهد تفاصيل العمل 61"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work62">
-            <a href="works/work62.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 62" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work62.html" class="details-link" aria-label="شاهد تفاصيل العمل 62"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work63">
-            <a href="works/work63.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 63" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work63.html" class="details-link" aria-label="شاهد تفاصيل العمل 63"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work64">
-            <a href="works/work64.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 64" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work64.html" class="details-link" aria-label="شاهد تفاصيل العمل 64"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work65">
-            <a href="works/work65.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 65" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work65.html" class="details-link" aria-label="شاهد تفاصيل العمل 65"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work66">
-            <a href="works/work66.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 66" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work66.html" class="details-link" aria-label="شاهد تفاصيل العمل 66"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work67">
-            <a href="works/work67.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 67" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work67.html" class="details-link" aria-label="شاهد تفاصيل العمل 67"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work68">
-            <a href="works/work68.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 68" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work68.html" class="details-link" aria-label="شاهد تفاصيل العمل 68"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work69">
-            <a href="works/work69.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 69" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work69.html" class="details-link" aria-label="شاهد تفاصيل العمل 69"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work70">
-            <a href="works/work70.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 70" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work70.html" class="details-link" aria-label="شاهد تفاصيل العمل 70"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work71">
-            <a href="works/work71.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 71" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work71.html" class="details-link" aria-label="شاهد تفاصيل العمل 71"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work72">
-            <a href="works/work72.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 72" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work72.html" class="details-link" aria-label="شاهد تفاصيل العمل 72"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work73">
-            <a href="works/work73.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 73" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work73.html" class="details-link" aria-label="شاهد تفاصيل العمل 73"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work74">
-            <a href="works/work74.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 74" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work74.html" class="details-link" aria-label="شاهد تفاصيل العمل 74"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work75">
-            <a href="works/work75.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 75" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work75.html" class="details-link" aria-label="شاهد تفاصيل العمل 75"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work76">
-            <a href="works/work76.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 76" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work76.html" class="details-link" aria-label="شاهد تفاصيل العمل 76"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work77">
-            <a href="works/work77.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 77" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work77.html" class="details-link" aria-label="شاهد تفاصيل العمل 77"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work78">
-            <a href="works/work78.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 78" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work78.html" class="details-link" aria-label="شاهد تفاصيل العمل 78"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work79">
-            <a href="works/work79.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 79" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work79.html" class="details-link" aria-label="شاهد تفاصيل العمل 79"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work80">
-            <a href="works/work80.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 80" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work80.html" class="details-link" aria-label="شاهد تفاصيل العمل 80"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work81">
-            <a href="works/work81.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 81" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work81.html" class="details-link" aria-label="شاهد تفاصيل العمل 81"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work82">
-            <a href="works/work82.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 82" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work82.html" class="details-link" aria-label="شاهد تفاصيل العمل 82"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work83">
-            <a href="works/work83.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 83" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work83.html" class="details-link" aria-label="شاهد تفاصيل العمل 83"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work84">
-            <a href="works/work84.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 84" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work84.html" class="details-link" aria-label="شاهد تفاصيل العمل 84"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work85">
-            <a href="works/work85.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 85" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work85.html" class="details-link" aria-label="شاهد تفاصيل العمل 85"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work86">
-            <a href="works/work86.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 86" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work86.html" class="details-link" aria-label="شاهد تفاصيل العمل 86"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work87">
-            <a href="works/work87.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 87" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work87.html" class="details-link" aria-label="شاهد تفاصيل العمل 87"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work88">
-            <a href="works/work88.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 88" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work88.html" class="details-link" aria-label="شاهد تفاصيل العمل 88"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work89">
-            <a href="works/work89.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 89" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work89.html" class="details-link" aria-label="شاهد تفاصيل العمل 89"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work90">
-            <a href="works/work90.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 90" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work90.html" class="details-link" aria-label="شاهد تفاصيل العمل 90"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work91">
-            <a href="works/work91.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 91" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work91.html" class="details-link" aria-label="شاهد تفاصيل العمل 91"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work92">
-            <a href="works/work92.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 92" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work92.html" class="details-link" aria-label="شاهد تفاصيل العمل 92"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work93">
-            <a href="works/work93.html">
-                <img src="images/work5.jpg" alt="تصميم فلاير العمل 93" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work93.html" class="details-link" aria-label="شاهد تفاصيل العمل 93"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work94">
-            <a href="works/work94.html">
-                <img src="images/work6.jpg" alt="تصميم تي شيرت العمل 94" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work94.html" class="details-link" aria-label="شاهد تفاصيل العمل 94"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work95">
-            <a href="works/work95.html">
-                <img src="images/work7.jpg" alt="تصميم فني العمل 95" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work95.html" class="details-link" aria-label="شاهد تفاصيل العمل 95"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work96">
-            <a href="works/work96.html">
-                <img src="images/work8.jpg" alt="تصميم موقع العمل 96" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work96.html" class="details-link" aria-label="شاهد تفاصيل العمل 96"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work97">
-            <a href="works/work97.html">
-                <img src="images/work1.jpg" alt="تصميم شعار العمل 97" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work97.html" class="details-link" aria-label="شاهد تفاصيل العمل 97"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work98">
-            <a href="works/work98.html">
-                <img src="images/work2.jpg" alt="تصميم تغليف العمل 98" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work98.html" class="details-link" aria-label="شاهد تفاصيل العمل 98"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work99">
-            <a href="works/work99.html">
-                <img src="images/work3.jpg" alt="تصميم بطاقة عمل العمل 99" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work99.html" class="details-link" aria-label="شاهد تفاصيل العمل 99"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        <div class="item" data-aos="fade-up" data-aos-delay="100" data-work-id="work100">
-            <a href="works/work100.html">
-                <img src="images/work4.jpg" alt="تصميم وسائل تواصل العمل 100" loading="lazy">
-            </a>
-            <div class="overlay">
-                <a href="works/work100.html" class="details-link" aria-label="شاهد تفاصيل العمل 100"><i class="fas fa-arrow-up-right-from-square"></i></a>
-            </div>
-        </div>
-        </div>
-    <div class="pagination"></div>
-</section>
-  
+
+    <section id="works" class="portfolio">
+        <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
+        <div class="grid" id="works-grid">
+            <!-- سيتم ملء هذا القسم تلقائياً بواسطة JavaScript -->
+        </div>
+        <div class="pagination" id="pagination-container">
+            <!-- سيتم إنشاء أزرار الترقيم هنا بواسطة JavaScript -->
+        </div>
+    </section>
 </main>
 
 <footer id="contact">
@@ -920,16 +154,55 @@
         <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
     </address>
     <div class="socials" data-aos="fade-up" data-aos-delay="200">
-        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على إنستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
     </div>
-    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
+    <p class="copy" data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
 </footer>
+
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <script src="script.js"></script>
+
+<style>
+    /* أنماط إضافية للتكامل مع JavaScript */
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+    }
+    
+    .loading::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+
 </body>
 </html>
