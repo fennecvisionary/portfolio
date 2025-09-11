@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تصميم نشرة إعلانية عصرية للشركات. - Fennec Visionary</title>
+    <title>تصميم نشرة إعلانية عصرية للشركات - Fennec Visionary</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -36,46 +36,38 @@
         </button>
     </div>
 </header>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
+    <button id="searchButton"><i class="fas fa-search"></i></button>
+</div>
 
 <main id="main-content">
     <section class="work-details">
-        <h1 class="work-title">تصميم نشرة إعلانية عصرية للشركات.</h1>
-        <img src="../images/work5.jpg" alt="تصميم نشرة إعلانية عصرية للشركات." class="work-image">
+        <h1 class="work-title">تصميم نشرة إعلانية عصرية للشركات</h1>
+        
+        <div class="work-navigation">
+            <a id="prev-work" href="../works/work4.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
+            <a id="next-work" href="../works/work6.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+        </div>
+        
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <img src="../images/work5.jpg" alt="صورة للنشرة الإعلانية" loading="lazy">
+                <img src="../images/work5_mockup.jpg" alt="نموذج افتراضي للنشرة" loading="lazy">
+            </div>
+            <div class="carousel-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+
+        <div class="project-description">
+            <p><strong>عن المشروع:</strong> تصميم نشرة إعلانية (Flyer) لشركة خدمات مالية. تم التركيز على تنظيم المعلومات بطريقة واضحة وجذابة، باستخدام الألوان الخاصة بالعلامة التجارية وخطوط حديثة.</p>
+            <p><strong>الأدوات المستخدمة:</strong> Adobe InDesign, Adobe Illustrator</p>
+        </div>
     </section>
 
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function () {
-            this.page.url = window.location.href;
-            this.page.identifier = "work5";
-        };
-        (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://fennecvisionary.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</main>
-
-<footer id="contact">
-    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
-    <address data-aos="fade-up" data-aos-delay="100">
-        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
-        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
-    </address>
-    <div class="socials" data-aos="fade-up" data-aos-delay="200">
-        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../script.js"></script>
-</body>
-</html>
+            this.page.url = window.location.href
