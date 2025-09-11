@@ -164,18 +164,18 @@ body.ar .main-nav li {
     display: flex;
     justify-content: center;
     padding: 2rem 4rem; /* تم زيادة الهوامش لتكبير الخلفية */
-    background-color: var(--light-card-bg);
-    box-shadow: var(--light-shadow);
+    background-color: transparent(--light-card-bg);
+    box-shadow: none(--light-shadow);
     z-index: 99;
     transition: box-shadow 0.3s ease; /* إضافة انتقال سلس لتأثير الظل */
 }
 
 .search-container:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* تأثير ظل أعمق عند التمرير */
+    box-shadow: 0 8px 16px (0, 0, 0, 0.2); /* تأثير ظل أعمق عند التمرير */
 }
 
 .dark-mode .search-container:hover {
-    box-shadow: var(--dark-shadow); /* يمكنك تعديل الظل لوضع الليل إذا لزم الأمر */
+    box-shadow: none(--dark-shadow); /* يمكنك تعديل الظل لوضع الليل إذا لزم الأمر */
 }
 
 /* Carousel Section */
