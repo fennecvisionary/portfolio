@@ -54,12 +54,15 @@
             
             const galleryContainer = document.getElementById('work-gallery');
             work.galleryImages.forEach((imageSrc, index) => {
-                const img = document.createElement('img');
                 const a = document.createElement('a');
-                a.href = `../${imageSrc}`;
+                const img = document.createElement('img');
+
+                // تم تعديل المسار هنا لاستخدام المسار الكامل
+                const fullPath = `https://fennecvisionary.github.io/portfolio/${imageSrc}`;
+                a.href = fullPath;
                 a.setAttribute('data-lightbox', 'work-gallery');
                 a.setAttribute('data-title', `${work.title} - صورة ${index + 1}`);
-                img.src = `../${imageSrc}`;
+                img.src = fullPath;
                 img.alt = `${work.title} - صورة ${index + 1}`;
                 a.appendChild(img);
                 galleryContainer.appendChild(a);
