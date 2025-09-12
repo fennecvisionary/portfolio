@@ -3,109 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شعار نظيف وبسيط لشركة تقنية - Fennec Visionary</title>
-    <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <title>تفاصيل العمل - My Portfolio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <style>
+        .work-details {
+            max-width: 900px;
+            margin: 4rem auto;
+            padding: 2rem;
+            background-color: var(--light-card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .work-details h1 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+        .work-gallery img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: #d84b22;
+        }
+        
+        @media (max-width: 768px) {
+            .work-details {
+                margin: 2rem 1rem;
+            }
+        }
+    </style>
 </head>
-<body class="light-mode ar">
-
-<header class="site-header">
-    <div class="logo">
-        <a href="../">
-            <img src="../images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
-        </a>
-    </div>
-    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
-        <ul role="list">
-            <li role="listitem"><a href="../#services" data-lang-key="nav_services">خدماتي</a></li>
-            <li role="listitem"><a href="../#tools" data-lang-key="nav_tools">أدواتي</a></li>
-            <li role="listitem"><a href="../#works" data-lang-key="nav_works">أعمالي</a></li>
-            <li role="listitem"><a href="../#contact" data-lang-key="nav_contact">تواصل معي</a></li>
-        </ul>
-    </nav>
-    <div class="header-controls">
-        <select id="language-select">
-            <option value="en">EN</option>
-            <option value="ar" selected>AR</option>
-            <option value="fr">FR</option>
-        </select>
-        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
-            <i class="fas fa-moon"></i>
-        </button>
-    </div>
-</header>
-<div class="search-container">
-    <input type="text" id="searchInput" placeholder="ابحث عن عمل...">
-    <button id="searchButton"><i class="fas fa-search"></i></button>
-</div>
-
-<main id="main-content">
-    <section class="work-details">
-        <h1 class="work-title">شعار نظيف وبسيط لشركة تقنية</h1>
-        
-        <div class="work-navigation">
-            <a id="prev-work" href="../works/work8.html" class="nav-button" aria-label="العمل السابق"><i class="fas fa-chevron-left"></i></a>
-            <a id="next-work" href="../works/work2.html" class="nav-button" aria-label="العمل التالي"><i class="fas fa-chevron-right"></i></a>
+<body>
+    <main>
+        <div class="work-details" data-aos="fade-up">
+            <h1 id="work-title"></h1>
+            <p id="work-details-text"></p>
+            <div id="work-gallery" class="work-gallery"></div>
+            <a href="../index.html" class="back-button">العودة إلى الأعمال</a>
         </div>
-        
-        <div class="carousel-container">
-            <div class="carousel-slide">
-                <img src="../images/work1/1.jpg" alt="صورة للشعار" loading="lazy">
-                <img src="../images/work1/2.jpg" alt="نموذج افتراضي للشعار" loading="lazy">
-                <img src="../images/work1/3.jpg" alt="لقطة قريبة لتفاصيل الشعار" loading="lazy">
-            </div>
+    </main>
 
-            <button class="carousel-arrow prev" aria-label="الصورة السابقة"><i class="fas fa-chevron-left"></i></button>
-            <button class="carousel-arrow next" aria-label="الصورة التالية"><i class="fas fa-chevron-right"></i></button>
-
-            <div class="carousel-dots">
-                <span class="dot"></span>
-                <span class="dot"></span>
-                <span class="dot"></span>
-            </div>
-        </div>
-
-        <div class="project-description">
-            <p><strong>عن المشروع:</strong> تصميم شعار عصري وأنيق يجمع بين البساطة والاحترافية، موجه لشركة تقنية ناشئة. يركز التصميم على الخطوط النظيفة والألوان الهادئة لتعكس الثقة والابتكار.</p>
-            <p><strong>الأدوات المستخدمة:</strong> Adobe Illustrator</p>
-        </div>
-    </section>
-    
-    <div id="disqus_thread"></div>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
     <script>
-        var disqus_config = function () {
-            this.page.url = window.location.href;
-            this.page.identifier = "work1";
-        };
-        (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://fennecvisionary.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
+        // هذا هو كود JS الذي سيقوم بجلب البيانات وعرضها
+        const allWorks = [
+            // الصق هنا مصفوفة allWorks الكاملة من ملفك الرئيسي
+            // const allWorks = [...];
+        ];
+
+        // استخراج رقم العمل من رابط الصفحة
+        const workId = window.location.pathname.split('/').pop().replace('.html', '');
+        
+        // البحث عن العمل المطابق في المصفوفة
+        const work = allWorks.find(w => w.id === workId);
+        
+        if (work) {
+            // ملء محتوى الصفحة بالبيانات الصحيحة
+            document.getElementById('work-title').textContent = work.title;
+            document.getElementById('work-details-text').textContent = work.details;
+            
+            const galleryContainer = document.getElementById('work-gallery');
+            work.galleryImages.forEach(imageSrc => {
+                const img = document.createElement('img');
+                img.src = imageSrc;
+                img.alt = work.title;
+                galleryContainer.appendChild(img);
+            });
+        } else {
+            // عرض رسالة خطأ إذا لم يتم العثور على العمل
+            document.querySelector('.work-details').innerHTML = '<h1>لم يتم العثور على هذا العمل.</h1>';
+        }
+        
+        AOS.init();
+        lightbox.option({
+            'albumLabel': '%1 / %2'
+        });
     </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</main>
-
-<footer id="contact">
-    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
-    <address data-aos="fade-up" data-aos-delay="100">
-        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
-        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
-    </address>
-    <div class="socials" data-aos="fade-up" data-aos-delay="200">
-        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على انستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تحدث معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="قم بزيارتنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <p class="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
-</footer>
-
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="../script.js"></script>
 </body>
 </html>
