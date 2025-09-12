@@ -161,169 +161,49 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-   // إنشاء عناصر الأعمال تلقائيًا
-const totalWorks = 100;
-const itemsPerPage = 16;
-let allWorks = [];
-let currentPage = 1;
-let currentWorks = [];
-
-// بيانات الأعمال
-const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
-
-// إنشاء بيانات الأعمال
-for (let i = 1; i <= totalWorks; i++) {
-    const categoryIndex = (i - 1) % workCategories.length;
-    const category = workCategories[categoryIndex];
-    
-    // إنشاء مصفوفة من 3 صور لكل عمل
-    const workImages = [
-        `images/work${i}/1.jpg`,
-        `images/work${i}/2.jpg`,
-        `images/work${i}/3.jpg`
-    ];
-    
-    allWorks.push({
-        id: `work${i}`,
-        title: `تصميم ${category} رقم ${i}`,
-        mainImage: workImages[0], // الصورة الرئيسية التي تظهر في الشبكة
-        galleryImages: workImages, // جميع صور هذا العمل
-        category: category,
-        link: `works/work${i}.html`,
-        details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-    });
-}
-  
-// عرض الأعمال في الشبكة
-function renderWorks(works, page = 1) {
-    const worksGrid = document.getElementById('works-grid');
-    const paginationContainer = document.getElementById('pagination-container');
-    
-    worksGrid.innerHTML = '';
-    currentPage = page;
-    currentWorks = works;
-    
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedItems = works.slice(start, end);
-
-    if (paginatedItems.length === 0) {
-        worksGrid.innerHTML = `
-            <div class="no-results">
-                <i class="fas fa-search"></i>
-                <h3>لم يتم العثور على نتائج</h3>
-                <p>جرب استخدام كلمات بحث أخرى</p>
-            </div>
-        `;
-        paginationContainer.innerHTML = '';
-        return;
-    }
-
-    paginatedItems.forEach((work, index) => {
-        const itemDiv = document.createElement("div");
-        itemDiv.classList.add("item");
-        itemDiv.setAttribute("data-aos", "fade-up");
-        itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
-        itemDiv.setAttribute("data-work-id", work.id);
+    // عرض الأعمال في الشبكة
+    function renderWorks(works, page = 1) {
+        worksGrid.innerHTML = '';
+        currentPage = page;
+        currentWorks = works;
         
-        // بناء روابط Lightbox
-        let lightboxLinks = '';
-        work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
-            lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
-        });
-        
-        // تم تغيير الرابط ليؤدي إلى work.html?id=work1
-        itemDiv.innerHTML = `
-            <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
-                <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
-                <div class="overlay">
-                    <i class="fas fa-eye"></i>
+        const start = (page - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const paginatedItems = works.slice(start, end);
+
+        if (paginatedItems.length === 0) {
+            worksGrid.innerHTML = `
+                <div class="no-results">
+                    <i class="fas fa-search"></i>
+                    <h3>لم يتم العثور على نتائج</h3>
+                    <p>جرب استخدام كلمات بحث أخرى</p>
                 </div>
-            </a>
-            ${lightboxLinks}
-        `;
-        worksGrid.appendChild(itemDiv);
-    });
-}
-    function renderWorks(works, page = 1) {
+            `;
+            paginationContainer.innerHTML = '';
+            return;
+        }
 
-        worksGrid.innerHTML = '';
+        paginatedItems.forEach((work, index) => {
+            const itemDiv = document.createElement("div");
+            itemDiv.classList.add("item");
+            itemDiv.setAttribute("data-aos", "fade-up");
+            itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
+            itemDiv.setAttribute("data-work-id", work.id);
+            
+            // تم تصحيح مسارات الصور هنا
+            itemDiv.innerHTML = `
+                <a href="${work.mainImage}" data-lightbox="works" data-title="${work.title}">
+                    <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
+                </a>
+                <div class="overlay">
+                    <a href="works/work.html?id=${work.id}" class="details-link" aria-label="شاهد تفاصيل ${work.title}">
+                        <i class="fas fa-eye"></i>
+                    </a>
+                </div>
+            `;
+            worksGrid.appendChild(itemDiv);
+        });
 
-        currentPage = page;
-
-        currentWorks = works;
-
-        
-
-        const start = (page - 1) * itemsPerPage;
-
-        const end = start + itemsPerPage;
-
-        const paginatedItems = works.slice(start, end);
-
-
-
-        if (paginatedItems.length === 0) {
-
-            worksGrid.innerHTML = `
-
-                <div class="no-results">
-
-                    <i class="fas fa-search"></i>
-
-                    <h3>لم يتم العثور على نتائج</h3>
-
-                    <p>جرب استخدام كلمات بحث أخرى</p>
-
-                </div>
-
-            `;
-
-            paginationContainer.innerHTML = '';
-
-            return;
-
-        }
-
-
-
-        paginatedItems.forEach((work, index) => {
-
-            const itemDiv = document.createElement("div");
-
-            itemDiv.classList.add("item");
-
-            itemDiv.setAttribute("data-aos", "fade-up");
-
-            itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
-
-            itemDiv.setAttribute("data-work-id", work.id);
-
-            
-
-            itemDiv.innerHTML = `
-
-                <a href="${work.image}" data-lightbox="works" data-title="${work.title}">
-
-                    <img src="${work.image}" alt="${work.title}" loading="lazy">
-
-                </a>
-
-                <div class="overlay">
-
-                    <a href="${work.link}" class="details-link" aria-label="شاهد تفاصيل ${work.title}">
-
-                        <i class="fas fa-eye"></i>
-
-                    </a>
-
-                </div>
-
-            `;
-
-            worksGrid.appendChild(itemDiv);
-
-        });
         // تحديث أزرار AOS بعد إضافة العناصر
         AOS.refresh();
         renderPagination(works);
