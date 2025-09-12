@@ -1,0 +1,70 @@
+/* ===============================
+   Responsive CSS for All Pages
+   =============================== */
+
+/* 1) الأساسيات للشاشات الصغيرة (موبايل) */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.6;
+    padding: 10px;
+  }
+
+  header nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    max-width: 150px;
+    margin-bottom: 10px;
+  }
+
+  .service-card,
+  .work-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .our-works {
+    grid-template-columns: 1fr; /* صورة واحدة في السطر */
+  }
+
+  footer {
+    text-align: center;
+    padding: 15px;
+  }
+}
+
+/* 2) للشاشات المتوسطة (تابلت) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 16px;
+  }
+
+  .our-works {
+    grid-template-columns: 1fr 1fr; /* عمودين */
+    gap: 20px;
+  }
+
+  .service-card {
+    width: 48%;
+  }
+}
+
+/* 3) للشاشات الكبيرة (كمبيوتر) */
+@media (min-width: 1025px) {
+  body {
+    font-size: 18px;
+  }
+
+  .our-works {
+    grid-template-columns: 1fr 1fr 1fr; /* 3 أعمدة */
+    gap: 25px;
+  }
+
+  .service-card {
+    width: 30%;
+  }
+}
