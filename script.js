@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+("DOMContentLoaded", () => {
     // تحديد العناصر الأساسية في الصفحة
     const body = document.body;
     const modeToggle = document.getElementById("mode-toggle");
@@ -7,8 +7,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const paginationContainer = document.getElementById("pagination-container");
     const searchInput = document.getElementById("searchInput");
     const searchButton = document.getElementById("searchButton");
+    const backToTopButton = document.querySelector('.back-to-top'); // --- الإضافة الجديدة
 
-    // بيانات اللغات
+    // بيانات اللغات (نفس بياناتك السابقة)
     const translations = {
         ar: {
             skip_link: "تخطي إلى المحتوى الرئيسي",
@@ -81,6 +82,29 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    // --- (باقي الوظائف مثل toggleMode, setLanguage, renderWorks... تبقى كما هي) ---
+    // ... الكود السابق كاملاً هنا بدون تغيير ...
+
+    // --- الإضافة الجديدة: وظيفة التحكم في زر العودة للأعلى ---
+    if (backToTopButton) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // إظهار الزر بعد النزول 300 بكسل
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+
+        backToTopButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+
+
     // وظيفة تبديل الوضع (ليلي/نهاري)
     function toggleMode() {
         body.classList.toggle("dark-mode");
@@ -105,7 +129,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // تحديث اتجاه الصفحة (RTL/LTR)
         if (lang === "ar") {
             document.documentElement.dir = "rtl";
             document.documentElement.lang = "ar";
@@ -119,13 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         localStorage.setItem("language", lang);
         
-        // تحديث نص زر البحث
         searchInput.placeholder = translations[lang].search_placeholder;
     }
 
     // تهيئة الصفحة عند التحميل
     function initialize() {
-        // تهيئة الوضع الليلي/النهاري
         const savedMode = localStorage.getItem("darkMode");
         if (savedMode === "true") {
             body.classList.remove("light-mode");
@@ -139,12 +160,10 @@ document.addEventListener("DOMContentLoaded", () => {
             modeToggle.setAttribute('aria-label', 'تفعيل الوضع الداكن');
         }
 
-        // تهيئة اللغة
         const savedLang = localStorage.getItem("language") || "ar";
         languageSelect.value = savedLang;
         setLanguage(savedLang);
 
-        // تهيئة AOS
         AOS.init({
             duration: 1000,
             easing: 'ease-in-out',
@@ -152,7 +171,6 @@ document.addEventListener("DOMContentLoaded", () => {
             mirror: false
         });
 
-        // تهيئة Lightbox
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true,
@@ -161,14 +179,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // إنشاء عناصر الأعمال تلقائيًا
     const totalWorks = 100;
     const itemsPerPage = 16;
     let allWorks = [];
     let currentPage = 1;
     let currentWorks = [];
 
-    // بيانات الأعمال (يمكن استبدالها ببيانات حقيقية)
     const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
     const workImages = [
         "images/w1/1.jpg", "images/w2/1.jpg", "images/w3/1.jpg", 
@@ -176,7 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "images/w7/1.jpg", "images/w8/1.jpg"
     ];
 
-    // إنشاء بيانات الأعمال
     for (let i = 1; i <= totalWorks; i++) {
         const categoryIndex = (i - 1) % workCategories.length;
         const imageIndex = (i - 1) % workImages.length;
@@ -192,8 +207,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // عرض الأعمال في الشبكة
     function renderWorks(works, page = 1) {
+        if (!worksGrid) return;
         worksGrid.innerHTML = '';
         currentPage = page;
         currentWorks = works;
@@ -203,14 +218,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const paginatedItems = works.slice(start, end);
 
         if (paginatedItems.length === 0) {
-            worksGrid.innerHTML = `
-                <div class="no-results">
-                    <i class="fas fa-search"></i>
-                    <h3>لم يتم العثور على نتائج</h3>
-                    <p>جرب استخدام كلمات بحث أخرى</p>
-                </div>
-            `;
-            paginationContainer.innerHTML = '';
+            worksGrid.innerHTML = `<div class="no-results"><i class="fas fa-search"></i><h3>لم يتم العثور على نتائج</h3><p>جرب استخدام كلمات بحث أخرى</p></div>`;
+            if (paginationContainer) paginationContainer.innerHTML = '';
             return;
         }
 
@@ -234,19 +243,17 @@ document.addEventListener("DOMContentLoaded", () => {
             worksGrid.appendChild(itemDiv);
         });
 
-        // تحديث أزرار AOS بعد إضافة العناصر
         AOS.refresh();
         renderPagination(works);
     }
 
-    // إنشاء أزرار الترقيم
     function renderPagination(works) {
+        if (!paginationContainer) return;
         paginationContainer.innerHTML = '';
         const pageCount = Math.ceil(works.length / itemsPerPage);
 
         if (pageCount <= 1) return;
 
-        // زر الصفحة السابقة
         if (currentPage > 1) {
             const prevLink = document.createElement("a");
             prevLink.href = "#works";
@@ -255,15 +262,11 @@ document.addEventListener("DOMContentLoaded", () => {
             prevLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 renderWorks(works, currentPage - 1);
-                window.scrollTo({
-                    top: worksGrid.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                if (worksGrid) window.scrollTo({ top: worksGrid.offsetTop - 100, behavior: 'smooth' });
             });
             paginationContainer.appendChild(prevLink);
         }
 
-        // أزرار الصفحات
         for (let i = 1; i <= pageCount; i++) {
             const pageLink = document.createElement("a");
             pageLink.href = "#works";
@@ -273,15 +276,11 @@ document.addEventListener("DOMContentLoaded", () => {
             pageLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 renderWorks(works, i);
-                window.scrollTo({
-                    top: worksGrid.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                if (worksGrid) window.scrollTo({ top: worksGrid.offsetTop - 100, behavior: 'smooth' });
             });
             paginationContainer.appendChild(pageLink);
         }
 
-        // زر الصفحة التالية
         if (currentPage < pageCount) {
             const nextLink = document.createElement("a");
             nextLink.href = "#works";
@@ -290,23 +289,15 @@ document.addEventListener("DOMContentLoaded", () => {
             nextLink.addEventListener("click", (e) => {
                 e.preventDefault();
                 renderWorks(works, currentPage + 1);
-                window.scrollTo({
-                    top: worksGrid.offsetTop - 100,
-                    behavior: 'smooth'
-                });
+                if (worksGrid) window.scrollTo({ top: worksGrid.offsetTop - 100, behavior: 'smooth' });
             });
             paginationContainer.appendChild(nextLink);
         }
     }
 
-    // وظيفة البحث والترشيح
     function filterWorks(searchTerm) {
         searchTerm = searchTerm.toLowerCase().trim();
-        
-        if (!searchTerm) {
-            return allWorks;
-        }
-        
+        if (!searchTerm) return allWorks;
         return allWorks.filter(work => 
             work.title.toLowerCase().includes(searchTerm) ||
             work.category.toLowerCase().includes(searchTerm) ||
@@ -314,75 +305,29 @@ document.addEventListener("DOMContentLoaded", () => {
         );
     }
 
-    // البحث عند الكتابة
-    searchInput.addEventListener("input", (e) => {
-        const filteredWorks = filterWorks(e.target.value);
-        renderWorks(filteredWorks, 1);
-    });
+    if (searchInput) {
+        searchInput.addEventListener("input", (e) => {
+            const filteredWorks = filterWorks(e.target.value);
+            renderWorks(filteredWorks, 1);
+        });
 
-    // البحث عند الضغط على زر البحث
-    searchButton.addEventListener("click", () => {
-        const filteredWorks = filterWorks(searchInput.value);
-        renderWorks(filteredWorks, 1);
-    });
-
-    // البحث عند الضغط على Enter
-    searchInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
+        searchButton.addEventListener("click", () => {
             const filteredWorks = filterWorks(searchInput.value);
             renderWorks(filteredWorks, 1);
-        }
-    });
+        });
 
-    // إضافة المستمعين للأحداث
-    modeToggle.addEventListener("click", toggleMode);
-    languageSelect.addEventListener("change", (e) => setLanguage(e.target.value));
+        searchInput.addEventListener("keypress", (e) => {
+            if (e.key === "Enter") {
+                const filteredWorks = filterWorks(searchInput.value);
+                renderWorks(filteredWorks, 1);
+            }
+        });
+    }
 
-    // تشغيل وظيفة التهيئة عند تحميل الصفحة
+    if (modeToggle) modeToggle.addEventListener("click", toggleMode);
+    if (languageSelect) languageSelect.addEventListener("change", (e) => setLanguage(e.target.value));
+
     initialize();
-
-    // عرض الأعمال للمرة الأولى
     renderWorks(allWorks, 1);
-});
 
-// إضافة أنماط للنتائج غير الموجودة
-const noResultsStyle = document.createElement('style');
-noResultsStyle.textContent = `
-    .no-results {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 3rem;
-        color: #888;
-    }
-    
-    .no-results i {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-    
-    .no-results h3 {
-        margin-bottom: 0.5rem;
-        color: var(--light-text-color);
-    }
-    
-    .dark-mode .no-results h3 {
-        color: var(--dark-text-color);
-    }
-    
-    .page-link.prev-page, .page-link.next-page {
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    body.rtl .page-link.prev-page i {
-        transform: rotate(180deg);
-    }
-    
-    body.rtl .page-link.next-page i {
-        transform: rotate(180deg);
-    }
-`;
-document.head.appendChild(noResultsStyle);
+});
