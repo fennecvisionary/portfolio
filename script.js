@@ -161,23 +161,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-   // إنشاء عناصر الأعمال تلقائيًا
+   // بيانات الأعمال
 const totalWorks = 100;
 const itemsPerPage = 16;
 let allWorks = [];
-let currentPage = 1;
-let currentWorks = [];
 
-// بيانات الأعمال
+// فئات الأعمال
 const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
 
-// إنشاء بيانات الأعمال
+// إنشاء بيانات الأعمال بشكل ديناميكي
 for (let i = 1; i <= totalWorks; i++) {
     const categoryIndex = (i - 1) % workCategories.length;
     const category = workCategories[categoryIndex];
     
     // إنشاء مصفوفة من 3 صور لكل عمل
-    const workImages = [
+    const galleryImages = [
         `images/work${i}/1.jpg`,
         `images/work${i}/2.jpg`,
         `images/work${i}/3.jpg`
@@ -186,10 +184,9 @@ for (let i = 1; i <= totalWorks; i++) {
     allWorks.push({
         id: `work${i}`,
         title: `تصميم ${category} رقم ${i}`,
-        mainImage: workImages[0], // الصورة الرئيسية التي تظهر في الشبكة
-        galleryImages: workImages, // جميع صور هذا العمل
+        mainImage: galleryImages[0], // الصورة الرئيسية التي تظهر في الشبكة
+        galleryImages: galleryImages, // جميع صور هذا العمل
         category: category,
-        link: `works/work${i}.html`,
         details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
     });
 }
