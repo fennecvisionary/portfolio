@@ -6,10 +6,10 @@
     <title>تفاصيل العمل - My Portfolio</title>
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../responsive.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-    <link rel="stylesheet" href="../responsive.css">
 </head>
 <body class="light-mode rtl">
     <a href="../index.html" class="skip-link">العودة إلى المحتوى الرئيسي</a>
@@ -38,8 +38,9 @@
     </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
-    <script src="../js/data.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script src="../data.js"></script>
     <script>
         const urlParams = new URLSearchParams(window.location.search);
         const workId = urlParams.get('id');
@@ -47,19 +48,24 @@
         const work = allWorks.find(w => w.id === workId);
         
         if (work) {
+            document.title = `${work.title} - My Portfolio`;
             document.getElementById('work-title').textContent = work.title;
             document.getElementById('work-details-text').textContent = work.details;
             
             const galleryContainer = document.getElementById('work-gallery');
             work.galleryImages.forEach((imageSrc, index) => {
                 const img = document.createElement('img');
-                // تم التعديل هنا: إضافة ../ للمسار لجعلها صحيحة
+                const a = document.createElement('a');
+                a.href = `../${imageSrc}`;
+                a.setAttribute('data-lightbox', 'work-gallery');
+                a.setAttribute('data-title', `${work.title} - صورة ${index + 1}`);
                 img.src = `../${imageSrc}`;
                 img.alt = `${work.title} - صورة ${index + 1}`;
-                galleryContainer.appendChild(img);
+                a.appendChild(img);
+                galleryContainer.appendChild(a);
             });
         } else {
-            document.querySelector('.work-details').innerHTML = '<h1>لم يتم العثور على هذا العمل.</h1>';
+            document.querySelector('.work-details').innerHTML = '<h1 style="text-align:center;">لم يتم العثور على هذا العمل.</h1>';
         }
         
         AOS.init();
