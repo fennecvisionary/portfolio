@@ -226,28 +226,19 @@ body.ltr .main-nav li {
 .carousel {
     width: 100%;
     height: 60vh;
-    overflow: hidden;
-    position: relative;
+    background-color: var(--light-card-bg); /* إضافة لون الخلفية للوضع الفاتح */
 }
 
-.slides {
-    width: 400%;
-    height: 100%;
-    display: flex;
-    animation: slideAnimation 30s infinite ease-in-out;
-}
-
-.slides figure {
-    width: 25%;
-    height: 100%;
-    margin: 0;
-}
-
-.slides img {
+.carousel img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     display: block;
+}
+
+/* Dark mode-specific styles */
+.dark-mode .carousel {
+    background-color: var(--dark-card-bg); /* إضافة لون الخلفية للوضع الداكن */
 }
 
 @keyframes slideAnimation {
