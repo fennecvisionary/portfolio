@@ -26,182 +26,184 @@
 
 </head>
 <body class="light-mode rtl">
-    <a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
 
-    <header class="site-header">
-        <div class="logo">
-            <a href="./">
-                <img src="images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
-            </a>
-        </div>
-        <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
-            <ul role="list">
-                <li role="listitem"><a href="#services" data-lang-key="nav_services">خدماتي</a></li>
-                <li role="listitem"><a href="#tools" data-lang-key="nav_tools">أدواتي</a></li>
-                <li role="listitem"><a href="#works" data-lang-key="nav_works">أعمالي</a></li>
-                <li role="listitem"><a href="#contact" data-lang-key="nav_contact">تواصل معي</a></li>
-            </ul>
-        </nav>
-        <div class="header-controls">
-            <select id="language-select" aria-label="اختر اللغة">
-                <option value="en">EN</option>
-                <option value="ar" selected>AR</option>
-                <option value="fr">FR</option>
-            </select>
-            <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
-    </header>
+<a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
 
-    <div class="search-container">
-        <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
-        <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
+<header class="site-header">
+    <div class="logo">
+        <a href="./">
+            <img src="images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
+        </a>
     </div>
+    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
+        <ul role="list">
+            <li role="listitem"><a href="#services" data-lang-key="nav_services">خدماتي</a></li>
+            <li role="listitem"><a href="#tools" data-lang-key="nav_tools">أدواتي</a></li>
+            <li role="listitem"><a href="#works" data-lang-key="nav_works">أعمالي</a></li>
+            <li role="listitem"><a href="#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+        </ul>
+    </nav>
+    <div class="header-controls">
+        <select id="language-select" aria-label="اختر اللغة">
+            <option value="en">EN</option>
+            <option value="ar" selected>AR</option>
+            <option value="fr">FR</option>
+        </select>
+        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
 
-    <main id="main-content">
-        <section class="carousel" aria-label="معرض أعمال Fennec Visionary">
-            <div class="slides">
-                <figure>
-                    <img src="images/slider1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" loading="eager">
-                    <figcaption class="visually-hidden">شعار تقني حديث</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/slider2.jpg" alt="تصميم تغليف عصائر طبيعية" loading="lazy">
-                    <figcaption class="visually-hidden">تصميم تغليف عصائر</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/slider3.jpg" alt="بطاقة عمل احترافية" loading="lazy">
-                    <figcaption class="visually-hidden">بطاقة عمل مهنية</figcaption>
-                </figure>
-                <figure>
-                    <img src="images/slider4.jpg" alt="تصميم منشور وسائل تواصل اجتماعي" loading="lazy">
-                    <figcaption class="visually-hidden">تصميم وسائل تواصل اجتماعي</figcaption>
-                </figure>
-            </div>
-        </section>
+<div class="search-container">
+    <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
+    <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
+</div>
 
-        <section id="services">
-            <h2 data-aos="fade-up" data-lang-key="services_title">خدماتي</h2>
-            <div class="services-grid">
-                <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-pencil-ruler"></i>
-                    <p data-lang-key="service_logo">تصميم الشعارات</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-id-card"></i>
-                    <p data-lang-key="service_card">بطاقات العمل</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-file-alt"></i>
-                    <p data-lang-key="service_brochure">الفلاير والبروشور</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-file-invoice-dollar"></i>
-                    <p data-lang-key="service_invoice">الفواتير</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-book-open"></i>
-                    <p data-lang-key="service_catalog">الكتالوجات</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-share-alt"></i>
-                    <p data-lang-key="service_social">قوالب السوشيال ميديا</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-                    <i class="fas fa-box"></i>
-                    <p data-lang-key="service_packaging">تصميم التغليف</p>
-                </div>
-                <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-                    <i class="fas fa-tshirt"></i>
-                    <p data-lang-key="service_tshirt">القمصان والهوديز</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="tools">
-            <h2 data-aos="fade-up" data-lang-key="tools_title">أدواتي</h2>
-            <div class="tools-grid">
-                <div class="tool-item" data-aos="zoom-in" data-aos-delay="100">
-                    <img src="images/illustrator-icon.png" alt="أيقونة Adobe Illustrator" loading="lazy">
-                    <p>Illustrator</p>
-                </div>
-                <div class="tool-item" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="images/photoshop-icon.png" alt="أيقونة Adobe Photoshop" loading="lazy">
-                    <p>Photoshop</p>
-                </div>
-                <div class="tool-item" data-aos="zoom-in" data-aos-delay="300">
-                    <img src="images/indesign-icon.png" alt="أيقونة Adobe InDesign" loading="lazy">
-                    <p>InDesign</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="works" class="portfolio">
-            <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
-            <div class="grid" id="works-grid">
-            </div>
-            <div class="pagination" id="pagination-container">
-            </div>
-        </section>
-    </main>
-
-    <footer id="contact">
-        <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
-        <address data-aos="fade-up" data-aos-delay="100">
-            <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
-            <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
-        </address>
-        <div class="socials" data-aos="fade-up" data-aos-delay="200">
-            <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على إنستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
+<main id="main-content">
+    <section class="carousel" aria-label="معرض أعمال Fennec Visionary">
+        <div class="slides">
+            <figure>
+                <img src="images/slider1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" loading="eager">
+                <figcaption class="visually-hidden">شعار تقني حديث</figcaption>
+            </figure>
+            <figure>
+                <img src="images/slider2.jpg" alt="تصميم تغليف عصائر طبيعية" loading="lazy">
+                <figcaption class="visually-hidden">تصميم تغليف عصائر</figcaption>
+            </figure>
+            <figure>
+                <img src="images/slider3.jpg" alt="بطاقة عمل احترافية" loading="lazy">
+                <figcaption class="visually-hidden">بطاقة عمل مهنية</figcaption>
+            </figure>
+            <figure>
+                <img src="images/slider4.jpg" alt="تصميم منشور وسائل تواصل اجتماعي" loading="lazy">
+                <figcaption class="visually-hidden">تصميم وسائل تواصل اجتماعي</figcaption>
+            </figure>
         </div>
-        <p class="copy" data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
-    </footer>
+    </section>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script src="script.js"></script>
+    <section id="services">
+        <h2 data-aos="fade-up" data-lang-key="services_title">خدماتي</h2>
+        <div class="services-grid">
+            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-pencil-ruler"></i>
+                <p data-lang-key="service_logo">تصميم الشعارات</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-id-card"></i>
+                <p data-lang-key="service_card">بطاقات العمل</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-file-alt"></i>
+                <p data-lang-key="service_brochure">الفلاير والبروشور</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <p data-lang-key="service_invoice">الفواتير</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-book-open"></i>
+                <p data-lang-key="service_catalog">الكتالوجات</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-share-alt"></i>
+                <p data-lang-key="service_social">قوالب السوشيال ميديا</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-box"></i>
+                <p data-lang-key="service_packaging">تصميم التغليف</p>
+            </div>
+            <div class="service-item" data-aos="fade-up" data-aos-delay="400">
+                <i class="fas fa-tshirt"></i>
+                <p data-lang-key="service_tshirt">القمصان والهوديز</p>
+            </div>
+        </div>
+    </section>
 
-    <style>
-        /* أنماط إضافية للتكامل مع JavaScript */
-        .visually-hidden {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-        
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 300px;
-        }
-        
-        .loading::after {
-            content: "";
-            width: 40px;
-            height: 40px;
-            border: 4px solid #f3f3f3;
-            border-top: 4px solid var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-    </style>
+    <section id="tools">
+        <h2 data-aos="fade-up" data-lang-key="tools_title">أدواتي</h2>
+        <div class="tools-grid">
+            <div class="tool-item" data-aos="zoom-in" data-aos-delay="100">
+                <img src="images/illustrator-icon.png" alt="أيقونة Adobe Illustrator" loading="lazy">
+                <p>Illustrator</p>
+            </div>
+            <div class="tool-item" data-aos="zoom-in" data-aos-delay="200">
+                <img src="images/photoshop-icon.png" alt="أيقونة Adobe Photoshop" loading="lazy">
+                <p>Photoshop</p>
+            </div>
+            <div class="tool-item" data-aos="zoom-in" data-aos-delay="300">
+                <img src="images/indesign-icon.png" alt="أيقونة Adobe InDesign" loading="lazy">
+                <p>InDesign</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="portfolio">
+        <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
+        <div class="grid" id="works-grid">
+        </div>
+        <div class="pagination" id="pagination-container">
+        </div>
+    </section>
+</main>
+
+<footer id="contact">
+    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
+    <address data-aos="fade-up" data-aos-delay="100">
+        <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
+        <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
+    </address>
+    <div class="socials" data-aos="fade-up" data-aos-delay="200">
+        <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على إنستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/213696947598" target="_blank" rel="noopener noreferrer" aria-label="تواصل معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer" aria-label="تابعنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="copy" data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/script.js"></script>
+
+<style>
+    /* أنماط إضافية للتكامل مع JavaScript */
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+    
+    .loading {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 300px;
+    }
+    
+    .loading::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid var(--primary-color);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
 
 </body>
 </html>
