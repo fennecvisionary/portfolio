@@ -476,3 +476,95 @@ noResultsStyle.textContent = `
     }
 `;
 document.head.appendChild(noResultsStyle);
+// بيانات الأعمال (من ملف data.js)
+// يجب أن يكون ملف data.js مستدعى قبل هذا الملف في HTML
+// <script src="js/data.js"></script>
+
+const worksGrid = document.getElementById('works-grid');
+const paginationContainer = document.getElementById('pagination-container');
+
+const itemsPerPage = 16;
+let currentWorks = allWorks;
+let currentPage = 1;
+
+// عرض الأعمال في الشبكة
+function renderWorks(works, page = 1) {
+    worksGrid.innerHTML = '';
+    
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedItems = works.slice(start, end);
+
+    if (paginatedItems.length === 0) {
+        worksGrid.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <h3>لم يتم العثور على نتائج</h3>
+                <p>جرب استخدام كلمات بحث أخرى</p>
+            </div>
+        `;
+        paginationContainer.innerHTML = '';
+        return;
+    }
+
+    paginatedItems.forEach((work, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("item");
+        itemDiv.setAttribute("data-aos", "fade-up");
+        itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
+        itemDiv.setAttribute("data-work-id", work.id);
+        
+        let lightboxLinks = '';
+        work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
+            lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
+        });
+        
+        itemDiv.innerHTML = `
+            <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
+                <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
+                <div class="overlay">
+                    <i class="fas fa-eye"></i>
+                </div>
+            </a>
+            ${lightboxLinks}
+        `;
+        worksGrid.appendChild(itemDiv);
+    });
+}
+
+// إنشاء أزرار الترقيم
+function setupPagination(works) {
+    paginationContainer.innerHTML = '';
+    const pageCount = Math.ceil(works.length / itemsPerPage);
+
+    for (let i = 1; i <= pageCount; i++) {
+        const btn = document.createElement('button');
+        btn.innerText = i;
+        btn.classList.add('page-btn');
+        if (i === currentPage) {
+            btn.classList.add('active');
+        }
+        btn.addEventListener('click', () => {
+            currentPage = i;
+            renderWorks(works, currentPage);
+            const activeBtn = document.querySelector('.page-btn.active');
+            if (activeBtn) {
+                activeBtn.classList.remove('active');
+            }
+            btn.classList.add('active');
+            window.scrollTo({
+                top: document.getElementById('works').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+        paginationContainer.appendChild(btn);
+    }
+}
+
+// عند تحميل الصفحة، يتم عرض الأعمال وإنشاء الترقيم
+document.addEventListener('DOMContentLoaded', () => {
+    if (worksGrid && paginationContainer) {
+        renderWorks(allWorks, currentPage);
+        setupPagination(allWorks);
+    }
+});
