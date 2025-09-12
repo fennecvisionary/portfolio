@@ -193,7 +193,7 @@ for (let i = 1; i <= totalWorks; i++) {
         details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
     });
 }
-
+  
 // عرض الأعمال في الشبكة
 function renderWorks(works, page = 1) {
     const worksGrid = document.getElementById('works-grid');
@@ -225,15 +225,16 @@ function renderWorks(works, page = 1) {
         itemDiv.setAttribute("data-aos", "fade-up");
         itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
         itemDiv.setAttribute("data-work-id", work.id);
-
+        
+        // بناء روابط Lightbox
         let lightboxLinks = '';
-        // إنشاء روابط Lightbox لكل صورة في المعرض (ما عدا الأولى)
         work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
             lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
         });
         
+        // تم تغيير الرابط ليؤدي إلى work.html?id=work1
         itemDiv.innerHTML = `
-            <a href="${work.mainImage}" class="work-link" data-lightbox="work-gallery-${work.id}" data-title="${work.title}">
+            <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
                 <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
                 <div class="overlay">
                     <i class="fas fa-eye"></i>
@@ -244,14 +245,6 @@ function renderWorks(works, page = 1) {
         worksGrid.appendChild(itemDiv);
     });
 }
-
-// استدعاء الدالة عند تحميل الصفحة لعرض الأعمال
-renderWorks(allWorks);
-
-
-
-    // عرض الأعمال في الشبكة
-
     function renderWorks(works, page = 1) {
 
         worksGrid.innerHTML = '';
