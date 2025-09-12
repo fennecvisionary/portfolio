@@ -1,19 +1,18 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تفاصيل العمل - My Portfolio</title>
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-    
-    <style>
-        /* ... (كود CSS كما هو) ... */
-    </style>
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
-<body>
+<body class="light-mode rtl">
+    <a href="../index.html" class="skip-link">العودة إلى المحتوى الرئيسي</a>
     <main>
         <div class="work-details" data-aos="fade-up">
             <h1 id="work-title"></h1>
@@ -42,7 +41,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox-plus-jquery.min.js"></script>
     <script src="../js/data.js"></script>
     <script>
-        // هذا هو الكود الذي سيقوم بجلب البيانات وعرضها
         const urlParams = new URLSearchParams(window.location.search);
         const workId = urlParams.get('id');
         
@@ -55,7 +53,7 @@
             const galleryContainer = document.getElementById('work-gallery');
             work.galleryImages.forEach((imageSrc, index) => {
                 const img = document.createElement('img');
-                // تم التغيير هنا: إضافة ../ للمسار
+                // تم التعديل هنا: إضافة ../ للمسار لجعلها صحيحة
                 img.src = `../${imageSrc}`;
                 img.alt = `${work.title} - صورة ${index + 1}`;
                 galleryContainer.appendChild(img);
