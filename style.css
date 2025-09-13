@@ -724,7 +724,7 @@ body main {
 .tag-link {
     text-decoration: none;
     padding: 8px 15px;
-    border-radius: 20px;
+    border-radius: 25px;
     font-weight: bold;
     white-space: nowrap; /* يمنع التفاف النص */
     transition: all 0.3s ease; /* يطبق الانتقال على كل الخصائص */
