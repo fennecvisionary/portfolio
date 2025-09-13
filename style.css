@@ -711,30 +711,38 @@ body main {
 .dark-mode .work-details {
     background-color: var(--dark-card-bg);
 }
-tags-container {
+/* تنسيقات حاوية الوسوم */
+.tags-container {
     margin-top: 2rem;
     display: flex;
+    flex-wrap: wrap; /* يضمن انتقال الوسوم إلى سطر جديد عند الحاجة */
     justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
+    gap: 0.5rem; /* يضيف مسافة موحدة بين جميع الوسوم */
 }
 
+/* التنسيقات العامة للوسوم */
 .tag-link {
     text-decoration: none;
-    background-color: var(--light-card-bg);
-    color: var(--primary-color);
     padding: 8px 15px;
     border-radius: 20px;
+    font-weight: bold;
+    white-space: nowrap; /* يمنع التفاف النص */
+    transition: all 0.3s ease; /* يطبق الانتقال على كل الخصائص */
     border: 1px solid var(--primary-color);
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.tag-link:hover {
+/* تنسيقات وضع الإضاءة (Light Mode) */
+.light-mode .tag-link {
+    background-color: var(--light-card-bg);
+    color: var(--primary-color);
+}
+
+.light-mode .tag-link:hover {
     background-color: var(--primary-color);
     color: #fff;
 }
 
-/* Dark mode styles for tags */
+/* تنسيقات الوضع الداكن (Dark Mode) */
 .dark-mode .tag-link {
     background-color: var(--dark-card-bg);
     color: var(--primary-color);
