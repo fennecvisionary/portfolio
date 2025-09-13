@@ -711,3 +711,36 @@ body main {
 .dark-mode .work-details {
     background-color: var(--dark-card-bg);
 }
+tags-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.tag-link {
+    text-decoration: none;
+    background-color: var(--light-card-bg);
+    color: var(--primary-color);
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--primary-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tag-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Dark mode styles for tags */
+.dark-mode .tag-link {
+    background-color: var(--dark-card-bg);
+    color: var(--primary-color);
+}
+
+.dark-mode .tag-link:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
