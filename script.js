@@ -190,53 +190,57 @@ for (let i = 1; i <= totalWorks; i++) {
         details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
     });
 }
-  
- // عرض الأعمال في الشبكة
-    function renderWorks(works, page = 1) {
-        worksGrid.innerHTML = '';
-        currentPage = page;
+    
+// عرض الأعمال في الشبكة
+function renderWorks(works, page = 1) {
+    const worksGrid = document.getElementById('works-grid');
+    const paginationContainer = document.getElementById('pagination-container');
+    
+    worksGrid.innerHTML = '';
+    currentPage = page;
+    
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const paginatedItems = works.slice(start, end);
+
+    if (paginatedItems.length === 0) {
+        worksGrid.innerHTML = `
+            <div class="no-results">
+                <i class="fas fa-search"></i>
+                <h3>لم يتم العثور على نتائج</h3>
+                <p>جرب استخدام كلمات بحث أخرى</p>
+            </div>
+        `;
+        paginationContainer.innerHTML = '';
+        return;
+    }
+
+    paginatedItems.forEach((work, index) => {
+        const itemDiv = document.createElement("div");
+        itemDiv.classList.add("item");
+        itemDiv.setAttribute("data-aos", "fade-up");
+        itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
+        itemDiv.setAttribute("data-work-id", work.id);
         
-        const start = (page - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const paginatedItems = works.slice(start, end);
-
-        if (paginatedItems.length === 0) {
-            worksGrid.innerHTML = `
-                <div class="no-results">
-                    <i class="fas fa-search"></i>
-                    <h3>لم يتم العثور على نتائج</h3>
-                    <p>جرب استخدام كلمات بحث أخرى</p>
-                </div>
-            `;
-            paginationContainer.innerHTML = '';
-            return;
+        let lightboxLinks = '';
+        if (work.galleryImages && work.galleryImages.length > 1) {
+            work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
+                lightboxLinks += `<a href="works/${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
+            });
         }
-
-        paginatedItems.forEach((work, index) => {
-            const itemDiv = document.createElement("div");
-            itemDiv.classList.add("item");
-            itemDiv.setAttribute("data-aos", "fade-up");
-            itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
-            itemDiv.setAttribute("data-work-id", work.id);
-            
-            let lightboxLinks = '';
-            if (work.galleryImages && work.galleryImages.length > 1) {
-                work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
-                    lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
-                });
-            }
-            
-            itemDiv.innerHTML = `
-                <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
-                    <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
-                    <div class="overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                </a>
-                ${lightboxLinks}
-            `;
-            worksGrid.appendChild(itemDiv);
-        });
+        
+        itemDiv.innerHTML = `
+            <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
+                <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
+                <div class="overlay">
+                    <i class="fas fa-eye"></i>
+                </div>
+            </a>
+            ${lightboxLinks}
+        `;
+        worksGrid.appendChild(itemDiv);
+    });
+}
         
         // تحديث أزرار AOS بعد إضافة العناصر
         AOS.refresh();
