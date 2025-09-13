@@ -587,7 +587,7 @@ footer a:hover {
 .back-btn, .back-to-works {
     display: inline-block;
     padding: 12px 24px;
-    margin: 2rem;
+    margin: 3rem;
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
