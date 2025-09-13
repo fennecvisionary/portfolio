@@ -667,3 +667,111 @@ footer a:hover {
 .back-to-works:hover {
     background-color: #d44d1e;
 }
+/* Back Button */
+.back-btn, .back-to-works {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+.back-btn:hover, .back-to-works:hover {
+    background-color: #d44d1e;
+}
+
+/* Work Details and Slider Container */
+.work-details {
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: var(--light-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center; /* Ensures the title and paragraph are centered */
+}
+
+/* Slider Styles */
+.slider-container {
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slides-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slide-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: none; /* Hide all images by default */
+}
+
+/* Dots */
+.dots-container {
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dot {
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: var(--primary-color);
+}
+
+/* Navigation Arrows */
+.nav-arrow {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-right {
+    left: auto;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.nav-left {
+    left: 0;
+    right: auto;
+}
+
+.nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
