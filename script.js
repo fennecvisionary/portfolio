@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const paginationContainer = document.getElementById("pagination-container");
     const searchInput = document.getElementById("searchInput");
     const searchButton = document.getElementById("searchButton");
-
+    
     // بيانات اللغات
     const translations = {
         ar: {
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             search_placeholder: "Rechercher un travail..."
         }
     };
-
+    
     // وظيفة تبديل الوضع (ليلي/نهاري)
     function toggleMode() {
         body.classList.toggle("dark-mode");
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
-
+    
         // تحديث اتجاه الصفحة (RTL/LTR)
         if (lang === "ar") {
             document.documentElement.dir = "rtl";
@@ -122,7 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // تحديث نص زر البحث
         searchInput.placeholder = translations[lang].search_placeholder;
     }
-
+    
     // تهيئة الصفحة عند التحميل
     function initialize() {
         // تهيئة الوضع الليلي/النهاري
@@ -161,37 +161,46 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-   // بيانات الأعمال
-const totalWorks = 100;
-const itemsPerPage = 16;
-let allWorks = [];
+    // بيانات الأعمال
+    const totalWorks = 100;
+    const itemsPerPage = 16;
+    let currentPage = 1;
+    let allWorks = [];
 
-// فئات الأعمال
-const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
+    // فئات الأعمال والوسوم
+    const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
 
-// إنشاء بيانات الأعمال بشكل ديناميكي
-for (let i = 1; i <= totalWorks; i++) {
-    const categoryIndex = (i - 1) % workCategories.length;
-    const category = workCategories[categoryIndex];
-    
-    // إنشاء مصفوفة من 3 صور لكل عمل
-    const galleryImages = [
-        `images/work${i}/1.jpg`,
-        `images/work${i}/2.jpg`,
-        `images/work${i}/3.jpg`
-    ];
-    
-    allWorks.push({
-        id: `work${i}`,
-        title: `تصميم ${category} رقم ${i}`,
-        mainImage: galleryImages[0], // الصورة الرئيسية التي تظهر في الشبكة
-        galleryImages: galleryImages, // جميع صور هذا العمل
-        category: category,
-        details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-    });
-}
-  
- // عرض الأعمال في الشبكة
+    // إنشاء بيانات الأعمال بشكل ديناميكي مع إضافة الوسوم
+    for (let i = 1; i <= totalWorks; i++) {
+        const categoryIndex = (i - 1) % workCategories.length;
+        const category = workCategories[categoryIndex];
+        
+        // إضافة بعض الوسوم الإضافية
+        let tags = [category];
+        if (category === "شعار") tags.push("هوية بصرية", "لوجو", "علامة تجارية");
+        if (category === "تغليف") tags.push("تصميم منتجات", "تعبئة");
+        if (category === "تصميم مواقع") tags.push("واجهة مستخدم", "UX/UI");
+        if (category === "فلاير") tags.push("إعلان", "بروشور");
+
+        // إنشاء مصفوفة من 3 صور لكل عمل
+        const galleryImages = [
+            `images/work${i}/1.jpg`,
+            `images/work${i}/2.jpg`,
+            `images/work${i}/3.jpg`
+        ];
+        
+        allWorks.push({
+            id: `work${i}`,
+            title: `تصميم ${category} رقم ${i}`,
+            mainImage: galleryImages[0], // الصورة الرئيسية التي تظهر في الشبكة
+            galleryImages: galleryImages, // جميع صور هذا العمل
+            category: category,
+            details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`,
+            tags: tags // ✨ إضافة الوسوم هنا ✨
+        });
+    }
+
+    // عرض الأعمال في الشبكة
     function renderWorks(works, page = 1) {
         worksGrid.innerHTML = '';
         currentPage = page;
@@ -242,7 +251,7 @@ for (let i = 1; i <= totalWorks; i++) {
         AOS.refresh();
         renderPagination(works);
     }
-
+    
     // إنشاء أزرار الترقيم
     function renderPagination(works) {
         paginationContainer.innerHTML = '';
@@ -302,8 +311,8 @@ for (let i = 1; i <= totalWorks; i++) {
             paginationContainer.appendChild(nextLink);
         }
     }
-
-    // وظيفة البحث والترشيح
+    
+    // وظيفة البحث والترشيح المحدثة
     function filterWorks(searchTerm) {
         searchTerm = searchTerm.toLowerCase().trim();
         
@@ -314,7 +323,8 @@ for (let i = 1; i <= totalWorks; i++) {
         return allWorks.filter(work => 
             work.title.toLowerCase().includes(searchTerm) ||
             work.category.toLowerCase().includes(searchTerm) ||
-            work.details.toLowerCase().includes(searchTerm)
+            work.details.toLowerCase().includes(searchTerm) ||
+            (work.tags && work.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
         );
     }
 
@@ -338,6 +348,19 @@ for (let i = 1; i <= totalWorks; i++) {
         }
     });
 
+    // وظيفة النقر على الوسوم
+    const tags = document.querySelectorAll('.tag-link');
+    tags.forEach(tag => {
+        tag.addEventListener('click', function(event) {
+            event.preventDefault();
+            const tagText = this.textContent.trim();
+            searchInput.value = tagText;
+            if (searchButton) {
+                searchButton.click();
+            }
+        });
+    });
+
     // إضافة المستمعين للأحداث
     modeToggle.addEventListener("click", toggleMode);
     languageSelect.addEventListener("change", (e) => setLanguage(e.target.value));
@@ -347,66 +370,4 @@ for (let i = 1; i <= totalWorks; i++) {
 
     // عرض الأعمال للمرة الأولى
     renderWorks(allWorks, 1);
-});
-
-// إضافة أنماط للنتائج غير الموجودة
-const noResultsStyle = document.createElement('style');
-noResultsStyle.textContent = `
-    .no-results {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 3rem;
-        color: #888;
-    }
-    
-    .no-results i {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-    
-    .no-results h3 {
-        margin-bottom: 0.5rem;
-        color: var(--light-text-color);
-    }
-    
-    .dark-mode .no-results h3 {
-        color: var(--dark-text-color);
-    }
-    
-    .page-link.prev-page, .page-link.next-page {
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    body.rtl .page-link.prev-page i {
-        transform: rotate(180deg);
-    }
-    
-    body.rtl .page-link.next-page i {
-        transform: rotate(180deg);
-    }
-`;
-document.head.appendChild(noResultsStyle);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const tags = document.querySelectorAll('.tag-link');
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-
-    tags.forEach(tag => {
-        tag.addEventListener('click', function(event) {
-            event.preventDefault(); // يمنع النقر من التوجه إلى أي مكان
-
-            // يقوم بوضع نص الوسم في شريط البحث
-            searchInput.value = this.textContent.trim();
-
-            // يقوم بتشغيل البحث تلقائياً
-            if(searchButton) {
-                searchButton.click();
-            }
-        });
-    });
 });
