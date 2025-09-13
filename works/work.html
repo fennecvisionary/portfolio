@@ -25,13 +25,32 @@
             </div>
             
             <a href="../index.html" class="back-to-works">العودة إلى الأعمال</a>
-        </div>
+            
+            <div id="disqus_thread"></div>
+            </div>
     </main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     
+    <script>
+        /**
+        * RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+        * LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+        var disqus_config = function () {
+            this.page.url = window.location.href;  // رابط الصفحة الفريدة
+            this.page.identifier = workId; // المُعرّف الفريد لكل عمل
+        };
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://YOUR_SHORTNAME.disqus.com/embed.js'; // استبدل YOUR_SHORTNAME باسمك
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
     <script>
         const allWorks = [
             { id: "work1", title: "تصميم شعار رقم 1", mainImage: "images/work1/1.jpg", galleryImages: ["images/work1/1.jpg", "images/work1/2.jpg", "images/work1/3.jpg"], details: "هذا العمل هو مثال رائع لتصميم شعار تم إنشاؤه باستخدام أحدث تقنيات التصميم." },
