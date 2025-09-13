@@ -757,3 +757,13 @@ body main {
     background-color: var(--primary-color);
     color: #fff;
 }
+.site-header .logo a,
+.site-header .main-nav,
+.site-header .header-controls {
+    border: none !important;
+    outline: none !important;
+}
+
+.site-header .logo {
+    border: none !important;
+}
