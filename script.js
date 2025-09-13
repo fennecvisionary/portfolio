@@ -457,5 +457,4 @@ document.addEventListener('DOMContentLoaded', function() {
 // Assume you have the createWorkItem function here or in script.js
 // function createWorkItem(work) { ... }
         });
-    });
 });
