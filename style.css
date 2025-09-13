@@ -582,7 +582,7 @@ footer a:hover {
 .back-btn, .back-to-works {
     display: inline-block;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 20px auto;
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
@@ -595,92 +595,6 @@ footer a:hover {
 }
 .back-btn:hover {
     background-color: #d94a1f;
-}
-
-/* Slider */
-.work-gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-}
-
-.slider {
-    position: relative;
-    max-width: 800px;
-    width: 100%;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.slides {
-    display: flex;
-    transition: transform 0.6s ease-in-out;
-}
-
-.slides img {
-    width: 100%;
-    flex-shrink: 0;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-/* Hover effect */
-.slides img:hover {
-    transform: scale(1.05);
-}
-
-/* Dots */
-.dots {
-    text-align: center;
-    margin-top: 1rem;
-}
-
-.dot {
-    height: 12px;
-    width: 12px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.dot.active,
-.dot:hover {
-    background-color: var(--primary-color);
-}
-.back-to-works {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    font-weight: bold;
-}
-
-.back-to-works:hover {
-    background-color: #d44d1e;
-}
-/* Back Button */
-.back-btn, .back-to-works {
-    display: inline-block;
-    padding: 10px 20px;
-    margin: 20px;
-    background-color: var(--primary-color);
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    font-weight: bold;
-}
-.back-btn:hover, .back-to-works:hover {
-    background-color: #d44d1e;
 }
 
 /* Work Details and Slider Container */
