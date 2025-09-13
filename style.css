@@ -692,16 +692,3 @@ footer a:hover {
 }
 
 
-
-/* تعديل تنسيق صفحة تفاصيل العمل */
-.work-details {
-    padding-top: 250px; /* لضمان أن المحتوى يبدأ تحت الهيدر */
-    margin-top: 40px;
-}
-
-@media (max-width: 768px) {
-    .work-details {
-        padding-top: 80px;
-        margin-top: 20px;
-    }
-}
