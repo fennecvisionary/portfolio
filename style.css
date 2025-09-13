@@ -579,16 +579,19 @@ footer a:hover {
     }
 }
 /* Back Button */
-.back-btn {
+.back-btn, .back-to-works {
     display: inline-block;
-    margin: 1rem 2rem;
-    padding: 0.5rem 1rem;
+    padding: 10px 20px;
+    margin: 20px;
     background-color: var(--primary-color);
-    color: #fff;
-    border-radius: 6px;
+    color: white;
     text-decoration: none;
-    font-weight: bold;
+    border-radius: 5px;
     transition: background-color 0.3s ease;
+    font-weight: bold;
+}
+.back-btn:hover, .back-to-works:hover {
+    background-color: #d44d1e;
 }
 .back-btn:hover {
     background-color: #d94a1f;
