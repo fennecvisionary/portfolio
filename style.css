@@ -691,4 +691,14 @@ footer a:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
+/* التعديلات الجديدة الخاصة بصفحة work.html */
+/* لضمان أن محتوى الصفحة يبدأ بعد الهيدر وشريط البحث */
+body main {
+    padding-top: 150px; /* مسافة علوية كافية للمحتوى */
+}
 
+@media (max-width: 768px) {
+    body main {
+        padding-top: 180px; /* مسافة أكبر على الموبايل لتجنب التداخل */
+    }
+}
