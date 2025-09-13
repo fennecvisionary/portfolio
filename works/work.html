@@ -3,32 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل العمل - My Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <title>شعار نظيف وبسيط لشركة تقنية - Fennec Visionary</title>
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
-</head>
-<body class="light-mode rtl">
-    <main>
-        <div class="work-details" data-aos="fade-up">
-            <h1 id="work-title"></h1>
-            <p id="work-details-text"></p>
-            
-            <div id="work-gallery" class="work-gallery slider-container">
-                <div class="slides-wrapper">
-                    </div>
-                <div class="dots-container">
-                    </div>
-            </div>
-            
-            <a href="../index.html" class="back-to-works">العودة إلى الأعمال</a>
-            
-            <div id="disqus_thread"></div>
-            </div>
-    </main>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Poppins:wght@400;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<body class="light-mode ar">
+
+<header class="site-header">
+    <div class="logo">
+        <a href="../">
+            <img src="../images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
+        </a>
+    </div>
+    <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
+        <ul role="list">
+            <li role="listitem"><a href="../#services" data-lang-key="nav_services">خدماتي</a></li>
+            <li role="listitem"><a href="../#tools" data-lang-key="nav_tools">أدواتي</a></li>
+            <li role="listitem"><a href="../#works" data-lang-key="nav_works">أعمالي</a></li>
+            <li role="listitem"><a href="../#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+        </ul>
+    </nav>
+    <div class="header-controls">
+        <select id="language-select">
+            <option value="en">EN</option>
+            <option value="ar" selected>AR</option>
+            <option value="fr">FR</option>
+        </select>
+        <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+</header>
+
+<main id="main-content">
+    <section class="work-details">
+        <h1 class="work-title">شعار نظيف وبسيط لشركة تقنية</h1>
+        <img src="../images/work1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" class="work-image">
+    </section>
+
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function () {
+            this.page.url = window.location.href;
+            this.page.identifier = "work1";
+        };
+        (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://fennecvisionary.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</main>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
