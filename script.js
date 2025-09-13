@@ -390,3 +390,23 @@ noResultsStyle.textContent = `
     }
 `;
 document.head.appendChild(noResultsStyle);
+
+document.addEventListener('DOMContentLoaded', function() {
+    const tags = document.querySelectorAll('.tag-link');
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+
+    tags.forEach(tag => {
+        tag.addEventListener('click', function(event) {
+            event.preventDefault(); // يمنع النقر من التوجه إلى أي مكان
+
+            // يقوم بوضع نص الوسم في شريط البحث
+            searchInput.value = this.textContent.trim();
+
+            // يقوم بتشغيل البحث تلقائياً
+            if(searchButton) {
+                searchButton.click();
+            }
+        });
+    });
+});
