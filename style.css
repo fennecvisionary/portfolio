@@ -649,4 +649,18 @@ footer a:hover {
 .dot:hover {
     background-color: var(--primary-color);
 }
+.back-to-works {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-weight: bold;
+}
 
+.back-to-works:hover {
+    background-color: #d44d1e;
+}
