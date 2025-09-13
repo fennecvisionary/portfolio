@@ -664,9 +664,3 @@ footer a:hover {
 .back-to-works:hover {
     background-color: #d44d1e;
 }
-.slider-container {
-    position: relative;
-    max-width: 100%;
-    margin: 20px auto;
-    overflow: hidden; /* This is the fix! */
-}
