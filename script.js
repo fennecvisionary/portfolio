@@ -392,69 +392,20 @@ noResultsStyle.textContent = `
 document.head.appendChild(noResultsStyle);
 
 document.addEventListener('DOMContentLoaded', function() {
-    const worksContainer = document.querySelector('.works-container .items');
+    const tags = document.querySelectorAll('.tag-link');
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
-    
-    // Function to handle search
-    function filterWorks(searchTerm) {
-        worksContainer.innerHTML = '';
-        
-        // Filter the works based on the search term
-        const filteredWorks = allWorks.filter(work => {
-            const titleMatch = work.title.toLowerCase().includes(searchTerm.toLowerCase());
-            const detailsMatch = work.details.toLowerCase().includes(searchTerm.toLowerCase());
-            
-            // This is the new part: check if any tag includes the search term
-            const tagsMatch = work.tags && work.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
-            
-            return titleMatch || detailsMatch || tagsMatch;
-        });
 
-        // Display the filtered works
-        if (filteredWorks.length > 0) {
-            filteredWorks.forEach(work => {
-                const workItem = createWorkItem(work);
-                worksContainer.appendChild(workItem);
-            });
-        } else {
-            worksContainer.innerHTML = '<p class="no-results">لا توجد نتائج مطابقة لبحثك.</p>';
-        }
-    }
-    
-    // Listen for click on search button
-    if (searchButton) {
-        searchButton.addEventListener('click', function() {
-            filterWorks(searchInput.value.trim());
-        });
-    }
-
-    // Listen for 'Enter' key press in search input
-    if (searchInput) {
-        searchInput.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                filterWorks(searchInput.value.trim());
-            }
-        });
-    }
-
-    // This is the code you found:
-    const tags = document.querySelectorAll('.tag-link');
     tags.forEach(tag => {
         tag.addEventListener('click', function(event) {
             event.preventDefault(); // يمنع النقر من التوجه إلى أي مكان
+
+            // يقوم بوضع نص الوسم في شريط البحث
             searchInput.value = this.textContent.trim();
+
+            // يقوم بتشغيل البحث تلقائياً
             if(searchButton) {
-                searchButton.click(); // يقوم بتشغيل البحث تلقائياً
+                searchButton.click();
             }
-        });
-    });
-
-    // Initial display of all works
-    filterWorks('');
-});
-
-// Assume you have the createWorkItem function here or in script.js
-// function createWorkItem(work) { ... }
         });
 });
