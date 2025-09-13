@@ -7,7 +7,8 @@
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
 </head>
@@ -15,36 +16,38 @@
     
     <a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
 
-    <header class="header">
-        <a href="../index.html" class="logo">
-            <img src="../images/logo-light.png" alt="Logo" class="logo-light">
-            <img src="../images/logo-dark.png" alt="Logo" class="logo-dark">
-        </a>
-        <nav class="navbar">
-            <a href="../index.html#services" class="nav-link" data-lang-key="nav_services">خدماتي</a>
-            <a href="../index.html#tools" class="nav-link" data-lang-key="nav_tools">أدواتي</a>
-            <a href="../index.html#works" class="nav-link" data-lang-key="nav_works">أعمالي</a>
-            <a href="../index.html#contact" class="nav-link" data-lang-key="nav_contact">تواصل معي</a>
+    <header class="site-header">
+        <div class="logo">
+            <a href="../index.html">
+                <img src="../images/logo.png" alt="شعار Fennec Visionary" loading="lazy">
+            </a>
+        </div>
+        <nav class="main-nav" aria-label="قائمة التصفح الرئيسية">
+            <ul role="list">
+                <li role="listitem"><a href="../index.html#services" data-lang-key="nav_services">خدماتي</a></li>
+                <li role="listitem"><a href="../index.html#tools" data-lang-key="nav_tools">أدواتي</a></li>
+                <li role="listitem"><a href="../index.html#works" data-lang-key="nav_works">أعمالي</a></li>
+                <li role="listitem"><a href="../index.html#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+            </ul>
         </nav>
-        <div class="header-actions">
-            <div class="search-container">
-                <input type="text" id="searchInput" class="search-input" placeholder="بحث...">
-                <button id="searchButton" class="search-button"><i class="fas fa-search"></i></button>
-            </div>
-            <select id="language-select" class="language-select">
-                <option value="ar">العربية</option>
-                <option value="en">English</option>
+        <div class="header-controls">
+            <select id="language-select" aria-label="اختر اللغة">
+                <option value="en">EN</option>
+                <option value="ar" selected>AR</option>
+                <option value="fr">FR</option>
             </select>
-            <button id="mode-toggle" class="mode-toggle">
-                <i class="fas fa-sun"></i>
+            <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
+                <i class="fas fa-moon"></i>
             </button>
         </div>
-        <div class="menu-toggle" id="menu-toggle">
-            <i class="fas fa-bars"></i>
-        </div>
     </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
+        <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
+    </div>
+    
     <main id="main-content">
-        <a href="../index.html" class="back-to-works">العودة إلى الأعمال</a>
         <div class="work-details" data-aos="fade-up">
             <h1 id="work-title"></h1>
             <p id="work-details-text"></p>
@@ -55,6 +58,8 @@
                 <div class="dots-container">
                     </div>
             </div>
+            
+            <a href="../index.html" class="back-to-works">العودة إلى الأعمال</a>
             
             <div id="disqus_thread"></div>
             
@@ -191,7 +196,7 @@
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
+    
     <script src="../script.js"></script>
 
 </body>
