@@ -702,3 +702,7 @@ body main {
         padding-top: 180px; /* مسافة أكبر على الموبايل لتجنب التداخل */
     }
 }
+
+.dark-mode .work-details {
+    background-color: var(--dark-card-bg);
+}
