@@ -889,15 +889,3 @@ body.dark-mode .testimonial-card {
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
-/* أنماط خاصة بالشعار الجديد بصيغة SVG */
-.logo-svg {
-  width: 60px; /* أو أي حجم مناسب */
-  height: auto;
-  fill: #f24f14; /* اللون البرتقالي الرئيسي للشعار */
-  transition: fill 0.3s ease;
-}
-
-/* في الوضع الداكن، نغير لون الشعار إلى لون فاتح مناسب للخلفية الداكنة */
-.dark-mode .logo-svg {
-  fill: #232027;
-}
