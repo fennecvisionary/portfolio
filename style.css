@@ -757,13 +757,14 @@ body main {
     background-color: var(--primary-color);
     color: #fff;
 }
-.site-header .logo a,
+/* حل مشكلة الخطين بجانب اللوجو */
 .site-header .main-nav,
 .site-header .header-controls {
-    border: none !important;
-    outline: none !important;
+    border-left: none !important;
+    border-right: none !important;
 }
 
-.site-header .logo {
+.site-header .logo img {
     border: none !important;
+    outline: none !important;
 }
