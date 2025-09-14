@@ -885,3 +885,7 @@ body.dark-mode .testimonial-card {
     font-size: 1.2rem;
     margin: 0 2px;
 }
+/* تنسيق النجوم الفارغة */
+.star-rating .far.fa-star {
+    color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
+}
