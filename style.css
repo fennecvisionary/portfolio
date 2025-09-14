@@ -860,3 +860,18 @@ body.dark-mode .testimonial-card {
     color: var(--primary-color);
     font-size: 0.9rem;
 }
+/* تنسيق الصورة الشخصية للعميل */
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* مسافة بين الصورة والنص */
+    margin-top: 20px;
+}
+
+.client-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* لجعل الصورة دائرية */
+    object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
+    border: 2px solid var(--primary-color);
+}
