@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_email_label: "البريد الإلكتروني: ",
             copy: "© 2025 Fennec Visionary. جميع الحقوق محفوظة.",
             search_placeholder: "ابحث عن عمل..."
+            testimonials_title: "آراء العملاء", // ✨ أضف هذا السطر ✨
         },
         en: {
             skip_link: "Skip to main content",
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_email_label: "Email: ",
             copy: "© 2025 Fennec Visionary. All rights reserved.",
             search_placeholder: "Search for work..."
+            testimonials_title: "Client Testimonials"
         },
         fr: {
             skip_link: "Passer au contenu principal",
@@ -78,6 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_email_label: "E-mail: ",
             copy: "© 2025 Fennec Visionary. Tous droits réservés.",
             search_placeholder: "Rechercher un travail..."
+            testimonials_title: "Témoignages Clients"
         }
     };
 
