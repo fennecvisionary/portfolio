@@ -875,3 +875,13 @@ body.dark-mode .testimonial-card {
     object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
     border: 2px solid var(--primary-color);
 }
+/* تنسيق قسم التقييم بالنجوم */
+.star-rating {
+    margin-bottom: 10px;
+}
+
+.star-rating .fas.fa-star {
+    color: #FFD700; /* اللون الأصفر للنجوم */
+    font-size: 1.2rem;
+    margin: 0 2px;
+}
