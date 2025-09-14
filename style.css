@@ -768,3 +768,14 @@ body main {
 .site-header button {
     outline: none !important;
 }
+/* تنسيق صندوق التعليقات */
+.comments-box {
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 900px;
+    border-radius: 12px;
+    background-color: var(--light-background-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
