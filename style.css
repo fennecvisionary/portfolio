@@ -757,14 +757,15 @@ body main {
     background-color: var(--primary-color);
     color: #fff;
 }
-/* حل مشكلة الخطين بجانب اللوجو */
+/* حل مشكلة الخطوط بجانب اللوجو و تباعد الكلمات في القائمة الرئيسية */
 .site-header .main-nav,
-.site-header .header-controls {
-    border-left: none !important;
-    border-right: none !important;
+.site-header .header-controls,
+.site-header .logo {
+    border: none !important;
 }
 
-.site-header .logo img {
-    border: none !important;
-    outline: none !important;
+.main-nav ul {
+    gap: 0;
+    justify-content: flex-start;
+    word-spacing: normal;
 }
