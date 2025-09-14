@@ -757,15 +757,14 @@ body main {
     background-color: var(--primary-color);
     color: #fff;
 }
-/* حل مشكلة الخطوط بجانب اللوجو و تباعد الكلمات في القائمة الرئيسية */
-.site-header .main-nav,
-.site-header .header-controls,
-.site-header .logo {
-    border: none !important;
+/* حل مشكلة المخطط الخارجي الأزرق عند النقر على الروابط */
+.main-nav a:focus,
+.header-controls button:focus {
+    outline: none !important;
 }
 
-.main-nav ul {
-    gap: 0;
-    justify-content: flex-start;
-    word-spacing: normal;
+/* لمنع الخطوط من الظهور على جميع الروابط والأزرار في رأس الصفحة */
+.site-header a, 
+.site-header button {
+    outline: none !important;
 }
