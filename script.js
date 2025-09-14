@@ -32,6 +32,13 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_email_label: "البريد الإلكتروني: ",
             copy: "© 2025 Fennec Visionary. جميع الحقوق محفوظة.",
             search_placeholder: "ابحث عن عمل..."
+            testimonials_title: "آراء العملاء",
+            comments_title: "💬 شاركنا رأيك",
+            filter_all: "الكل",
+            filter_logo: "شعارات",
+            filter_packaging: "تغليف",
+            filter_social: "سوشيال ميديا"
+         
         },
         en: {
             skip_link: "Skip to main content",
@@ -55,6 +62,11 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_email_label: "Email: ",
             copy: "© 2025 Fennec Visionary. All rights reserved.",
             search_placeholder: "Search for work..."
+            comments_title: "💬 Share Your Opinion",
+            filter_all: "All",
+            filter_logo: "Logos",
+            filter_packaging: "Packaging",
+            filter_social: "Social Media"
         },
         fr: {
             skip_link: "Passer au contenu principal",
@@ -78,6 +90,12 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_email_label: "E-mail: ",
             copy: "© 2025 Fennec Visionary. Tous droits réservés.",
             search_placeholder: "Rechercher un travail..."
+            testimonials_title: "Témoignages Clients",
+            comments_title: "💬 Partagez Votre Avis",
+            filter_all: "Tous",
+            filter_logo: "Logos",
+            filter_packaging: "Emballages",
+            filter_social: "Réseaux Sociaux"
         }
     };
 
