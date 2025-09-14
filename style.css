@@ -889,3 +889,7 @@ body.dark-mode .testimonial-card {
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
+/* هذا الكود يستهدف اللون المحدد داخل الشعار SVG ويغيره إلى الأبيض */
+body.dark-mode .logo-svg path[fill="#232026"] {
+    fill: #ffffff;
+}
