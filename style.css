@@ -779,3 +779,30 @@ body main {
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
 }
+
+/* تنسيقات الوضع الليلي */
+body.dark-mode .comments-box {
+    background-color: var(--dark-secondary-background);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* تنسيق العنوان داخل الصندوق */
+.comments-box h3 {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* التجاوبية مع الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .comments-box {
+        margin: 20px auto;
+        padding: 15px;
+    }
+}
