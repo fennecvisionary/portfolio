@@ -889,3 +889,25 @@ body.dark-mode .testimonial-card {
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
+/* الأنماط العامة لشعار الوضع الفاتح */
+.logo-light {
+    height: 60px; /* أو أي حجم مناسب */
+    width: auto;
+    display: block; /* تأكد من أنه ظاهر افتراضياً */
+}
+
+/* الشعار الداكن يكون مخفياً افتراضياً */
+.logo-dark {
+    height: 60px; /* تأكد من أن الارتفاع متناسق مع الشعار الآخر */
+    width: auto;
+    display: none;
+}
+
+/* أنماط الوضع الداكن */
+.dark-mode .logo-light {
+    display: none; /* إخفاء الشعار الفاتح */
+}
+
+.dark-mode .logo-dark {
+    display: block; /* إظهار الشعار الداكن */
+}
