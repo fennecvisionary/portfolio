@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-       // تحديث نصوص قسم "كيف نعمل"
+       // تحديث نصوص قسم "كيف نعمل"// تحديث نصوص قسم "كيف نعمل"
 document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
 document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
         
