@@ -925,10 +925,13 @@ body.dark-mode .testimonial-card {
 .steps-container {
     display: flex;
     justify-content: center;
+    align-items: stretch; /* يضمن أن جميع العناصر لها نفس الارتفاع */
     gap: 2rem;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+    padding-bottom: 50px; /* مساحة للأيقونات الدائرية في الأسفل */
 }
 
 .step-card {
@@ -938,9 +941,12 @@ body.dark-mode .testimonial-card {
     box-shadow: var(--light-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 200px; /* يسمح للصناديق بالنمو والتصغير */
+    flex: 1 1 200px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .dark-mode .step-card {
@@ -971,11 +977,12 @@ body.dark-mode .testimonial-card {
     transform: rotate(10deg);
 }
 
-/* رقم الخطوة في الزاوية */
-.step-number {
+/* الدائرة الصغيرة في أسفل الصندوق */
+.step-number-circle {
     position: absolute;
-    top: -15px;
-    left: -15px;
+    bottom: -25px; /* يحدد المسافة من الأسفل */
+    left: 50%; /* يضع العنصر في منتصف العنصر الأب */
+    transform: translateX(-50%); /* يحرك العنصر 50% من عرضه ليصبح في المنتصف */
     width: 50px;
     height: 50px;
     background-color: var(--primary-color);
@@ -986,6 +993,13 @@ body.dark-mode .testimonial-card {
     justify-content: center;
     font-weight: bold;
     font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
+}
+
+.step-card:hover .step-number-circle {
+    transform: translateX(-50%) translateY(-5px); /* تأثير تحريك خفيف للأعلى عند التمرير */
 }
 
 .step-title {
