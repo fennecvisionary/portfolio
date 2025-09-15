@@ -438,22 +438,38 @@ document.addEventListener("DOMContentLoaded", () => {
             itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
             itemDiv.setAttribute("data-work-id", work.id);
             
-            let lightboxLinks = '';
-            if (work.galleryImages && work.galleryImages.length > 1) {
-                work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
-                    lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
-                });
-            }
-            
+            // تم تصحيح هذا الجزء ليتوافق مع CSS
             itemDiv.innerHTML = `
-                <a href="${work.mainImage}" data-lightbox="work-gallery-${work.id}" class="work-link" data-title="${work.title}">
+                <div class="work-box">
                     <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
                     <div class="overlay">
-                        <i class="fas fa-eye"></i>
+                        <div class="overlay-content">
+                            <h3>${work.title}</h3>
+                            <div class="buttons">
+                                <a href="${work.mainImage}" data-lightbox="work-gallery-${work.id}" class="view-btn">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="works/work.html?id=${work.id}" class="details-btn">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                            </div>
+                        </div>
                     </div>
-                </a>
-                ${lightboxLinks}
+                </div>
             `;
+
+            // إضافة روابط الـ Lightbox الإضافية بشكل صحيح
+            if (work.galleryImages && work.galleryImages.length > 1) {
+                work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
+                    const lightboxLink = document.createElement("a");
+                    lightboxLink.href = imgSrc;
+                    lightboxLink.setAttribute("data-lightbox", `work-gallery-${work.id}`);
+                    lightboxLink.setAttribute("data-title", `${work.title} - صورة ${imgIndex + 2}`);
+                    lightboxLink.style.display = "none";
+                    itemDiv.appendChild(lightboxLink);
+                });
+            }
+
             worksGrid.appendChild(itemDiv);
         });
         
@@ -465,6 +481,67 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         renderPagination(works);
     }
+    
+    // إنشاء أزرار الترقيم
+    function renderPagination(works) {
+        paginationContainer.innerHTML = '';
+        const pageCount = Math.ceil(works.length / itemsPerPage);
+
+        if (pageCount <= 1) return;
+
+        // زر الصفحة السابقة
+        if (currentPage > 1) {
+            const prevLink = document.createElement("a");
+            prevLink.href = "#works";
+            prevLink.classList.add("page-link", "prev-page");
+            prevLink.innerHTML = '<i class="fas fa-chevron-right"></i>';
+            prevLink.addEventListener("click", (e) => {
+                e.preventDefault();
+                renderWorks(works, currentPage - 1);
+                window.scrollTo({
+                    top: worksGrid.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+            paginationContainer.appendChild(prevLink);
+        }
+
+        // أزرار الصفحات
+        for (let i = 1; i <= pageCount; i++) {
+            const pageLink = document.createElement("a");
+            pageLink.href = "#works";
+            pageLink.classList.add("page-link");
+            if (i === currentPage) pageLink.classList.add("active");
+            pageLink.textContent = i;
+            pageLink.addEventListener("click", (e) => {
+                e.preventDefault();
+                renderWorks(works, i);
+                window.scrollTo({
+                    top: worksGrid.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+            paginationContainer.appendChild(pageLink);
+        }
+
+        // زر الصفحة التالية
+        if (currentPage < pageCount) {
+            const nextLink = document.createElement("a");
+            nextLink.href = "#works";
+            nextLink.classList.add("page-link", "next-page");
+            nextLink.innerHTML = '<i class="fas fa-chevron-left"></i>';
+            nextLink.addEventListener("click", (e) => {
+                e.preventDefault();
+                renderWorks(works, currentPage + 1);
+                window.scrollTo({
+                    top: worksGrid.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+            paginationContainer.appendChild(nextLink);
+        }
+    }
+
 
     // وظيفة البحث والترشيح
     function filterWorks(searchTerm) {
