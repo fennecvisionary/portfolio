@@ -288,7 +288,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // تحديث نص زر البحث
         searchInput.placeholder = translations[lang].search_placeholder;
     }
-
+// إضافة فئة "active" للرابط عند النقر عليه
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(item => item.classList.remove('active'));
+            this.classList.add('active');
+        });
+    });
     // تهيئة الصفحة عند التحميل
     function initialize() {
         // تهيئة الوضع الليلي/النهاري
