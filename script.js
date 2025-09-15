@@ -304,6 +304,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const toolItems = document.querySelectorAll('.tool-item');
     const hoverImage = document.getElementById('hover-tool-image');
 
+  // JavaScript لتأثير النبض وتغيير الصورة
+document.addEventListener('DOMContentLoaded', () => {
+    const dynamicTitle = document.querySelector('.dynamic-text-title');
+    const toolItems = document.querySelectorAll('.tool-item');
+    const hoverImage = document.getElementById('hover-tool-image');
+
     // تأثير النبض على الماوس
     if (dynamicTitle) {
         dynamicTitle.textContent = "مصمم غرافيكي"; // العنوان الثابت
