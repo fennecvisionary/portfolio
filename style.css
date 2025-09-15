@@ -345,6 +345,19 @@ section {
     margin-bottom: 2rem;
     position: relative;
     display: inline-block;
+    /* تأثير ظهور النص من الأسفل */
+    animation: fade-in-up 1s ease-out forwards;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* تأثير نبض الماوس */
@@ -352,7 +365,7 @@ section {
     content: '';
     position: absolute;
     top: 50%;
-    right: -15px; /* Adjust as needed */
+    right: -15px;
     width: 8px;
     height: 8px;
     background-color: var(--primary-color);
@@ -422,11 +435,11 @@ section {
 .availability-dot {
     position: absolute;
     bottom: 10px;
-    left: 50%; /* يضع العنصر في منتصف العنصر الأب */
-    transform: translateX(-50%); /* يحرك العنصر 50% من عرضه ليصبح في المنتصف */
+    left: 50%;
+    transform: translateX(-50%);
     width: 20px;
     height: 20px;
-    background-color: #38c172; /* أخضر */
+    background-color: #38c172;
     border-radius: 50%;
     border: 3px solid var(--light-bg-color);
     animation: availability-pulse 1.5s infinite;
@@ -454,6 +467,8 @@ section {
 .bio-text p {
     color: var(--light-text-color);
     line-height: 1.8;
+    /* تأثير ظهور النص من الأسفل */
+    animation: fade-in-up 1.2s ease-out forwards;
 }
 
 .dark-mode .bio-text p {
@@ -470,6 +485,7 @@ section {
     color: var(--primary-color);
     font-size: 2rem;
     margin-bottom: 1rem;
+    animation: fade-in-up 1.4s ease-out forwards;
 }
 
 .tools-grid {
@@ -510,6 +526,13 @@ section {
 .tool-item img {
     max-width: 60%;
     height: auto;
+    /* تأثير التوهج عند التمرير */
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.tool-item:hover img {
+    filter: drop-shadow(0 0 8px var(--primary-color));
+    transform: scale(1.1);
 }
 
 .hover-image-display {
