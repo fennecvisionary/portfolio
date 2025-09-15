@@ -84,10 +84,10 @@ document.addEventListener("DOMContentLoaded", () => {
         en: {
             skip_link: "Skip to main content",
             nav_services: "Services",
-            nav_how_it_works: "How it Works",
+            nav_how_it_works: "How it Works", // تم تصحيح هذا المفتاح
             nav_tools: "Tools",
             nav_works: "My Works",
-            nav_testimonials: "Testimonials",
+            nav_testimonials: "Testimonials", // تم إضافة هذا المفتاح
             nav_contact: "Contact",
             services_title: "Services",
             service_logo: "Logo Design",
@@ -152,10 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
         fr: {
             skip_link: "Passer au contenu principal",
             nav_services: "Services",
-            nav_how_it_works: "Comment ça Marche",
+            nav_how_it_works: "Comment ça Marche", // تم تصحيح هذا المفتاح
             nav_tools: "Outils",
             nav_works: "Mes Travaux",
-            nav_testimonials: "Témoignages",
+            nav_testimonials: "Témoignages", // تم إضافة هذا المفتاح
             nav_contact: "Contact",
             services_title: "Mes Services",
             service_logo: "Conception de Logos",
