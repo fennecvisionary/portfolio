@@ -903,15 +903,6 @@ body.dark-mode .testimonial-card {
     display: none;
 }
 
-/* أنماط الوضع الداكن */
-.dark-mode .logo-light {
-    display: none; /* إخفاء الشعار الفاتح */
-}
-
-.dark-mode .logo-dark {
-    display: block; /* إظهار الشعار الداكن */
-}
-
 /* تنسيقات قسم "كيف نعمل" */
 .steps-section {
     background-color: var(--light-bg-color);
@@ -931,49 +922,7 @@ body.dark-mode .testimonial-card {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 80px; /* مساحة للأيقونات الدائرية في الأسفل */
-}
-
-.step-card {
-    background-color: var(--light-card-bg);
-    border-radius: 12px;
-    padding: 2.5rem 1.5rem;
-    box-shadow: var(--light-shadow);
-    text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 200px;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-
-.dark-mode .step-card {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
-}
-
-/* تنسيقات قسم "كيف نعمل" */
-.steps-section {
-    background-color: var(--light-bg-color);
-    padding: 5rem 2rem;
-}
-
-.dark-mode .steps-section {
-    background-color: var(--dark-bg-color);
-}
-
-.steps-container {
-    display: flex;
-    justify-content: center;
-    align-items: stretch; /* يضمن أن جميع العناصر لها نفس الارتفاع */
-    gap: 2rem;
-    flex-wrap: wrap;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-    padding-bottom: 80px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
+    padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
 }
 
 .step-card {
@@ -1022,7 +971,7 @@ body.dark-mode .testimonial-card {
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: -10px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
+    bottom: -20px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
