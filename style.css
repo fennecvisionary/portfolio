@@ -911,6 +911,7 @@ body.dark-mode .testimonial-card {
 .dark-mode .logo-dark {
     display: block; /* إظهار الشعار الداكن */
 }
+
 /* تنسيقات قسم "كيف نعمل" */
 .steps-section {
     background-color: var(--light-bg-color);
@@ -924,11 +925,13 @@ body.dark-mode .testimonial-card {
 .steps-container {
     display: flex;
     justify-content: center;
+    align-items: flex-start; /* Ensure all cards align at the top */
     gap: 2rem;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
-    position: relative; /* مهم لإضافة الأسهم */
+    position: relative;
+    padding-bottom: 50px; /* Add space for the new arrow design */
 }
 
 .step-card {
@@ -938,7 +941,7 @@ body.dark-mode .testimonial-card {
     box-shadow: var(--light-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 200px; /* يسمح للصناديق بالنمو والتصغير */
+    flex: 1 1 200px;
     position: relative;
     overflow: hidden;
 }
@@ -985,6 +988,7 @@ body.dark-mode .testimonial-card {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-weight: bold;
     font-size: 1.5rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
@@ -996,34 +1000,47 @@ body.dark-mode .testimonial-card {
 }
 
 /* الأسهم التي تربط بين الخطوات */
-.steps-container::after {
-    content: '';
+.steps-container .step-arrow {
     position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--primary-color);
-    transform: translateY(-50%);
-    z-index: 1;
-}
-
-.step-card:not(:last-child)::after {
-    content: '>'; /* شكل السهم */
-    position: absolute;
-    top: 50%;
-    right: -1rem; /* المسافة بين الكارد والسهم */
-    transform: translateY(-50%);
-    font-size: 2rem;
+    bottom: 0;
+    width: calc((100% - 8rem) / 3); /* يحسب المسافة بين الصناديق */
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
     color: var(--primary-color);
     z-index: 2;
-    font-weight: bold;
+    transition: transform 0.3s ease;
 }
 
-body.rtl .step-card:not(:last-child)::after {
-    content: '<'; /* لتغيير اتجاه السهم في اللغة العربية */
-    left: -1rem;
-    right: auto;
+/* مواقع الأسهم */
+.steps-container .step-arrow.arrow-1 {
+    left: calc(25% + 1rem); /* المسافة بين منتصف الصندوق الأول والثاني */
+}
+
+.steps-container .step-arrow.arrow-2 {
+    left: calc(50% + 1rem); /* المسافة بين منتصف الصندوق الثاني والثالث */
+}
+
+.steps-container .step-arrow.arrow-3 {
+    left: calc(75% + 1rem); /* المسافة بين منتصف الصندوق الثالث والرابع */
+}
+
+.steps-container .step-arrow::after {
+    content: '\2192'; /* سهم لليمين */
+}
+
+body.rtl .steps-container .step-arrow::after {
+    content: '\2190'; /* سهم لليسار في اللغة العربية */
+}
+
+/* تأثير تحريك السهم عند التمرير على الخطوات */
+.step-card:hover + .step-arrow,
+.step-card:nth-child(2):hover ~ .step-arrow.arrow-1,
+.step-card:nth-child(3):hover ~ .step-arrow.arrow-1,
+.step-card:nth-child(3):hover ~ .step-arrow.arrow-2 {
+    transform: translateY(-5px);
 }
 
 .step-title {
@@ -1048,26 +1065,18 @@ body.rtl .step-card:not(:last-child)::after {
         flex-direction: column;
         align-items: center;
     }
-    .steps-container::after {
-        content: '';
-        top: 0;
-        bottom: 0;
+    .steps-container .step-arrow {
+        width: auto;
+        height: 50px;
+        bottom: auto;
         left: 50%;
-        right: auto;
-        width: 2px;
-        height: auto;
         transform: translateX(-50%);
     }
-    .step-card:not(:last-child)::after {
+    .steps-container .step-arrow::after {
         content: '\2193'; /* سهم لأسفل */
-        top: auto;
-        bottom: -2rem;
-        left: 50%;
-        right: auto;
-        transform: translateX(-50%);
     }
-    body.rtl .step-card:not(:last-child)::after {
-        left: 50%;
-        right: auto;
-    }
+    
+    .steps-container .step-arrow.arrow-1 { top: calc(25% + 1rem); }
+    .steps-container .step-arrow.arrow-2 { top: calc(50% + 1rem); }
+    .steps-container .step-arrow.arrow-3 { top: calc(75% + 1rem); }
 }
