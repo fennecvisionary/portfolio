@@ -280,21 +280,16 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // تحديث النصوص في قسم "كيف نعمل"
-        document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
-        document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
+       // تحديث نصوص قسم "كيف نعمل"
+document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
+document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
         
-        document.querySelector('.steps-container .step-card:nth-of-type(1) .step-title').textContent = translations[lang]['step1Title'];
-        document.querySelector('.steps-container .step-card:nth-of-type(1) .step-description').textContent = translations[lang]['step1Desc'];
-        
-        document.querySelector('.steps-container .step-card:nth-of-type(2) .step-title').textContent = translations[lang]['step2Title'];
-        document.querySelector('.steps-container .step-card:nth-of-type(2) .step-description').textContent = translations[lang]['step2Desc'];
-        
-        document.querySelector('.steps-container .step-card:nth-of-type(3) .step-title').textContent = translations[lang]['step3Title'];
-        document.querySelector('.steps-container .step-card:nth-of-type(3) .step-description').textContent = translations[lang]['step3Desc'];
-        
-        document.querySelector('.steps-container .step-card:nth-of-type(4) .step-title').textContent = translations[lang]['step4Title'];
-        document.querySelector('.steps-container .step-card:nth-of-type(4) .step-description').textContent = translations[lang]['step4Desc'];
+// تحديث نصوص كل خطوة بشكل ديناميكي
+for (let i = 1; i <= 4; i++) {
+    document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-title`).textContent = translations[lang][`step${i}Title`];
+    document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-description`).textContent = translations[lang][`step${i}Desc`];
+    document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-number-circle`).textContent = translations[lang][`step${i}_number`];
+}
 
         // تحديث نصوص آراء العملاء
         for (let i = 1; i <= 10; i++) {
