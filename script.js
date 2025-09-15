@@ -379,37 +379,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // بيانات الأعمال
-    const totalWorks = 100;
-    const itemsPerPage = 16;
-    let allWorks = [];
-    let currentPage = 1;
+     // بيانات الأعمال
+const totalWorks = 100;
+const itemsPerPage = 16;
+let allWorks = [];
 
-    // فئات الأعمال
-    const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
+// فئات الأعمال
+const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
 
-    // إنشاء بيانات الأعمال بشكل ديناميكي
-    for (let i = 1; i <= totalWorks; i++) {
-        const categoryIndex = (i - 1) % workCategories.length;
-        const category = workCategories[categoryIndex];
-        
-        const galleryImages = [
-            `images/work${i}/1.jpg`,
-            `images/work${i}/2.jpg`,
-            `images/work${i}/3.jpg`
-        ];
-        
-        allWorks.push({
-            id: `work${i}`,
-            title: `تصميم ${category} رقم ${i}`,
-            mainImage: galleryImages[0],
-            galleryImages: galleryImages,
-            category: category,
-            details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-        });
-    }
-
-    // عرض الأعمال في الشبكة
+// إنشاء بيانات الأعمال بشكل ديناميكي
+for (let i = 1; i <= totalWorks; i++) {
+    const categoryIndex = (i - 1) % workCategories.length;
+    const category = workCategories[categoryIndex];
+    
+    // إنشاء مصفوفة من 3 صور لكل عمل
+    const galleryImages = [
+        `images/work${i}/1.jpg`,
+        `images/work${i}/2.jpg`,
+        `images/work${i}/3.jpg`
+    ];
+    
+    allWorks.push({
+        id: `work${i}`,
+        title: `تصميم ${category} رقم ${i}`,
+        mainImage: galleryImages[0], // الصورة الرئيسية التي تظهر في الشبكة
+        galleryImages: galleryImages, // جميع صور هذا العمل
+        category: category,
+        details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
+    });
+}
+  
+ // عرض الأعمال في الشبكة
     function renderWorks(works, page = 1) {
         worksGrid.innerHTML = '';
         currentPage = page;
@@ -419,12 +419,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const paginatedItems = works.slice(start, end);
 
         if (paginatedItems.length === 0) {
-            const currentLang = localStorage.getItem("language") || "ar";
             worksGrid.innerHTML = `
                 <div class="no-results">
                     <i class="fas fa-search"></i>
-                    <h3>${translations[currentLang].no_results_heading}</h3>
-                    <p>${translations[currentLang].no_results_text}</p>
+                    <h3>لم يتم العثور على نتائج</h3>
+                    <p>جرب استخدام كلمات بحث أخرى</p>
                 </div>
             `;
             paginationContainer.innerHTML = '';
@@ -438,50 +437,30 @@ document.addEventListener("DOMContentLoaded", () => {
             itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
             itemDiv.setAttribute("data-work-id", work.id);
             
-            // تم تصحيح هذا الجزء ليتوافق مع CSS
-            itemDiv.innerHTML = `
-                <div class="work-box">
-                    <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
-                    <div class="overlay">
-                        <div class="overlay-content">
-                            <h3>${work.title}</h3>
-                            <div class="buttons">
-                                <a href="${work.mainImage}" data-lightbox="work-gallery-${work.id}" class="view-btn">
-                                    <i class="fas fa-eye"></i>
-                                </a>
-                                <a href="works/work.html?id=${work.id}" class="details-btn">
-                                    <i class="fas fa-info-circle"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            // إضافة روابط الـ Lightbox الإضافية بشكل صحيح
+            let lightboxLinks = '';
             if (work.galleryImages && work.galleryImages.length > 1) {
                 work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
-                    const lightboxLink = document.createElement("a");
-                    lightboxLink.href = imgSrc;
-                    lightboxLink.setAttribute("data-lightbox", `work-gallery-${work.id}`);
-                    lightboxLink.setAttribute("data-title", `${work.title} - صورة ${imgIndex + 2}`);
-                    lightboxLink.style.display = "none";
-                    itemDiv.appendChild(lightboxLink);
+                    lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${work.id}" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
                 });
             }
-
+            
+            itemDiv.innerHTML = `
+                <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
+                    <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
+                    <div class="overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </a>
+                ${lightboxLinks}
+            `;
             worksGrid.appendChild(itemDiv);
         });
         
-        if (typeof AOS !== 'undefined') {
-            AOS.refresh();
-        }
-        if (typeof lightbox !== 'undefined') {
-            lightbox.init();
-        }
+        // تحديث أزرار AOS بعد إضافة العناصر
+        AOS.refresh();
         renderPagination(works);
     }
-    
+
     // إنشاء أزرار الترقيم
     function renderPagination(works) {
         paginationContainer.innerHTML = '';
@@ -541,7 +520,6 @@ document.addEventListener("DOMContentLoaded", () => {
             paginationContainer.appendChild(nextLink);
         }
     }
-
 
     // وظيفة البحث والترشيح
     function filterWorks(searchTerm) {
