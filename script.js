@@ -242,7 +242,35 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+ // تحديث النصوص في قسم "كيف نعمل"
+        document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
+        document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(1) .step-title').textContent = translations[lang]['step1Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(1) .step-description').textContent = translations[lang]['step1Desc'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(2) .step-title').textContent = translations[lang]['step2Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(2) .step-description').textContent = translations[lang]['step2Desc'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(3) .step-title').textContent = translations[lang]['step3Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(3) .step-description').textContent = translations[lang]['step3Desc'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(4) .step-title').textContent = translations[lang]['step4Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(4) .step-description').textContent = translations[lang]['step4Desc'];
 
+        // تحديث نصوص آراء العملاء
+        for (let i = 1; i <= 10; i++) {
+            const testimonialCard = document.querySelector(`.testimonial-card:nth-of-type(${i})`);
+            if (testimonialCard) {
+                const nameElement = testimonialCard.querySelector('h4');
+                const roleElement = testimonialCard.querySelector('span');
+                const textElement = testimonialCard.querySelector('p');
+                
+                if (nameElement) nameElement.textContent = translations[lang][`testimonial_${i}_name`];
+                if (roleElement) roleElement.textContent = translations[lang][`testimonial_${i}_role`];
+                if (textElement) textElement.textContent = translations[lang][`testimonial_${i}_text`];
+            }
+        }
         // تحديث اتجاه الصفحة (RTL/LTR)
         if (lang === "ar") {
             document.documentElement.dir = "rtl";
