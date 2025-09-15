@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const paginationContainer = document.getElementById("pagination-container");
     const searchInput = document.getElementById("searchInput");
     const searchButton = document.getElementById("searchButton");
+    const tags = document.querySelectorAll('.tag-link');
 
     // بيانات اللغات
     const translations = {
@@ -31,7 +32,19 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_phone_label: "الهاتف: ",
             contact_email_label: "البريد الإلكتروني: ",
             copy: "© 2025 Fennec Visionary. جميع الحقوق محفوظة.",
-            search_placeholder: "ابحث عن عمل..."
+            search_placeholder: "ابحث عن عمل...",
+            no_results_heading: "لم يتم العثور على نتائج",
+            no_results_text: "جرب استخدام كلمات بحث أخرى",
+            howItWorksTitle: 'كيف نعمل',
+            howItWorksSubtitle: 'مرحلة التعاون الواضحة، المصممة لتقديم نتائج حقيقية.',
+            step1Title: 'الخطوة 1: الاستكشاف',
+            step1Desc: 'أبدأ بالتعمق في عملك وأهدافك وجمهورك. كل قرار مبني على وضوح، وليس على التخمين.',
+            step2Title: 'الخطوة 2: التحديد',
+            step2Desc: 'من الاستراتيجية إلى لوحات المزاج والتوجه الإبداعي، أقوم برسم كيف يجب أن تبدو علامتك التجارية وتشعُر بها وتتواصل.',
+            step3Title: 'الخطوة 3: التصميم',
+            step3Desc: 'هنا تتحول الرؤية إلى حقيقة. شعارات، أنظمة هوية، حركة والمزيد. كل ذلك مصمم للتواصل والبناء ليصمد.',
+            step4Title: 'الخطوة 4: التسليم',
+            step4Desc: 'الأصول النهائية، إرشادات العلامة التجارية، وحزمة التوديع لمساعدتك على الانطلاق بثقة. الدعم المستمر متاح.'
         },
         en: {
             skip_link: "Skip to main content",
@@ -54,7 +67,19 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_phone_label: "Phone: ",
             contact_email_label: "Email: ",
             copy: "© 2025 Fennec Visionary. All rights reserved.",
-            search_placeholder: "Search for work..."
+            search_placeholder: "Search for work...",
+            no_results_heading: "No Results Found",
+            no_results_text: "Try using different keywords",
+            howItWorksTitle: 'How It All Works',
+            howItWorksSubtitle: 'A clear collaborative process built to deliver real results.',
+            step1Title: 'Step 1: Discover',
+            step1Desc: 'I begin with a deep dive into your business, goals, and audience. Every decision is grounded in clarity, not guesswork.',
+            step2Title: 'Step 2: Define',
+            step2Desc: 'From strategy to moodboards to creative direction, I map out how your brand should look, feel and communicate.',
+            step3Title: 'Step 3: Design',
+            step3Desc: 'This is where the vision comes to life. Logos, identity systems, motion and more. All crafted to connect and built to last.',
+            step4Title: 'Step 4: Deliver',
+            step4Desc: 'Final assets, brand guidelines and a goodbye packet to help you launch with confidence. Ongoing support is available.'
         },
         fr: {
             skip_link: "Passer au contenu principal",
@@ -77,9 +102,57 @@ document.addEventListener("DOMContentLoaded", () => {
             contact_phone_label: "Téléphone: ",
             contact_email_label: "E-mail: ",
             copy: "© 2025 Fennec Visionary. Tous droits réservés.",
-            search_placeholder: "Rechercher un travail..."
+            search_placeholder: "Rechercher un travail...",
+            no_results_heading: "Aucun Résultat Trouvé",
+            no_results_text: "Essayez d'utiliser des mots-clés différents",
+            howItWorksTitle: 'Comment ça Marche',
+            howItWorksSubtitle: 'Un processus collaboratif clair conçu pour produire de vrais résultats.',
+            step1Title: 'Étape 1 : Découvrir',
+            step1Desc: 'Je commence par une immersion profonde dans votre entreprise, vos objectifs et votre public. Chaque décision est basée sur la clarté, pas sur des suppositions.',
+            step2Title: 'Étape 2 : Définir',
+            step2Desc: 'De la stratégie aux tableaux d\'ambiance en passant par la direction créative, je définis comment votre marque doit paraître, se sentir et communiquer.',
+            step3Title: 'Étape 3 : Concevoir',
+            step3Desc: 'C\'est ici que la vision prend vie. Logos, systèmes d\'identité, mouvement et plus encore. Le tout conçu pour se connecter et durer.',
+            step4Title: 'Étape 4 : Livrer',
+            step4Desc: 'Les actifs finaux, les directives de marque et un paquet d\'adieu pour vous aider à vous lancer en toute confiance. Un soutien continu est disponible.'
         }
     };
+
+    // إضافة أنماط للنتائج غير الموجودة
+    const noResultsStyle = document.createElement('style');
+    noResultsStyle.textContent = `
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 3rem;
+            color: var(--light-text-color);
+        }
+        .dark-mode .no-results {
+            color: var(--dark-text-color);
+        }
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        .no-results h3 {
+            margin-bottom: 0.5rem;
+            color: inherit;
+        }
+        .page-link.prev-page, .page-link.next-page {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body.rtl .page-link.prev-page i {
+            transform: rotate(180deg);
+        }
+        body.rtl .page-link.next-page i {
+            transform: rotate(180deg);
+        }
+    `;
+    document.head.appendChild(noResultsStyle);
 
     // وظيفة تبديل الوضع (ليلي/نهاري)
     function toggleMode() {
@@ -93,6 +166,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // وظيفة تبديل اللغة
     function setLanguage(lang) {
+        // تحديث النصوص باستخدام data-lang-key
         document.querySelectorAll("[data-lang-key]").forEach(element => {
             const key = element.getAttribute("data-lang-key");
             const translation = translations[lang][key];
@@ -104,6 +178,22 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
         });
+
+        // تحديث النصوص في قسم "كيف نعمل"
+        document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
+        document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(1) .step-title').textContent = translations[lang]['step1Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(1) .step-description').textContent = translations[lang]['step1Desc'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(2) .step-title').textContent = translations[lang]['step2Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(2) .step-description').textContent = translations[lang]['step2Desc'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(3) .step-title').textContent = translations[lang]['step3Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(3) .step-description').textContent = translations[lang]['step3Desc'];
+        
+        document.querySelector('.steps-container .step-card:nth-of-type(4) .step-title').textContent = translations[lang]['step4Title'];
+        document.querySelector('.steps-container .step-card:nth-of-type(4) .step-description').textContent = translations[lang]['step4Desc'];
 
         // تحديث اتجاه الصفحة (RTL/LTR)
         if (lang === "ar") {
@@ -119,7 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         localStorage.setItem("language", lang);
         
-        // تحديث نص زر البحث
+        // تحديث placeholder لـ searchInput
         searchInput.placeholder = translations[lang].search_placeholder;
     }
 
@@ -128,13 +218,13 @@ document.addEventListener("DOMContentLoaded", () => {
         // تهيئة الوضع الليلي/النهاري
         const savedMode = localStorage.getItem("darkMode");
         if (savedMode === "true") {
-            body.classList.remove("light-mode");
             body.classList.add("dark-mode");
+            body.classList.remove("light-mode");
             modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
             modeToggle.setAttribute('aria-label', 'تفعيل الوضع الفاتح');
         } else {
-            body.classList.remove("dark-mode");
             body.classList.add("light-mode");
+            body.classList.remove("dark-mode");
             modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
             modeToggle.setAttribute('aria-label', 'تفعيل الوضع الداكن');
         }
@@ -145,53 +235,57 @@ document.addEventListener("DOMContentLoaded", () => {
         setLanguage(savedLang);
 
         // تهيئة AOS
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out',
-            once: true,
-            mirror: false
-        });
+        if (typeof AOS !== 'undefined') {
+            AOS.init({
+                duration: 1000,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+            });
+        }
 
         // تهيئة Lightbox
-        lightbox.option({
-            'resizeDuration': 200,
-            'wrapAround': true,
-            'showImageNumberLabel': true,
-            'positionFromTop': 100
+        if (typeof lightbox !== 'undefined') {
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'showImageNumberLabel': true,
+                'positionFromTop': 100
+            });
+        }
+    }
+
+    // بيانات الأعمال
+    const totalWorks = 100;
+    const itemsPerPage = 16;
+    let allWorks = [];
+    let currentPage = 1;
+
+    // فئات الأعمال
+    const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
+
+    // إنشاء بيانات الأعمال بشكل ديناميكي
+    for (let i = 1; i <= totalWorks; i++) {
+        const categoryIndex = (i - 1) % workCategories.length;
+        const category = workCategories[categoryIndex];
+        
+        const galleryImages = [
+            `images/work${i}/1.jpg`,
+            `images/work${i}/2.jpg`,
+            `images/work${i}/3.jpg`
+        ];
+        
+        allWorks.push({
+            id: `work${i}`,
+            title: `تصميم ${category} رقم ${i}`,
+            mainImage: galleryImages[0],
+            galleryImages: galleryImages,
+            category: category,
+            details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
         });
     }
 
-   // بيانات الأعمال
-const totalWorks = 100;
-const itemsPerPage = 16;
-let allWorks = [];
-
-// فئات الأعمال
-const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
-
-// إنشاء بيانات الأعمال بشكل ديناميكي
-for (let i = 1; i <= totalWorks; i++) {
-    const categoryIndex = (i - 1) % workCategories.length;
-    const category = workCategories[categoryIndex];
-    
-    // إنشاء مصفوفة من 3 صور لكل عمل
-    const galleryImages = [
-        `images/work${i}/1.jpg`,
-        `images/work${i}/2.jpg`,
-        `images/work${i}/3.jpg`
-    ];
-    
-    allWorks.push({
-        id: `work${i}`,
-        title: `تصميم ${category} رقم ${i}`,
-        mainImage: galleryImages[0], // الصورة الرئيسية التي تظهر في الشبكة
-        galleryImages: galleryImages, // جميع صور هذا العمل
-        category: category,
-        details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-    });
-}
-  
- // عرض الأعمال في الشبكة
+    // عرض الأعمال في الشبكة
     function renderWorks(works, page = 1) {
         worksGrid.innerHTML = '';
         currentPage = page;
@@ -201,11 +295,12 @@ for (let i = 1; i <= totalWorks; i++) {
         const paginatedItems = works.slice(start, end);
 
         if (paginatedItems.length === 0) {
+            const currentLang = localStorage.getItem("language") || "ar";
             worksGrid.innerHTML = `
                 <div class="no-results">
                     <i class="fas fa-search"></i>
-                    <h3>لم يتم العثور على نتائج</h3>
-                    <p>جرب استخدام كلمات بحث أخرى</p>
+                    <h3>${translations[currentLang].no_results_heading}</h3>
+                    <p>${translations[currentLang].no_results_text}</p>
                 </div>
             `;
             paginationContainer.innerHTML = '';
@@ -227,7 +322,7 @@ for (let i = 1; i <= totalWorks; i++) {
             }
             
             itemDiv.innerHTML = `
-                <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
+                <a href="${work.mainImage}" data-lightbox="work-gallery-${work.id}" class="work-link" data-title="${work.title}">
                     <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
                     <div class="overlay">
                         <i class="fas fa-eye"></i>
@@ -238,8 +333,12 @@ for (let i = 1; i <= totalWorks; i++) {
             worksGrid.appendChild(itemDiv);
         });
         
-        // تحديث أزرار AOS بعد إضافة العناصر
-        AOS.refresh();
+        if (typeof AOS !== 'undefined') {
+            AOS.refresh();
+        }
+        if (typeof lightbox !== 'undefined') {
+            lightbox.init();
+        }
         renderPagination(works);
     }
 
@@ -333,6 +432,7 @@ for (let i = 1; i <= totalWorks; i++) {
     // البحث عند الضغط على Enter
     searchInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
+            e.preventDefault();
             const filteredWorks = filterWorks(searchInput.value);
             renderWorks(filteredWorks, 1);
         }
@@ -340,73 +440,32 @@ for (let i = 1; i <= totalWorks; i++) {
 
     // إضافة المستمعين للأحداث
     modeToggle.addEventListener("click", toggleMode);
-    languageSelect.addEventListener("change", (e) => setLanguage(e.target.value));
+    languageSelect.addEventListener("change", (e) => {
+        setLanguage(e.target.value);
+        // أعد عرض الأعمال بعد تغيير اللغة لتحديث النصوص
+        renderWorks(allWorks, currentPage);
+    });
+
+    // إضافة مستمعي الأحداث للوسوم
+    tags.forEach(tag => {
+        tag.addEventListener('click', function(event) {
+            event.preventDefault();
+            const searchTerm = this.textContent.trim();
+            searchInput.value = searchTerm;
+            const filteredWorks = filterWorks(searchTerm);
+            renderWorks(filteredWorks, 1);
+            
+            // تمرير الشاشة إلى قسم الأعمال
+            window.scrollTo({
+                top: worksGrid.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+    });
 
     // تشغيل وظيفة التهيئة عند تحميل الصفحة
     initialize();
 
     // عرض الأعمال للمرة الأولى
     renderWorks(allWorks, 1);
-});
-
-// إضافة أنماط للنتائج غير الموجودة
-const noResultsStyle = document.createElement('style');
-noResultsStyle.textContent = `
-    .no-results {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 3rem;
-        color: #888;
-    }
-    
-    .no-results i {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-    
-    .no-results h3 {
-        margin-bottom: 0.5rem;
-        color: var(--light-text-color);
-    }
-    
-    .dark-mode .no-results h3 {
-        color: var(--dark-text-color);
-    }
-    
-    .page-link.prev-page, .page-link.next-page {
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    body.rtl .page-link.prev-page i {
-        transform: rotate(180deg);
-    }
-    
-    body.rtl .page-link.next-page i {
-        transform: rotate(180deg);
-    }
-`;
-document.head.appendChild(noResultsStyle);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const tags = document.querySelectorAll('.tag-link');
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-
-    tags.forEach(tag => {
-        tag.addEventListener('click', function(event) {
-            event.preventDefault(); // يمنع النقر من التوجه إلى أي مكان
-
-            // يقوم بوضع نص الوسم في شريط البحث
-            searchInput.value = this.textContent.trim();
-
-            // يقوم بتشغيل البحث تلقائياً
-            if(searchButton) {
-                searchButton.click();
-            }
-        });
-    });
 });
