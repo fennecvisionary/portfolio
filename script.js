@@ -335,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
    // بيانات الأعمال
 const totalWorks = 100;
-const itemsPerPage = 16;
+const itemsPerPage = 12;
 let allWorks = [];
 
 // فئات الأعمال
@@ -475,7 +475,7 @@ for (let i = 1; i <= totalWorks; i++) {
         }
     }
 
-    // وظيفة البحث والترشيح
+    وظيفة البحث والترشيح
     function filterWorks(searchTerm) {
         searchTerm = searchTerm.toLowerCase().trim();
         
@@ -505,6 +505,7 @@ for (let i = 1; i <= totalWorks; i++) {
     // البحث عند الضغط على Enter
     searchInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
+            e.preventDefault();
             const filteredWorks = filterWorks(searchInput.value);
             renderWorks(filteredWorks, 1);
         }
@@ -512,73 +513,30 @@ for (let i = 1; i <= totalWorks; i++) {
 
     // إضافة المستمعين للأحداث
     modeToggle.addEventListener("click", toggleMode);
-    languageSelect.addEventListener("change", (e) => setLanguage(e.target.value));
+    languageSelect.addEventListener("change", (e) => {
+        setLanguage(e.target.value);
+        renderWorks(allWorks, currentPage);
+    });
+
+    // إضافة مستمعي الأحداث للوسوم
+    tags.forEach(tag => {
+        tag.addEventListener('click', function(event) {
+            event.preventDefault();
+            const searchTerm = this.textContent.trim();
+            searchInput.value = searchTerm;
+            const filteredWorks = filterWorks(searchTerm);
+            renderWorks(filteredWorks, 1);
+            
+            window.scrollTo({
+                top: worksGrid.offsetTop - 100,
+                behavior: 'smooth'
+            });
+        });
+    });
 
     // تشغيل وظيفة التهيئة عند تحميل الصفحة
     initialize();
 
     // عرض الأعمال للمرة الأولى
     renderWorks(allWorks, 1);
-});
-
-// إضافة أنماط للنتائج غير الموجودة
-const noResultsStyle = document.createElement('style');
-noResultsStyle.textContent = `
-    .no-results {
-        grid-column: 1 / -1;
-        text-align: center;
-        padding: 3rem;
-        color: #888;
-    }
-    
-    .no-results i {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        color: var(--primary-color);
-    }
-    
-    .no-results h3 {
-        margin-bottom: 0.5rem;
-        color: var(--light-text-color);
-    }
-    
-    .dark-mode .no-results h3 {
-        color: var(--dark-text-color);
-    }
-    
-    .page-link.prev-page, .page-link.next-page {
-        font-size: 0.9rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    
-    body.rtl .page-link.prev-page i {
-        transform: rotate(180deg);
-    }
-    
-    body.rtl .page-link.next-page i {
-        transform: rotate(180deg);
-    }
-`;
-document.head.appendChild(noResultsStyle);
-
-document.addEventListener('DOMContentLoaded', function() {
-    const tags = document.querySelectorAll('.tag-link');
-    const searchInput = document.getElementById('searchInput');
-    const searchButton = document.getElementById('searchButton');
-
-    tags.forEach(tag => {
-        tag.addEventListener('click', function(event) {
-            event.preventDefault(); // يمنع النقر من التوجه إلى أي مكان
-
-            // يقوم بوضع نص الوسم في شريط البحث
-            searchInput.value = this.textContent.trim();
-
-            // يقوم بتشغيل البحث تلقائياً
-            if(searchButton) {
-                searchButton.click();
-            }
-        });
-    });
 });
