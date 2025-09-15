@@ -973,7 +973,7 @@ body.dark-mode .testimonial-card {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 30px; /* مساحة للأيقونات الدائرية في الأسفل */
+    padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
 }
 
 .step-card {
@@ -1016,19 +1016,19 @@ body.dark-mode .testimonial-card {
 
 /* تأثير دوران الأيقونة عند التمرير */
 .step-card:hover .step-icon i {
-    transform: rotate(15deg);
+    transform: rotate(10deg);
 }
 
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: -25px; /* يحدد المسافة من الأسفل */
-    left: 50%; /* يضع العنصر في منتصف العنصر الأب */
-    transform: translateX(-50%); /* يحرك العنصر 50% من عرضه ليصبح في المنتصف */
+    bottom: -20px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
+    left: 50%;
+    transform: translateX(-50%);
     width: 50px;
     height: 50px;
     background-color: var(--primary-color);
-    color: #fff;
+    color: #fff; /* تم التأكد من أن لون الأرقام أبيض */
     border-radius: 50%;
     display: flex;
     align-items: center;
