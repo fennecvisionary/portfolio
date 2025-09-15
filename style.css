@@ -3,495 +3,513 @@
 
 /* CSS Custom Properties for theming */
 :root {
-    --light-bg-color: #f0f2f5;
-    --light-card-bg: #ffffff;
-    --light-text-color: #333333;
-    --light-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --light-bg-color: #f0f2f5;
+    --light-card-bg: #ffffff;
+    --light-text-color: #333333;
+    --light-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-    --dark-bg-color: #1a1a1a;
-    --dark-card-bg: #2d2d2d;
-    --dark-text-color: #e0e0e0;
-    --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --dark-bg-color: #1a1a1a;
+    --dark-card-bg: #2d2d2d;
+    --dark-text-color: #e0e0e0;
+    --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
-    --primary-color: #f75723; /* Orange */
-    --secondary-color: #2a2a2a; /* Dark Gray */
-    --font-family-body: 'Poppins', sans-serif;
-    --font-family-heading: 'Poppins', sans-serif;
-    --font-family-arabic: 'Tajawal', sans-serif;
+    --primary-color: #f75723; /* Orange */
+    --secondary-color: #2a2a2a; /* Dark Gray */
+    --font-family-body: 'Poppins', sans-serif;
+    --font-family-heading: 'Poppins', sans-serif;
+    --font-family-arabic: 'Tajawal', sans-serif;
 }
 
 /* Base Styles & Theming */
 html {
-    scroll-behavior: smooth; /* Smooth scrolling */
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
 body {
-    margin: 0;
-    font-family: var(--font-family-body);
-    line-height: 1.6;
-    transition: background-color 0.5s ease, color 0.5s ease;
+    margin: 0;
+    font-family: var(--font-family-body);
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .light-mode {
-    background-color: var(--light-bg-color);
-    color: var(--light-text-color);
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
 }
 
 .dark-mode {
-    background-color: var(--dark-bg-color);
-    color: var(--dark-text-color);
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
 }
 
 .dark-mode .site-header,
 .dark-mode .service-item,
 .dark-mode .item {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
 
 .dark-mode .service-item,
 .dark-mode .item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode h2,
 .dark-mode .main-nav a:hover,
 .dark-mode .service-item i,
 .dark-mode .socials a {
-    color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .dark-mode .main-nav a {
-    color: var(--dark-text-color);
+    color: var(--dark-text-color);
 }
 
 h2 {
-    font-family: var(--font-family-heading);
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
-    color: var(--primary-color);
-    text-align: center;
+    font-family: var(--font-family-heading);
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+    text-align: center;
 }
 
 /* Language Direction Styles */
 body.rtl {
-    direction: rtl;
-    text-align: right;
-    font-family: var(--font-family-arabic); /* تطبيق الخط العربي هنا */
+    direction: rtl;
+    text-align: right;
+    font-family: var(--font-family-arabic);
 }
 
 body.ltr {
-    direction: ltr;
-    text-align: left;
+    direction: ltr;
+    text-align: left;
 }
 
 body.rtl .site-header {
-    flex-direction: row;
+    flex-direction: row;
 }
 
 body.ltr .site-header {
-    flex-direction: row;
+    flex-direction: row;
 }
 
 body.rtl .main-nav ul {
-    flex-direction: row;
+    flex-direction: row;
 }
 
 body.ltr .main-nav ul {
-    flex-direction: row;
+    flex-direction: row;
 }
 
 body.rtl .main-nav li {
-    margin-left: 1.5rem;
-    margin-right: 0;
+    margin-left: 1.5rem;
+    margin-right: 0;
 }
 
 body.ltr .main-nav li {
-    margin-left: 0;
-    margin-right: 1.5rem;
+    margin-left: 0;
+    margin-right: 1.5rem;
 }
 
 /* Header & Navigation */
 .site-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: var(--light-card-bg);
-    box-shadow: var(--light-shadow);
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 2rem; /* تم تقليل الـ padding */
+    background-color: var(--light-card-bg);
+    box-shadow: var(--light-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.logo img {
+/* الأنماط العامة للشعارات */
+.logo-light,
+.logo-dark {
     height: 60px;
+    width: auto;
     vertical-align: middle;
 }
 
+/* أنماط الشعار الافتراضي (الوضع الفاتح) */
+.logo-dark {
+    display: none; /* إخفاء الشعار الداكن بشكل افتراضي */
+}
+
+/* أنماط الوضع الداكن */
+.dark-mode .logo-light {
+    display: none; /* إخفاء الشعار الفاتح عند تفعيل الوضع الداكن */
+}
+
+.dark-mode .logo-dark {
+    display: block; /* إظهار الشعار الداكن عند تفعيل الوضع الداكن */
+}
+
 .main-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 .main-nav li {
-    margin: 0 1.5rem;
+    margin: 0 1.5rem;
 }
 
 .main-nav a {
-    text-decoration: none;
-    font-weight: 600;
-    transition: color 0.3s ease;
-    color: var(--light-text-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    color: var(--light-text-color);
 }
 
 .main-nav a:hover {
-    color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .header-controls {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
 }
 
 #mode-toggle {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--primary-color);
-    transition: transform 0.3s ease;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
 }
 
 #mode-toggle:hover {
-    transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 #language-select {
-    border: 1px solid var(--primary-color);
-    border-radius: 5px;
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
-    background: var(--light-card-bg);
-    color: var(--primary-color);
-    cursor: pointer;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    padding: 0.25rem 0.5rem;
+    font-size: 1rem;
+    background: var(--light-card-bg);
+    color: var(--primary-color);
+    cursor: pointer;
 }
 
 .dark-mode #language-select {
-    background: var(--dark-card-bg);
-    color: var(--primary-color);
+    background: var(--dark-card-bg);
+    color: var(--primary-color);
 }
 
 /* Search Bar Styles */
 .search-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
-    margin: 0 auto;
-    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 600px;
 }
 
 #searchInput {
-    padding: 12px 20px;
-    border: 1px solid var(--primary-color);
-    border-radius: 50px;
-    font-size: 1rem;
-    width: 100%;
-    background-color: var(--light-card-bg);
-    color: var(--light-text-color);
-    transition: all 0.3s ease;
+    padding: 12px 20px;
+    border: 1px solid var(--primary-color);
+    border-radius: 50px;
+    font-size: 1rem;
+    width: 100%;
+    background-color: var(--light-card-bg);
+    color: var(--light-text-color);
+    transition: all 0.3s ease;
 }
 
 #searchInput:focus {
-    outline: none;
-    box-shadow: 0 0 10px var(--primary-color);
+    outline: none;
+    box-shadow: 0 0 10px var(--primary-color);
 }
 
 .dark-mode #searchInput {
-    background-color: var(--dark-card-bg);
-    color: var(--dark-text-color);
-    border-color: var(--primary-color);
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text-color);
+    border-color: var(--primary-color);
 }
 
 #searchButton {
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-right: -40px;
-    cursor: pointer;
-    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-right: -40px;
+    cursor: pointer;
+    z-index: 2;
 }
 
 /* Carousel Section */
 .carousel {
-    width: 100%;
-    height: 60vh;
-    overflow: hidden;
-    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
 }
 
 .slides {
-    width: 400%;
-    height: 100%;
-    display: flex;
-    animation: slideAnimation 30s infinite ease-in-out;
+    width: 400%;
+    height: 100%;
+    display: flex;
+    animation: slideAnimation 30s infinite ease-in-out;
 }
 
 .slides figure {
-    width: 25%;
-    height: 100%;
-    margin: 0;
+    width: 25%;
+    height: 100%;
+    margin: 0;
 }
 
 .slides img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 @keyframes slideAnimation {
-    0%, 20% { transform: translateX(0); }
-    25%, 45% { transform: translateX(-25%); }
-    50%, 70% { transform: translateX(-50%); }
-    75%, 95% { transform: translateX(-75%); }
-    100% { transform: translateX(0); }
+    0%, 20% { transform: translateX(0); }
+    25%, 45% { transform: translateX(-25%); }
+    50%, 70% { transform: translateX(-50%); }
+    75%, 95% { transform: translateX(-75%); }
+    100% { transform: translateX(0); }
 }
 
 /* General Sections & Grids */
 section {
-    padding: 4rem 2rem;
-    text-align: center;
+    padding: 4rem 2rem;
+    text-align: center;
 }
 /* Services Section */
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .service-item {
-    background:#fff;
-    padding:2rem;
-    border-radius:8px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    text-align: center;
+    background:#fff;
+    padding:2rem;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align: center;
 }
 
 .service-item i {
-    font-size:2rem;
-    margin-bottom:0.5rem;
-    color: var(--primary-color);
-    transition: color 0.3s ease;
+    font-size:2rem;
+    margin-bottom:0.5rem;
+    color: var(--primary-color);
+    transition: color 0.3s ease;
 }
 
 .service-item p {
-    font-weight:bold;
+    font-weight:bold;
 }
 
 /* Hover Effect for Services */
 .service-item:hover {
-    transform: translateY(-5px);
-    box-shadow:0 0 15px var(--primary-color); /* التغيير هنا: الظل أصبح باللون البرتقالي */
+    transform: translateY(-5px);
+    box-shadow:0 0 15px var(--primary-color); /* التغيير هنا: الظل أصبح باللون البرتقالي */
 }
 
 .service-item:hover i {
-    color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 /* Dark mode-specific styles for Services */
 .dark-mode .service-item {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .service-item:hover {
-    box-shadow: 0 0 15px var(--primary-color); /* الظل البرتقالي أيضًا في الوضع الداكن */
+    box-shadow: 0 0 15px var(--primary-color); /* الظل البرتقالي أيضًا في الوضع الداكن */
 }
 
 /* Tools Section */
 #tools {
-    background-color: var(--secondary-color);
-    color: var(--light-text-color);
+    background-color: var(--secondary-color);
+    color: var(--light-text-color);
 }
 
 #tools h2 {
-    color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .tools-grid {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .tool-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .tool-item img {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    transition: transform 0.3s ease;
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
 }
 
 .tool-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 .tool-item p {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    color: var(--light-text-color);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: var(--light-text-color);
 }
 /* Portfolio Section - Modern Hover Effect */
 
 .portfolio .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .portfolio .item {
-    padding: 0;
-    height: 300px;
-    overflow: hidden;
-    border-radius: 12px;
-    position: relative;
-    box-shadow: var(--light-shadow); /* Default light mode shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: block;
-    background-color: var(--light-card-bg);
+    padding: 0;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: var(--light-shadow); /* Default light mode shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    background-color: var(--light-card-bg);
 }
 
 .portfolio .item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 15px var(--primary-color); /* التغيير هنا: الظل أصبح باللون البرتقالي */
+    transform: translateY(-10px);
+    box-shadow: 0 0 15px var(--primary-color); /* التغيير هنا: الظل أصبح باللون البرتقالي */
 }
 
 .portfolio .item a {
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .portfolio .item a img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 12px;
-    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
 }
 
 .portfolio .item:hover a img {
-    transform: scale(1.05); /* Slightly bigger scale for a cleaner look */
+    transform: scale(1.05); /* Slightly bigger scale for a cleaner look */
 }
 
 /* Dark mode specific styles */
 .dark-mode .portfolio .item {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .dark-mode .portfolio .item:hover {
-    box-shadow: 0 0 15px var(--primary-color); /* الظل البرتقالي أيضًا في الوضع الداكن */
+    box-shadow: 0 0 15px var(--primary-color); /* الظل البرتقالي أيضًا في الوضع الداكن */
 }
 
 /* Pagination */
 .pagination {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    gap: 10px;
-    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .page-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    text-decoration: none;
-    color: var(--primary-color);
-    background-color: var(--light-card-bg);
-    border: 1px solid var(--primary-color);
-    border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    text-decoration: none;
+    color: var(--primary-color);
+    background-color: var(--light-card-bg);
+    border: 1px solid var(--primary-color);
+    border-radius: 50%;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
 }
 
 .page-link.active, .page-link:hover {
-    background-color: var(--primary-color);
-    color: #fff;
-    transform: translateY(-5px);
+    background-color: var(--primary-color);
+    color: #fff;
+    transform: translateY(-5px);
 }
 
 .dark-mode .page-link {
-    background-color: var(--dark-card-bg);
-    color: var(--dark-text-color);
-    border-color: var(--primary-color);
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text-color);
+    border-color: var(--primary-color);
 }
 
 .dark-mode .page-link.active, .dark-mode .page-link:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 /* Footer & Contact Section */
 footer {
-    background-color: var(--secondary-color);
-    color: var(--dark-text-color);
-    text-align: center;
-    padding: 2rem;
+    background-color: var(--secondary-color);
+    color: var(--dark-text-color);
+    text-align: center;
+    padding: 2rem;
 }
 
 footer a {
-    color: var(--primary-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
-    color: var(--dark-text-color);
+    color: var(--dark-text-color);
 }
 
 .socials {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
 }
 
 .socials a {
-    font-size: 1.8rem;
-    color: var(--dark-text-color);
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.8rem;
+    color: var(--dark-text-color);
+    transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .socials a:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px);
 }
 
 .socials .facebook:hover { color: #3b5998; }
@@ -500,414 +518,414 @@ footer a:hover {
 .socials .tiktok:hover { color: #fe2c55; }
 
 .copy {
-    margin-top: 1.5rem;
-    font-size: 0.9rem;
-    opacity: 0.7;
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    opacity: 0.7;
 }
 
 /* Fix for the Skip link to be hidden until it's in focus */
 .skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 8px;
-    z-index: 1000;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px;
+    z-index: 1000;
 }
 
 .skip-link:focus {
-    top: 0;
+    top: 0;
 }
 
 /* Media Queries for responsiveness */
 
 /* Larger screens: 4 columns for services and portfolio */
 @media (min-width: 1025px) {
-    .services-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .portfolio .grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    .services-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .portfolio .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 /* Tablets and medium screens (769px to 1024px): 2 columns for services and portfolio */
 @media (max-width: 1024px) and (min-width: 769px) {
-    .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .portfolio .grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .portfolio .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Mobile screens (up to 768px): 1 column for services and portfolio */
 @media (max-width: 768px) {
-    .site-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
+    .site-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
 
-    .main-nav {
-        margin-top: 1rem;
-    }
+    .main-nav {
+        margin-top: 1rem;
+    }
 
-    .main-nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
 
-    .main-nav li {
-        margin: 0.5rem 1rem;
-    }
+    .main-nav li {
+        margin: 0.5rem 1rem;
+    }
 
-    .carousel {
-        height: 40vh;
-    }
+    .carousel {
+        height: 40vh;
+    }
 
-    h2 {
-        font-size: 2rem;
-    }
+    h2 {
+        font-size: 2rem;
+    }
 
-    .services-grid, .grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .search-container {
-        padding: 1rem;
-    }
-    
-    .socials {
-        flex-wrap: wrap;
-    }
+    .services-grid, .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-container {
+        padding: 1rem;
+    }
+    
+    .socials {
+        flex-wrap: wrap;
+    }
 }
 /* Back Button */
 .back-to-works {
-    display: block; /* لجعله يتوسط الصفحة */
-    width: fit-content; /* يضبط عرض الزر ليناسب محتواه */
-    margin-left: auto;
-    margin-right: auto; /* هذا الكود هو المسؤول عن التوسيط الأفقي */
-    
-    /* الخصائص الأخرى التي كانت موجودة مسبقاً */
-    background-color: var(--primary-color);
-    color: #fff;
-    padding: 12px 24px;
-    border-radius: 25px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 3rem;
-    transition: background-color 0.3s ease;
+    display: block; /* لجعله يتوسط الصفحة */
+    width: fit-content; /* يضبط عرض الزر ليناسب محتواه */
+    margin-left: auto;
+    margin-right: auto; /* هذا الكود هو المسؤول عن التوسيط الأفقي */
+    
+    /* الخصائص الأخرى التي كانت موجودة مسبقاً */
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 3rem;
+    transition: background-color 0.3s ease;
 }
 .back-btn:hover, .back-to-works:hover {
-    background-color: #d44d1e;
+    background-color: #d44d1e;
 }
 .back-btn:hover {
-    background-color: #d94a1f;
+    background-color: #d94a1f;
 }
 
 /* Work Details and Slider Container */
 .work-details {
-    max-width: 900px;
-    margin: 4rem auto;
-    padding: 2rem;
-    background-color: var(--light-card-bg);
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    text-align: center; /* Ensures the title and paragraph are centered */
+    max-width: 900px;
+    margin: 4rem auto;
+    padding: 2rem;
+    background-color: var(--light-card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center; /* Ensures the title and paragraph are centered */
 }
 
 /* Slider Styles */
 .slider-container {
-    position: relative;
-    max-width: 100%;
-    margin: 20px auto;
-    overflow: hidden;
+    position: relative;
+    max-width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
 }
 
 .slides-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 .slide-image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: none; /* Hide all images by default */
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    display: none; /* Hide all images by default */
 }
 
 /* Dots */
 .dots-container {
-    text-align: center;
-    padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    cursor: pointer;
 }
 
 .dot.active {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color);
 }
 
 /* Navigation Arrows */
 .nav-arrow {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: auto;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    z-index: 100;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav-right {
-    left: auto;
-    right: 0;
-    border-radius: 3px 0 0 3px;
+    left: auto;
+    right: 0;
+    border-radius: 3px 0 0 3px;
 }
 
 .nav-left {
-    left: 0;
-    right: auto;
+    left: 0;
+    right: auto;
 }
 
 
 .nav-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* التعديلات الجديدة الخاصة بصفحة work.html */
 /* لضمان أن محتوى الصفحة يبدأ بعد الهيدر وشريط البحث */
 body main {
-    padding-top: 150px; /* مسافة علوية كافية للمحتوى */
+    padding-top: 150px; /* مسافة علوية كافية للمحتوى */
 }
 
 @media (max-width: 768px) {
-    body main {
-        padding-top: 180px; /* مسافة أكبر على الموبايل لتجنب التداخل */
-    }
+    body main {
+        padding-top: 180px; /* مسافة أكبر على الموبايل لتجنب التداخل */
+    }
 }
 
 .dark-mode .work-details {
-    background-color: var(--dark-card-bg);
+    background-color: var(--dark-card-bg);
 }
 /* تنسيقات حاوية الوسوم */
 .tags-container {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap; /* يضمن انتقال الوسوم إلى سطر جديد عند الحاجة */
-    justify-content: center;
-    gap: 0.5rem; /* يضيف مسافة موحدة بين جميع الوسوم */
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap; /* يضمن انتقال الوسوم إلى سطر جديد عند الحاجة */
+    justify-content: center;
+    gap: 0.5rem; /* يضيف مسافة موحدة بين جميع الوسوم */
 }
 
 /* التنسيقات العامة للوسوم */
 .tag-link {
-    text-decoration: none;
-    padding: 8px 15px;
-    border-radius: 25px;
-    font-weight: bold;
-    white-space: nowrap; /* يمنع التفاف النص */
-    transition: all 0.3s ease; /* يطبق الانتقال على كل الخصائص */
-    border: 1px solid var(--primary-color);
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 25px;
+    font-weight: bold;
+    white-space: nowrap; /* يمنع التفاف النص */
+    transition: all 0.3s ease; /* يطبق الانتقال على كل الخصائص */
+    border: 1px solid var(--primary-color);
 }
 
 /* تنسيقات وضع الإضاءة (Light Mode) */
 .light-mode .tag-link {
-    background-color: var(--light-card-bg);
-    color: var(--primary-color);
+    background-color: var(--light-card-bg);
+    color: var(--primary-color);
 }
 
 .light-mode .tag-link:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--primary-color);
+    color: #fff;
 }
 
 /* تنسيقات الوضع الداكن (Dark Mode) */
 .dark-mode .tag-link {
-    background-color: var(--dark-card-bg);
-    color: var(--primary-color);
+    background-color: var(--dark-card-bg);
+    color: var(--primary-color);
 }
 
 .dark-mode .tag-link:hover {
-    background-color: var(--primary-color);
-    color: #fff;
+    background-color: var(--primary-color);
+    color: #fff;
 }
 /* حل مشكلة المخطط الخارجي الأزرق عند النقر على الروابط */
 .main-nav a:focus,
 .header-controls button:focus {
-    outline: none !important;
+    outline: none !important;
 }
 
 /* لمنع الخطوط من الظهور على جميع الروابط والأزرار في رأس الصفحة */
-.site-header a, 
+.site-header a, 
 .site-header button {
-    outline: none !important;
+    outline: none !important;
 }
 /* تنسيق صندوق التعليقات */
 .comments-box {
-    margin: 40px auto;
-    padding: 25px;
-    max-width: 900px;
-    border-radius: 12px;
-    background-color: var(--light-background-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    margin: 40px auto;
+    padding: 25px;
+    max-width: 900px;
+    border-radius: 12px;
+    background-color: var(--light-background-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 /* تنسيقات الوضع الليلي */
 body.dark-mode .comments-box {
-    background-color: var(--dark-secondary-background);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--dark-secondary-background);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* تنسيق العنوان داخل الصندوق */
 .comments-box h3 {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 }
 
 /* التجاوبية مع الشاشات الصغيرة */
 @media (max-width: 768px) {
-    .comments-box {
-        margin: 20px auto;
-        padding: 15px;
-    }
+    .comments-box {
+        margin: 20px auto;
+        padding: 15px;
+    }
 }
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
-    padding: 80px 20px;
-    background-color: var(--light-background-color);
-    text-align: center;
+    padding: 80px 20px;
+    background-color: var(--light-background-color);
+    text-align: center;
 }
 
 body.dark-mode .testimonials-section {
-    background-color: var(--dark-secondary-background);
+    background-color: var(--dark-secondary-background);
 }
 
 .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
 }
 
 .testimonial-card {
-    background-color: var(--card-background-color);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: var(--card-background-color);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 body.dark-mode .testimonial-card {
-    background-color: var(--dark-card-background);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--dark-card-background);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .testimonial-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px);
 }
 
 .testimonial-card p {
-    font-style: italic;
-    color: var(--text-color);
-    margin-bottom: 20px;
-    line-height: 1.6;
+    font-style: italic;
+    color: var(--text-color);
+    margin-bottom: 20px;
+    line-height: 1.6;
 }
 
 .client-info h4 {
-    margin: 0;
-    color: var(--heading-color);
-    font-size: 1.1rem;
+    margin: 0;
+    color: var(--heading-color);
+    font-size: 1.1rem;
 }
 
 .client-info span {
-    color: var(--primary-color);
-    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-size: 0.9rem;
 }
 /* تنسيق الصورة الشخصية للعميل */
 .client-info {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* مسافة بين الصورة والنص */
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* مسافة بين الصورة والنص */
+    margin-top: 20px;
 }
 
 .client-photo {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%; /* لجعل الصورة دائرية */
-    object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
-    border: 2px solid var(--primary-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%; /* لجعل الصورة دائرية */
+    object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
+    border: 2px solid var(--primary-color);
 }
 /* تنسيق قسم التقييم بالنجوم */
 .star-rating {
-    margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .star-rating .fas.fa-star {
-    color: #FFD700; /* اللون الأصفر للنجوم */
-    font-size: 1.2rem;
-    margin: 0 2px;
+    color: #FFD700; /* اللون الأصفر للنجوم */
+    font-size: 1.2rem;
+    margin: 0 2px;
 }
 /* تنسيق النجوم الفارغة */
 .star-rating .far.fa-star {
-    color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
+    color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
 /* الأنماط العامة لشعار الوضع الفاتح */
 .logo-light {
-    height: 60px; /* أو أي حجم مناسب */
-    width: auto;
-    display: block; /* تأكد من أنه ظاهر افتراضياً */
+    height: 60px; /* أو أي حجم مناسب */
+    width: auto;
+    display: block; /* تأكد من أنه ظاهر افتراضياً */
 }
 
 /* الشعار الداكن يكون مخفياً افتراضياً */
 .logo-dark {
-    height: 60px; /* تأكد من أن الارتفاع متناسق مع الشعار الآخر */
-    width: auto;
-    display: none;
+    height: 60px; /* تأكد من أن الارتفاع متناسق مع الشعار الآخر */
+    width: auto;
+    display: none;
 }
 
 /* أنماط الوضع الداكن */
 .dark-mode .logo-light {
-    display: none; /* إخفاء الشعار الفاتح */
+    display: none; /* إخفاء الشعار الفاتح */
 }
 
 .dark-mode .logo-dark {
-    display: block; /* إظهار الشعار الداكن */
+    display: block; /* إظهار الشعار الداكن */
 }
