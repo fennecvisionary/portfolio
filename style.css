@@ -125,7 +125,7 @@ body.ltr .main-nav li {
 }
 
 .logo img {
-    height: 50px;
+    height: 60px;
     vertical-align: middle;
 }
 
@@ -888,4 +888,124 @@ body.dark-mode .testimonial-card {
 /* تنسيق النجوم الفارغة */
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
+}
+/* الأنماط العامة لشعار الوضع الفاتح */
+.logo-light {
+    height: 60px; /* أو أي حجم مناسب */
+    width: auto;
+    display: block; /* تأكد من أنه ظاهر افتراضياً */
+}
+
+/* الشعار الداكن يكون مخفياً افتراضياً */
+.logo-dark {
+    height: 60px; /* تأكد من أن الارتفاع متناسق مع الشعار الآخر */
+    width: auto;
+    display: none;
+}
+
+/* أنماط الوضع الداكن */
+.dark-mode .logo-light {
+    display: none; /* إخفاء الشعار الفاتح */
+}
+
+.dark-mode .logo-dark {
+    display: block; /* إظهار الشعار الداكن */
+}
+/* تنسيقات قسم "كيف نعمل" */
+.steps-section {
+    background-color: var(--light-bg-color);
+    padding: 5rem 2rem;
+}
+
+.dark-mode .steps-section {
+    background-color: var(--dark-bg-color);
+}
+
+.steps-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.step-card {
+    background-color: var(--light-card-bg);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    box-shadow: var(--light-shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 200px; /* يسمح للصناديق بالنمو والتصغير */
+    position: relative;
+    overflow: hidden;
+}
+
+.dark-mode .step-card {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+}
+
+/* تأثير التكبير عند التمرير بالماوس */
+.step-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .step-card:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* أيقونة الخطوة */
+.step-icon i {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+}
+
+/* تأثير دوران الأيقونة عند التمرير */
+.step-card:hover .step-icon i {
+    transform: rotate(10deg);
+}
+
+/* رقم الخطوة في الزاوية */
+.step-number {
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.step-title {
+    color: var(--primary-color);
+    font-family: var(--font-family-heading);
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+.step-description {
+    color: var(--light-text-color);
+    font-size: 0.9rem;
+}
+
+.dark-mode .step-description {
+    color: var(--dark-text-color);
+}
+
+/* استجابة التصميم لشاشات العرض الأصغر */
+@media (max-width: 768px) {
+    .steps-container {
+        flex-direction: column;
+    }
 }
