@@ -922,7 +922,7 @@ body.dark-mode .testimonial-card {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
 }
 
 .step-card {
@@ -937,8 +937,7 @@ body.dark-mode .testimonial-card {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* هنا يتم توسط المحتوى عموديًا */
-    align-items: center; /* هنا يتم توسط المحتوى أفقيًا */
+    justify-content: center;
 }
 
 .dark-mode .step-card {
@@ -957,25 +956,22 @@ body.dark-mode .testimonial-card {
 }
 
 /* أيقونة الخطوة */
-.step-icon {
+.step-icon i {
+    font-size: 3rem;
+    color: var(--primary-color);
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
 }
 
-.step-icon i {
-    font-size: 3rem;
-    color: var(--primary-color);
-}
-
 /* تأثير دوران الأيقونة عند التمرير */
-.step-card:hover .step-icon {
+.step-card:hover .step-icon i {
     transform: rotate(10deg);
 }
 
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: -20px;
+    bottom: 3px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
@@ -1002,14 +998,14 @@ body.dark-mode .testimonial-card {
 .step-number-circle::before {
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    content: '\f061';
+    content: '\f061'; /* سهم لليمين (الافتراضي للغات من اليسار لليمين) */
     font-size: 1.5rem;
     color: #fff;
 }
 
 /* لجعل الأسهم في الوضع من اليمين لليسار تتجه لليسار */
 body[dir="rtl"] .step-number-circle::before {
-    content: '\f060';
+    content: '\f060'; /* كود سهم لليسار */
 }
 
 .step-title {
@@ -1034,6 +1030,6 @@ body[dir="rtl"] .step-number-circle::before {
         flex-direction: column;
     }
     .step-number-circle::before {
-        content: '\f063';
+        content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
