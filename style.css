@@ -970,11 +970,17 @@ body.dark-mode .testimonial-card {
     transform: rotate(10deg);
 }
 
-/* رقم الخطوة في الزاوية */
-.step-number {
+/* رقم الخطوة في الأسفل مع الأيقونة */
+.step-card {
+    position: relative;
+    /* تأكد أن هذا العنصر يحتوي على position: relative; */
+}
+
+.step-card .step-icon {
     position: absolute;
-    top: -15px;
-    left: -15px;
+    bottom: -25px; /* يحدد المسافة من الأسفل */
+    left: 50%; /* يضع العنصر في منتصف العنصر الأب */
+    transform: translateX(-50%); /* يحرك العنصر 50% من عرضه إلى اليسار ليصبح في المنتصف تمامًا */
     width: 50px;
     height: 50px;
     background-color: var(--primary-color);
@@ -983,8 +989,38 @@ body.dark-mode .testimonial-card {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
     font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.step-card:hover .step-icon {
+    transform: translateX(-50%) translateY(-5px); /* تأثير تحريك خفيف للأعلى عند التمرير */
+}
+
+/* يمكنك تخصيص الأيقونة لكل خطوة على حدة */
+.step-card:nth-child(1) .step-icon::after {
+    content: '\f0eb'; /* أيقونة لمبة (Lightbulb) من Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.step-card:nth-child(2) .step-icon::after {
+    content: '\f14e'; /* أيقونة ملف (Clipboard) من Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.step-card:nth-child(3) .step-icon::after {
+    content: '\f53f'; /* أيقونة قلم (Pencil Ruler) من Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+.step-card:nth-child(4) .step-icon::after {
+    content: '\f561'; /* أيقونة شحن (Shipping Fast) من Font Awesome */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
 }
 
 .step-title {
