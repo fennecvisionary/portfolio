@@ -971,7 +971,7 @@ body.dark-mode .testimonial-card {
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: -20px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
+    bottom: -00px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
