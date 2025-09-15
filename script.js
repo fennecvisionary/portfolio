@@ -280,7 +280,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-       // تحديث نصوص قسم "كيف نعمل"// تحديث نصوص قسم "كيف نعمل"
+      // تحديث نصوص قسم "كيف نعمل"
 document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
 document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
         
@@ -288,7 +288,8 @@ document.querySelector('#how-it-works .subtitle').textContent = translations[lan
 for (let i = 1; i <= 4; i++) {
     document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-title`).textContent = translations[lang][`step${i}Title`];
     document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-description`).textContent = translations[lang][`step${i}Desc`];
-    document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-number-circle`).textContent = translations[lang][`step${i}_number`];
+    // تم إزالة هذا السطر لضمان عدم إظهار الأرقام
+    // document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-number-circle`).textContent = translations[lang][`step${i}_number`];
 }
 
         // تحديث نصوص آراء العملاء
