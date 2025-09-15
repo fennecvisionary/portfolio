@@ -922,7 +922,7 @@ body.dark-mode .testimonial-card {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 120px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
+    padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
 }
 
 .step-card {
@@ -971,7 +971,7 @@ body.dark-mode .testimonial-card {
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: -20px;
+    bottom: -20px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
@@ -994,18 +994,13 @@ body.dark-mode .testimonial-card {
     transform: translateX(-50%) translateY(-5px);
 }
 
-/* إضافة الأسهم إلى الدوائر */
+/* إضافة الأسهم إلى الدوائر وتوجيهها */
 .step-number-circle::before {
-    font-family: 'Font Awesome 5 Free'; /* تأكد من أن Font Awesome 5 Free موجودة في مشروعك */
+    font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    content: '\f061'; /* كود سهم لليمين */
+    content: '\f061'; /* سهم لليمين (الافتراضي للغات من اليسار لليمين) */
     font-size: 1.5rem;
     color: #fff;
-}
-
-/* لجعل السهم في آخر خطوة يختفي */
-.step-card:last-child .step-number-circle::before {
-    content: ''; /* لجعل آخر سهم يختفي */
 }
 
 /* لجعل الأسهم في الوضع من اليمين لليسار تتجه لليسار */
@@ -1036,8 +1031,5 @@ body[dir="rtl"] .step-number-circle::before {
     }
     .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
-    }
-    .step-card:last-child .step-number-circle::before {
-        content: ''; /* لجعل آخر سهم يختفي */
     }
 }
