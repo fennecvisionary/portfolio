@@ -298,7 +298,39 @@ if (lang === "ar") {
     document.body.classList.add("ltr");
     document.body.classList.remove("rtl");
 }
+// JavaScript لتأثير النبض وتغيير الصورة
+document.addEventListener('DOMContentLoaded', () => {
+    const dynamicTitle = document.querySelector('.dynamic-text-title');
+    const toolItems = document.querySelectorAll('.tool-item');
+    const hoverImage = document.getElementById('hover-tool-image');
 
+    // تأثير النبض على الماوس
+    if (dynamicTitle) {
+        dynamicTitle.textContent = "مصمم غرافيكي"; // العنوان الثابت
+        dynamicTitle.addEventListener('mousemove', (e) => {
+            const cursor = document.createElement('span');
+            cursor.classList.add('pulse-cursor');
+            cursor.style.left = `${e.offsetX}px`;
+            cursor.style.top = `${e.offsetY}px`;
+            dynamicTitle.appendChild(cursor);
+            setTimeout(() => {
+                cursor.remove();
+            }, 500);
+        });
+    }
+
+    // تبديل الصور عند التمرير
+    toolItems.forEach(item => {
+        item.addEventListener('mouseover', () => {
+            const toolName = item.getAttribute('data-tool-name');
+            hoverImage.src = `images/${toolName}-full.jpg`; // تأكد من وجود هذه الصور
+            hoverImage.classList.remove('hidden');
+        });
+        item.addEventListener('mouseout', () => {
+            hoverImage.classList.add('hidden');
+        });
+    });
+});
         // تحديث نصوص آراء العملاء
         for (let i = 1; i <= 10; i++) {
             const testimonialCard = document.querySelector(`.testimonial-card:nth-of-type(${i})`);
