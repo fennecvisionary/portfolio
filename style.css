@@ -916,8 +916,6 @@ body.dark-mode .testimonial-card {
 .steps-section {
     background-color: var(--light-bg-color);
     padding: 5rem 2rem;
-    position: relative;
-    z-index: 1;
 }
 
 .dark-mode .steps-section {
@@ -925,64 +923,65 @@ body.dark-mode .testimonial-card {
 }
 
 .steps-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 3rem; /* مسافة لظهور الأيقونات في الأسفل */
+    padding-bottom: 50px;
 }
 
 .step-card {
     background-color: var(--light-card-bg);
-    border-radius: 16px;
+    border-radius: 12px;
     padding: 2.5rem 1.5rem;
     box-shadow: var(--light-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 1 1 200px;
     position: relative;
-    z-index: 2;
-    border: 1px solid var(--border-color); /* إضافة حدود خفيفة */
+    overflow: hidden;
 }
 
 .dark-mode .step-card {
     background-color: var(--dark-card-bg);
     box-shadow: var(--dark-shadow);
-    border: 1px solid var(--dark-border-color);
 }
 
 /* تأثير التكبير عند التمرير بالماوس */
 .step-card:hover {
-    transform: translateY(-15px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .step-card:hover {
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
 /* أيقونة الخطوة */
-.step-icon {
-    font-size: 3.5rem;
+.step-icon i {
+    font-size: 3rem;
     color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    transition: transform 0.3s ease, color 0.3s ease;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
 }
 
 /* تأثير دوران الأيقونة عند التمرير */
-.step-card:hover .step-icon {
-    transform: rotate(360deg);
+.step-card:hover .step-icon i {
+    transform: rotate(10deg);
 }
 
-/* الأيقونة الدائرية في أسفل البطاقة */
-.step-number-circle {
+/* أيقونة الخطوة الدائرية في الأسفل */
+.step-card .step-number-circle {
     position: absolute;
-    bottom: -20px; /* لتكون الأيقونة خارج الصندوق قليلاً */
+    bottom: -25px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 50%;
@@ -990,18 +989,12 @@ body.dark-mode .testimonial-card {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.2rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease;
-    z-index: 5;
-    border: 3px solid var(--light-card-bg); /* إطار يربطها بالبطاقة */
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    z-index: 10;
 }
 
-.dark-mode .step-number-circle {
-    border: 3px solid var(--dark-card-bg);
-}
-
-/* تأثير التحريك عند التمرير على الأيقونة */
 .step-card:hover .step-number-circle {
     transform: translateX(-50%) translateY(-5px);
 }
@@ -1010,61 +1003,80 @@ body.dark-mode .testimonial-card {
     color: var(--primary-color);
     font-family: var(--font-family-heading);
     margin-bottom: 0.5rem;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
 }
 
 .step-description {
     color: var(--light-text-color);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
 }
 
 .dark-mode .step-description {
     color: var(--dark-text-color);
 }
 
-/* خطوط الربط بين البطاقات (للتخطيط الأفقي) */
-.steps-container::before {
-    content: '';
+/* الأسهم التي تربط بين الخطوات */
+.steps-container .step-arrow {
     position: absolute;
-    bottom: 15px;
-    height: 2px;
-    background-color: var(--border-color);
-    left: 50px;
-    right: 50px;
-    z-index: 1;
+    bottom: 0;
+    width: calc((100% - 8rem) / 3);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    z-index: 2;
+    transition: transform 0.3s ease;
 }
 
-.dark-mode .steps-container::before {
-    background-color: var(--dark-border-color);
+/* مواقع الأسهم */
+.steps-container .step-arrow.arrow-1 {
+    left: calc(25% + 1rem);
 }
 
-/* خطوط الربط بين البطاقات (للتخطيط العمودي) */
+.steps-container .step-arrow.arrow-2 {
+    left: calc(50% + 1rem);
+}
+
+.steps-container .step-arrow.arrow-3 {
+    left: calc(75% + 1rem);
+}
+
+.steps-container .step-arrow::after {
+    content: '\2192';
+}
+
+body.rtl .steps-container .step-arrow::after {
+    content: '\2190';
+}
+
+/* تأثير تحريك السهم عند التمرير على الخطوات */
+.step-card:hover + .step-arrow,
+.step-card:nth-child(2):hover ~ .step-arrow.arrow-1,
+.step-card:nth-child(3):hover ~ .step-arrow.arrow-1,
+.step-card:nth-child(3):hover ~ .step-arrow.arrow-2 {
+    transform: translateY(-5px);
+}
+
+/* استجابة التصميم لشاشات العرض الأصغر */
 @media (max-width: 768px) {
     .steps-container {
-        display: flex;
         flex-direction: column;
+        align-items: center;
     }
-
-    .steps-container::before {
-        height: auto;
-        width: 2px;
-        top: 50px;
-        bottom: 50px;
+    .steps-container .step-arrow {
+        width: auto;
+        height: 50px;
+        bottom: auto;
         left: 50%;
-        right: auto;
         transform: translateX(-50%);
     }
-
-    .step-number-circle {
-        bottom: auto;
-        top: 50%;
-        left: -30px;
-        transform: translateY(-50%);
+    .steps-container .step-arrow::after {
+        content: '\2193';
     }
 
-    .step-card:nth-child(even) .step-number-circle {
-        left: auto;
-        right: -30px;
-        transform: translateY(-50%);
-    }
+    .steps-container .step-arrow.arrow-1 { top: calc(25% + 1rem); }
+    .steps-container .step-arrow.arrow-2 { top: calc(50% + 1rem); }
+    .steps-container .step-arrow.arrow-3 { top: calc(75% + 1rem); }
 }
