@@ -971,13 +971,13 @@ body.dark-mode .testimonial-card {
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: -0px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
+    bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
     width: 50px;
     height: 50px;
     background-color: var(--primary-color);
-    color: #fff; /* تم التأكد من أن لون الأرقام أبيض */
+    color: #fff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -989,8 +989,28 @@ body.dark-mode .testimonial-card {
     z-index: 10;
 }
 
+/* تأثير تحريك الدائرة عند التمرير */
 .step-card:hover .step-number-circle {
-    transform: translateX(-50%) translateY(-5px); /* تأثير تحريك خفيف للأعلى عند التمرير */
+    transform: translateX(-50%) translateY(-5px);
+}
+
+/* إضافة الأسهم إلى الدوائر */
+.step-number-circle::before {
+    font-family: 'Font Awesome 5 Free'; /* تأكد من أن Font Awesome 5 Free موجودة في مشروعك */
+    font-weight: 900;
+    content: '\f061'; /* كود سهم لليمين */
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* لجعل السهم في آخر خطوة يختفي */
+.step-card:last-child .step-number-circle::before {
+    content: ''; /* لجعل آخر سهم يختفي */
+}
+
+/* لجعل الأسهم في الوضع من اليمين لليسار تتجه لليسار */
+body[dir="rtl"] .step-number-circle::before {
+    content: '\f060'; /* كود سهم لليسار */
 }
 
 .step-title {
@@ -1013,5 +1033,11 @@ body.dark-mode .testimonial-card {
 @media (max-width: 768px) {
     .steps-container {
         flex-direction: column;
+    }
+    .step-number-circle::before {
+        content: '\f063'; /* سهم لأسفل في الوضع العمودي */
+    }
+    .step-card:last-child .step-number-circle::before {
+        content: ''; /* لجعل آخر سهم يختفي */
     }
 }
