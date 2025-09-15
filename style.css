@@ -923,15 +923,14 @@ body.dark-mode .testimonial-card {
 }
 
 .steps-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    display: grid;
+    /* يستخدم Grid لجعل جميع الصناديق بنفس الحجم تلقائيًا */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
-    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 50px;
+    padding-bottom: 50px; /* مسافة للأرقام الدائرية في الأسفل */
 }
 
 .step-card {
@@ -941,9 +940,13 @@ body.dark-mode .testimonial-card {
     box-shadow: var(--light-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 200px;
+    /* flex: 1 1 200px; تم استبداله بـ Grid */
     position: relative;
     overflow: hidden;
+    height: 100%; /* مهم لضمان تساوي الارتفاعات */
+    display: flex; /* لمرونة المحتوى الداخلي */
+    flex-direction: column;
+    justify-content: center;
 }
 
 .dark-mode .step-card {
@@ -974,12 +977,12 @@ body.dark-mode .testimonial-card {
     transform: rotate(10deg);
 }
 
-/* أيقونة الخطوة الدائرية في الأسفل */
-.step-card .step-number-circle {
+/* الدائرة الصغيرة في أسفل الصندوق */
+.step-number-circle {
     position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -25px; /* يحدد المسافة من الأسفل */
+    left: 50%; /* يضع العنصر في منتصف العنصر الأب */
+    transform: translateX(-50%); /* يحرك العنصر 50% من عرضه ليصبح في المنتصف */
     width: 50px;
     height: 50px;
     background-color: var(--primary-color);
@@ -996,7 +999,7 @@ body.dark-mode .testimonial-card {
 }
 
 .step-card:hover .step-number-circle {
-    transform: translateX(-50%) translateY(-5px);
+    transform: translateX(-50%) translateY(-5px); /* تأثير تحريك خفيف للأعلى عند التمرير */
 }
 
 .step-title {
@@ -1015,68 +1018,10 @@ body.dark-mode .testimonial-card {
     color: var(--dark-text-color);
 }
 
-/* الأسهم التي تربط بين الخطوات */
-.steps-container .step-arrow {
-    position: absolute;
-    bottom: 0;
-    width: calc((100% - 8rem) / 3);
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    color: var(--primary-color);
-    z-index: 2;
-    transition: transform 0.3s ease;
-}
-
-/* مواقع الأسهم */
-.steps-container .step-arrow.arrow-1 {
-    left: calc(25% + 1rem);
-}
-
-.steps-container .step-arrow.arrow-2 {
-    left: calc(50% + 1rem);
-}
-
-.steps-container .step-arrow.arrow-3 {
-    left: calc(75% + 1rem);
-}
-
-.steps-container .step-arrow::after {
-    content: '\2192';
-}
-
-body.rtl .steps-container .step-arrow::after {
-    content: '\2190';
-}
-
-/* تأثير تحريك السهم عند التمرير على الخطوات */
-.step-card:hover + .step-arrow,
-.step-card:nth-child(2):hover ~ .step-arrow.arrow-1,
-.step-card:nth-child(3):hover ~ .step-arrow.arrow-1,
-.step-card:nth-child(3):hover ~ .step-arrow.arrow-2 {
-    transform: translateY(-5px);
-}
-
 /* استجابة التصميم لشاشات العرض الأصغر */
 @media (max-width: 768px) {
     .steps-container {
+        display: flex;
         flex-direction: column;
-        align-items: center;
     }
-    .steps-container .step-arrow {
-        width: auto;
-        height: 50px;
-        bottom: auto;
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .steps-container .step-arrow::after {
-        content: '\2193';
-    }
-
-    .steps-container .step-arrow.arrow-1 { top: calc(25% + 1rem); }
-    .steps-container .step-arrow.arrow-2 { top: calc(50% + 1rem); }
-    .steps-container .step-arrow.arrow-3 { top: calc(75% + 1rem); }
 }
