@@ -123,6 +123,12 @@ body.ltr .main-nav li {
     top: 0;
     z-index: 100;
 }
+
+.logo img {
+    height: 60px;
+    vertical-align: middle;
+}
+
 .main-nav ul {
     list-style: none;
     margin: 0;
@@ -1209,4 +1215,40 @@ body[dir="rtl"] .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
+/* الأنماط العامة للشعارات */
+.logo {
+    height: 60px; /* ارتفاع الشعار الافتراضي */
+    width: auto;
+    max-width: 100%; /* لضمان عدم تجاوز الشعار لعرض الحاوية على الأجهزة الصغيرة */
+    transition: opacity 0.3s ease; /* لإضافة تأثير انتقالي عند التبديل بين الوضع الفاتح والداكن */
+}
 
+/* الشعار الفاتح يظهر بشكل افتراضي */
+.logo-light {
+    display: block;
+    opacity: 1;
+}
+
+/* الشعار الداكن يكون مخفيًا افتراضيًا */
+.logo-dark {
+    display: none;
+    opacity: 0;
+}
+
+/* حالة الوضع الداكن: إخفاء الشعار الفاتح وإظهار الشعار الداكن */
+body.dark-mode .logo-light {
+    display: none;
+    opacity: 0;
+}
+
+body.dark-mode .logo-dark {
+    display: block;
+    opacity: 1;
+}
+
+/* استجابة الشعار للأجهزة الصغيرة (لجعله أصغر على شاشات الجوال مثلاً) */
+@media (max-width: 768px) {
+    .logo {
+        height: 50px; /* تصغير الارتفاع قليلاً على الأجهزة اللوحية والجوال */
+    }
+}
