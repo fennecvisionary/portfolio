@@ -1211,19 +1211,19 @@ body[dir="rtl"] .step-number-circle::before {
 }
 /* الأنماط العامة لحاوية الشعار والنص */
 .logo-container {
-    display: flex; /* يسمح بترتيب العناصر بجانب بعضها البعض */
-    align-items: center;
+    display: flex; /* لتمكين التخطيط المرن */
+    align-items: center; /* لمحاذاة العناصر عمودياً في المنتصف */
     position: relative;
     width: fit-content;
     cursor: pointer;
     text-decoration: none;
-    gap: 10px; /* يضيف مسافة ثابتة بين الشعار والنص */
+    gap: 10px; /* لإضافة مسافة بين العناصر */
 }
 
 /* الأنماط الأساسية لصور الشعار */
 .logo-image {
-    width: 50px;  /* تم تقليل الحجم ليتناسب مع القائمة */
-    height: 50px; /* تم تقليل الحجم ليتناسب مع القائمة */
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     border-radius: 50%;
     transition: transform 0.3s ease;
@@ -1267,6 +1267,16 @@ body.dark-mode .logo-light {
 body.dark-mode .logo-dark {
     display: block;
 }
+
+/* عكس ترتيب العناصر ليعكس اتجاه الصفحة */
+body[dir="ltr"] .logo-container {
+    flex-direction: row-reverse; /* لغات LTR: يجعل النص يظهر على يسار الشعار */
+}
+
+body[dir="rtl"] .logo-container {
+    flex-direction: row; /* لغات RTL: يجعل النص يظهر على يمين الشعار */
+}
+
 
 /* التجاوبية مع الأجهزة المحمولة */
 @media (max-width: 768px) {
