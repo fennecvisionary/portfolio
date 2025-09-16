@@ -1237,7 +1237,7 @@ body[dir="rtl"] .step-number-circle::before {
     font-weight: bold;
     color: var(--primary-color);
     white-space: nowrap;
-    opacity: 1; /* جعل النص يظهر بشكل افتراضي */
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
@@ -1254,11 +1254,11 @@ body[dir="rtl"] .step-number-circle::before {
 
 /* الأنماط الخاصة بالشعارين الفاتح والداكن */
 .logo-light {
-    opacity: 0; /* إخفاء الشعار الفاتح افتراضياً */
+    opacity: 0;
 }
 
 .logo-dark {
-    opacity: 0; /* إخفاء الشعار الداكن افتراضياً */
+    opacity: 0;
 }
 
 body.dark-mode .logo-light {
@@ -1267,8 +1267,8 @@ body.dark-mode .logo-light {
 }
 
 body.dark-mode .logo-dark {
-    display: block; /* إظهار الشعار الداكن في الوضع الداكن */
-    opacity: 0; /* إخفاء الشعار الداكن افتراضياً */
+    display: block;
+    opacity: 0;
 }
 
 /* تحديد اتجاه العناصر بناءً على اتجاه الصفحة (LTR/RTL) */
