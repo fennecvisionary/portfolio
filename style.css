@@ -1215,60 +1215,27 @@ body[dir="rtl"] .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
-/* الأنماط العامة للشعارات */
-.logo {
-    height: 60px; /* ارتفاع الشعار الافتراضي */
-    width: auto;
-    max-width: 100%; /* لضمان عدم تجاوز الشعار لعرض الحاوية على الأجهزة الصغيرة */
-    transition: opacity 0.3s ease; /* لإضافة تأثير انتقالي عند التبديل بين الوضع الفاتح والداكن */
-}
-
-/* الشعار الفاتح يظهر بشكل افتراضي */
-.logo-light {
-    display: block;
-    opacity: 1;
-}
-
-/* الشعار الداكن يكون مخفيًا افتراضيًا */
-.logo-dark {
-    display: none;
-    opacity: 0;
-}
-
-/* حالة الوضع الداكن: إخفاء الشعار الفاتح وإظهار الشعار الداكن */
-body.dark-mode .logo-light {
-    display: none;
-    opacity: 0;
-}
-
-body.dark-mode .logo-dark {
-    display: block;
-    opacity: 1;
-}
-/* الأنماط الأساسية للشعار */
+/* الأنماط العامة للحاوية التي تضم الشعار والنص */
 .logo-container {
     position: relative;
     width: 60px;
     height: 60px;
+    display: block; /* يضمن أن الحاوية تتصرف كعنصر كتلة */
+    border-radius: 50%; /* يحافظ على الشكل الدائري للحاوية */
+    overflow: hidden; /* يخفي أي محتوى زائد */
     cursor: pointer;
-    display: flex; /* لضمان أن العناصر الداخلية تظهر بشكل صحيح */
-    align-items: center;
-    justify-content: center;
 }
 
-/* الأنماط العامة للشعارات */
-.logo {
+/* الأنماط الأساسية لصور الشعار */
+.logo-image {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    transition: transform 0.3s ease;
-}
-
-/* إخفاء الشعارات عند التمرير بالماوس */
-.logo-container:hover .logo {
-    transform: scale(0.9);
-    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* النص الذي يظهر عند التمرير */
@@ -1276,25 +1243,35 @@ body.dark-mode .logo-dark {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-family-heading);
-    font-size: 14px;
+    transform: translate(-50%, -50%) scale(0.9);
+    font-family: var(--font-family-arabic); /* أو الخط الذي تفضله للنص */
+    font-size: 0.8rem;
     font-weight: bold;
     color: var(--primary-color);
-    white-space: nowrap;
+    white-space: nowrap; /* يمنع التفاف النص */
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
-    text-align: center;
 }
 
-/* إظهار النص عند التمرير بالماوس */
+/* تأثير التمرير: إخفاء الصور وإظهار النص */
+.logo-container:hover .logo-image {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
 .logo-container:hover .logo-text {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1);
 }
-/* استجابة الشعار للأجهزة الصغيرة (لجعله أصغر على شاشات الجوال مثلاً) */
+
+/* التجاوبية مع الأجهزة المحمولة */
 @media (max-width: 768px) {
-    .logo {
-        height: 50px; /* تصغير الارتفاع قليلاً على الأجهزة اللوحية والجوال */
+    .logo-container {
+        width: 50px;
+        height: 50px;
+    }
+
+    .logo-text {
+        font-size: 0.7rem; /* تصغير حجم الخط على الأجهزة الصغيرة */
     }
 }
