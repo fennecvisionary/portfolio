@@ -1248,12 +1248,6 @@ body.dark-mode .logo-dark {
     opacity: 1;
 }
 
-/* التأثير العصري: رفع الشعار وإضافة ظل عند التمرير بالماوس */
-.logo a:hover img {
-    transform: translateY(-5px) scale(1.05); /* يرفع الشعار ويكبره قليلاً */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* يضيف ظلًا ناعمًا */
-}
-
 /* استجابة الشعار للأجهزة الصغيرة */
 @media (max-width: 768px) {
     .logo img {
