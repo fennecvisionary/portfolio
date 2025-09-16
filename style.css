@@ -1215,62 +1215,76 @@ body[dir="rtl"] .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
-/* الحاوية الرئيسية للشعار والنص */
+/* Container for the logo and text */
 .logo-container {
-    position: relative; /* مهم جداً: هذا يجعل العناصر الداخلية تتمركز بداخله */
+    display: flex; /* This is the key change to align items next to each other */
+    align-items: center;
+    position: relative;
+    width: fit-content; /* This makes the container only as wide as its content */
+    cursor: pointer;
+    text-decoration: none;
+}
+
+/* Base styles for the logo images */
+.logo-image {
     width: 60px;
     height: 60px;
-    display: block;
-    border-radius: 50%;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-/* الأنماط الأساسية لصور الشعار */
-.logo-image {
-    position: absolute; /* مهم جداً: هذا يجعل الصور تتداخل فوق بعضها */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     object-fit: cover;
     border-radius: 50%;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* Prevents the image from shrinking */
 }
 
-/* النص الذي يظهر عند التمرير */
+/* The text that appears on hover */
 .logo-text {
-    position: absolute; /* مهم جداً: لتثبيت النص في المنتصف */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0.9);
     font-family: var(--font-family-arabic);
     font-size: 0.8rem;
     font-weight: bold;
     color: var(--primary-color);
     white-space: nowrap;
     opacity: 0;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.3s ease, margin-left 0.3s ease;
+    margin-left: 0; /* Start with no margin */
 }
 
-/* تأثير التمرير: إخفاء الصور وإظهار النص */
-.logo-container:hover .logo-image {
-    opacity: 0;
-    transform: scale(0.9);
-}
-
+/* Hover effect: text slides out and fades in */
 .logo-container:hover .logo-text {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    margin-left: 10px; /* Adjust this value to control the distance from the logo */
 }
 
-/* التجاوبية مع الأجهزة المحمولة */
+/* Animate the logo slightly on hover */
+.logo-container:hover .logo-image {
+    transform: scale(1.05);
+}
+
+/* Light and dark mode styling (as before) */
+.logo-light {
+    display: block;
+}
+
+.logo-dark {
+    display: none;
+}
+
+body.dark-mode .logo-light {
+    display: none;
+}
+
+body.dark-mode .logo-dark {
+    display: block;
+}
+
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
     .logo-container {
+        width: auto;
+        height: auto;
+    }
+    .logo-image {
         width: 50px;
         height: 50px;
     }
-
     .logo-text {
         font-size: 0.7rem;
     }
