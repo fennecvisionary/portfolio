@@ -1245,7 +1245,53 @@ body.dark-mode .logo-dark {
     display: block;
     opacity: 1;
 }
+/* الأنماط الأساسية للشعار */
+.logo-container {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    cursor: pointer;
+    display: flex; /* لضمان أن العناصر الداخلية تظهر بشكل صحيح */
+    align-items: center;
+    justify-content: center;
+}
 
+/* الأنماط العامة للشعارات */
+.logo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* إخفاء الشعارات عند التمرير بالماوس */
+.logo-container:hover .logo {
+    transform: scale(0.9);
+    opacity: 0;
+}
+
+/* النص الذي يظهر عند التمرير */
+.logo-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-family-heading);
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--primary-color);
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    text-align: center;
+}
+
+/* إظهار النص عند التمرير بالماوس */
+.logo-container:hover .logo-text {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
 /* استجابة الشعار للأجهزة الصغيرة (لجعله أصغر على شاشات الجوال مثلاً) */
 @media (max-width: 768px) {
     .logo {
