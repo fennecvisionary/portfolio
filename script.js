@@ -109,7 +109,7 @@ document.addEventListener("DOMContentLoaded", () => {
             no_results_text: "Try using different keywords",
             howItWorksTitle: 'How We Work',
             howItWorksSubtitle: 'A carefully crafted collaboration process designed to deliver real and effective results.',
-            step1Title: 'Phase 1: Research & Analysis',
+            step1Title: 'Phase 1: Research',
             step1Desc: 'I study your business, goals, and audience to clearly understand your needs.',
             step2Title: 'Phase 2: Planning',
             step2Desc: 'I craft a clear strategy and creative direction that reflect your brand’s identity.',
