@@ -184,7 +184,20 @@ body.ltr .main-nav li {
     background: var(--dark-card-bg);
     color: var(--primary-color);
 }
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 1rem; /* تقليل المسافة الداخلية */
+    }
 
+    .logo img {
+        height: 50px; /* تصغير الشعار */
+    }
+
+    .main-nav {
+        display: none; /* إخفاء قائمة التنقل */
+    }
+}
 /* Search Bar Styles */
 .search-container {
     display: flex;
