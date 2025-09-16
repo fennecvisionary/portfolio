@@ -1222,7 +1222,7 @@ body[dir="rtl"] .step-number-circle::before {
     object-fit: contain; /* لضمان أن الصورة تظهر بالكامل دون قص أو تمدد */
     border-radius: 0; /* إزالة الحدود الدائرية */
     max-width: 100%;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease-in-out; /* إضافة انتقال سلس لكل الخصائص */
 }
 
 /* الشعار الفاتح يظهر بشكل افتراضي */
