@@ -1084,6 +1084,76 @@ body.dark-mode .testimonial-card {
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
+/* تنسيقات قسم آراء العملاء */
+.testimonials-section {
+    padding: 5rem 2rem;
+    overflow: hidden; /* يمنع ظهور شريط التمرير الأفقي */
+}
+
+/* حاوية التمرير الرئيسية */
+.testimonials-scroller {
+    display: flex;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+/* الحاوية الداخلية التي تحتوي على البطاقات وتتحرك */
+.scroller-inner {
+    display: flex;
+    gap: 2rem;
+    flex-shrink: 0;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* البطاقات نفسها */
+.testimonial-card {
+    min-width: 300px;
+    background-color: var(--light-card-bg);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: var(--light-shadow);
+    /* تعطيل تأثير AOS على البطاقات المتحركة لمنع التعارض */
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+.dark-mode .testimonial-card {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+}
+
+/* الحركة من اليمين إلى اليسار */
+.testimonials-scroller-rtl .scroller-inner {
+    animation-name: scroll-rtl;
+    animation-duration: 40s;
+}
+
+/* الحركة من اليسار إلى اليمين */
+.testimonials-scroller-ltr .scroller-inner {
+    animation-name: scroll-ltr;
+    animation-duration: 40s;
+}
+
+/* @keyframes للحركة من اليمين إلى اليسار */
+@keyframes scroll-rtl {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(calc(-100% - 2rem)); /* تحريك كل المحتوى بالكامل */
+    }
+}
+
+/* @keyframes للحركة من اليسار إلى اليمين */
+@keyframes scroll-ltr {
+    from {
+        transform: translateX(calc(-100% - 2rem));
+    }
+    to {
+        transform: translateX(0);
+    }
+}
 /* الأنماط العامة لشعار الوضع الفاتح */
 .logo-light {
     height: 60px; /* أو أي حجم مناسب */
