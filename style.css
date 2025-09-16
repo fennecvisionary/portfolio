@@ -1222,7 +1222,7 @@ body[dir="rtl"] .step-number-circle::before {
     object-fit: contain; /* لضمان أن الصورة تظهر بالكامل دون قص أو تمدد */
     border-radius: 0; /* إزالة الحدود الدائرية */
     max-width: 100%;
-    transition: all 0.3s ease-in-out; /* إضافة انتقال سلس لكل الخصائص */
+    transition: opacity 0.3s ease;
 }
 
 /* الشعار الفاتح يظهر بشكل افتراضي */
@@ -1248,10 +1248,10 @@ body.dark-mode .logo-dark {
     opacity: 1;
 }
 
-/* التأثير العصري: تكبير الشعار وإضافة ظل عند التمرير بالماوس */
+/* التأثير العصري: رفع الشعار وإضافة ظل عند التمرير بالماوس */
 .logo a:hover img {
-    transform: scale(1.1); /* يكبر الشعار بنسبة 10% */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* يضيف ظلًا ناعمًا */
+    transform: translateY(-5px) scale(1.05); /* يرفع الشعار ويكبره قليلاً */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* يضيف ظلًا ناعمًا */
 }
 
 /* استجابة الشعار للأجهزة الصغيرة */
