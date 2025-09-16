@@ -331,19 +331,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
-        // تحديث نصوص آراء العملاء
-        for (let i = 1; i <= 10; i++) {
-            const testimonialCard = document.querySelector(`.testimonial-card:nth-of-type(${i})`);
-            if (testimonialCard) {
-                const nameElement = testimonialCard.querySelector('h4');
-                const roleElement = testimonialCard.querySelector('span');
-                const textElement = testimonialCard.querySelector('p');
-                
-                if (nameElement) nameElement.textContent = translations[lang][`testimonial_${i}_name`];
-                if (roleElement) roleElement.textContent = translations[lang][`testimonial_${i}_role`];
-                if (textElement) textElement.textContent = translations[lang][`testimonial_${i}_text`];
-            }
+       // تحديث نصوص آراء العملاء
+function updateTestimonialsContent(lang) {
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    let testimonialIndex = 1;
+
+    testimonialCards.forEach(card => {
+        // نستخدم `.testimonial-card` لأننا قمنا بتكرار البطاقات في HTML
+        // وهذا يضمن تحديث كل بطاقة على حدة
+        const nameElement = card.querySelector('h4');
+        const roleElement = card.querySelector('span');
+        const textElement = card.querySelector('p');
+
+        if (nameElement) nameElement.textContent = translations[lang][`testimonial_${testimonialIndex}_name`];
+        if (roleElement) roleElement.textContent = translations[lang][`testimonial_${testimonialIndex}_role`];
+        if (textElement) textElement.textContent = translations[lang][`testimonial_${testimonialIndex}_text`];
+
+        // العودة إلى 1 عندما يصل المؤشر إلى 11
+        // (بعد تحديث البطاقات العشرة الأولى)
+        if (testimonialIndex === 10) {
+            testimonialIndex = 1;
+        } else {
+            testimonialIndex++;
         }
+    });
+}
         
         // تحديث اتجاه الصفحة (RTL/LTR)
         if (lang === "ar") {
