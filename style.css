@@ -1129,29 +1129,13 @@ body.dark-mode .testimonial-card {
     animation-duration: 40s;
 }
 
-/* الحركة من اليسار إلى اليمين */
-.testimonials-scroller-ltr .scroller-inner {
-    animation-name: scroll-ltr;
-    animation-duration: 40s;
-}
-
 /* @keyframes للحركة من اليمين إلى اليسار */
 @keyframes scroll-rtl {
     from {
         transform: translateX(0);
     }
     to {
-        transform: translateX(calc(-100% - 2rem)); /* تحريك كل المحتوى بالكامل */
-    }
-}
-
-/* @keyframes للحركة من اليسار إلى اليمين */
-@keyframes scroll-ltr {
-    from {
         transform: translateX(calc(-100% - 2rem));
-    }
-    to {
-        transform: translateX(0);
     }
 }
 /* الأنماط العامة لشعار الوضع الفاتح */
