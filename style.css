@@ -1001,31 +1001,46 @@ body.dark-mode .comments-box {
         padding: 15px;
     }
 }
+
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
     padding: 80px 20px;
     background-color: var(--light-background-color);
     text-align: center;
+    overflow: hidden; /* يمنع ظهور شريط التمرير الأفقي */
 }
 
 body.dark-mode .testimonials-section {
     background-color: var(--dark-secondary-background);
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+/* حاوية التمرير الرئيسية */
+.testimonials-scroller {
+    display: flex;
     margin-top: 50px;
 }
 
+/* الحاوية الداخلية التي تحتوي على البطاقات وتتحرك */
+.scroller-inner {
+    display: flex;
+    gap: 30px; /* مسافة بين البطاقات */
+    flex-shrink: 0;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* البطاقات نفسها */
 .testimonial-card {
+    min-width: 300px;
     background-color: var(--card-background-color);
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
     border: 1px solid rgba(0, 0, 0, 0.05);
+    /* لضمان تناسق ارتفاع البطاقات */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 body.dark-mode .testimonial-card {
@@ -1034,15 +1049,19 @@ body.dark-mode .testimonial-card {
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.testimonial-card:hover {
-    transform: translateY(-10px);
-}
-
 .testimonial-card p {
     font-style: italic;
     color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.6;
+}
+
+/* تنسيق النجوم والاسم */
+.client-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
 }
 
 .client-info h4 {
@@ -1055,72 +1074,30 @@ body.dark-mode .testimonial-card {
     color: var(--primary-color);
     font-size: 0.9rem;
 }
-/* تنسيق الصورة الشخصية للعميل */
-.client-info {
-    display: flex;
-    align-items: center;
-    gap: 15px; /* مسافة بين الصورة والنص */
-    margin-top: 20px;
-}
 
+/* تنسيق الصورة الشخصية للعميل */
 .client-photo {
     width: 60px;
     height: 60px;
-    border-radius: 50%; /* لجعل الصورة دائرية */
-    object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
+    border-radius: 50%;
+    object-fit: cover;
     border: 2px solid var(--primary-color);
 }
+
 /* تنسيق قسم التقييم بالنجوم */
 .star-rating {
     margin-bottom: 10px;
 }
 
 .star-rating .fas.fa-star {
-    color: #FFD700; /* اللون الأصفر للنجوم */
-    font-size: 1.2rem;
-    margin: 0 2px;
+    color: #FFD700;
+    font-size: 1rem; /* تصغير حجم النجوم */
+    margin: 0 1px;
 }
+
 /* تنسيق النجوم الفارغة */
 .star-rating .far.fa-star {
-    color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
-}
-/* تنسيقات قسم آراء العملاء */
-.testimonials-section {
-    padding: 5rem 2rem;
-    overflow: hidden; /* يمنع ظهور شريط التمرير الأفقي */
-}
-
-/* حاوية التمرير الرئيسية */
-.testimonials-scroller {
-    display: flex;
-    margin: 2rem 0;
-    overflow: hidden;
-}
-
-/* الحاوية الداخلية التي تحتوي على البطاقات وتتحرك */
-.scroller-inner {
-    display: flex;
-    gap: 2rem;
-    flex-shrink: 0;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-}
-
-/* البطاقات نفسها */
-.testimonial-card {
-    min-width: 300px;
-    background-color: var(--light-card-bg);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: var(--light-shadow);
-    /* تعطيل تأثير AOS على البطاقات المتحركة لمنع التعارض */
-    opacity: 1 !important;
-    transform: none !important;
-}
-
-.dark-mode .testimonial-card {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
+    color: #e0e0e0;
 }
 
 /* الحركة من اليمين إلى اليسار */
@@ -1135,21 +1112,8 @@ body.dark-mode .testimonial-card {
         transform: translateX(0);
     }
     to {
-        transform: translateX(calc(-100% - 2rem));
+        transform: translateX(calc(-100% - 30px)); /* استخدام 30px لتناسق الفجوة */
     }
-}
-/* الأنماط العامة لشعار الوضع الفاتح */
-.logo-light {
-    height: 60px; /* أو أي حجم مناسب */
-    width: auto;
-    display: block; /* تأكد من أنه ظاهر افتراضياً */
-}
-
-/* الشعار الداكن يكون مخفياً افتراضياً */
-.logo-dark {
-    height: 60px; /* تأكد من أن الارتفاع متناسق مع الشعار الآخر */
-    width: auto;
-    display: none;
 }
 
 /* تنسيقات قسم "كيف نعمل" */
