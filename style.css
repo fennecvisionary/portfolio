@@ -1226,46 +1226,49 @@ body[dir="rtl"] .step-number-circle::before {
     height: 50px;
     object-fit: cover;
     border-radius: 50%;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     flex-shrink: 0;
 }
 
-/* النص الذي يظهر عند التمرير */
+/* النص الذي يظهر بشكل افتراضي */
 .logo-text {
     font-family: var(--font-family-arabic);
     font-size: 0.8rem;
     font-weight: bold;
     color: var(--primary-color);
     white-space: nowrap;
-    opacity: 0;
+    opacity: 1; /* جعل النص يظهر بشكل افتراضي */
     transition: opacity 0.3s ease;
 }
 
-/* تأثير التمرير: إظهار النص */
+/* تأثير التمرير: إخفاء النص وإظهار الشعار */
 .logo-container:hover .logo-text {
-    opacity: 1;
+    opacity: 0;
 }
 
 /* تحريك الشعار قليلاً عند التمرير */
 .logo-container:hover .logo-image {
+    opacity: 1;
     transform: scale(1.05);
 }
 
 /* الأنماط الخاصة بالشعارين الفاتح والداكن */
 .logo-light {
-    display: block;
+    opacity: 0; /* إخفاء الشعار الفاتح افتراضياً */
 }
 
 .logo-dark {
-    display: none;
+    opacity: 0; /* إخفاء الشعار الداكن افتراضياً */
 }
 
 body.dark-mode .logo-light {
     display: none;
+    opacity: 0;
 }
 
 body.dark-mode .logo-dark {
-    display: block;
+    display: block; /* إظهار الشعار الداكن في الوضع الداكن */
+    opacity: 0; /* إخفاء الشعار الداكن افتراضياً */
 }
 
 /* تحديد اتجاه العناصر بناءً على اتجاه الصفحة (LTR/RTL) */
@@ -1276,7 +1279,6 @@ body[dir="ltr"] .logo-container {
 body[dir="rtl"] .logo-container {
     flex-direction: row-reverse; /* لغات RTL: الشعار على اليمين والنص على اليسار */
 }
-
 
 /* التجاوبية مع الأجهزة المحمولة */
 @media (max-width: 768px) {
