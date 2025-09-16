@@ -1268,13 +1268,13 @@ body.dark-mode .logo-dark {
     display: block;
 }
 
-/* عكس ترتيب العناصر ليعكس اتجاه الصفحة */
+/* تحديد اتجاه العناصر بناءً على اتجاه الصفحة (LTR/RTL) */
 body[dir="ltr"] .logo-container {
-    flex-direction: row-reverse; /* لغات LTR: يجعل النص يظهر على يسار الشعار */
+    flex-direction: row; /* لغات LTR: الشعار على اليسار والنص على اليمين */
 }
 
 body[dir="rtl"] .logo-container {
-    flex-direction: row; /* لغات RTL: يجعل النص يظهر على يمين الشعار */
+    flex-direction: row-reverse; /* لغات RTL: الشعار على اليمين والنص على اليسار */
 }
 
 
