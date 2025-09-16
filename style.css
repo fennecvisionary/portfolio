@@ -123,12 +123,6 @@ body.ltr .main-nav li {
     top: 0;
     z-index: 100;
 }
-
-.logo img {
-    height: 60px;
-    vertical-align: middle;
-}
-
 .main-nav ul {
     list-style: none;
     margin: 0;
@@ -1215,27 +1209,28 @@ body[dir="rtl"] .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
-/* Container for the logo and text */
+/* الأنماط العامة لحاوية الشعار والنص */
 .logo-container {
-    display: flex; /* This is the key change to align items next to each other */
+    display: flex; /* يسمح بترتيب العناصر بجانب بعضها البعض */
     align-items: center;
     position: relative;
-    width: fit-content; /* This makes the container only as wide as its content */
+    width: fit-content;
     cursor: pointer;
     text-decoration: none;
+    gap: 10px; /* يضيف مسافة ثابتة بين الشعار والنص */
 }
 
-/* Base styles for the logo images */
+/* الأنماط الأساسية لصور الشعار */
 .logo-image {
-    width: 60px;
-    height: 60px;
+    width: 50px;  /* تم تقليل الحجم ليتناسب مع القائمة */
+    height: 50px; /* تم تقليل الحجم ليتناسب مع القائمة */
     object-fit: cover;
     border-radius: 50%;
     transition: transform 0.3s ease;
-    flex-shrink: 0; /* Prevents the image from shrinking */
+    flex-shrink: 0;
 }
 
-/* The text that appears on hover */
+/* النص الذي يظهر عند التمرير */
 .logo-text {
     font-family: var(--font-family-arabic);
     font-size: 0.8rem;
@@ -1243,22 +1238,20 @@ body[dir="rtl"] .step-number-circle::before {
     color: var(--primary-color);
     white-space: nowrap;
     opacity: 0;
-    transition: opacity 0.3s ease, margin-left 0.3s ease;
-    margin-left: 0; /* Start with no margin */
+    transition: opacity 0.3s ease;
 }
 
-/* Hover effect: text slides out and fades in */
+/* تأثير التمرير: إظهار النص */
 .logo-container:hover .logo-text {
     opacity: 1;
-    margin-left: 10px; /* Adjust this value to control the distance from the logo */
 }
 
-/* Animate the logo slightly on hover */
+/* تحريك الشعار قليلاً عند التمرير */
 .logo-container:hover .logo-image {
     transform: scale(1.05);
 }
 
-/* Light and dark mode styling (as before) */
+/* الأنماط الخاصة بالشعارين الفاتح والداكن */
 .logo-light {
     display: block;
 }
@@ -1275,15 +1268,14 @@ body.dark-mode .logo-dark {
     display: block;
 }
 
-/* Mobile Responsiveness */
+/* التجاوبية مع الأجهزة المحمولة */
 @media (max-width: 768px) {
     .logo-container {
-        width: auto;
-        height: auto;
+        gap: 5px;
     }
     .logo-image {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
     }
     .logo-text {
         font-size: 0.7rem;
