@@ -1215,20 +1215,20 @@ body[dir="rtl"] .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
-/* الأنماط العامة للحاوية التي تضم الشعار والنص */
+/* الحاوية الرئيسية للشعار والنص */
 .logo-container {
-    position: relative;
+    position: relative; /* مهم جداً: هذا يجعل العناصر الداخلية تتمركز بداخله */
     width: 60px;
     height: 60px;
-    display: block; /* يضمن أن الحاوية تتصرف كعنصر كتلة */
-    border-radius: 50%; /* يحافظ على الشكل الدائري للحاوية */
-    overflow: hidden; /* يخفي أي محتوى زائد */
+    display: block;
+    border-radius: 50%;
+    overflow: hidden;
     cursor: pointer;
 }
 
 /* الأنماط الأساسية لصور الشعار */
 .logo-image {
-    position: absolute;
+    position: absolute; /* مهم جداً: هذا يجعل الصور تتداخل فوق بعضها */
     top: 0;
     left: 0;
     width: 100%;
@@ -1240,15 +1240,15 @@ body[dir="rtl"] .step-number-circle::before {
 
 /* النص الذي يظهر عند التمرير */
 .logo-text {
-    position: absolute;
+    position: absolute; /* مهم جداً: لتثبيت النص في المنتصف */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    font-family: var(--font-family-arabic); /* أو الخط الذي تفضله للنص */
+    font-family: var(--font-family-arabic);
     font-size: 0.8rem;
     font-weight: bold;
     color: var(--primary-color);
-    white-space: nowrap; /* يمنع التفاف النص */
+    white-space: nowrap;
     opacity: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
@@ -1272,6 +1272,6 @@ body[dir="rtl"] .step-number-circle::before {
     }
 
     .logo-text {
-        font-size: 0.7rem; /* تصغير حجم الخط على الأجهزة الصغيرة */
+        font-size: 0.7rem;
     }
 }
