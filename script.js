@@ -81,6 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial_10_text: "التعامل كان مريحاً للغاية. فهم احتياجاتي وأضاف لمسات سحرية لتصاميم بطاقات الأعمال.",
             testimonial_10_name: "سارة عبد الله",
             testimonial_10_role: "مصممة أزياء"
+            experienceTitle: "Fennec Visionary | إبداع بصري يصنع هوية مميزة",
+            about_me_bio: "مصمم جرافيك بخبرة تفوق 12 عامًا، متخصص في تصميم الشعارات والهويات البصرية وبروفايلات الشركات، إضافة إلى الكتالوجات، المطبوعات، وتصاميم السوشيال ميديا. تعاونت مع كبرى الشركات محليًا ودوليًا في الخليج والسعودية وكندا وأمريكا، مقدّمًا حلولًا إبداعية مبتكرة تعكس الاحترافية والتميّز." ,
+                           "شعارنا مستوحى من الفنك الجزائري، رمز الذكاء والهوية الوطنية، ليجسد مزيجًا فريدًا من الثقافة، الإبداع، والاحتراف. " , 
         },
         en: {
             skip_link: "Skip to main content",
@@ -150,6 +153,9 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial_10_text: "The experience was very comfortable. He understood my needs and added magical touches to the business card designs.",
             testimonial_10_name: "Sara Abdullah",
             testimonial_10_role: "Fashion Designer"
+     experienceTitle: "Fennec Visionary | Visual Creativity that Builds Unique Identity",
+            about_me_bio: "Graphic designer with over 12 years of experience, specialized in logos, visual identities, and corporate profiles, as well as catalogues, print materials, and social media designs. I have collaborated with leading companies locally and internationally across the Gulf, Saudi Arabia, Canada, and the USA, delivering innovative solutions that reflect professionalism and excellence." ,
+                           "Our logo is inspired by the Algerian fennec, a symbol of ingenuity and national identity, embodying a unique blend of culture, creativity, and professionalism.", 
         },
         fr: {
             skip_link: "Passer au contenu principal",
