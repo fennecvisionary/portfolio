@@ -235,8 +235,8 @@ body.ltr .main-nav li {
     background-color: var(--primary-color);
     border: none;
     color: white;
-    width: 45px; /* تحديد عرض الدائرة */
-    height: 45px; /* تحديد ارتفاع الدائرة */
+    width: 40px; /* تحديد عرض الدائرة */
+    height: 40px; /* تحديد ارتفاع الدائرة */
     border-radius: 50%; /* لجعل الزر دائريًا */
     font-size: 1.1rem;
     cursor: pointer;
