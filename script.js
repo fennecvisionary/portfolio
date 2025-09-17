@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const searchButton = document.getElementById("searchButton");
     const tags = document.querySelectorAll('.tag-link');
     const navLinks = document.querySelectorAll('.main-nav a');
-
+    const hoverImage = document.getElementById('hover-tool-image');
 
     // بيانات اللغات
     const translations = {
@@ -210,7 +210,7 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial_7_text: "Le nouveau design du menu de mon restaurant m'a impressionné. Il a ajouté une touche moderne et artistique merveilleuse.",
             testimonial_7_name: "Khaled Al-Saadi",
             testimonial_7_role: "Propriétaire de restaurant",
-            testimonial_8_text: "Il m'a aidé à concevoir un logo qui reflète mon art. Le résultat a été exceptionnel, et je vous remercie pour votre patience et votre attention aux détails.",
+            testimonial_8_text: "Il m'a aidé à concevoir un logo qui reflète mon art. Le résultat a été exceptionnel, وje vous remercie pour votre patience et votre attention aux détails.",
             testimonial_8_name: "Laila Mourad",
             testimonial_8_role: "Artiste plasticienne",
             testimonial_9_text: "La conception de mes publicités sur les réseaux sociaux a fait une grande différence. Il y a eu une augmentation de l'engagement et des clients.",
@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial_10_role: "Créatrice de mode"
         }
     };
-
+    
     // إضافة أنماط للنتائج غير الموجودة
     const noResultsStyle = document.createElement('style');
     noResultsStyle.textContent = `
@@ -270,7 +270,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // وظيفة تبديل اللغة
     function setLanguage(lang) {
-        // تحديث النصوص باستخدام data-lang-key
         document.querySelectorAll("[data-lang-key]").forEach(element => {
             const key = element.getAttribute("data-lang-key");
             const translation = translations[lang][key];
@@ -278,63 +277,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
                     element.placeholder = translation;
                 } else {
-                    element.textContent = translation;
+                    // التحقق من وجود رابط بداخل العنصر
+                    const link = element.querySelector('a');
+                    if (link) {
+                        element.innerHTML = `${translation} <a href="${link.href}">${link.textContent}</a>`;
+                    } else {
+                        element.textContent = translation;
+                    }
                 }
             }
         });
-
-      /// تحديث نصوص قسم "كيف نعمل"
-document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
-document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
         
-// تحديث نصوص كل خطوة بشكل ديناميكي
-for (let i = 1; i <= 4; i++) {
-    document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-title`).textContent = translations[lang][`step${i}Title`];
-    document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-description`).textContent = translations[lang][`step${i}Desc`];
-}
-
-// إضافة الكود الخاص بتغيير الاتجاه
-if (lang === "ar") {
-    document.body.classList.add("rtl");
-    document.body.classList.remove("ltr");
-} else {
-    document.body.classList.add("ltr");
-    document.body.classList.remove("rtl");
-}
-// JavaScript لتأثير النبض وتغيير الصورة
-document.addEventListener('DOMContentLoaded', () => {
-    const dynamicTitle = document.querySelector('.dynamic-text-title');
-    const toolItems = document.querySelectorAll('.tool-item');
-    const hoverImage = document.getElementById('hover-tool-image');
-
-    // تأثير النبض على الماوس
-    if (dynamicTitle) {
-        dynamicTitle.textContent = "مصمم غرافيكي"; // العنوان الثابت
-        dynamicTitle.addEventListener('mousemove', (e) => {
-            const cursor = document.createElement('span');
-            cursor.classList.add('pulse-cursor');
-            cursor.style.left = `${e.offsetX}px`;
-            cursor.style.top = `${e.offsetY}px`;
-            dynamicTitle.appendChild(cursor);
-            setTimeout(() => {
-                cursor.remove();
-            }, 500);
-        });
-    }
-
-    // تبديل الصور عند التمرير
-    toolItems.forEach(item => {
-        item.addEventListener('mouseover', () => {
-            const toolName = item.getAttribute('data-tool-name');
-            hoverImage.src = `images/${toolName}-full.jpg`; // تأكد من وجود هذه الصور
-            hoverImage.classList.remove('hidden');
-        });
-        item.addEventListener('mouseout', () => {
-            hoverImage.classList.add('hidden');
-        });
-    });
-});
-        // تحديث نصوص آراء العملاء
+        document.querySelector('#how-it-works h2').textContent = translations[lang]['howItWorksTitle'];
+        document.querySelector('#how-it-works .subtitle').textContent = translations[lang]['howItWorksSubtitle'];
+        
+        for (let i = 1; i <= 4; i++) {
+            document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-title`).textContent = translations[lang][`step${i}Title`];
+            document.querySelector(`.steps-container .step-card:nth-of-type(${i}) .step-description`).textContent = translations[lang][`step${i}Desc`];
+        }
+        
         for (let i = 1; i <= 10; i++) {
             const testimonialCard = document.querySelector(`.testimonial-card:nth-of-type(${i})`);
             if (testimonialCard) {
@@ -348,7 +309,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        // تحديث اتجاه الصفحة (RTL/LTR)
         if (lang === "ar") {
             document.documentElement.dir = "rtl";
             document.documentElement.lang = "ar";
@@ -362,10 +322,44 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         localStorage.setItem("language", lang);
         
-        // تحديث placeholder لـ searchInput
         searchInput.placeholder = translations[lang].search_placeholder;
     }
     
+    // وظيفة تبديل الصور
+    function setupToolImageHover() {
+        const dynamicTitle = document.querySelector('.dynamic-text-title');
+        const toolItems = document.querySelectorAll('.tool-item');
+
+        if (dynamicTitle) {
+            dynamicTitle.textContent = "مصمم غرافيكي";
+            dynamicTitle.addEventListener('mousemove', (e) => {
+                const cursor = document.createElement('span');
+                cursor.classList.add('pulse-cursor');
+                cursor.style.left = `${e.offsetX}px`;
+                cursor.style.top = `${e.offsetY}px`;
+                dynamicTitle.appendChild(cursor);
+                setTimeout(() => {
+                    cursor.remove();
+                }, 500);
+            });
+        }
+
+        toolItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                const toolName = item.getAttribute('data-tool-name');
+                if (hoverImage) { // تأكد من وجود العنصر
+                    hoverImage.src = `images/${toolName}-full.jpg`;
+                    hoverImage.classList.remove('hidden');
+                }
+            });
+            item.addEventListener('mouseout', () => {
+                if (hoverImage) { // تأكد من وجود العنصر
+                    hoverImage.classList.add('hidden');
+                }
+            });
+        });
+    }
+
     // إضافة فئة "active" للرابط عند النقر عليه
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
@@ -374,10 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // تهيئة الصفحة عند التحميل
     function initialize() {
-        // تهيئة الوضع الليلي/النهاري
         const savedMode = localStorage.getItem("darkMode");
         if (savedMode === "true") {
             body.classList.add("dark-mode");
@@ -391,12 +383,10 @@ document.addEventListener('DOMContentLoaded', () => {
             modeToggle.setAttribute('aria-label', 'تفعيل الوضع الداكن');
         }
 
-        // تهيئة اللغة
         const savedLang = localStorage.getItem("language") || "ar";
         languageSelect.value = savedLang;
         setLanguage(savedLang);
 
-        // تهيئة AOS
         if (typeof AOS !== 'undefined') {
             AOS.init({
                 duration: 1000,
@@ -406,7 +396,6 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // تهيئة Lightbox
         if (typeof lightbox !== 'undefined') {
             lightbox.option({
                 'resizeDuration': 200,
@@ -417,37 +406,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-     // بيانات الأعمال
-const totalWorks = 100;
-const itemsPerPage = 12;
-let allWorks = [];
+    // بيانات الأعمال
+    const totalWorks = 100;
+    const itemsPerPage = 12;
+    let allWorks = [];
+    const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
 
-// فئات الأعمال
-const workCategories = ["شعار", "تغليف", "بطاقة عمل", "تصميم مواقع", "فلاير", "تي شيرت", "رسم", "هوية بصرية"];
+    for (let i = 1; i <= totalWorks; i++) {
+        const categoryIndex = (i - 1) % workCategories.length;
+        const category = workCategories[categoryIndex];
+        const galleryImages = [
+            `images/work${i}/1.jpg`,
+            `images/work${i}/2.jpg`,
+            `images/work${i}/3.jpg`
+        ];
+        allWorks.push({
+            id: `work${i}`,
+            title: `تصميم ${category} رقم ${i}`,
+            mainImage: galleryImages[0],
+            galleryImages: galleryImages,
+            category: category,
+            details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
+        });
+    }
 
-// إنشاء بيانات الأعمال بشكل ديناميكي
-for (let i = 1; i <= totalWorks; i++) {
-    const categoryIndex = (i - 1) % workCategories.length;
-    const category = workCategories[categoryIndex];
-    
-    // إنشاء مصفوفة من 3 صور لكل عمل
-    const galleryImages = [
-        `images/work${i}/1.jpg`,
-        `images/work${i}/2.jpg`,
-        `images/work${i}/3.jpg`
-    ];
-    
-    allWorks.push({
-        id: `work${i}`,
-        title: `تصميم ${category} رقم ${i}`,
-        mainImage: galleryImages[0], // الصورة الرئيسية التي تظهر في الشبكة
-        galleryImages: galleryImages, // جميع صور هذا العمل
-        category: category,
-        details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-    });
-}
-  
- // عرض الأعمال في الشبكة
+    let currentPage = 1;
+
+    // عرض الأعمال في الشبكة
     function renderWorks(works, page = 1) {
         worksGrid.innerHTML = '';
         currentPage = page;
@@ -457,11 +442,12 @@ for (let i = 1; i <= totalWorks; i++) {
         const paginatedItems = works.slice(start, end);
 
         if (paginatedItems.length === 0) {
+            const lang = localStorage.getItem('language') || 'ar';
             worksGrid.innerHTML = `
                 <div class="no-results">
                     <i class="fas fa-search"></i>
-                    <h3>لم يتم العثور على نتائج</h3>
-                    <p>جرب استخدام كلمات بحث أخرى</p>
+                    <h3>${translations[lang].no_results_heading}</h3>
+                    <p>${translations[lang].no_results_text}</p>
                 </div>
             `;
             paginationContainer.innerHTML = '';
@@ -494,7 +480,6 @@ for (let i = 1; i <= totalWorks; i++) {
             worksGrid.appendChild(itemDiv);
         });
         
-        // تحديث أزرار AOS بعد إضافة العناصر
         AOS.refresh();
         renderPagination(works);
     }
@@ -506,7 +491,6 @@ for (let i = 1; i <= totalWorks; i++) {
 
         if (pageCount <= 1) return;
 
-        // زر الصفحة السابقة
         if (currentPage > 1) {
             const prevLink = document.createElement("a");
             prevLink.href = "#works";
@@ -523,7 +507,6 @@ for (let i = 1; i <= totalWorks; i++) {
             paginationContainer.appendChild(prevLink);
         }
 
-        // أزرار الصفحات
         for (let i = 1; i <= pageCount; i++) {
             const pageLink = document.createElement("a");
             pageLink.href = "#works";
@@ -541,7 +524,6 @@ for (let i = 1; i <= totalWorks; i++) {
             paginationContainer.appendChild(pageLink);
         }
 
-        // زر الصفحة التالية
         if (currentPage < pageCount) {
             const nextLink = document.createElement("a");
             nextLink.href = "#works";
@@ -617,6 +599,9 @@ for (let i = 1; i <= totalWorks; i++) {
             });
         });
     });
+
+    // تشغيل وظيفة تهيئة الصور بعد تحميل الصفحة
+    setupToolImageHover();
 
     // تشغيل وظيفة التهيئة عند تحميل الصفحة
     initialize();
