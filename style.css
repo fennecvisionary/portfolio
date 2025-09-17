@@ -183,8 +183,10 @@ body.ltr .main-nav li {
 .dark-mode #language-select {
     background: var(--dark-card-bg);
     color: var(--primary-color);
+    border-color: var(--primary-color);
 }
-/* Mobile Responsiveness */
+
+/* Mobile Responsiveness for Header */
 @media (max-width: 768px) {
     .site-header {
         padding: 1rem; /* تقليل المسافة الداخلية */
@@ -198,6 +200,7 @@ body.ltr .main-nav li {
         display: none; /* إخفاء قائمة التنقل */
     }
 }
+
 /* Search Bar Styles */
 .search-container {
     display: flex; /* استخدام فليكس بوكس لتنظيم العناصر */
@@ -291,6 +294,7 @@ section {
     padding: 4rem 2rem;
     text-align: center;
 }
+
 /* Services Section */
 .services-grid {
     display: grid;
@@ -301,33 +305,33 @@ section {
 }
 
 .service-item {
-    background:#fff;
-    padding:2rem;
-    border-radius:8px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+    background: var(--light-card-bg);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     transition: transform 0.3s, box-shadow 0.3s;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     text-align: center;
 }
 
 .service-item i {
-    font-size:2rem;
-    margin-bottom:0.5rem;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
     color: var(--primary-color);
     transition: color 0.3s ease;
 }
 
 .service-item p {
-    font-weight:bold;
+    font-weight: bold;
 }
 
 /* Hover Effect for Services */
 .service-item:hover {
     transform: translateY(-5px);
-    box-shadow:0 0 15px var(--primary-color); /* التغيير هنا: الظل أصبح باللون البرتقالي */
+    box-shadow: 0 0 15px var(--primary-color); /* التغيير هنا: الظل أصبح باللون البرتقالي */
 }
 
 .service-item:hover i {
@@ -580,8 +584,8 @@ section {
         align-items: center;
     }
 }
-/* Portfolio Section - Modern Hover Effect */
 
+/* Portfolio Section - Modern Hover Effect */
 .portfolio .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -676,6 +680,7 @@ section {
     background-color: var(--primary-color);
     color: #fff;
 }
+
 /* Footer & Contact Section - قسم الفوتر والتواصل */
 footer {
     /* لون الخلفية للقسم في جميع الأوضاع */
@@ -816,22 +821,23 @@ footer a:hover {
     .services-grid, .grid {
         grid-template-columns: 1fr;
     }
-    
+
     .search-container {
         padding: 1rem;
     }
-    
+
     .socials {
         flex-wrap: wrap;
     }
 }
+
 /* Back Button */
 .back-to-works {
     display: block; /* لجعله يتوسط الصفحة */
     width: fit-content; /* يضبط عرض الزر ليناسب محتواه */
     margin-left: auto;
     margin-right: auto; /* هذا الكود هو المسؤول عن التوسيط الأفقي */
-    
+
     /* الخصائص الأخرى التي كانت موجودة مسبقاً */
     background-color: var(--primary-color);
     color: #fff;
@@ -842,9 +848,11 @@ footer a:hover {
     margin-top: 3rem;
     transition: background-color 0.3s ease;
 }
+
 .back-btn:hover, .back-to-works:hover {
     background-color: #d44d1e;
 }
+
 .back-btn:hover {
     background-color: #d94a1f;
 }
@@ -854,7 +862,7 @@ footer a:hover {
     max-width: 900px;
     margin: 4rem auto;
     padding: 2rem;
-    background-color: var(--light-card-bg);
+    background-color: var(--light-card-bg); /* تم تصحيح اسم المتغير */
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     text-align: center; /* Ensures the title and paragraph are centered */
@@ -938,7 +946,6 @@ footer a:hover {
     right: auto;
 }
 
-
 .nav-arrow:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -956,8 +963,9 @@ body main {
 }
 
 .dark-mode .work-details {
-    background-color: var(--dark-card-bg);
+    background-color: var(--dark-card-bg); /* تم تصحيح اسم المتغير */
 }
+
 /* تنسيقات حاوية الوسوم */
 .tags-container {
     margin-top: 2rem;
@@ -999,6 +1007,7 @@ body main {
     background-color: var(--primary-color);
     color: #fff;
 }
+
 /* حل مشكلة المخطط الخارجي الأزرق عند النقر على الروابط */
 .main-nav a:focus,
 .header-controls button:focus {
@@ -1006,17 +1015,18 @@ body main {
 }
 
 /* لمنع الخطوط من الظهور على جميع الروابط والأزرار في رأس الصفحة */
-.site-header a, 
+.site-header a,
 .site-header button {
     outline: none !important;
 }
+
 /* تنسيق صندوق التعليقات */
 .comments-box {
     margin: 40px auto;
     padding: 25px;
     max-width: 900px;
     border-radius: 12px;
-    background-color: var(--light-background-color);
+    background-color: var(--light-bg-color); /* تم تصحيح اسم المتغير */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -1024,7 +1034,7 @@ body main {
 
 /* تنسيقات الوضع الليلي */
 body.dark-mode .comments-box {
-    background-color: var(--dark-secondary-background);
+    background-color: var(--dark-bg-color); /* تم تصحيح اسم المتغير */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -1048,15 +1058,16 @@ body.dark-mode .comments-box {
         padding: 15px;
     }
 }
+
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
     padding: 80px 20px;
-    background-color: var(--light-background-color);
+    background-color: var(--light-bg-color); /* تم تصحيح اسم المتغير */
     text-align: center;
 }
 
 body.dark-mode .testimonials-section {
-    background-color: var(--dark-secondary-background);
+    background-color: var(--dark-bg-color); /* تم تصحيح اسم المتغير */
 }
 
 .testimonials-grid {
@@ -1067,7 +1078,7 @@ body.dark-mode .testimonials-section {
 }
 
 .testimonial-card {
-    background-color: var(--card-background-color);
+    background-color: var(--light-card-bg); /* تم تصحيح اسم المتغير */
     padding: 30px;
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
@@ -1076,7 +1087,7 @@ body.dark-mode .testimonials-section {
 }
 
 body.dark-mode .testimonial-card {
-    background-color: var(--dark-card-background);
+    background-color: var(--dark-card-bg); /* تم تصحيح اسم المتغير */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -1087,14 +1098,14 @@ body.dark-mode .testimonial-card {
 
 .testimonial-card p {
     font-style: italic;
-    color: var(--text-color);
+    color: var(--light-text-color); /* تم تصحيح اسم المتغير */
     margin-bottom: 20px;
     line-height: 1.6;
 }
 
 .client-info h4 {
     margin: 0;
-    color: var(--heading-color);
+    color: var(--light-text-color); /* تم تصحيح اسم المتغير */
     font-size: 1.1rem;
 }
 
@@ -1102,6 +1113,7 @@ body.dark-mode .testimonial-card {
     color: var(--primary-color);
     font-size: 0.9rem;
 }
+
 /* تنسيق الصورة الشخصية للعميل */
 .client-info {
     display: flex;
@@ -1117,6 +1129,7 @@ body.dark-mode .testimonial-card {
     object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
     border: 2px solid var(--primary-color);
 }
+
 /* تنسيق قسم التقييم بالنجوم */
 .star-rating {
     margin-bottom: 10px;
@@ -1127,6 +1140,7 @@ body.dark-mode .testimonial-card {
     font-size: 1.2rem;
     margin: 0 2px;
 }
+
 /* تنسيق النجوم الفارغة */
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
@@ -1262,6 +1276,7 @@ body[dir="rtl"] .step-number-circle::before {
         content: '\f063'; /* سهم لأسفل في الوضع العمودي */
     }
 }
+
 /* الأنماط العامة للشعارات */
 .logo {
     height: 60px; /* ارتفاع الشعار الافتراضي */
@@ -1299,7 +1314,8 @@ body.dark-mode .logo-dark {
         height: 50px; /* تصغير الارتفاع قليلاً على الأجهزة اللوحية والجوال */
     }
 }
-/* Mobile Responsiveness */
+
+/* Mobile Responsiveness for Navigation */
 @media (max-width: 768px) {
     .site-header {
         padding: 1rem;
@@ -1329,7 +1345,7 @@ body.dark-mode .logo-dark {
         background-color: var(--dark-card-bg);
         box-shadow: var(--dark-shadow);
     }
-    
+
     .dark-mode .main-nav a {
         color: var(--dark-text-color);
     }
@@ -1339,6 +1355,7 @@ body.dark-mode .logo-dark {
         display: flex;
     }
 }
+
 /* إخفاء زر القائمة افتراضيًا على جميع الشاشات */
 .menu-toggle {
     display: none;
