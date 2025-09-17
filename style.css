@@ -1133,7 +1133,7 @@ body.dark-mode .testimonial-card {
 .step-card {
     background-color: var(--light-card-bg);
     border-radius: 12px;
-    padding: 2.5rem 1.5rem;
+    padding: 3.5rem 1.5rem;
     box-shadow: var(--light-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
