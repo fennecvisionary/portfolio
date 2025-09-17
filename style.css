@@ -584,7 +584,37 @@ section {
         align-items: center;
     }
 }
+/* --- NEW: Styling for the Bio and Image Card Container --- */
+.bio-card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--light-card-bg);
+    border-radius: 15px;
+    box-shadow: var(--light-shadow);
+    padding: 2rem;
+    max-width: 600px;
+    margin: 3rem auto;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
 
+/* Dark mode for the new container */
+.dark-mode .bio-card-container {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+}
+
+/* Hover effect for the entire card */
+.bio-card-container:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark mode hover effect */
+.dark-mode .bio-card-container:hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
 /* Portfolio Section - Modern Hover Effect */
 .portfolio .grid {
     display: grid;
