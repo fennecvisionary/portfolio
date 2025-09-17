@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ar: {
             skip_link: "تخطي إلى المحتوى الرئيسي",
             nav_services: "الخدمات",
-            nav_how_it_works: "كيف نعمل",
+            nav_how_it_works: "منهجيتنا",
             nav_tools: "أدواتنا",
             nav_works: "أعمالنا",
             nav_testimonials: "آراء العملاء",
@@ -84,9 +84,9 @@ document.addEventListener("DOMContentLoaded", () => {
         en: {
             skip_link: "Skip to main content",
             nav_services: "Services",
-            nav_how_it_works: "How it Works",
+            nav_how_it_works: "Process",
             nav_tools: "Tools",
-            nav_works: "Our Works",
+            nav_works: "Works",
             nav_testimonials: "Customer Reviews",
             nav_contact: "Contact",
             services_title: "Services",
@@ -152,9 +152,9 @@ document.addEventListener("DOMContentLoaded", () => {
         fr: {
             skip_link: "Passer au contenu principal",
             nav_services: "Services",
-            nav_how_it_works: "Comment Nous Travaillons",
+            nav_how_it_works: "Processus",
             nav_tools: "Outils",
-            nav_works: "Mes Travaux",
+            nav_works: "Créations",
             nav_testimonials: "Avis Clients",
             nav_contact: "Contact",
             services_title: "Mes Services",
