@@ -206,7 +206,7 @@ body.ltr .main-nav li {
     align-items: center;
     padding: 2rem;
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 #searchInput {
@@ -218,7 +218,6 @@ body.ltr .main-nav li {
     background-color: var(--light-card-bg);
     color: var(--light-text-color);
     transition: all 0.3s ease;
-    padding-right: 80px; /* ترك مساحة للأيقونة */
 }
 
 #searchInput:focus {
@@ -240,10 +239,29 @@ body.ltr .main-nav li {
     cursor: pointer;
     position: absolute; /* تحديد موقع الأيقونة بشكل مطلق */
     z-index: 2;
-    /* تحديد الموقع بناءً على اتجاه اللغة */
-    right: 15px;
     top: 50%;
     transform: translateY(-50%);
+}
+
+/* Adjustments based on language direction (RTL/LTR) */
+body.ar #searchInput {
+    padding-right: 50px; /* مساحة للأيقونة على اليمين في العربية */
+    padding-left: 20px;
+}
+
+body:not(.ar) #searchInput {
+    padding-left: 50px; /* مساحة للأيقونة على اليسار في الإنجليزية والفرنسية */
+    padding-right: 20px;
+}
+
+body.ar #searchButton {
+    right: 15px; /* وضع الأيقونة على اليمين في العربية */
+    left: auto;
+}
+
+body:not(.ar) #searchButton {
+    left: 15px; /* وضع الأيقونة على اليسار في الإنجليزية والفرنسية */
+    right: auto;
 }
 
 /* Carousel Section */
