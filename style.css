@@ -1165,7 +1165,12 @@ body.dark-mode .testimonial-card {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 80px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
+    padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
+}
+
+/* قلب اتجاه الحاوية في الوضع الأفقي للغات التي تكتب من اليمين لليسار */
+body[dir="rtl"] .steps-container {
+    flex-direction: row-reverse;
 }
 
 .step-card {
@@ -1217,8 +1222,8 @@ body.dark-mode .testimonial-card {
     bottom: 3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 50%;
@@ -1275,7 +1280,7 @@ body[dir="rtl"] .step-number-circle::before {
     
     /* زيادة المسافة أسفل البطاقة لمنع تداخل الدائرة مع النص */
     .step-card {
-        padding-bottom: 5rem;
+        padding-bottom: 6rem;
     }
     
     /* الأسهم تتجه لأسفل في الوضع العمودي على الهواتف */
