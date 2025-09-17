@@ -1278,12 +1278,16 @@ body[dir="rtl"] .step-number-circle::before {
         flex-direction: column;
     }
     
+    /* زيادة المسافة أسفل البطاقة لمنع تداخل الدائرة مع النص */
+    .step-card {
+        padding-bottom: 5rem;
+    }
+    
     /* الأسهم تتجه لأسفل في الوضع العمودي على الهواتف */
     .step-number-circle::before {
         content: '\f063';
     }
 }
-
 /* الأنماط العامة للشعارات */
 .logo {
     height: 60px; /* ارتفاع الشعار الافتراضي */
