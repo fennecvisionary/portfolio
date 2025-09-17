@@ -206,7 +206,7 @@ body.ltr .main-nav li {
     align-items: center;
     padding: 2rem;
     margin: 0 auto;
-    max-width: 600px;
+    max-width: 500px;
 }
 
 #searchInput {
@@ -218,7 +218,7 @@ body.ltr .main-nav li {
     background-color: var(--light-card-bg);
     color: var(--light-text-color);
     transition: all 0.3s ease;
-    padding-right: 50px; /* ترك مساحة للأيقونة */
+    padding-right: 80px; /* ترك مساحة للأيقونة */
 }
 
 #searchInput:focus {
