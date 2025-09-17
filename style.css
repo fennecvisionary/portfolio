@@ -416,336 +416,182 @@ section {
     }
 }
 
-/* تنسيقات قسم "من أنا" */
-.about-me-section {
-    padding: 3rem 0;
-}
-
-.about-content {
-    /* إضافة إطار رئيسي جذاب */
-    background-color: var(--light-card-bg);
-    border-radius: 15px;
-    box-shadow: var(--light-shadow);
-    padding: 2rem;
-}
-
-.dark-mode .about-content {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
-}
-
 .about-details {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    align-items: flex-start;
-
-    justify-content: center;
-
-    gap: 4rem;
-
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4rem;
 }
 
 .profile-card {
-
-    flex: 1 1 300px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-image-container {
-
-    width: 200px;
-
-    height: 200px;
-
-    border-radius: 50%;
-
-    overflow: hidden;
-
-    position: relative;
-
-    border: 5px solid var(--primary-color);
-
-    box-shadow: var(--light-shadow);
-
-    margin-bottom: 1.5rem;
-
-    transition: transform 0.3s ease;
-
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+    border: 5px solid var(--primary-color);
+    box-shadow: var(--light-shadow);
+    margin-bottom: 1.5rem;
+    transition: transform 0.3s ease;
 }
 
 .dark-mode .profile-image-container {
-
-    border-color: var(--primary-color);
-
-    box-shadow: var(--dark-shadow);
-
+    border-color: var(--primary-color);
+    box-shadow: var(--dark-shadow);
 }
 
-
-
 .profile-image-container img {
-
-    width: 100%;
-
-    height: 100%;
-
-    object-fit: cover;
-
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .profile-image-container:hover {
-
-    transform: scale(1.05);
-
+    transform: scale(1.05);
 }
 
 /* نقطة الحالة "متاح" */
-
 .availability-dot {
-
-    position: absolute;
-
-    bottom: 10px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 20px;
-
-    height: 20px;
-
-    background-color: #38c172;
-
-    border-radius: 50%;
-
-    border: 3px solid var(--light-bg-color);
-
-    animation: availability-pulse 1.5s infinite;
-
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #38c172;
+    border-radius: 50%;
+    border: 3px solid var(--light-bg-color);
+    animation: availability-pulse 1.5s infinite;
 }
 
 .dark-mode .availability-dot {
-
-    border-color: var(--dark-bg-color);
-
+    border-color: var(--dark-bg-color);
 }
 
-
-
 @keyframes availability-pulse {
-
-    0% {
-
-        transform: scale(0.8) translateX(-50%);
-
-        opacity: 0.7;
-
-    }
-
-    50% {
-
-        transform: scale(1.1) translateX(-50%);
-
-        opacity: 1;
-
-    }
-
-    100% {
-
-        transform: scale(0.8) translateX(-50%);
-
-        opacity: 0.7;
-
-    }
-
+    0% {
+        transform: scale(0.8) translateX(-50%);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1) translateX(-50%);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.8) translateX(-50%);
+        opacity: 0.7;
+    }
 }
 
 .bio-text p {
-
-    color: var(--light-text-color);
-
-    line-height: 1.8;
-
-    /* تأثير ظهور النص من الأسفل */
-
-    animation: fade-in-up 1.2s ease-out forwards;
-
+    color: var(--light-text-color);
+    line-height: 1.8;
+    /* تأثير ظهور النص من الأسفل */
+    animation: fade-in-up 1.2s ease-out forwards;
 }
 
 .dark-mode .bio-text p {
-
-    color: var(--dark-text-color);
-
+    color: var(--dark-text-color);
 }
 
 /* تنسيقات قسم الأدوات */
-
 .tools-container {
-
-    flex: 1 1 300px;
-
-    text-align: center;
-
+    flex: 1 1 300px;
+    text-align: center;
 }
 
-
-
 .tools-title {
-
-    color: var(--primary-color);
-
-    font-size: 2rem;
-
-    margin-bottom: 1rem;
-
-    animation: fade-in-up 1.4s ease-out forwards;
-
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    animation: fade-in-up 1.4s ease-out forwards;
 }
 
 .tools-grid {
-
-    display: flex;
-
-    flex-wrap: wrap;
-
-    justify-content: center;
-
-    gap: 1.5rem;
-
-    margin-bottom: 2rem;
-
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .tool-item {
-
-    width: 70px;
-
-    height: 70px;
-
-    background-color: var(--light-card-bg);
-
-    border-radius: 10px;
-
-    box-shadow: var(--light-shadow);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    cursor: pointer;
-
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-
+    width: 70px;
+    height: 70px;
+    background-color: var(--light-card-bg);
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dark-mode .tool-item {
-
-    background-color: var(--dark-card-bg);
-
-    box-shadow: var(--dark-shadow);
-
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
 
 .tool-item:hover {
-
-    transform: translateY(-5px);
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode .tool-item:hover {
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 .tool-item img {
-
-    max-width: 60%;
-
-    height: auto;
-
-    /* تأثير التوهج عند التمرير */
-
-    transition: filter 0.3s ease, transform 0.3s ease;
-
+    max-width: 60%;
+    height: auto;
+    /* تأثير التوهج عند التمرير */
+    transition: filter 0.3s ease, transform 0.3s ease;
 }
 
 .tool-item:hover img {
-
-    filter: drop-shadow(0 0 8px var(--primary-color));
-
-    transform: scale(1.1);
-
+    filter: drop-shadow(0 0 8px var(--primary-color));
+    transform: scale(1.1);
 }
 
 .hover-image-display {
-
-    text-align: center;
-
+    text-align: center;
 }
 
 .hover-image-display img {
-
-    max-width: 100%;
-
-    height: auto;
-
-    border-radius: 10px;
-
-    box-shadow: var(--light-shadow);
-
-    transition: opacity 0.3s ease-in-out;
-
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
+    transition: opacity 0.3s ease-in-out;
 }
 
 .hover-image-display .hidden {
-
-    opacity: 0;
-
+    opacity: 0;
 }
 
 @media (max-width: 768px) {
-
-    .about-details {
-
-        flex-direction: column;
-
-        align-items: center;
-
-    }
-
-}
-/* تنسيقات قسم "من أنا" */
-#about-me {
-    padding: 3rem 0; /* مساحة داخلية أعلى وأسفل القسم */
+    .about-details {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
-/* الحاوية الجديدة للإطار */
-.about-section-container {
-    background-color: var(--light-card-bg);
-    border-radius: 15px;
-    box-shadow: var(--light-shadow);
-    padding: 2rem;
-}
-
-/* وضع الوضع الداكن للإطار */
-.dark-mode .about-section-container {
-    background-color: var(--dark-card-bg);
-    box-shadow: var(--dark-shadow);
+/* Portfolio Section - Modern Hover Effect */
+.portfolio .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .portfolio .item {
