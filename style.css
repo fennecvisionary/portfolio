@@ -680,21 +680,22 @@ section {
 /* Footer & Contact Section */
 footer {
     background-color: var(--secondary-color);
-    color: var(--dark-text-color); /* لون النص الافتراضي في الوضع الفاتح */
+    color: var(--dark-text-color);
     text-align: center;
     padding: 2rem;
 }
 
 /* الأنماط الخاصة بالروابط داخل الفوتر */
+/* هذه القاعدة ستجعل جميع الروابط داخل الفوتر باللون البرتقالي */
 footer a {
-    color: var(--light-text-color); /* تأكد من أن الروابط تظهر في الوضع الفاتح */
+    color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 /* تأثير التمرير على الروابط */
 footer a:hover {
-    color: var(--primary-color);
+    color: var(--light-text-color);
 }
 
 /* حاوية أيقونات وسائل التواصل الاجتماعي */
@@ -733,17 +734,17 @@ footer a:hover {
 /* الوضع الليلي - تحديث الأنماط لتتناسب مع الألوان الداكنة */
 .dark-mode footer {
     background-color: var(--dark-bg-color);
-    color: var(--dark-text-color); /* تأكد من أن النص يظهر بوضوح في الوضع الليلي */
+    color: var(--dark-text-color);
 }
 
 .dark-mode footer a {
-    color: var(--dark-text-color); /* لون الروابط في الوضع الليلي */
-}
-
-.dark-mode footer a:hover {
+    /* في الوضع الليلي أيضًا، نجعل الروابط باللون البرتقالي */
     color: var(--primary-color);
 }
 
+.dark-mode footer a:hover {
+    color: var(--dark-text-color);
+}
 /* Fix for the Skip link to be hidden until it's in focus */
 .skip-link {
     position: absolute;
