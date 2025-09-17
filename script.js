@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
      // بيانات الأعمال
 const totalWorks = 100;
-const itemsPerPage = 16;
+const itemsPerPage = 12;
 let allWorks = [];
 
 // فئات الأعمال
