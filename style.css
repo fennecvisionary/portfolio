@@ -1305,3 +1305,23 @@ body.dark-mode .logo-dark {
         display: flex;
     }
 }
+/* إخفاء زر القائمة افتراضيًا على جميع الشاشات */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--primary-color);
+}
+
+/* الأنماط الخاصة بالجوال: إظهار الزر وإخفاء القائمة */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block; /* يظهر الزر على شاشات الجوال */
+    }
+
+    .main-nav {
+        display: none; /* يخفي القائمة الرئيسية على شاشات الجوال */
+    }
+}
