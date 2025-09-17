@@ -1,70 +1,39 @@
-/* ===============================
-   Responsive CSS for All Pages
-   =============================== */
-
-/* 1) الأساسيات للشاشات الصغيرة (موبايل) */
-@media (max-width: 768px) {
-  body {
-    font-size: 14px;
-    line-height: 1.6;
-    padding: 10px;
-  }
-
-  header nav {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .logo {
-    max-width: 150px;
-    margin-bottom: 10px;
-  }
-
-  .service-card,
-  .work-card {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .our-works {
-    grid-template-columns: 1fr; /* صورة واحدة في السطر */
-  }
-
-  footer {
-    text-align: center;
-    padding: 15px;
-  }
+/* 1. Global Box Sizing */
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
-/* 2) للشاشات المتوسطة (تابلت) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  body {
-    font-size: 16px;
-  }
-
-  .our-works {
-    grid-template-columns: 1fr 1fr; /* عمودين */
-    gap: 20px;
-  }
-
-  .service-card {
-    width: 48%;
-  }
+/* 2. Fluid Images */
+img, video, picture, svg {
+  max-width: 100%;
+  height: auto;
 }
 
-/* 3) للشاشات الكبيرة (كمبيوتر) */
-@media (min-width: 1025px) {
-  body {
-    font-size: 18px;
-  }
+/* 3. Responsive Text (Optional) */
+body {
+  font-size: 16px; /* Base font size */
+}
 
-  .our-works {
-    grid-template-columns: 1fr 1fr 1fr; /* 3 أعمدة */
-    gap: 25px;
-  }
+/* 4. Common Breakpoints */
+/* Small devices (phones, 600px and below) */
+@media only screen and (max-width: 600px) {
+  /* Add small screen styles here */
+}
 
-  .service-card {
-    width: 30%;
-  }
+/* Medium devices (tablets, 601px to 768px) */
+@media only screen and (min-width: 601px) and (max-width: 768px) {
+  /* Add medium screen styles here */
+}
+
+/* Large devices (laptops/desktops, 769px to 1200px) */
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
+  /* Add large screen styles here */
+}
+
+/* Extra large devices (large desktops, 1201px and up) */
+@media only screen and (min-width: 1201px) {
+  /* Add extra large screen styles here */
 }
