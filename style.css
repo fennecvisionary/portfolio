@@ -1137,7 +1137,7 @@ body.dark-mode .testimonial-card {
     box-shadow: var(--light-shadow);
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1 1 200px;
+    flex: 1 1 250px;
     position: relative;
     overflow: hidden;
     display: flex;
