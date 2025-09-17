@@ -1265,22 +1265,3 @@ body.dark-mode .logo-dark {
         height: 50px; /* تصغير الارتفاع قليلاً على الأجهزة اللوحية والجوال */
     }
 }
-    /* إخفاء القائمة الرئيسية على الجوال بشكل افتراضي */
-    .main-nav {
-        display: none;
-        width: 100%; /* اجعل القائمة تأخذ عرض الشاشة بالكامل */
-        position: absolute;
-        top: 100%; /* ضعها أسفل الهيدر مباشرة */
-        left: 0;
-        background-color: var(--light-card-bg);
-        box-shadow: var(--light-shadow);
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem 0;
-    }
-
-    /* إظهار القائمة عندما تكون مفتوحة */
-    .main-nav.is-open {
-        display: flex;
-    }
-}
