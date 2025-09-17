@@ -1265,24 +1265,3 @@ body.dark-mode .logo-dark {
         height: 50px; /* تصغير الارتفاع قليلاً على الأجهزة اللوحية والجوال */
     }
 }
-/* إخفاء زر القائمة افتراضياً على شاشات سطح المكتب */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--primary-color);
-}
-
-/* إظهار زر القائمة على شاشات الجوال فقط */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    /* إخفاء القائمة الرئيسية على الجوال */
-    .main-nav {
-        display: none;
-    }
-}
