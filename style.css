@@ -200,6 +200,7 @@ body.ltr .main-nav li {
 }
 /* Search Bar Styles */
 .search-container {
+    position: relative; /* تحديد الحاوية كعنصر مرجعي */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -217,6 +218,7 @@ body.ltr .main-nav li {
     background-color: var(--light-card-bg);
     color: var(--light-text-color);
     transition: all 0.3s ease;
+    padding-right: 50px; /* ترك مساحة للأيقونة */
 }
 
 #searchInput:focus {
@@ -235,9 +237,13 @@ body.ltr .main-nav li {
     border: none;
     font-size: 1.2rem;
     color: var(--primary-color);
-    margin-right: -40px;
     cursor: pointer;
+    position: absolute; /* تحديد موقع الأيقونة بشكل مطلق */
     z-index: 2;
+    /* تحديد الموقع بناءً على اتجاه اللغة */
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 /* Carousel Section */
