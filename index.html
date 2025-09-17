@@ -380,7 +380,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 <script src="data.js"></script>
 <script src="script.js"></script>
+ <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
 
+            menuToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('is-open');
+            });
+        });
+    </script>
     
 
 <style>
@@ -418,14 +427,5 @@
         0% { transform: rotate(0deg); }
         100% { transform: rotate(360deg); }
     }
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mainNav = document.querySelector('.main-nav');
-
-            menuToggle.addEventListener('click', function() {
-                mainNav.classList.toggle('is-open');
-            });
-        });
-    </script>
+   
 </style>
