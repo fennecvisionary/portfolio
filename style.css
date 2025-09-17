@@ -679,22 +679,27 @@ section {
 
 /* Footer & Contact Section */
 footer {
+    /* لون الخلفية للقسم في جميع الأوضاع */
     background-color: var(--secondary-color);
+    /* لون النص الافتراضي في الوضع الفاتح */
     color: var(--dark-text-color);
     text-align: center;
     padding: 2rem;
 }
 
+/* الأنماط الخاصة بالروابط داخل الفوتر */
 footer a {
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
+/* تأثير التمرير على الروابط */
 footer a:hover {
     color: var(--dark-text-color);
 }
 
+/* حاوية أيقونات وسائل التواصل الاجتماعي */
 .socials {
     display: flex;
     justify-content: center;
@@ -702,25 +707,51 @@ footer a:hover {
     margin: 1.5rem 0;
 }
 
+/* الأنماط الافتراضية لأيقونات وسائل التواصل الاجتماعي */
 .socials a {
     font-size: 1.8rem;
+    /* لون الأيقونات الافتراضي */
     color: var(--dark-text-color);
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
+/* تأثير التمرير على الأيقونات (الرفع قليلاً) */
 .socials a:hover {
     transform: translateY(-5px);
 }
 
+/* ألوان أيقونات وسائل التواصل الاجتماعي عند التمرير */
 .socials .facebook:hover { color: #3b5998; }
 .socials .instagram:hover { color: #e1306c; }
 .socials .whatsapp:hover { color: #25d366; }
 .socials .tiktok:hover { color: #fe2c55; }
 
+/* أنماط النص الخاص بحقوق النشر */
 .copy {
     margin-top: 1.5rem;
     font-size: 0.9rem;
     opacity: 0.7;
+}
+
+/* الوضع الليلي - تحديث الأنماط لتتناسب مع الألوان الداكنة */
+.dark-mode footer {
+    /* في هذا الوضع، اللون الافتراضي للنص يبقى كما هو ولكن يمكن تعديله إذا لزم الأمر */
+    color: var(--dark-text-color);
+}
+
+.dark-mode footer a {
+    /* لون الروابط في الوضع الليلي */
+    color: var(--primary-color);
+}
+
+.dark-mode footer a:hover {
+    /* لون الروابط عند التمرير في الوضع الليلي */
+    color: var(--dark-text-color);
+}
+
+.dark-mode .socials a {
+    /* لون أيقونات وسائل التواصل الاجتماعي في الوضع الليلي */
+    color: var(--dark-text-color);
 }
 
 /* Fix for the Skip link to be hidden until it's in focus */
