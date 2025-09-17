@@ -200,21 +200,21 @@ body.ltr .main-nav li {
 }
 /* Search Bar Styles */
 .search-container {
-    position: relative; /* تحديد الحاوية كعنصر مرجعي */
-    display: flex;
-    justify-content: center;
+    display: flex; /* استخدام فليكس بوكس لتنظيم العناصر */
     align-items: center;
+    justify-content: center;
     padding: 2rem;
+    gap: 10px; /* المسافة بين شريط البحث والدائرة */
+    max-width: 500px; /* جعل الحاوية أصغر */
     margin: 0 auto;
-    max-width: 600px;
 }
 
 #searchInput {
-    padding: 12px 20px;
+    flex-grow: 1; /* جعل شريط البحث يملأ المساحة المتبقية */
+    padding: 10px 20px;
     border: 1px solid var(--primary-color);
     border-radius: 50px;
-    font-size: 1rem;
-    width: 100%;
+    font-size: 0.9rem;
     background-color: var(--light-card-bg);
     color: var(--light-text-color);
     transition: all 0.3s ease;
@@ -232,36 +232,22 @@ body.ltr .main-nav li {
 }
 
 #searchButton {
-    background: none;
+    background-color: var(--primary-color);
     border: none;
-    font-size: 1.2rem;
-    color: var(--primary-color);
+    color: white;
+    width: 45px; /* تحديد عرض الدائرة */
+    height: 45px; /* تحديد ارتفاع الدائرة */
+    border-radius: 50%; /* لجعل الزر دائريًا */
+    font-size: 1.1rem;
     cursor: pointer;
-    position: absolute; /* تحديد موقع الأيقونة بشكل مطلق */
-    z-index: 2;
-    top: 50%;
-    transform: translateY(-50%);
+    display: flex; /* لتمركز الأيقونة داخل الدائرة */
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-/* Adjustments based on language direction (RTL/LTR) */
-body.ar #searchInput {
-    padding-right: 50px; /* مساحة للأيقونة على اليمين في العربية */
-    padding-left: 20px;
-}
-
-body:not(.ar) #searchInput {
-    padding-left: 50px; /* مساحة للأيقونة على اليسار في الإنجليزية والفرنسية */
-    padding-right: 20px;
-}
-
-body.ar #searchButton {
-    right: 15px; /* وضع الأيقونة على اليمين في العربية */
-    left: auto;
-}
-
-body:not(.ar) #searchButton {
-    left: 15px; /* وضع الأيقونة على اليسار في الإنجليزية والفرنسية */
-    right: auto;
+#searchButton:hover {
+    background-color: var(--secondary-color);
 }
 
 /* Carousel Section */
