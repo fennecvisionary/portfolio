@@ -1168,6 +1168,11 @@ body.dark-mode .testimonial-card {
     padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
 }
 
+/* قلب اتجاه الحاوية في الوضع الأفقي للغات التي تكتب من اليمين لليسار */
+body[dir="rtl"] .steps-container {
+    flex-direction: row-reverse;
+}
+
 .step-card {
     background-color: var(--light-card-bg);
     border-radius: 12px;
@@ -1214,7 +1219,7 @@ body.dark-mode .testimonial-card {
 /* الدائرة الصغيرة في أسفل الصندوق */
 .step-number-circle {
     position: absolute;
-    bottom: 3px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
+    bottom: 3px;
     left: 50%;
     transform: translateX(-50%);
     width: 40px;
@@ -1272,8 +1277,10 @@ body[dir="rtl"] .step-number-circle::before {
     .steps-container {
         flex-direction: column;
     }
+    
+    /* الأسهم تتجه لأسفل في الوضع العمودي على الهواتف */
     .step-number-circle::before {
-        content: '\f063'; /* سهم لأسفل في الوضع العمودي */
+        content: '\f063';
     }
 }
 
