@@ -1179,8 +1179,8 @@ body.dark-mode .testimonial-card {
     bottom: 3px; /* تم تعديل المسافة لضمان ظهور الدائرة بالكامل */
     left: 50%;
     transform: translateX(-50%);
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 50%;
