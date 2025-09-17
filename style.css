@@ -676,18 +676,19 @@ section {
     background-color: var(--primary-color);
     color: #fff;
 }
-
-/* Footer & Contact Section */
+/* Footer & Contact Section - قسم الفوتر والتواصل */
 footer {
+    /* لون الخلفية للقسم في جميع الأوضاع */
     background-color: var(--secondary-color);
+    /* لون النص الافتراضي في الوضع الفاتح */
     color: var(--dark-text-color);
     text-align: center;
     padding: 2rem;
 }
 
 /* الأنماط الخاصة بالروابط داخل الفوتر */
-/* هذه القاعدة ستجعل جميع الروابط داخل الفوتر باللون البرتقالي */
 footer a {
+    /* هذه القاعدة ستجعل جميع الروابط داخل الفوتر باللون البرتقالي */
     color: var(--primary-color);
     text-decoration: none;
     transition: color 0.3s ease;
@@ -745,6 +746,7 @@ footer a:hover {
 .dark-mode footer a:hover {
     color: var(--dark-text-color);
 }
+
 /* Fix for the Skip link to be hidden until it's in focus */
 .skip-link {
     position: absolute;
