@@ -1165,12 +1165,7 @@ body.dark-mode .testimonial-card {
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
-    padding-bottom: 50px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
-}
-
-/* قلب اتجاه الحاوية في الوضع الأفقي للغات التي تكتب من اليمين لليسار */
-body[dir="rtl"] .steps-container {
-    flex-direction: row-reverse;
+    padding-bottom: 80px; /* مساحة كافية للأيقونات الدائرية في الأسفل */
 }
 
 .step-card {
@@ -1222,8 +1217,8 @@ body[dir="rtl"] .steps-container {
     bottom: 3px;
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: var(--primary-color);
     color: #fff;
     border-radius: 50%;
