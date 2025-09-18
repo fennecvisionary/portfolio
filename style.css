@@ -1177,7 +1177,7 @@ body.dark-mode .testimonial-card {
 }
 /* Dark Mode text and star color */
 body.dark-mode .testimonial-card p {
-    color: var(--light-text-color); /* يجعل النص المائل باللون الفاتح */
+    color: var(--dark-text-color); /* يجعل النص المائل باللون الفاتح */
 }
 
 body.dark-mode .star-rating .fas.fa-star {
