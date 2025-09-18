@@ -1167,8 +1167,8 @@ body.dark-mode .testimonial-card {
 
 .star-rating .fas.fa-star {
     color: #FFD700; /* اللون الأصفر للنجوم */
-    font-size: 1.2rem;
-    margin: 0 2px;
+    text-align: center;
+    margin-top: 0.5rem; /* مساحة صغيرة تحت الاسم */
 }
 
 /* تنسيق النجوم الفارغة */
@@ -1176,6 +1176,13 @@ body.dark-mode .testimonial-card {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
 
+/* Dark Mode text and star color */
+.dark-mode body,
+.dark-mode .bio-card-container .bio-text,
+.dark-mode .experience-title,
+.dark-mode .bio-card-container .stars {
+    color: var(--dark-text-color); /* يجعل النص والنجوم بلون فاتح في الوضع الداكن */
+}
 /* تنسيقات قسم "كيف نعمل" */
 .steps-section {
     background-color: var(--light-bg-color);
