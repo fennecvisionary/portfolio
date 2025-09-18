@@ -1181,7 +1181,7 @@ body.dark-mode .testimonial-card {
 .dark-mode .bio-card-container .bio-text,
 .dark-mode .experience-title,
 .dark-mode .bio-card-container .stars {
-    color: var(--dark-text-color); /* يجعل النص والنجوم بلون فاتح في الوضع الداكن */
+    color: var(--light-text-color); /* يجعل النص والنجوم بلون فاتح في الوضع الداكن */
 }
 /* تنسيقات قسم "كيف نعمل" */
 .steps-section {
