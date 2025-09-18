@@ -1175,14 +1175,15 @@ body.dark-mode .testimonial-card {
 .star-rating .far.fa-star {
     color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
 }
-
 /* Dark Mode text and star color */
-.dark-mode body,
-.dark-mode .bio-card-container .bio-text,
-.dark-mode .experience-title,
-.dark-mode .bio-card-container .stars {
-    color: var(--light-text-color); /* يجعل النص والنجوم بلون فاتح في الوضع الداكن */
+body.dark-mode .testimonial-card p {
+    color: var(--light-text-color); /* يجعل النص المائل باللون الفاتح */
 }
+
+body.dark-mode .star-rating .fas.fa-star {
+    color: var(--light-star-color, #FFD700); /* يجعل النجوم باللون الفاتح في الوضع الداكن */
+}
+
 /* تنسيقات قسم "كيف نعمل" */
 .steps-section {
     background-color: var(--light-bg-color);
