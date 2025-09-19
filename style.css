@@ -1549,3 +1549,17 @@ body.dark-mode .logo-dark {
 .menu-toggle.is-open .close-icon {
     transform: rotate(90deg);
 }
+/* أضف هذا النمط لإخفاء أيقونة الإغلاق (X) بشكل افتراضي */
+.menu-toggle .close-icon {
+    display: none;
+}
+
+/* قم بتعديل هذا النمط ليجعل أيقونة القائمة (☰) تختفي عند فتح القائمة */
+.menu-toggle.is-open .menu-icon {
+    display: none;
+}
+
+/* وقم بتعديل هذا النمط لجعل أيقونة الإغلاق (X) تظهر عند فتح القائمة */
+.menu-toggle.is-open .close-icon {
+    display: block;
+}
