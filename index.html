@@ -30,9 +30,12 @@
 <a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
 
 <header class="site-header">
-    <button class="menu-toggle" aria-label="Toggle navigation" data-lang-key="menu_toggle">
-        <i class="fas fa-bars"></i>
     </button>
+    </div>
+    <nav class="main-nav" id="mainNav">
+        <button class="menu-close-btn" id="menuCloseBtn" aria-label="Close navigation menu">
+            <i class="fas fa-times"></i>
+        </button>
     <div class="logo">
         <a href="./">
             <img src="images/logo.png" alt="Fennec Visionary Light Logo" class="logo-light">
@@ -406,36 +409,29 @@
 <script src="data.js"></script>
 <script src="script.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const mainNav = document.querySelector('.main-nav');
-
-        menuToggle.addEventListener('click', function() {
-            mainNav.classList.toggle('is-open');
-        });
-    });
-</script>
- <script>
     document.addEventListener('DOMContentLoaded', () => {
         const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.querySelector('.main-nav');
-        const navLinks = mainNav.querySelectorAll('a');
+        const mainNav = document.getElementById('mainNav');
+        const menuCloseBtn = document.getElementById('menuCloseBtn');
 
-        // Toggle menu when the button is clicked
         menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('is-open');
-            mainNav.classList.toggle('is-open');
+            mainNav.classList.add('active');
         });
 
-        // Close menu when a link is clicked
+        menuCloseBtn.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+        });
+
+        // Close menu when a link is clicked (optional but recommended)
+        const navLinks = mainNav.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                menuToggle.classList.remove('is-open');
-                mainNav.classList.remove('is-open');
+                mainNav.classList.remove('active');
             });
         });
     });
-</script> 
+</script>
+ 
 <style>
     /* أنماط إضافية للتكامل مع JavaScript */
     .visually-hidden {
