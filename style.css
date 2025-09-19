@@ -1483,18 +1483,3 @@ body.dark-mode .logo-dark {
         display: none; /* يخفي القائمة الرئيسية على شاشات الجوال */
     }
 }
-/* Styling for the search bar to place it over the slider */
-.search-container {
-    position: absolute;
-    top: 50%; /* Adjust this value to move it up or down */
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10; /* Ensures the search bar is on top of the slider */
-    width: 80%; /* Adjust width as needed */
-    max-width: 600px;
-}
-
-/* Adjust the slider position to create a visual space for the search bar */
-.carousel {
-    margin-top: -100px; /* Use a negative margin to pull the slider up */
-}
