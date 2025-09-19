@@ -1483,83 +1483,90 @@ body.dark-mode .logo-dark {
         display: none; /* يخفي القائمة الرئيسية على شاشات الجوال */
     }
 }
-/* Mobile Responsiveness for Navigation */
+/* Hamburguer menu button on mobile */
+.menu-toggle {
+    display: none; /* Hide the button by default */
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 101; /* Above the navigation menu */
+}
+
+/* Show the menu toggle button only on mobile */
 @media (max-width: 768px) {
-    .site-header {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-
     .menu-toggle {
-        display: block; /* تأكد من أن زر القائمة يظهر على الهاتف */
+        display: block;
     }
 
+    /* Styles for the mobile dropdown menu */
     .main-nav {
-        /* This is the key change */
-        position: fixed; /* استخدم الوضع الثابت لتكون القائمة بجانب الشاشة */
+        display: block;
+        position: fixed; /* Fixed position relative to the viewport */
         top: 0;
-        right: 0; /* ضعها على يمين الشاشة */
-        width: 50%; /* حدد عرض القائمة بـ 70% من عرض الشاشة */
-        height: 60%; /* اجعلها تغطي كامل ارتفاع الشاشة */
+        right: -100%; /* Initially off-screen to the right */
+        width: 70%; /* Takes 70% of the screen width */
+        height: 100vh; /* Full viewport height */
         background-color: var(--light-card-bg);
-        box-shadow: -2px 0 10px rgba(0,0,0,0.1); /* ظل جانبي لإعطاء عمق */
-        flex-direction: column;
-        justify-content: flex-start; /* ابدأ العناصر من الأعلى */
-        padding-top: 0rem; /* مسافة علوية لتجنب تداخلها مع الهيدر */
-        
-        /* تأثير الانزلاق من اليمين */
-        transform: translateX(100%);
-        transition: transform 0.4s ease-in-out;
-        z-index: 99; /* تأكد أنها فوق المحتوى */
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2);
+        transition: right 0.4s ease-in-out; /* Smooth slide-in transition */
+        z-index: 99;
+        overflow-y: auto; /* Enable vertical scrolling for long menus */
     }
 
-    .main-nav.is-open {
-        transform: translateX(0); /* عند الفتح، انزلق للداخل */
+    /* Class for showing the menu */
+    .main-nav.active {
+        right: 0;
+    }
+
+    .dark-mode .main-nav {
+        background-color: var(--dark-card-bg);
+        box-shadow: -4px 0 10px rgba(0, 0, 0, 0.4);
     }
 
     .main-nav ul {
-        flex-direction: column;
-        width: 100%;
-        padding: 0;
-        margin: 0;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-start; /* Align items to the left */
+        padding: 4rem 1.5rem 1.5rem; /* Add padding from the top and sides */
     }
 
     .main-nav li {
+        margin: 1rem 0;
+    }
+
+    /* Style the close button (X) inside the menu */
+    .menu-close-btn {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 2rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        background: none;
+        border: none;
+        z-index: 102;
+    }
+
+    .dark-mode .menu-close-btn {
+        color: var(--primary-color);
+    }
+
+    /* Adjust the header to accommodate the new menu behavior */
+    .site-header {
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         width: 100%;
-        margin: 0.5rem 0;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
+        box-sizing: border-box;
     }
-    
-    .main-nav a {
-        display: block;
-        padding: 0.75rem 1rem;
+
+    .header-controls {
+        z-index: 101;
     }
-    
-    /* أنماط الوضع الداكن للقائمة الجانبية */
-    .dark-mode .main-nav {
-        background-color: var(--dark-card-bg);
-        box-shadow: -2px 0 10px rgba(0,0,0,0.3);
-    }
-}
-.menu-toggle .menu-icon,
-.menu-toggle .close-icon {
-    transition: transform 0.3s ease-in-out;
-}
-
-.menu-toggle.is-open .close-icon {
-    transform: rotate(90deg);
-}
-/* أضف هذا النمط لإخفاء أيقونة الإغلاق (X) بشكل افتراضي */
-.menu-toggle .close-icon {
-    display: none;
-}
-
-/* قم بتعديل هذا النمط ليجعل أيقونة القائمة (☰) تختفي عند فتح القائمة */
-.menu-toggle.is-open .menu-icon {
-    display: none;
-}
-
-/* وقم بتعديل هذا النمط لجعل أيقونة الإغلاق (X) تظهر عند فتح القائمة */
-.menu-toggle.is-open .close-icon {
-    display: block;
 }
