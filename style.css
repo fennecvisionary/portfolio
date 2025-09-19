@@ -1483,3 +1483,72 @@ body.dark-mode .logo-dark {
         display: none; /* يخفي القائمة الرئيسية على شاشات الجوال */
     }
 }
+/* Mobile Responsiveness for Navigation */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: row; /* Keep the header items in a row */
+        justify-content: space-between;
+    }
+    
+    .main-nav {
+        /* This is the key change */
+        display: none; /* Keep it hidden by default */
+        position: absolute;
+        top: 100%; /* Position it right below the header */
+        left: 0;
+        width: 100%;
+        background-color: var(--light-card-bg);
+        box-shadow: var(--light-shadow);
+        flex-direction: column; /* This makes the list vertical */
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    .main-nav.is-open {
+        display: flex; /* Display as a column when the menu is open */
+    }
+
+    .main-nav ul {
+        flex-direction: column; /* Ensure the `ul` is also a column */
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    
+    .main-nav li {
+        width: 100%; /* Make each list item fill the width */
+        margin: 0.5rem 0; /* Add vertical spacing */
+        border-bottom: 1px solid rgba(0,0,0,0.1); /* Optional: add a separator line */
+    }
+    
+    .main-nav a {
+        display: block; /* Make the links fill the list item */
+        padding: 0.75rem 1rem;
+    }
+
+    .header-controls {
+        /* Ensure controls are aligned correctly */
+        align-items: center;
+    }
+
+    /* Optional: to prevent the header from wrapping */
+    .site-header > * {
+        flex-shrink: 0;
+    }
+}
+/* أضف هذا إلى نمط .main-nav */
+.main-nav {
+    /* ...الأنماط الموجودة مسبقًا... */
+    transition: transform 0.4s ease-out, opacity 0.4s ease-out, visibility 0.4s ease-out;
+    transform: translateY(-20px); /* يبدأ من فوق الشاشة بقليل */
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* قم بتعديل نمط .main-nav.is-open */
+.main-nav.is-open {
+    display: flex; /* لضمان أن العرض يبدأ كفليكس */
+    transform: translateY(0); /* يعود إلى موضعه الطبيعي */
+    opacity: 1;
+    visibility: visible;
+}
