@@ -118,7 +118,7 @@ const translations = {
         step2Title: 'Phase 2: Planning',
         step2Desc: 'We build a clear strategy and set a creative direction that reflects your brand identity.',
         step3Title: 'Phase 3: Design',
-        step3Desc: 'We shape ideas into a consistent and memorable visual identity.',
+        step3Desc: 'We shape ideas into a consistent and memorable visual identity that inspires trust and growth.',
         step4Title: 'Phase 4: Delivery',
         step4Desc: 'We deliver the final files and provide support to ensure a confident launch.',
         testimonials_title: "Customer Reviews",
