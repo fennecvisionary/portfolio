@@ -1183,7 +1183,65 @@ body.dark-mode .testimonial-card p {
 body.dark-mode .star-rating .fas.fa-star {
     color: var(--light-star-color, #FFD700); /* يجعل النجوم باللون الفاتح في الوضع الداكن */
 }
+/* Styling for the Logo Carousel Section */
+.logo-carousel-section {
+    background-color: var(--light-bg-color);
+    padding: 5rem 2rem;
+    text-align: center;
+}
 
+.dark-mode .logo-carousel-section {
+    background-color: var(--dark-bg-color);
+}
+
+.logo-carousel {
+    overflow: hidden; /* This hides the overflowing logos */
+    white-space: nowrap; /* Prevents logos from wrapping to the next line */
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.logos-slide {
+    display: inline-flex;
+    animation: slide-logos 30s linear infinite; /* Adjust speed here */
+}
+
+/* Stop animation on hover */
+.logo-carousel:hover .logos-slide {
+    animation-play-state: paused;
+}
+
+.logos-slide img {
+    height: 80px;
+    width: auto;
+    margin: 0 20px;
+    filter: grayscale(100%); /* Make logos grayscale by default */
+    transition: filter 0.3s ease;
+}
+
+.logos-slide img:hover {
+    filter: grayscale(0%); /* Full color on hover */
+}
+
+/* Dark Mode styles for logos */
+.dark-mode .logos-slide img {
+    filter: grayscale(100%) brightness(0.7); /* Adjust brightness for dark mode */
+}
+
+.dark-mode .logos-slide img:hover {
+    filter: grayscale(0%) brightness(1);
+}
+
+/* Keyframes for the continuous scrolling animation */
+@keyframes slide-logos {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
 /* تنسيقات قسم "كيف نعمل" */
 .steps-section {
     background-color: var(--light-bg-color);
