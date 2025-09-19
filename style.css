@@ -1541,3 +1541,11 @@ body.dark-mode .logo-dark {
         box-shadow: -2px 0 10px rgba(0,0,0,0.3);
     }
 }
+.menu-toggle .menu-icon,
+.menu-toggle .close-icon {
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-toggle.is-open .close-icon {
+    transform: rotate(90deg);
+}
