@@ -39,6 +39,10 @@
             <img src="images/logo-dark.png" alt="Fennec Visionary Dark Logo" class="logo-dark">
         </a>
     </div>
+    <button id="menuToggle" class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
+  <i class="fas fa-bars menu-icon"></i>
+  <i class="fas fa-times close-icon"></i>
+</button>
     <nav class="main-nav" aria-label="Main Navigation">
         <ul role="list">
             <li role="listitem"><a href="#services" data-lang-key="nav_services">خدماتي</a></li>
@@ -411,6 +415,27 @@
         });
     });
 </script>
+ <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const menuToggle = document.getElementById('menuToggle');
+        const mainNav = document.querySelector('.main-nav');
+        const navLinks = mainNav.querySelectorAll('a');
+
+        // Toggle menu when the button is clicked
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('is-open');
+            mainNav.classList.toggle('is-open');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('is-open');
+                mainNav.classList.remove('is-open');
+            });
+        });
+    });
+</script> 
 <style>
     /* أنماط إضافية للتكامل مع JavaScript */
     .visually-hidden {
