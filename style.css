@@ -1598,3 +1598,28 @@ body.dark-mode .logo-dark {
         transform: translateY(0);
     }
 }
+/* الأيقونات بشكل عام */
+.menu-toggle,
+.menu-close {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 101;
+    display: block; /* لضمان ظهور الزر */
+}
+
+/* إخفاء زر الإغلاق بشكل افتراضي على جميع الشاشات */
+.menu-close {
+    display: none;
+}
+
+/* إظهار زر الإغلاق وإخفاء زر القائمة عند فتح القائمة المنسدلة */
+.main-nav.active + .header-controls .menu-toggle {
+    display: none;
+}
+
+.main-nav.active + .header-controls .menu-close {
+    display: block;
+}
