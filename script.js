@@ -615,3 +615,70 @@ const translations = {
     // عرض الأعمال للمرة الأولى
     renderWorks(allWorks, 1);
 });
+document.addEventListener('DOMContentLoaded', () => {
+    // Mobile navigation toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('main-nav');
+    const menuCloseBtn = document.querySelector('.menu-close-btn');
+    const navLinks = mainNav.querySelectorAll('a');
+
+    // Function to open the side menu
+    function openMenu() {
+        mainNav.classList.add('active');
+        menuToggle.style.display = 'none';
+        menuCloseBtn.style.display = 'block';
+    }
+
+    // Function to close the side menu
+    function closeMenu() {
+        mainNav.classList.remove('active');
+        menuToggle.style.display = 'block';
+        menuCloseBtn.style.display = 'none';
+    }
+
+    // Event listeners
+    menuToggle.addEventListener('click', openMenu);
+    menuCloseBtn.addEventListener('click', closeMenu);
+    
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
+
+    // Language and mode toggle
+    const languageSelect = document.getElementById('language-select');
+    const modeToggle = document.getElementById('mode-toggle');
+    const body = document.body;
+
+    // Load saved settings from localStorage
+    const savedLang = localStorage.getItem('siteLang') || 'ar';
+    const savedMode = localStorage.getItem('siteMode') || 'light-mode';
+
+    body.classList.add(savedMode);
+    body.classList.add(savedLang === 'en' ? 'ltr' : 'rtl');
+    languageSelect.value = savedLang;
+    modeToggle.innerHTML = savedMode === 'light-mode' ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    
+    // Toggle language
+    languageSelect.addEventListener('change', () => {
+        const lang = languageSelect.value;
+        body.classList.remove('rtl', 'ltr');
+        body.classList.add(lang === 'en' ? 'ltr' : 'rtl');
+        localStorage.setItem('siteLang', lang);
+    });
+
+    // Toggle mode
+    modeToggle.addEventListener('click', () => {
+        if (body.classList.contains('light-mode')) {
+            body.classList.remove('light-mode');
+            body.classList.add('dark-mode');
+            modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem('siteMode', 'dark-mode');
+        } else {
+            body.classList.remove('dark-mode');
+            body.classList.add('light-mode');
+            modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem('siteMode', 'light-mode');
+        }
+    });
+});
