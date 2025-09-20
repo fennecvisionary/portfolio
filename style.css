@@ -1483,3 +1483,59 @@ body.dark-mode .logo-dark {
         display: none; /* يخفي القائمة الرئيسية على شاشات الجوال */
     }
 }
+
+        /* إضافة خصائص القائمة المنسدلة العمودية */
+        height: auto;
+        max-height: 100vh;
+    }
+
+    .main-nav.active {
+        display: flex;
+        transform: translateY(0);
+        visibility: visible;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .main-nav li {
+        margin: 0.5rem 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 0.75rem 1rem;
+    }
+
+    /* أزرار التبديل */
+    .menu-toggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        color: var(--primary-color);
+        z-index: 101;
+    }
+
+    .menu-close-btn {
+        display: none; /* مخفي بشكل افتراضي */
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        font-size: 2rem;
+        color: var(--primary-color);
+        cursor: pointer;
+        background: none;
+        border: none;
+        z-index: 102;
+    }
+
+    .main-nav.active + .menu-close-btn {
+        display: block;
+    }
+}
