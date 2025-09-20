@@ -413,21 +413,35 @@
         const menuToggle = document.getElementById('menuToggle');
         const mainNav = document.getElementById('mainNav');
         const menuCloseBtn = document.getElementById('menuCloseBtn');
-
-        menuToggle.addEventListener('click', () => {
-            mainNav.classList.add('active');
-        });
-
-        menuCloseBtn.addEventListener('click', () => {
-            mainNav.classList.remove('active');
-        });
-
-        // Close menu when a link is clicked (optional but recommended)
         const navLinks = mainNav.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
+
+        // Function to open the menu
+        function openMenu() {
+            mainNav.classList.add('active');
+            // Animate each list item with a delay
+            navLinks.forEach((link, index) => {
+                link.style.animationDelay = `${index * 0.1}s`;
             });
+        }
+
+        // Function to close the menu
+        function closeMenu() {
+            mainNav.classList.remove('active');
+            // Remove animation delay to reset for the next time
+            navLinks.forEach(link => {
+                link.style.animationDelay = '';
+            });
+        }
+
+        // Event listener to open the menu
+        menuToggle.addEventListener('click', openMenu);
+
+        // Event listener to close the menu using the 'X' button
+        menuCloseBtn.addEventListener('click', closeMenu);
+
+        // Event listener to close the menu when any link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
         });
     });
 </script>
