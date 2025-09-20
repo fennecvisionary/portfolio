@@ -41,10 +41,12 @@
             <img src="images/logo.png" alt="Fennec Visionary Light Logo" class="logo-light">
             <img src="images/logo-dark.png" alt="Fennec Visionary Dark Logo" class="logo-dark">
         </a>
-    </div>
-    <button id="menuToggle" class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Toggle navigation">
-  <i class="fas fa-bars menu-icon"></i>
-  <i class="fas fa-times close-icon"></i>
+    <button id="menuOpenBtn" class="menu-toggle" aria-controls="main-nav" aria-expanded="false" aria-label="Open navigation menu">
+    <i class="fas fa-bars menu-icon"></i>
+</button>
+
+<button id="menuCloseBtn" class="menu-close" aria-label="Close navigation menu">
+    <i class="fas fa-times close-icon"></i>
 </button>
     <nav class="main-nav" aria-label="Main Navigation">
         <ul role="list">
@@ -409,41 +411,30 @@
 <script src="data.js"></script>
 <script src="script.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        const menuCloseBtn = document.getElementById('menuCloseBtn');
-        const navLinks = mainNav.querySelectorAll('a');
+   document.addEventListener('DOMContentLoaded', () => {
+    const menuOpenBtn = document.getElementById('menuOpenBtn');
+    const menuCloseBtn = document.getElementById('menuCloseBtn');
+    const mainNav = document.getElementById('mainNav');
+    const navLinks = mainNav.querySelectorAll('a');
 
-        // Function to open the menu
-        function openMenu() {
-            mainNav.classList.add('active');
-            // Animate each list item with a delay
-            navLinks.forEach((link, index) => {
-                link.style.animationDelay = `${index * 0.1}s`;
-            });
-        }
+    function openMenu() {
+        mainNav.classList.add('active');
+        menuOpenBtn.style.display = 'none';
+        menuCloseBtn.style.display = 'block';
+    }
 
-        // Function to close the menu
-        function closeMenu() {
-            mainNav.classList.remove('active');
-            // Remove animation delay to reset for the next time
-            navLinks.forEach(link => {
-                link.style.animationDelay = '';
-            });
-        }
+    function closeMenu() {
+        mainNav.classList.remove('active');
+        menuOpenBtn.style.display = 'block';
+        menuCloseBtn.style.display = 'none';
+    }
 
-        // Event listener to open the menu
-        menuToggle.addEventListener('click', openMenu);
-
-        // Event listener to close the menu using the 'X' button
-        menuCloseBtn.addEventListener('click', closeMenu);
-
-        // Event listener to close the menu when any link is clicked
-        navLinks.forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
+    menuOpenBtn.addEventListener('click', openMenu);
+    menuCloseBtn.addEventListener('click', closeMenu);
+    navLinks.forEach(link => {
+        link.addEventListener('click', closeMenu);
     });
+});
 </script>
 <style>
     /* أنماط إضافية للتكامل مع JavaScript */
