@@ -252,8 +252,7 @@ body.ltr .main-nav li {
 #searchButton:hover {
   background-color: var(--secondary-color);
 }
-
-/* New Modern Slider Styles */
+/* --- New Modern Slider Styles (Updated) --- */
 .carousel {
   position: relative;
   overflow: hidden;
@@ -341,35 +340,6 @@ body.ltr .main-nav li {
 
 .dot.active {
   background-color: var(--primary-color);
-}
-
-
-/* General Sections & Grids */
-section {
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-@keyframes slideAnimation {
-  0%,
-  20% {
-    transform: translateX(0);
-  }
-  25%,
-  45% {
-    transform: translateX(-25%);
-  }
-  50%,
-  70% {
-    transform: translateX(-50%);
-  }
-  75%,
-  95% {
-    transform: translateX(-75%);
-  }
-  100% {
-    transform: translateX(0);
-  }
 }
 
 /* General Sections & Grids */
