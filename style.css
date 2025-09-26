@@ -254,69 +254,80 @@ body.ltr .main-nav li {
 }
 
 /* New Modern Slider Styles */
-.slider-container {
+.carousel {
   position: relative;
+  overflow: hidden;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto 2rem;
   height: 60vh;
-  overflow: hidden;
+  margin: 0 auto 2rem;
   border-radius: 10px;
 }
 
-.slider-wrapper {
+.slides {
   display: flex;
   height: 100%;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.slider-item {
-  min-width: 100%;
+.slide {
+  flex: 0 0 100%;
+  height: 100%;
+  position: relative;
+}
+
+.slide img {
+  width: 100%;
   height: 100%;
   object-fit: cover;
-  display: none;
 }
 
-.slider-item.active {
-  display: block;
-}
-
-.slider-btn {
+.controls {
   position: absolute;
   top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   transform: translateY(-50%);
+  padding: 0 1rem;
+  z-index: 10;
+}
+
+.prev-btn, .next-btn {
   background-color: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
   padding: 1rem;
   cursor: pointer;
-  z-index: 10;
-  transition: background-color 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0; /* مخفي بشكل افتراضي */
 }
 
-.slider-btn:hover {
+/* عند التمرير على السلايدر، تظهر الأزرار */
+.carousel:hover .prev-btn,
+.carousel:hover .next-btn {
+  opacity: 1;
+}
+
+.prev-btn:hover, .next-btn:hover {
   background-color: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
 }
 
-.prev-btn {
-  right: 1rem;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.next-btn {
-  left: 1rem;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.slider-dots {
+.dots-container {
   position: absolute;
   bottom: 1rem;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   gap: 0.5rem;
+  z-index: 10;
 }
 
 .dot {
