@@ -766,3 +766,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+// Carousel functionality
+  const carousel = document.querySelector(".carousel");
+  if (carousel) {
+    const slidesContainer = carousel.querySelector(".slides");
+    const slides = Array.from(slidesContainer.children);
+    const prevBtn = carousel.querySelector(".prev-btn");
+    const nextBtn = carousel.querySelector(".next-btn");
+    const dotsContainer = carousel.querySelector(".dots-container");
+    const dots = Array.from(dotsContainer.children);
+
+    let currentSlideIndex = 0;
+    const totalSlides = slides.length;
+
+    const updateSlider = () => {
+      // Update slides position
+      const slideWidth = slides[0].offsetWidth;
+      const newTransform = -currentSlideIndex * slideWidth;
+      slidesContainer.style.transform = `translateX(${newTransform}px)`;
+
+      // Update active dot
+      dots.forEach((dot) => dot.classList.remove("active"));
+      dots[currentSlideIndex].classList.add("active");
+    };
+
+    // Event listeners for prev/next buttons
+    nextBtn.addEventListener("click", () => {
+      currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+      updateSlider();
+    });
+
+    prevBtn.addEventListener("click", () => {
+      currentSlideIndex = (currentSlideIndex - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    });
+
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener("click", () => {
+        currentSlideIndex = index;
+        updateSlider();
+      });
+    });
+
+    // Initial setup
+    updateSlider();
+  }
+});
