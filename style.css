@@ -253,32 +253,90 @@ body.ltr .main-nav li {
   background-color: var(--secondary-color);
 }
 
-/* Carousel Section */
-.carousel {
+/* New Modern Slider Styles */
+.slider-container {
+  position: relative;
   width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 2rem;
   height: 60vh;
   overflow: hidden;
-  position: relative;
+  border-radius: 10px;
 }
 
-.slides {
-  width: 400%;
-  height: 100%;
+.slider-wrapper {
   display: flex;
-  animation: slideAnimation 30s infinite ease-in-out;
-}
-
-.slides figure {
-  width: 25%;
   height: 100%;
-  margin: 0;
+  transition: transform 0.5s ease-in-out;
 }
 
-.slides img {
-  width: 100%;
+.slider-item {
+  min-width: 100%;
   height: 100%;
   object-fit: cover;
+  display: none;
+}
+
+.slider-item.active {
   display: block;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: background-color 0.3s;
+}
+
+.slider-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-btn {
+  right: 1rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.next-btn {
+  left: 1rem;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.slider-dots {
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: var(--primary-color);
+}
+
+
+/* General Sections & Grids */
+section {
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
 @keyframes slideAnimation {
