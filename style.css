@@ -390,6 +390,19 @@ section {
   animation: fade-in-up 1s ease-out forwards;
 }
 
+/* إضافة خط تحت العنوان */
+.dynamic-text-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background-color: var(--primary-color);
+  border-radius: 2px;
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
@@ -436,6 +449,18 @@ section {
   align-items: flex-start;
   justify-content: center;
   gap: 4rem;
+  /* تحسينات إضافية من وحي الخيال */
+  background-color: var(--light-card-bg);
+  border-radius: 12px;
+  box-shadow: var(--light-shadow);
+  padding: 3rem;
+  margin-top: 2rem;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark-mode .about-details {
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 
 .profile-card {
@@ -454,7 +479,7 @@ section {
   border: 5px solid var(--primary-color);
   box-shadow: var(--light-shadow);
   margin-bottom: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .dark-mode .profile-image-container {
@@ -470,9 +495,36 @@ section {
 
 .profile-image-container:hover {
   transform: scale(1.05);
+  box-shadow: var(--primary-shadow);
 }
 
-/* نقطة الحالة "متاح" */
+/* شارة التحقق (Verified Badge) باللون الأزرق وموقعها الجديد */
+.verified-badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 35px;
+  height: 35px;
+  background-color: #007bff; /* اللون الأزرق */
+  border-radius: 50%;
+  border: 4px solid var(--light-bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 1.2rem;
+  z-index: 3;
+  box-shadow: var(--light-shadow);
+  transform: scale(0);
+  animation: bounce-in 0.5s ease-out 1s forwards;
+}
+
+.dark-mode .verified-badge {
+  border-color: var(--dark-bg-color);
+  box-shadow: var(--dark-shadow);
+}
+
+/* نقطة الحالة "متاح" (بقي في مكانه السابق) */
 .availability-dot {
   position: absolute;
   bottom: 10px;
@@ -484,10 +536,17 @@ section {
   border-radius: 50%;
   border: 3px solid var(--light-bg-color);
   animation: availability-pulse 1.5s infinite;
+  z-index: 3;
 }
 
 .dark-mode .availability-dot {
   border-color: var(--dark-bg-color);
+}
+
+@keyframes bounce-in {
+  0% { transform: scale(0); opacity: 0; }
+  50% { transform: scale(1.2); opacity: 1; }
+  100% { transform: scale(1); }
 }
 
 @keyframes availability-pulse {
@@ -508,57 +567,11 @@ section {
 .bio-text p {
   color: var(--light-text-color);
   line-height: 1.8;
-  /* تأثير ظهور النص من الأسفل */
   animation: fade-in-up 1.2s ease-out forwards;
 }
 
 .dark-mode .bio-text p {
   color: var(--dark-text-color);
-}
-/* شارة التحقق (Verified Badge) */
-.verified-badge {
-  position: absolute;
-  top: 15px; /* تم تغيير الموقع لأعلى */
-  right: 15px; /* تم تغيير الموقع لليمين */
-  width: 35px;
-  height: 35px;
-  background-color: #38c172;
-  border-radius: 50%;
-  border: 4px solid var(--light-bg-color);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 1.2rem;
-  z-index: 3;
-  box-shadow: var(--light-shadow);
-  transform: scale(0);
-  animation: bounce-in 0.5s ease-out 1s forwards;
-}
-
-.dark-mode .verified-badge {
-  border-color: var(--dark-bg-color);
-  box-shadow: var(--dark-shadow);
-}
-
-@keyframes bounce-in {
-  0% { transform: scale(0); opacity: 0; }
-  50% { transform: scale(1.2); opacity: 1; }
-  100% { transform: scale(1); }
-}
-
-/* نقطة الحالة "متاح" */
-.availability-dot {
-  position: absolute;
-  top: 15px; /* تم تغيير الموقع لأعلى ليكون متناسقًا */
-  left: 15px; /* تم تغيير الموقع لليسار */
-  width: 20px;
-  height: 20px;
-  background-color: #38c172;
-  border-radius: 50%;
-  border: 3px solid var(--light-bg-color);
-  animation: availability-pulse 1.5s infinite;
-  z-index: 3;
 }
 
 /* تنسيقات قسم الأدوات */
@@ -583,8 +596,8 @@ section {
 }
 
 .tool-item {
-  width: 80px;
-  height: 80px;
+  width: 70px;
+  height: 70px;
   background-color: var(--light-card-bg);
   border-radius: 10px;
   box-shadow: var(--light-shadow);
@@ -610,7 +623,7 @@ section {
 }
 
 .tool-item img {
-  max-width: 80%;
+  max-width: 60%;
   height: auto;
   /* تأثير التوهج عند التمرير */
   transition: filter 0.3s ease, transform 0.3s ease;
