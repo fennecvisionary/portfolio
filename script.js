@@ -404,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const toolItems = document.querySelectorAll(".tool-item");
 
     if (dynamicTitle) {
-      dynamicTitle.textContent = "نبذة عني";
+      dynamicTitle.textContent = "عني";
       dynamicTitle.addEventListener("mousemove", (e) => {
         const cursor = document.createElement("span");
         cursor.classList.add("pulse-cursor");
