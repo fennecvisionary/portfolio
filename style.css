@@ -256,12 +256,13 @@ body.ltr .main-nav li {
 /* تنسيقات قسم الكاروسيل */
 .carousel {
   width: 100%;
-  max-width: 100vw; /* ضمان ألا يتجاوز العرض عرض الشاشة */
-  height: 70vh; /* زيادة الارتفاع ليكون أكثر بروزًا */
+  max-width: 100vw;
+  height: 70vh;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* إضافة ظل أنيق */
-  border-radius: 15px; /* حواف دائرية للحاوية */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  /* إزالة المسافة العلوية */
+  border-radius: 15px;
 }
 
 /* حاوية الشرائح */
@@ -269,7 +270,7 @@ body.ltr .main-nav li {
   width: 400%;
   height: 100%;
   display: flex;
-  transition: transform 0.5s ease-in-out; /* إضافة انتقال سلس للتحكم اليدوي */
+  transition: transform 0.5s ease-in-out;
   animation: slideAnimation 30s infinite ease-in-out forwards;
 }
 
@@ -326,12 +327,6 @@ body.ltr .main-nav li {
   100% {
     transform: translateX(0);
   }
-}
-
-/* General Sections & Grids */
-section {
-  padding: 4rem 2rem;
-  text-align: center;
 }
 
 /* Services Section */
