@@ -1,4 +1,4 @@
-ocument.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   // تحديد العناصر الأساسية في الصفحة
   const body = document.body;
   const modeToggle = document.getElementById("mode-toggle");
