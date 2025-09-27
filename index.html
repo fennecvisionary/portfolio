@@ -1,457 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fennec Visionary - معرض الأعمال</title>
-  <meta name="description" content="استكشف المعرض الاحترافي لـ Fennec Visionary، مصمم جرافيك متخصص في العلامات التجارية والفن الرقمي.">
-
-  <meta property="og:title" content="Fennec Visionary - معرض الأعمال">
-  <meta property="og:description" content="استكشف المعرض الاحترافي لـ Fennec Visionary، مصمم جرافيك متخصص في العلامات التجارية والفن الرقمي.">
-  <meta property="og:image" content="https://fennecvisionary.github.io/portfolio/images/logo.png">
-  <meta property="og:url" content="https://fennecvisionary.github.io/portfolio/">
-  <meta property="og:type" content="website">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Fennec Visionary - معرض الأعمال">
-  <meta name="twitter:description" content="استكشف المعرض الاحترافي لـ Fennec Visionary، مصمم جرافيك متخصص في العلامات التجارية والفن الرقمي.">
-  <meta name="twitter:image" content="https://fennecvisionary.github.io/portfolio/images/logo.png">
-
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="responsive.css">
-</head>
-
-<body class="light-mode rtl">
-
-  <a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
-
-  <header class="site-header">
-    <button class="menu-toggle" aria-label="Toggle navigation" data-lang-key="menu_toggle">
-      <i class="fas fa-bars"></i>
-    </button>
-    <div class="logo">
-      <a href="./">
-        <img src="images/logo.png" alt="Fennec Visionary Light Logo" class="logo-light">
-        <img src="images/logo-dark.png" alt="Fennec Visionary Dark Logo" class="logo-dark">
-      </a>
-    </div>
-    <nav class="main-nav" aria-label="Main Navigation">
-      <ul role="list">
-        <li role="listitem"><a href="#services" data-lang-key="nav_services">خدماتي</a></li>
-        <li role="listitem"><a href="#how-it-works" data-lang-key="nav_how_it_works">كيف نعمل</a></li>
-        <li role="listitem"><a href="#works" data-lang-key="nav_works">أعمالي</a></li>
-        <li role="listitem"><a href="#testimonials" data-lang-key="nav_testimonials">آراء العملاء</a></li>
-        <li role="listitem"><a href="#about-me" data-lang-key="nav_about_me">عني</a></li>
-        <li role="listitem"><a href="#contact" data-lang-key="nav_contact">تواصل معي</a></li>
-      </ul>
-    </nav>
-    <div class="header-controls">
-      <select id="language-select" aria-label="اختر اللغة">
-        <option value="en">EN</option>
-        <option value="ar" selected>AR</option>
-        <option value="fr">FR</option>
-      </select>
-      <button id="mode-toggle" aria-label="تبديل الوضع الداكن">
-        <i class="fas fa-moon"></i>
-      </button>
-    </div>
-  </header>
-
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
-    <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
-  </div>
-
-  <main id="main-content">
-    <section class="carousel" aria-label="معرض أعمال Fennec Visionary">
-      <div class="slides">
-        <figure>
-          <img src="images/slider1.jpg" alt="شعار نظيف وبسيط لشركة تقنية" loading="eager">
-          <figcaption class="visually-hidden">شعار تقني حديث</figcaption>
-        </figure>
-        <figure>
-          <img src="images/slider2.jpg" alt="تصميم تغليف عصائر طبيعية" loading="lazy">
-          <figcaption class="visually-hidden">تصميم تغليف عصائر</figcaption>
-        </figure>
-        <figure>
-          <img src="images/slider3.jpg" alt="بطاقة عمل احترافية" loading="lazy">
-          <figcaption class="visually-hidden">بطاقة عمل مهنية</figcaption>
-        </figure>
-        <figure>
-          <img src="images/slider4.jpg" alt="تصميم منشور وسائل تواصل اجتماعي" loading="lazy">
-          <figcaption class="visually-hidden">تصميم وسائل تواصل اجتماعي</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="services">
-      <h2 data-aos="fade-up" data-lang-key="services_title">خدماتي</h2>
-      <div class="services-grid">
-        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-          <i class="fas fa-pencil-ruler"></i>
-          <p data-lang-key="service_logo">تصميم الشعارات</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-          <i class="fas fa-id-card"></i>
-          <p data-lang-key="service_card">بطاقات العمل</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-          <i class="fas fa-file-alt"></i>
-          <p data-lang-key="service_brochure">الفلاير والبروشور</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-          <i class="fas fa-file-invoice-dollar"></i>
-          <p data-lang-key="service_invoice">الفواتير</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="100">
-          <i class="fas fa-book-open"></i>
-          <p data-lang-key="service_catalog">الكتالوجات</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="200">
-          <i class="fas fa-share-alt"></i>
-          <p data-lang-key="service_social">قوالب السوشيال ميديا</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="300">
-          <i class="fas fa-box"></i>
-          <p data-lang-key="service_packaging">تصميم التغليف</p>
-        </div>
-        <div class="service-item" data-aos="fade-up" data-aos-delay="400">
-          <i class="fas fa-tshirt"></i>
-          <p data-lang-key="service_tshirt">القمصان والهوديز</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="how-it-works" class="steps-section">
-      <div class="container">
-        <h2 class="section-title" data-lang-key="howItWorksTitle">كيف نعمل</h2>
-        <p class="subtitle" data-lang-key="howItWorksSubtitle">مرحلة التعاون الواضحة، المصممة لتقديم نتائج حقيقية.</p>
-
-        <div class="steps-container">
-          <div class="step-card" data-aos="fade-up" data-aos-delay="100">
-            <div class="step-icon"><i class="fas fa-search"></i></div>
-            <h3 class="step-title" data-lang-key="step1Title">المرحلة 1: البحث والتحليل</h3>
-            <p class="step-description" data-lang-key="step1Desc">أدرس نشاطك، أهدافك، وجمهورك لفهم إحتياجاتك بدقة.</p>
-            <div class="step-number-circle"></div>
-          </div>
-          <div class="step-card" data-aos="fade-up" data-aos-delay="200">
-            <div class="step-icon"><i class="fas fa-drafting-compass"></i></div>
-            <h3 class="step-title" data-lang-key="step2Title">المرحلة 2: التخطيط</h3>
-            <p class="step-description" data-lang-key="step2Desc">أضع استراتيجية واضحة وتوجهاً إبداعياً يعكس هوية علامتك.</p>
-            <div class="step-number-circle"></div>
-          </div>
-          <div class="step-card" data-aos="fade-up" data-aos-delay="300">
-            <div class="step-icon"><i class="fas fa-paint-brush"></i></div>
-            <h3 class="step-title" data-lang-key="step3Title">المرحلة 3: التصميم</h3>
-            <p class="step-description" data-lang-key="step3Desc">أحوّل الأفكار إلى هوية بصرية متكاملة وذات تأثير طويل الأمد.</p>
-            <div class="step-number-circle"></div>
-          </div>
-          <div class="step-card" data-aos="fade-up" data-aos-delay="400">
-            <div class="step-icon"><i class="fas fa-rocket"></i></div>
-            <h3 class="step-title" data-lang-key="step4Title">المرحلة 4: التسليم</h3>
-            <p class="step-description" data-lang-key="step4Desc">أقدّم الملفات النهائية مع إرشادات ودعم لضمان نجاح علامتك بثقة.</p>
-            <div class="step-number-circle"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="works" class="portfolio">
-      <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
-      <div class="grid" id="works-grid">
-      </div>
-      <div class="pagination" id="pagination-container">
-      </div>
-    </section>
-
-    <section id="testimonials" class="testimonials-section">
-      <h2 class="section-title" data-lang-key="testimonials_title">آراء العملاء</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card" data-aos="fade-up">
-          <div class="client-info">
-            <img src="../images/clients/client1.jpg" alt="صورة العميل محمد علي" class="client-photo" loading="lazy">
-            <div>
-              <h4>محمد علي</h4>
-              <span>مدير شركة</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"تجربة رائعة! المصمم قدم لي هوية بصرية فاقت توقعاتي، كان محترفاً ومتعاوناً جداً."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="client-info">
-            <img src="../images/clients/client2.jpg" alt="صورة العميل فاطمة الزهراء" class="client-photo" loading="lazy">
-            <div>
-              <h4>فاطمة الزهراء</h4>
-              <span>مؤسسة شركة ناشئة</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"أنصح بالتعامل معه بشدة. قام بتصميم موقع ويب بسيط وجذاب في وقت قياسي."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="client-info">
-            <img src="../images/clients/client3.jpg" alt="صورة العميل عبد القادر" class="client-photo" loading="lazy">
-            <div>
-              <h4>عبد القادر</h4>
-              <span>صاحب متجر إلكتروني</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"عمل متقن وتواصل ممتاز. فهم متطلباتي بسرعة وقدم لي تصميمًا فريدًا ومبدعًا."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="client-info">
-            <img src="../images/clients/client4.jpg" alt="صورة العميل نور الهدى" class="client-photo" loading="lazy">
-            <div>
-              <h4>نور الهدى</h4>
-              <span>صاحبة علامة تجارية</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"المصمم مبدع في أفكاره ومرن في التعديلات. سعيد جدًا بالنتيجة النهائية لتصميم التغليف."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="client-info">
-            <img src="../images/clients/client5.jpg" alt="صورة العميل يوسف الخالد" class="client-photo" loading="lazy">
-            <div>
-              <h4>يوسف الخالد</h4>
-              <span>ريادي أعمال</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"بكل احترافية، حوّل رؤيتي إلى تصميم شعار يعبر عن علامتي التجارية تمامًا. شكرًا جزيلًا."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="client-info">
-            <img src="../images/clients/client6.jpg" alt="صورة العميل مريم صقر" class="client-photo" loading="lazy">
-            <div>
-              <h4>مريم صقر</h4>
-              <span>مديرة مشروع</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"سرعة في الإنجاز وجودة عالية في التصميم. كان اختيارًا موفقًا للتعاون معه في هذا المشروع."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="client-info">
-            <img src="../images/clients/client7.jpg" alt="صورة العميل خالد السعدي" class="client-photo" loading="lazy">
-            <div>
-              <h4>خالد السعدي</h4>
-              <span>صاحب مطعم</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"التصميم الجديد لقائمة الطعام أبهرني. لقد أضاف لمسة عصرية وفنية رائعة."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="700">
-          <div class="client-info">
-            <img src="../images/clients/client8.jpg" alt="صورة العميل ليلى مراد" class="client-photo" loading="lazy">
-            <div>
-              <h4>ليلى مراد</h4>
-              <span>فنانة تشكيلية</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"ساعدني في تصميم شعار يعكس فني. النتيجة كانت استثنائية وأشكرك على صبرك واهتمامك بالتفاصيل."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="800">
-          <div class="client-info">
-            <img src="../images/clients/client9.jpg" alt="صورة العميل هشام العماري" class="client-photo" loading="lazy">
-            <div>
-              <h4>هشام العماري</h4>
-              <span>مدرب شخصي</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"تصميم إعلاناتي على السوشيال ميديا أحدث فرقاً كبيراً. زيادة في التفاعل والعملاء."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="900">
-          <div class="client-info">
-            <img src="../images/clients/client10.jpg" alt="صورة العميل سارة عبد الله" class="client-photo" loading="lazy">
-            <div>
-              <h4>سارة عبد الله</h4>
-              <span>مصممة أزياء</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"التعامل كان مريحاً للغاية. فهم احتياجاتي وأضاف لمسات سحرية لتصاميم بطاقات الأعمال."</p>
-        </div>
-      </div>
-
-      <section id="about-me" class="about-me-section">
-        <div class="about-content">
-          <h2 class="dynamic-text-title" data-lang-key="about_me_title"></h2>
-          <div class="about-details">
-            <div class="bio-card-container">
-              <div class="profile-card">
-                <div class="profile-image-container">
-                  <img id="profile-image" src="images/profile.jpg" alt="صورة الملف الشخصي" loading="lazy">
-                  <span class="availability-dot"></span>
-                </div>
-
-                <h3 class="experience-title" data-lang-key="experienceTitle">
-                  🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة
-                </h3>
-                <div class="bio-text" data-lang-key="about_me_bio">
-                  <p>
-                    مصمم جرافيك بخبرة تفوق 12 عامًا، متخصص في تصميم الشعارات والهويات البصرية وبروفايلات الشركات، إضافة إلى الكتالوجات، المطبوعات، وتصاميم السوشيال ميديا. تعاونت مع كبرى الشركات محليًا ودوليًا في الخليج والسعودية وكندا وأمريكا، مقدّمًا حلولًا إبداعية مبتكرة تعكس الاحترافية والتميّز.
-                    شعارنا مستوحى من الفنك الجزائري، رمز الذكاء والهوية الوطنية، ليجسد مزيجًا فريدًا من الثقافة، الإبداع، والاحتراف.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="tools-container">
-          <h3 class="tools-title" data-lang-key="tools_title">أدواتي</h3>
-          <div class="tools-grid">
-            <div class="tool-item" data-tool-name="photoshop" data-aos="zoom-in" data-aos-delay="100">
-              <img src="images/photoshop-icon.png" alt="Adobe Photoshop">
-            </div>
-            <div class="tool-item" data-tool-name="illustrator" data-aos="zoom-in" data-aos-delay="200">
-              <img src="images/illustrator-icon.png" alt="Adobe Illustrator">
-            </div>
-            <div class="tool-item" data-tool-name="indesign" data-aos="zoom-in" data-aos-delay="300">
-              <img src="images/indesign-icon.png" alt="Adobe InDesign">
-            </div>
-            <div class="tool-item" data-tool-name="html" data-aos="zoom-in" data-aos-delay="400">
-              <img src="images/Adobe-XD-icon.png" alt="HTML5">
-            </div>
-            <div class="tool-item" data-tool-name="css" data-aos="zoom-in" data-aos-delay="500">
-              <img src="images/Adobe-Lightroom-icon.png" alt="CSS3">
-            </div>
-            <div class="tool-item" data-tool-name="js" data-aos="zoom-in" data-aos-delay="600">
-              <img src="images/figma-icon.png" alt="JavaScript">
-              <div class="logo-carousel">
-              </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        <section class="logo-carousel-section">
-          <div class="logo-carousel">
-            <div class="logos-slide">
-              <img src="images/bank/b-01.jpg">
-              <img src="images/bank/b-02.jpg">
-              <img src="images/bank/b-03.jpg">
-              <img src="images/bank/b-04.jpg">
-              <img src="images/bank/b-05.jpg">
-              <img src="images/bank/b-06.jpg">
-              <img src="images/bank/b-07.jpg">
-              <img src="images/bank/b-08.jpg">
-              <img src="images/bank/b-09.jpg">
-              <img src="images/bank/b-10.jpg">
-
-              <img src="images/bank/b-01.jpg">
-              <img src="images/bank/b-02.jpg">
-              <img src="images/bank/b-03.jpg">
-              <img src="images/bank/b-04.jpg">
-              <img src="images/bank/b-05.jpg">
-              <img src="images/bank/b-06.jpg">
-              <img src="images/bank/b-07.jpg">
-              <img src="images/bank/b-08.jpg">
-              <img src="images/bank/b-09.jpg">
-              <img src="images/bank/b-10.jpg">
-            </div>
-        </section>
-  </main>
-  <footer id="contact" role="contentinfo">
-    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
-    <address data-aos="fade-up" data-aos-delay="100">
-      <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
-      <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
-    </address>
-    <div class="socials" data-aos="fade-up" data-aos-delay="200">
-      <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer me" aria-label="تابعنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer me" aria-label="تابعنا على إنستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/+213696947598" target="_blank" rel="noopener noreferrer me" aria-label="تواصل معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer me" aria-label="تابعنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <p class="copy" data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
-  </footer>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-  <script src="data.js"></script>
-  <script src="script.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const mainNav = document.querySelector('.main-nav');
-      menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('is-open');
-      });
-    });
-  </script>
-  <style>
-    /* أنماط إضافية للتكامل مع JavaScript */
-    .visually-hidden {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    .loading {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 300px;
-    }
-
-    .loading::after {
-      content: "";
-      width: 40px;
-      height: 40px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid var(--primary-color);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
-</body>
-
-</html>
