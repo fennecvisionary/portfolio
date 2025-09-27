@@ -1161,7 +1161,7 @@ body.dark-mode .testimonial-card {
 
 .client-info h4 {
   margin: 0;
-  color: var(--light-text-color); /* تم تصحيح اسم المتغير */
+  color: var(--dark-text-color); /* تم تصحيح اسم المتغير */
   font-size: 1.1rem;
 }
 
