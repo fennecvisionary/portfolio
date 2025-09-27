@@ -256,7 +256,7 @@ body.ltr .main-nav li {
 /* Carousel Section */
 .carousel {
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   overflow: hidden;
   position: relative;
 }
@@ -374,7 +374,7 @@ section {
 }
 
 .about-content {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   text-align: center;
 }
@@ -538,8 +538,8 @@ section {
 }
 
 .tool-item {
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
   background-color: var(--light-card-bg);
   border-radius: 10px;
   box-shadow: var(--light-shadow);
