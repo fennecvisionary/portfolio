@@ -253,27 +253,35 @@ body.ltr .main-nav li {
   background-color: var(--secondary-color);
 }
 
-/* Carousel Section */
+/* تنسيقات قسم الكاروسيل */
 .carousel {
   width: 100%;
-  height: 60vh;
+  max-width: 100vw; /* ضمان ألا يتجاوز العرض عرض الشاشة */
+  height: 70vh; /* زيادة الارتفاع ليكون أكثر بروزًا */
   overflow: hidden;
   position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* إضافة ظل أنيق */
+  border-radius: 15px; /* حواف دائرية للحاوية */
 }
 
+/* حاوية الشرائح */
 .slides {
   width: 400%;
   height: 100%;
   display: flex;
-  animation: slideAnimation 30s infinite ease-in-out;
+  transition: transform 0.5s ease-in-out; /* إضافة انتقال سلس للتحكم اليدوي */
+  animation: slideAnimation 30s infinite ease-in-out forwards;
 }
 
+/* عناصر الشرائح */
 .slides figure {
   width: 25%;
   height: 100%;
   margin: 0;
+  position: relative;
 }
 
+/* الصورة داخل كل شريحة */
 .slides img {
   width: 100%;
   height: 100%;
@@ -281,6 +289,23 @@ body.ltr .main-nav li {
   display: block;
 }
 
+/* تراكب تدرج لوني على الصورة */
+.slides figure::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
+}
+
+/* إيقاف الحركة عند التفاعل مع الكاروسيل */
+.carousel:hover .slides {
+  animation-play-state: paused;
+}
+
+/* حركة الانتقال التلقائية */
 @keyframes slideAnimation {
   0%,
   20% {
