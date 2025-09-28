@@ -972,62 +972,67 @@ section {
 }
 /* Styling for the Logo Carousel Section */
 .logo-carousel-section {
-  background-color: var(--light-bg-color);
-  padding: 5rem 2rem;
-  text-align: center;
+    background-color: var(--light-bg-color);
+    padding: 5rem 2rem;
+    text-align: center;
+    /* Added to prevent horizontal overflow */
+    overflow: hidden;
+    width: 100%;
 }
 
 .dark-mode .logo-carousel-section {
-  background-color: var(--dark-bg-color);
+    background-color: var(--dark-bg-color);
 }
 
 .logo-carousel {
-  overflow: hidden; /* This hides the overflowing logos */
-  white-space: nowrap; /* Prevents logos from wrapping to the next line */
-  position: relative;
-  width: 100%;
-  margin-top: 2rem;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+    margin-top: 2rem;
 }
 
 .logos-slide {
-  display: inline-flex;
-  animation: slide-logos 30s linear infinite; /* Adjust speed here */
+    display: inline-flex;
+    animation: slide-logos 30s linear infinite;
+    /* Added to prevent a tiny gap */
+    width: max-content;
 }
 
 /* Stop animation on hover */
 .logo-carousel:hover .logos-slide {
-  animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 .logos-slide img {
-  height: 80px;
-  width: auto;
-  margin: 0 20px;
-  filter: grayscale(100%); /* Make logos grayscale by default */
-  transition: filter 0.3s ease;
+    height: 80px;
+    width: auto;
+    margin: 0 20px;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
 }
 
 .logos-slide img:hover {
-  filter: grayscale(0%); /* Full color on hover */
+    filter: grayscale(0%);
 }
 
 /* Dark Mode styles for logos */
 .dark-mode .logos-slide img {
-  filter: grayscale(100%) brightness(0.7); /* Adjust brightness for dark mode */
+    filter: grayscale(100%) brightness(0.7);
 }
 
 .dark-mode .logos-slide img:hover {
-  filter: grayscale(0%) brightness(1);
+    filter: grayscale(0%) brightness(1);
 }
 
 /* Keyframes for the continuous scrolling animation */
 @keyframes slide-logos {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
 }
 
 /* Contact Section */
