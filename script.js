@@ -214,545 +214,162 @@ document.addEventListener("DOMContentLoaded", () => {
       no_results_heading: "Aucun Résultat Trouvé",
       no_results_text: "Essayez d'utiliser des mots-clés différents",
       howItWorksTitle: "Étapes de Travail",
-      howItWorksSubtitle:
-        "Un processus de collaboration conçu pour garantir des résultats concrets et efficaces.",
+      howItWorksSubtitle: "Un processus de collaboration conçu pour garantir des résultats concrets et efficaces.",
       step1Title: "Phase 1: Découverte",
-      step1Desc:
-        "Nous étudions votre activité, vos objectifs et votre audience afin de cerner clairement vos besoins",
+      step1Desc: "Nous étudions votre activité, vos objectifs et votre audience afin de cerner clairement vos besoins",
       step2Title: "Phase 2: Planification",
-      step2Desc:
-        "Nous élaborons une stratégie claire et une direction créative adaptées à l’identité de votre marque.",
+      step2Desc: "Nous élaborons une stratégie claire et une direction créative adaptées à l’identité de votre marque.",
       step3Title: "Phase 3: Design",
-      step3Desc:
-        "Nous transformons les idées en une identité visuelle cohérente et mémorable.",
+      step3Desc: "Nous transformons les idées en une identité visuelle cohérente et mémorable.",
       step4Title: "Phase 4: Livraison",
-      step4Desc:
-        "Nous fournissons les fichiers finaux avec un accompagnement pour un lancement en toute confiance.",
+      step4Desc: "Nous fournissons les fichiers finaux avec un accompagnement pour un lancement en toute confiance.",
       testimonials_title: "Avis Clients",
-      testimonial_1_text:
-        "Une excellente expérience ! Le designer a fourni une identité visuelle qui a dépassé mes attentes. Il a été très professionnel et coopératif.",
+      testimonial_1_text: "Une excellente expérience ! Le designer m'a fourni une identité visuelle qui a dépassé mes attentes. Il était très professionnel et coopératif.",
       testimonial_1_name: "Mohamed Ali",
-      testimonial_1_role: "Manager d'entreprise",
-      testimonial_2_text:
-        "Je recommande vivement de travailler avec lui. Il a conçu un site web simple mais attrayant en un temps record.",
+      testimonial_1_role: "Directeur de société",
+      testimonial_2_text: "Je le recommande vivement. Il a conçu un site web simple mais attrayant en un temps record.",
       testimonial_2_name: "Fatima Al-Zahra",
       testimonial_2_role: "Fondatrice de startup",
-      testimonial_3_text:
-        "Un travail impeccable et une excellente communication. Il a rapidement compris mes exigences et a livré un design unique et créatif.",
+      testimonial_3_text: "Excellent travail et communication. Il a rapidement compris mes besoins et a livré un design unique et créatif.",
       testimonial_3_name: "Abdul Qader",
       testimonial_3_role: "Propriétaire de boutique en ligne",
-      testimonial_4_text:
-        "Le designer est créatif dans ses idées et flexible avec les modifications. Je suis très satisfait du design final de l'emballage.",
+      testimonial_4_text: "Le designer est créatif dans ses idées et flexible avec les modifications. Je suis très satisfait du résultat final pour le design d'emballage.",
       testimonial_4_name: "Noor Al-Huda",
       testimonial_4_role: "Propriétaire de marque",
-      testimonial_5_text:
-        "Avec un professionnalisme total, il a transformé ma vision en un logo qui représente parfaitement ma marque. Merci beaucoup.",
+      testimonial_5_text: "Avec un professionnalisme total, il a transformé ma vision en un logo qui représente parfaitement ma marque. Un grand merci.",
       testimonial_5_name: "Youssef Al-Khaled",
       testimonial_5_role: "Entrepreneur",
-      testimonial_6_text:
-        "Rapidité d'exécution et haute qualité de conception. C'était un excellent choix de collaborer avec lui sur ce projet.",
+      testimonial_6_text: "Exécution rapide et conception de haute qualité. Ce fut un excellent choix de collaborer avec lui sur ce projet.",
       testimonial_6_name: "Mariam Saqr",
-      testimonial_6_role: "Chef de projet",
-      testimonial_7_text:
-        "Le nouveau design du menu de mon restaurant m'a impressionné. Il a ajouté une touche moderne et artistique merveilleuse.",
+      testimonial_6_role: "Cheffe de projet",
+      testimonial_7_text: "Le nouveau design du menu de mon restaurant m'a impressionné. Il a ajouté une touche moderne et artistique merveilleuse.",
       testimonial_7_name: "Khaled Al-Saadi",
       testimonial_7_role: "Propriétaire de restaurant",
-      testimonial_8_text:
-        "Il m'a aidé à concevoir un logo qui reflète mon art. Le résultat a été exceptionnel, et je vous remercie pour votre patience et votre attention aux détails.",
+      testimonial_8_text: "Il m'a aidé à concevoir un logo qui reflète mon art. Le résultat a été exceptionnel, et je vous remercie pour votre patience et votre attention aux détails.",
       testimonial_8_name: "Laila Mourad",
-      testimonial_8_role: "Artiste plasticienne",
-      testimonial_9_text:
-        "La conception de mes publicités sur les réseaux sociaux a fait une grande différence. Il y a eu une augmentation de l'engagement et des clients.",
+      testimonial_8_role: "Artiste peintre",
+      testimonial_9_text: "La conception de mes publicités sur les réseaux sociaux a fait une grande différence. Il y a eu une augmentation de l'engagement et des clients.",
       testimonial_9_name: "Hisham Al-Ammari",
       testimonial_9_role: "Coach personnel",
-      testimonial_10_text:
-        "La collaboration a été très agréable. Il a compris mes besoins et a ajouté des touches magiques aux designs de cartes de visite.",
+      testimonial_10_text: "L'expérience était très agréable. Il a compris mes besoins et a ajouté des touches magiques aux designs des cartes de visite.",
       testimonial_10_name: "Sara Abdullah",
       testimonial_10_role: "Créatrice de mode",
       experienceTitle:
-        "🦊 Fennec Visionary | Une créativité visuelle qui forge une identité unique",
+        "🦊 Fennec Visionary | Créativité Visuelle qui Bâtit une Identité Unique",
       about_me_bio:
-        "Graphiste avec plus de 12 ans d’expérience, spécialisé dans la création de logos, d’identités visuelles et de profils d’entreprise, ainsi que dans la conception de catalogues, d’imprimés et de visuels pour les réseaux sociaux. J’ai collaboré avec de grandes entreprises au niveau local et international, notamment dans le Golfe, en Arabie Saoudite, au Canada et aux États-Unis, en proposant des solutions créatives et professionnelles.\n\nNotre logo s’inspire du fennec algérien, symbole d’ingéniosité et d’identité nationale, pour incarner un mélange unique de culture, de créativité et de professionnalisme."
-    }
+        "Graphiste avec plus de 12 ans d'expérience, spécialisé dans la conception de logos, d'identités visuelles et de profils d'entreprise, ainsi que dans les catalogues, les imprimés et les designs de réseaux sociaux. J'ai collaboré avec de grandes entreprises locales et internationales dans le Golfe, en Arabie Saoudite, au Canada et aux États-Unis, en fournissant des solutions innovantes qui reflètent le professionnalisme et l'excellence.\n\nNotre logo est inspiré du fennec algérien, un symbole d'ingéniosité et d'identité nationale, incarnant un mélange unique de culture, de créativité et de professionnalisme."
+    },
   };
 
-  // إضافة أنماط للنتائج غير الموجودة
-  const noResultsStyle = document.createElement("style");
-  noResultsStyle.textContent = `
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            color: var(--light-text-color);
-        }
-        .dark-mode .no-results {
-            color: var(--dark-text-color);
-        }
-        .no-results i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        .no-results h3 {
-            margin-bottom: 0.5rem;
-            color: inherit;
-        }
-        .page-link.prev-page, .page-link.next-page {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        body.rtl .page-link.prev-page i {
-            transform: rotate(180deg);
-        }
-        body.rtl .page-link.next-page i {
-            transform: rotate(180deg);
-        }
-    `;
-  document.head.appendChild(noResultsStyle);
-
-  // وظيفة تبديل الوضع (ليلي/نهاري)
-  function toggleMode() {
-    body.classList.toggle("dark-mode");
-    body.classList.toggle("light-mode");
-    const isDarkMode = body.classList.contains("dark-mode");
-    localStorage.setItem("darkMode", isDarkMode);
-    modeToggle.innerHTML = isDarkMode
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
-    modeToggle.setAttribute(
-      "aria-label",
-      isDarkMode ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"
-    );
-  }
-
-  // وظيفة تبديل اللغة
-  function setLanguage(lang) {
-    document.querySelectorAll("[data-lang-key]").forEach((element) => {
-      const key = element.getAttribute("data-lang-key");
-      const translation = translations[lang][key];
-      if (translation) {
-        if (
-          element.tagName === "INPUT" &&
-          element.hasAttribute("placeholder")
-        ) {
-          element.placeholder = translation;
-        } else {
-          // التحقق من وجود رابط بداخل العنصر
-          const link = element.querySelector("a");
-          if (link) {
-            element.innerHTML = `${translation} <a href="${link.href}">${link.textContent}</a>`;
-          } else {
-            element.textContent = translation;
-          }
-        }
-      }
-    });
-
-    document.querySelector("#how-it-works h2").textContent =
-      translations[lang]["howItWorksTitle"];
-    document.querySelector("#how-it-works .subtitle").textContent =
-      translations[lang]["howItWorksSubtitle"];
-
-    for (let i = 1; i <= 4; i++) {
-      document.querySelector(
-        `.steps-container .step-card:nth-of-type(${i}) .step-title`
-      ).textContent = translations[lang][`step${i}Title`];
-      document.querySelector(
-        `.steps-container .step-card:nth-of-type(${i}) .step-description`
-      ).textContent = translations[lang][`step${i}Desc`];
-    }
-
-    for (let i = 1; i <= 10; i++) {
-      const testimonialCard = document.querySelector(
-        `.testimonial-card:nth-of-type(${i})`
-      );
-      if (testimonialCard) {
-        const nameElement = testimonialCard.querySelector("h4");
-        const roleElement = testimonialCard.querySelector("span");
-        const textElement = testimonialCard.querySelector("p");
-
-        if (nameElement)
-          nameElement.textContent = translations[lang][`testimonial_${i}_name`];
-        if (roleElement)
-          roleElement.textContent = translations[lang][`testimonial_${i}_role`];
-        if (textElement)
-          textElement.textContent = translations[lang][`testimonial_${i}_text`];
-      }
-    }
-
-    if (lang === "ar") {
-      document.documentElement.dir = "rtl";
-      document.documentElement.lang = "ar";
-      body.classList.add("rtl");
-      body.classList.remove("ltr");
-    } else {
-      document.documentElement.dir = "ltr";
-      document.documentElement.lang = lang;
-      body.classList.add("ltr");
-      body.classList.remove("rtl");
-    }
-    localStorage.setItem("language", lang);
-
-    searchInput.placeholder = translations[lang].search_placeholder;
-  }
-
-  // وظيفة تبديل الصور
-  function setupToolImageHover() {
-    const dynamicTitle = document.querySelector(".dynamic-text-title");
-    const toolItems = document.querySelectorAll(".tool-item");
-
-    if (dynamicTitle) {
-      dynamicTitle.textContent = "عني";
-      dynamicTitle.addEventListener("mousemove", (e) => {
-        const cursor = document.createElement("span");
-        cursor.classList.add("pulse-cursor");
-        cursor.style.left = `${e.offsetX}px`;
-        cursor.style.top = `${e.offsetY}px`;
-        dynamicTitle.appendChild(cursor);
-        setTimeout(() => {
-          cursor.remove();
-        }, 500);
-      });
-    }
-
-    toolItems.forEach((item) => {
-      item.addEventListener("mouseover", () => {
-        const toolName = item.getAttribute("data-tool-name");
-        if (hoverImage) {
-          // تأكد من وجود العنصر
-          hoverImage.src = `images/${toolName}-full.jpg`;
-          hoverImage.classList.remove("hidden");
-        }
-      });
-      item.addEventListener("mouseout", () => {
-        if (hoverImage) {
-          // تأكد من وجود العنصر
-          hoverImage.classList.add("hidden");
-        }
-      });
-    });
-  }
-
-  // إضافة فئة "active" للرابط عند النقر عليه
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      navLinks.forEach((item) => item.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
-
-  // تهيئة الصفحة عند التحميل
-  function initialize() {
-    const savedMode = localStorage.getItem("darkMode");
-    if (savedMode === "true") {
-      body.classList.add("dark-mode");
-      body.classList.remove("light-mode");
-      modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      modeToggle.setAttribute("aria-label", "تفعيل الوضع الفاتح");
-    } else {
-      body.classList.add("light-mode");
-      body.classList.remove("dark-mode");
-      modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      modeToggle.setAttribute("aria-label", "تفعيل الوضع الداكن");
-    }
-
-    const savedLang = localStorage.getItem("language") || "ar";
-    languageSelect.value = savedLang;
-    setLanguage(savedLang);
-
-    if (typeof AOS !== "undefined") {
-      AOS.init({
-        duration: 1000,
-        easing: "ease-in-out",
-        once: true,
-        mirror: false
-      });
-    }
-
-    if (typeof lightbox !== "undefined") {
-      lightbox.option({
-        resizeDuration: 200,
-        wrapAround: true,
-        showImageNumberLabel: true,
-        positionFromTop: 100
-      });
-    }
-  }
-
   // بيانات الأعمال
-  const totalWorks = 100;
-  const itemsPerPage = 12;
-  let allWorks = [];
-  const workCategories = [
-    "شعار",
-    "تغليف",
-    "بطاقة عمل",
-    "تصميم مواقع",
-    "فلاير",
-    "تي شيرت",
-    "رسم",
-    "هوية بصرية"
+  const portfolioItems = [
+    {
+      id: 1,
+      title: "تصميم شعار شركة تقنية",
+      tags: ["all", "logos", "branding"],
+      imageUrl: "images/works/logo1.jpg",
+      detailsUrl: "details/logo1.html",
+    },
+    {
+      id: 2,
+      title: "هوية بصرية كاملة لمطعم",
+      tags: ["all", "branding"],
+      imageUrl: "images/works/branding1.jpg",
+      detailsUrl: "details/branding1.html",
+    },
+    {
+      id: 3,
+      title: "فلاير ترويجي لمناسبة",
+      tags: ["all", "flyers", "print"],
+      imageUrl: "images/works/flyer1.jpg",
+      detailsUrl: "details/flyer1.html",
+    },
+    {
+      id: 4,
+      title: "تصاميم سوشيال ميديا",
+      tags: ["all", "social-media"],
+      imageUrl: "images/works/social1.jpg",
+      detailsUrl: "details/social1.html",
+    },
+    {
+      id: 5,
+      title: "تصميم تغليف لمنتج",
+      tags: ["all", "packaging"],
+      imageUrl: "images/works/packaging1.jpg",
+      detailsUrl: "details/packaging1.html",
+    },
+    {
+      id: 6,
+      title: "رسم توضيحي",
+      tags: ["all", "illustrations"],
+      imageUrl: "images/works/illustration1.jpg",
+      detailsUrl: "details/illustration1.html",
+    },
+    {
+      id: 7,
+      title: "شعار عصري",
+      tags: ["all", "logos"],
+      imageUrl: "images/works/logo2.jpg",
+      detailsUrl: "details/logo2.html",
+    },
+    {
+      id: 8,
+      title: "علامة تجارية",
+      tags: ["all", "branding"],
+      imageUrl: "images/works/branding2.jpg",
+      detailsUrl: "details/branding2.html",
+    },
+    {
+      id: 9,
+      title: "مطوية إعلانية",
+      tags: ["all", "flyers"],
+      imageUrl: "images/works/flyer2.jpg",
+      detailsUrl: "details/flyer2.html",
+    },
+    {
+      id: 10,
+      title: "بوست انستغرام",
+      tags: ["all", "social-media"],
+      imageUrl: "images/works/social2.jpg",
+      detailsUrl: "details/social2.html",
+    },
+    {
+      id: 11,
+      title: "عبوة منتج",
+      tags: ["all", "packaging"],
+      imageUrl: "images/works/packaging2.jpg",
+      detailsUrl: "details/packaging2.html",
+    },
+    {
+      id: 12,
+      title: "رسم رقمي",
+      tags: ["all", "illustrations"],
+      imageUrl: "images/works/illustration2.jpg",
+      detailsUrl: "details/illustration2.html",
+    },
   ];
 
-  for (let i = 1; i <= totalWorks; i++) {
-    const categoryIndex = (i - 1) % workCategories.length;
-    const category = workCategories[categoryIndex];
-    const galleryImages = [
-      `images/work${i}/1.jpg`,
-      `images/work${i}/2.jpg`,
-      `images/work${i}/3.jpg`
-    ];
-    allWorks.push({
-      id: `work${i}`,
-      title: `تصميم ${category} رقم ${i}`,
-      mainImage: galleryImages[0],
-      galleryImages: galleryImages,
-      category: category,
-      details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-    });
-  }
-
+  const itemsPerPage = 6;
   let currentPage = 1;
 
-  // عرض الأعمال في الشبكة
-  function renderWorks(works, page = 1) {
-    worksGrid.innerHTML = "";
-    currentPage = page;
-
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedItems = works.slice(start, end);
-
-    if (paginatedItems.length === 0) {
-      const lang = localStorage.getItem("language") || "ar";
-      worksGrid.innerHTML = `
-                <div class="no-results">
-                    <i class="fas fa-search"></i>
-                    <h3>${translations[lang].no_results_heading}</h3>
-                    <p>${translations[lang].no_results_text}</p>
-                </div>
-            `;
-      paginationContainer.innerHTML = "";
-      return;
-    }
-
-    paginatedItems.forEach((work, index) => {
-      const itemDiv = document.createElement("div");
-      itemDiv.classList.add("item");
-      itemDiv.setAttribute("data-aos", "fade-up");
-      itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
-      itemDiv.setAttribute("data-work-id", work.id);
-
-      let lightboxLinks = "";
-      if (work.galleryImages && work.galleryImages.length > 1) {
-        work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
-          lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${
-            work.id
-          }" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
-        });
+  // وظيفة تحديث محتوى الصفحة بناءً على اللغة
+  function updateContent(lang) {
+    const elements = document.querySelectorAll("[data-lang-key]");
+    elements.forEach((el) => {
+      const key = el.getAttribute("data-lang-key");
+      if (translations[lang][key]) {
+        el.textContent = translations[lang][key];
       }
-
-      itemDiv.innerHTML = `
-                <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
-                    <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
-                    <div class="overlay">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                </a>
-                ${lightboxLinks}
-            `;
-      worksGrid.appendChild(itemDiv);
     });
 
-    AOS.refresh();
-    renderPagination(works);
-  }
-
-  // إنشاء أزرار الترقيم
-  function renderPagination(works) {
-    paginationContainer.innerHTML = "";
-    const pageCount = Math.ceil(works.length / itemsPerPage);
-
-    if (pageCount <= 1) return;
-
-    if (currentPage > 1) {
-      const prevLink = document.createElement("a");
-      prevLink.href = "#works";
-      prevLink.classList.add("page-link", "prev-page");
-      prevLink.innerHTML = '<i class="fas fa-chevron-right"></i>';
-      prevLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderWorks(works, currentPage - 1);
-        window.scrollTo({
-          top: worksGrid.offsetTop - 100,
-          behavior: "smooth"
-        });
-      });
-      paginationContainer.appendChild(prevLink);
-    }
-
-    for (let i = 1; i <= pageCount; i++) {
-      const pageLink = document.createElement("a");
-      pageLink.href = "#works";
-      pageLink.classList.add("page-link");
-      if (i === currentPage) pageLink.classList.add("active");
-      pageLink.textContent = i;
-      pageLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderWorks(works, i);
-        window.scrollTo({
-          top: worksGrid.offsetTop - 100,
-          behavior: "smooth"
-        });
-      });
-      paginationContainer.appendChild(pageLink);
-    }
-
-    if (currentPage < pageCount) {
-      const nextLink = document.createElement("a");
-      nextLink.href = "#works";
-      nextLink.classList.add("page-link", "next-page");
-      nextLink.innerHTML = '<i class="fas fa-chevron-left"></i>';
-      nextLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderWorks(works, currentPage + 1);
-        window.scrollTo({
-          top: worksGrid.offsetTop - 100,
-          behavior: "smooth"
-        });
-      });
-      paginationContainer.appendChild(nextLink);
+    // Handle placeholder specifically for search input
+    if (searchInput) {
+      searchInput.setAttribute("placeholder", translations[lang]["search_placeholder"]);
     }
   }
 
-  // وظيفة البحث والترشيح
-  function filterWorks(searchTerm) {
-    searchTerm = searchTerm.toLowerCase().trim();
-
-    if (!searchTerm) {
-      return allWorks;
-    }
-
-    return allWorks.filter(
-      (work) =>
-        work.title.toLowerCase().includes(searchTerm) ||
-        work.category.toLowerCase().includes(searchTerm) ||
-        work.details.toLowerCase().includes(searchTerm)
-    );
-  }
-
-  // البحث عند الكتابة
-  searchInput.addEventListener("input", (e) => {
-    const filteredWorks = filterWorks(e.target.value);
-    renderWorks(filteredWorks, 1);
-  });
-
-  // البحث عند الضغط على زر البحث
-  searchButton.addEventListener("click", () => {
-    const filteredWorks = filterWorks(searchInput.value);
-    renderWorks(filteredWorks, 1);
-  });
-
-  // البحث عند الضغط على Enter
-  searchInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const filteredWorks = filterWorks(searchInput.value);
-      renderWorks(filteredWorks, 1);
-    }
-  });
-
-  // إضافة المستمعين للأحداث
-  modeToggle.addEventListener("click", toggleMode);
-  languageSelect.addEventListener("change", (e) => {
-    setLanguage(e.target.value);
-    renderWorks(allWorks, currentPage);
-  });
-
-  // إضافة مستمعي الأحداث للوسوم
-  tags.forEach((tag) => {
-    tag.addEventListener("click", function (event) {
-      event.preventDefault();
-      const searchTerm = this.textContent.trim();
-      searchInput.value = searchTerm;
-      const filteredWorks = filterWorks(searchTerm);
-      renderWorks(filteredWorks, 1);
-
-      window.scrollTo({
-        top: worksGrid.offsetTop - 100,
-        behavior: "smooth"
-      });
-    });
-  });
-
-  // تشغيل وظيفة تهيئة الصور بعد تحميل الصفحة
-  setupToolImageHover();
-
-  // تشغيل وظيفة التهيئة عند تحميل الصفحة
-  initialize();
-
-  // عرض الأعمال للمرة الأولى
-  renderWorks(allWorks, 1);
-});
-document.addEventListener("DOMContentLoaded", () => {
-  // Mobile navigation toggle
-  const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("main-nav");
-  const menuCloseBtn = document.querySelector(".menu-close-btn");
-  const navLinks = mainNav.querySelectorAll("a");
-
-  // Function to open the side menu
-  function openMenu() {
-    mainNav.classList.add("active");
-    menuToggle.style.display = "none";
-    menuCloseBtn.style.display = "block";
-  }
-
-  // Function to close the side menu
-  function closeMenu() {
-    mainNav.classList.remove("active");
-    menuToggle.style.display = "block";
-    menuCloseBtn.style.display = "none";
-  }
-
-  // Event listeners
-  menuToggle.addEventListener("click", openMenu);
-  menuCloseBtn.addEventListener("click", closeMenu);
-
-  // Close menu when a link is clicked
-  navLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  // Language and mode toggle
-  const languageSelect = document.getElementById("language-select");
-  const modeToggle = document.getElementById("mode-toggle");
-  const body = document.body;
-
-  // Load saved settings from localStorage
-  const savedLang = localStorage.getItem("siteLang") || "ar";
-  const savedMode = localStorage.getItem("siteMode") || "light-mode";
-
-  body.classList.add(savedMode);
-  body.classList.add(savedLang === "en" ? "ltr" : "rtl");
-  languageSelect.value = savedLang;
-  modeToggle.innerHTML =
-    savedMode === "light-mode"
-      ? '<i class="fas fa-moon"></i>'
-      : '<i class="fas fa-sun"></i>';
-
-  // Toggle language
-  languageSelect.addEventListener("change", () => {
-    const lang = languageSelect.value;
-    body.classList.remove("rtl", "ltr");
-    body.classList.add(lang === "en" ? "ltr" : "rtl");
-    localStorage.setItem("siteLang", lang);
-  });
-
-  // Toggle mode
-  modeToggle.addEventListener("click", () => {
+  // تبديل الوضع (فاتح/داكن)
+  function toggleMode() {
     if (body.classList.contains("light-mode")) {
       body.classList.remove("light-mode");
       body.classList.add("dark-mode");
@@ -764,5 +381,257 @@ document.addEventListener("DOMContentLoaded", () => {
       modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
       localStorage.setItem("siteMode", "light-mode");
     }
+  }
+
+  if (modeToggle) {
+    modeToggle.addEventListener("click", toggleMode);
+  }
+
+  // تبديل اللغة
+  function toggleLanguage() {
+    const lang = languageSelect.value;
+    body.classList.remove("rtl", "ltr");
+    body.classList.add(lang === "en" ? "ltr" : "rtl");
+    updateContent(lang);
+    localStorage.setItem("siteLang", lang);
+  }
+
+  if (languageSelect) {
+    languageSelect.addEventListener("change", toggleLanguage);
+  }
+
+  // عرض الأعمال بناءً على الصفحة والبحث
+  function displayWorks(items) {
+    if (!worksGrid) return;
+    worksGrid.innerHTML = "";
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedItems = items.slice(startIndex, endIndex);
+
+    if (paginatedItems.length === 0) {
+      document.getElementById("no-results").style.display = "block";
+    } else {
+      document.getElementById("no-results").style.display = "none";
+      paginatedItems.forEach((item) => {
+        const itemDiv = document.createElement("a");
+        itemDiv.href = "#"; // Disable original link
+        itemDiv.classList.add("item");
+        itemDiv.dataset.aos = "fade-up";
+        itemDiv.setAttribute("data-tags", item.tags.join(" "));
+        itemDiv.innerHTML = `
+                <img src="${item.imageUrl}" alt="${item.title}" loading="lazy">
+                <div class="item-overlay">
+                    <h3 class="item-title">${item.title}</h3>
+                    <p class="item-tags">${item.tags.join(", ")}</p>
+                </div>
+            `;
+        worksGrid.appendChild(itemDiv);
+      });
+
+      // إعادة تفعيل Lightbox2
+      lightbox.init();
+    }
+  }
+
+  // إنشاء عناصر الترقيم
+  function setupPagination(items) {
+    if (!paginationContainer) return;
+    paginationContainer.innerHTML = "";
+    const pageCount = Math.ceil(items.length / itemsPerPage);
+
+    for (let i = 1; i <= pageCount; i++) {
+      const btn = document.createElement("button");
+      btn.textContent = i;
+      btn.classList.add("page-number");
+      if (i === currentPage) {
+        btn.classList.add("active");
+      }
+      btn.addEventListener("click", () => {
+        currentPage = i;
+        displayWorks(items);
+        updatePaginationButtons(pageCount);
+      });
+      paginationContainer.appendChild(btn);
+    }
+  }
+
+  // تحديث أزرار الترقيم
+  function updatePaginationButtons(pageCount) {
+    if (!paginationContainer) return;
+    const buttons = paginationContainer.querySelectorAll(".page-number");
+    buttons.forEach((btn, index) => {
+      btn.classList.toggle("active", index + 1 === currentPage);
+    });
+  }
+
+  // تصفية وعرض الأعمال
+  function filterAndDisplay() {
+    const activeTag = document.querySelector(".tag-link.active").dataset.tag;
+    const searchTerm = searchInput.value.toLowerCase();
+    let filteredItems = portfolioItems;
+
+    if (activeTag !== "all") {
+      filteredItems = filteredItems.filter((item) =>
+        item.tags.includes(activeTag)
+      );
+    }
+
+    if (searchTerm) {
+      filteredItems = filteredItems.filter((item) =>
+        item.title.toLowerCase().includes(searchTerm)
+      );
+    }
+
+    currentPage = 1; // Reset to the first page for new filtering/search
+    displayWorks(filteredItems);
+    setupPagination(filteredItems);
+  }
+
+  // إضافة معالجات الأحداث
+  if (tags) {
+    tags.forEach((tag) => {
+      tag.addEventListener("click", (e) => {
+        e.preventDefault();
+        tags.forEach((t) => t.classList.remove("active"));
+        e.target.classList.add("active");
+        filterAndDisplay();
+      });
+    });
+  }
+
+  if (searchButton) {
+    searchButton.addEventListener("click", filterAndDisplay);
+    searchInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        filterAndDisplay();
+      }
+    });
+  }
+
+  // Testimonials Slider
+  const slider = document.querySelector(".testimonial-slider");
+  const prevBtn = document.querySelector(".prev-btn");
+  const nextBtn = document.querySelector(".next-btn");
+  let slideIndex = 0;
+
+  function moveSlider(direction) {
+    const slideWidth = slider.querySelector(".testimonial-item").clientWidth;
+    const totalItems = slider.querySelectorAll(".testimonial-item").length;
+
+    slideIndex += direction;
+
+    if (slideIndex < 0) {
+      slideIndex = totalItems - 1;
+    } else if (slideIndex >= totalItems) {
+      slideIndex = 0;
+    }
+
+    const newTransform = -slideIndex * slideWidth;
+    slider.style.transform = `translateX(${newTransform}px)`;
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => moveSlider(1));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => moveSlider(-1));
+  }
+
+  // Dynamic Text for About Me
+  const dynamicTextElement = document.getElementById("dynamicText");
+  const words = [
+    "مصمم جرافيك",
+    "خبير في الهوية البصرية",
+    "مبدع رقمي",
+    "شريكك في النجاح",
+  ];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  function type() {
+    const currentWord = words[wordIndex];
+    let displayText = "";
+
+    if (isDeleting) {
+      displayText = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+    } else {
+      displayText = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+    }
+
+    dynamicTextElement.textContent = displayText;
+    let typingSpeed = 150;
+
+    if (isDeleting) {
+      typingSpeed /= 2;
+    }
+
+    if (!isDeleting && displayText === currentWord) {
+      typingSpeed = 2000;
+      isDeleting = true;
+    } else if (isDeleting && displayText === "") {
+      isDeleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+      typingSpeed = 500;
+    }
+
+    setTimeout(type, typingSpeed);
+  }
+
+  // Scroll to section for nav links
+  navLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = e.target.getAttribute("href");
+      const targetSection = document.querySelector(targetId);
+      if (targetSection) {
+        window.scrollTo({
+          top: targetSection.offsetTop,
+          behavior: "smooth",
+        });
+      }
+    });
   });
+
+  // Mobile menu toggle
+  const menuToggle = document.querySelector(".menu-toggle");
+  const mainNav = document.querySelector(".main-nav");
+  const closeMenu = () => {
+    mainNav.classList.remove("is-open");
+  };
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      mainNav.classList.toggle("is-open");
+    });
+  }
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Language and mode toggle
+  const savedLang = localStorage.getItem("siteLang") || "ar";
+  const savedMode = localStorage.getItem("siteMode") || "light-mode";
+
+  body.classList.add(savedMode);
+  body.classList.add(savedLang === "en" ? "ltr" : "rtl");
+  if (languageSelect) {
+    languageSelect.value = savedLang;
+  }
+  if (modeToggle) {
+    modeToggle.innerHTML =
+      savedMode === "light-mode"
+        ? '<i class="fas fa-moon"></i>'
+        : '<i class="fas fa-sun"></i>';
+  }
+
+  updateContent(savedLang);
+  displayWorks(portfolioItems);
+  setupPagination(portfolioItems);
+  type();
+  AOS.init({ once: true });
 });
