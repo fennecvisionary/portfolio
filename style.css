@@ -1107,3 +1107,28 @@ body.dark-mode .logo-dark {
 .menu-toggle {
   display: none;
 }
+/* Accessibility: Visually hide content but keep it accessible for screen readers */
+.skip-link {
+  position: absolute;
+  left: -9999px; /* Hide the link off-screen */
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  position: static; /* Make it visible on focus */
+  left: auto;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  margin: 10px;
+}
