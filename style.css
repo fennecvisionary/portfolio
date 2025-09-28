@@ -1195,100 +1195,102 @@ body main {
   color: #fff;
 }
 
-/* Testimonials Slider */
+/* تنسيقات قسم آراء العملاء */
 .testimonials-section {
-  background-color: var(--light-card-bg);
-}
-
-.dark-mode .testimonials-section {
-  background-color: var(--dark-card-bg);
-}
-
-.testimonial-slider-container {
-  position: relative;
-  max-width: 800px;
-  margin: 0 auto;
-  overflow: hidden;
-  padding: 2rem;
-}
-
-.testimonial-slider {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.testimonial-item {
-  min-width: 100%;
-  box-sizing: border-box;
+  padding: 80px 20px;
+  background-color: var(--light-bg-color); /* تم تصحيح اسم المتغير */
   text-align: center;
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-.client-image {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
-  border: 3px solid var(--primary-color);
+body.dark-mode .testimonials-section {
+  background-color: var(--dark-bg-color); /* تم تصحيح اسم المتغير */
 }
 
-.stars-rating {
-  color: gold;
-  margin-bottom: 1rem;
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
 
-.testimonial-text {
-  font-size: 1.2rem;
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-
-.client-info {
-  display: block;
-  font-weight: bold;
-}
-
-.client-role {
-  font-size: 0.9rem;
-  opacity: 0.7;
-}
-
-.prev-btn,
-.next-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  font-size: 2rem;
-  color: var(--primary-color);
-  cursor: pointer;
+.testimonial-card {
+  background-color: var(--light-card-bg); /* تم تصحيح اسم المتغير */
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.rtl .prev-btn {
-  right: 10px;
+body.dark-mode .testimonial-card {
+  background-color: var(--dark-card-bg); /* تم تصحيح اسم المتغير */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.rtl .next-btn {
-  left: 10px;
+.testimonial-card:hover {
+  transform: translateY(-10px);
 }
 
-.ltr .prev-btn {
-  left: 10px;
+.testimonial-card p {
+  font-style: italic;
+  color: var(--light-text-color); /* تم تصحيح اسم المتغير */
+  margin-bottom: 20px;
+  line-height: 1.6;
 }
 
-.ltr .next-btn {
-  right: 10px;
+.client-info h4 {
+  margin: 0;
+  color: var(--light-text-color); /* تم تصحيح اسم المتغير */
+  font-size: 1.1rem;
 }
 
-.prev-btn:hover,
-.next-btn:hover {
-  transform: translateY(-50%) scale(1.1);
+.client-info span {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+}
+
+/* تنسيق الصورة الشخصية للعميل */
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* مسافة بين الصورة والنص */
+  margin-top: 20px;
+}
+
+.client-photo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* لجعل الصورة دائرية */
+  object-fit: cover; /* لضمان أن الصورة تملأ الإطار بشكل صحيح */
+  border: 2px solid var(--primary-color);
+}
+
+/* تنسيق قسم التقييم بالنجوم */
+.star-rating {
+  margin-bottom: 10px;
+}
+
+.star-rating .fas.fa-star {
+  color: #ffd700; /* اللون الأصفر للنجوم */
+  text-align: center;
+  margin-top: 0.5rem; /* مساحة صغيرة تحت الاسم */
+}
+
+/* تنسيق النجوم الفارغة */
+.star-rating .far.fa-star {
+  color: #e0e0e0; /* لون رمادي فاتح لجعلها تبدو "منطفئة" */
+}
+/* Dark Mode text and star color */
+body.dark-mode .testimonial-card p {
+  color: var(--dark-text-color); /* يجعل النص المائل باللون الفاتح */
+}
+
+body.dark-mode .star-rating .fas.fa-star {
+  color: var(
+    --light-star-color,
+    #ffd700
+  ); /* يجعل النجوم باللون الفاتح في الوضع الداكن */
 }
 /* Styling for the Logo Carousel Section */
 .logo-carousel-section {
