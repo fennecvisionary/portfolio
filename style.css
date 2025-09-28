@@ -253,36 +253,27 @@ body.ltr .main-nav li {
   background-color: var(--secondary-color);
 }
 
-/* تنسيقات قسم الكاروسيل */
+/* Carousel Section */
 .carousel {
   width: 100%;
-  max-width: 100vw;
-  height: 70vh;
+  height: 60vh;
   overflow: hidden;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  /* إزالة المسافة العلوية */
-  border-radius: 5px;
 }
 
-/* حاوية الشرائح */
 .slides {
   width: 400%;
   height: 100%;
   display: flex;
-  transition: transform 0.5s ease-in-out;
-  animation: slideAnimation 30s infinite ease-in-out forwards;
+  animation: slideAnimation 30s infinite ease-in-out;
 }
 
-/* عناصر الشرائح */
 .slides figure {
   width: 25%;
   height: 100%;
   margin: 0;
-  position: relative;
 }
 
-/* الصورة داخل كل شريحة */
 .slides img {
   width: 100%;
   height: 100%;
@@ -290,23 +281,6 @@ body.ltr .main-nav li {
   display: block;
 }
 
-/* تراكب تدرج لوني على الصورة */
-.slides figure::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent);
-}
-
-/* إيقاف الحركة عند التفاعل مع الكاروسيل */
-.carousel:hover .slides {
-  animation-play-state: paused;
-}
-
-/* حركة الانتقال التلقائية */
 @keyframes slideAnimation {
   0%,
   20% {
@@ -327,6 +301,12 @@ body.ltr .main-nav li {
   100% {
     transform: translateX(0);
   }
+}
+
+/* General Sections & Grids */
+section {
+  padding: 4rem 2rem;
+  text-align: center;
 }
 
 /* Services Section */
@@ -1181,7 +1161,7 @@ body.dark-mode .testimonial-card {
 
 .client-info h4 {
   margin: 0;
-  color: var(--dark-text-color); /* تم تصحيح اسم المتغير */
+  color: var(--light-text-color); /* تم تصحيح اسم المتغير */
   font-size: 1.1rem;
 }
 
