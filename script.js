@@ -257,7 +257,7 @@ document.addEventListener("DOMContentLoaded", () => {
       experienceTitle:
         "🦊 Fennec Visionary | Créativité Visuelle qui Bâtit une Identité Unique",
       about_me_bio:
-        "Graphiste avec plus de 12 ans d'expérience, spécialisé dans la conception de logos, d'identités visuelles et de profils d'entreprise, ainsi que dans les catalogues, les imprimés et les designs de réseaux sociaux. J'ai collaboré avec de grandes entreprises locales et internationales dans le Golfe, en Arabie Saoudite, au Canada et aux États-Unis, en fournissant des solutions innovantes qui reflètent le professionnalisme et l'excellence.\n\nNotre logo est inspiré du fennec algérien, un symbole d'ingéniosité et d'identité nationale, incarnant un mélange unique de culture, de créativité et de professionnalisme."
+        "Graphiste avec plus de 12 ans d'expérience, spécialisé dans la conception de logos, d'identités visuelles et de profils d'entreprise, ainsi que dans les catalogues, les imprimés et les designs de réseaux sociaux. J'ai collaboré avec de grandes entreprises locales et internationales dans le Golfe, en Arabie Saoudite, au Canada et aux États-Unis, en fournissant des solutions innovantes qui reflètent le professionnalisme et l'excellence.\n\nNotre logo est inspiré du fennec algérien, un symbole d'ingéniosité et d'identité nationale, incarnant un mélange unique de culture, de créativité, et de professionnalisme."
     },
   };
 
@@ -349,6 +349,79 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
+  const testimonialsData = [
+    {
+      image: "images/testimonials/client1.jpg",
+      stars: 5,
+      textKey: "testimonial_1_text",
+      nameKey: "testimonial_1_name",
+      roleKey: "testimonial_1_role",
+    },
+    {
+      image: "images/testimonials/client2.jpg",
+      stars: 4,
+      textKey: "testimonial_2_text",
+      nameKey: "testimonial_2_name",
+      roleKey: "testimonial_2_role",
+    },
+    {
+      image: "images/testimonials/client3.jpg",
+      stars: 5,
+      textKey: "testimonial_3_text",
+      nameKey: "testimonial_3_name",
+      roleKey: "testimonial_3_role",
+    },
+    {
+      image: "images/testimonials/client4.jpg",
+      stars: 4,
+      textKey: "testimonial_4_text",
+      nameKey: "testimonial_4_name",
+      roleKey: "testimonial_4_role",
+    },
+    {
+      image: "images/testimonials/client5.jpg",
+      stars: 5,
+      textKey: "testimonial_5_text",
+      nameKey: "testimonial_5_name",
+      roleKey: "testimonial_5_role",
+    },
+    {
+      image: "images/testimonials/client6.jpg",
+      stars: 4,
+      textKey: "testimonial_6_text",
+      nameKey: "testimonial_6_name",
+      roleKey: "testimonial_6_role",
+    },
+    {
+      image: "images/testimonials/client7.jpg",
+      stars: 5,
+      textKey: "testimonial_7_text",
+      nameKey: "testimonial_7_name",
+      roleKey: "testimonial_7_role",
+    },
+    {
+      image: "images/testimonials/client8.jpg",
+      stars: 4,
+      textKey: "testimonial_8_text",
+      nameKey: "testimonial_8_name",
+      roleKey: "testimonial_8_role",
+    },
+    {
+      image: "images/testimonials/client9.jpg",
+      stars: 5,
+      textKey: "testimonial_9_text",
+      nameKey: "testimonial_9_name",
+      roleKey: "testimonial_9_role",
+    },
+    {
+      image: "images/testimonials/client10.jpg",
+      stars: 4,
+      textKey: "testimonial_10_text",
+      nameKey: "testimonial_10_name",
+      roleKey: "testimonial_10_role",
+    },
+  ];
+
   const itemsPerPage = 6;
   let currentPage = 1;
 
@@ -391,9 +464,10 @@ document.addEventListener("DOMContentLoaded", () => {
   function toggleLanguage() {
     const lang = languageSelect.value;
     body.classList.remove("rtl", "ltr");
-    body.classList.add(lang === "en" ? "ltr" : "rtl");
+    body.classList.add(lang === "ar" ? "rtl" : "ltr");
     updateContent(lang);
     localStorage.setItem("siteLang", lang);
+    displayTestimonials();
   }
 
   if (languageSelect) {
@@ -514,6 +588,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const nextBtn = document.querySelector(".next-btn");
   let slideIndex = 0;
 
+  function displayTestimonials() {
+    if (!slider) return;
+    const lang = languageSelect.value;
+    slider.innerHTML = "";
+    testimonialsData.forEach(item => {
+      const starsHTML = '<span class="stars-rating">' + '★'.repeat(item.stars) + '☆'.repeat(5 - item.stars) + '</span>';
+      const testimonialItem = document.createElement("div");
+      testimonialItem.classList.add("testimonial-item");
+      testimonialItem.innerHTML = `
+        <img src="${item.image}" alt="${translations[lang][item.nameKey]}" class="client-image">
+        ${starsHTML}
+        <p class="testimonial-text" data-lang-key="${item.textKey}">${translations[lang][item.textKey]}</p>
+        <div class="client-info">
+          <span class="client-name" data-lang-key="${item.nameKey}">${translations[lang][item.nameKey]}</span>
+          <span class="client-role" data-lang-key="${item.roleKey}">${translations[lang][item.roleKey]}</span>
+        </div>
+      `;
+      slider.appendChild(testimonialItem);
+    });
+  }
+
   function moveSlider(direction) {
     const slideWidth = slider.querySelector(".testimonial-item").clientWidth;
     const totalItems = slider.querySelectorAll(".testimonial-item").length;
@@ -618,7 +713,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedMode = localStorage.getItem("siteMode") || "light-mode";
 
   body.classList.add(savedMode);
-  body.classList.add(savedLang === "en" ? "ltr" : "rtl");
+  body.classList.add(savedLang === "ar" ? "rtl" : "ltr");
   if (languageSelect) {
     languageSelect.value = savedLang;
   }
@@ -632,6 +727,7 @@ document.addEventListener("DOMContentLoaded", () => {
   updateContent(savedLang);
   displayWorks(portfolioItems);
   setupPagination(portfolioItems);
+  displayTestimonials();
   type();
   AOS.init({ once: true });
 });
