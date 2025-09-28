@@ -9,7 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.getElementById("searchButton");
   const tags = document.querySelectorAll(".tag-link");
   const navLinks = document.querySelectorAll(".main-nav a");
-  const hoverImage = document.getElementById("hover-tool-image");
 
   // بيانات اللغات
   const translations = {
@@ -351,42 +350,42 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const testimonialsData = [
     {
-      image: "images/testimonials/client1.png",
+      image: "images/testimonials/client1.jpg",
       stars: 5,
       textKey: "testimonial_1_text",
       nameKey: "testimonial_1_name",
       roleKey: "testimonial_1_role",
     },
     {
-      image: "images/testimonials/client2.png",
+      image: "images/testimonials/client2.jpg",
       stars: 4,
       textKey: "testimonial_2_text",
       nameKey: "testimonial_2_name",
       roleKey: "testimonial_2_role",
     },
     {
-      image: "images/testimonials/client3.png",
+      image: "images/testimonials/client3.jpg",
       stars: 5,
       textKey: "testimonial_3_text",
       nameKey: "testimonial_3_name",
       roleKey: "testimonial_3_role",
     },
     {
-      image: "images/testimonials/client4.png",
+      image: "images/testimonials/client4.jpg",
       stars: 4,
       textKey: "testimonial_4_text",
       nameKey: "testimonial_4_name",
       roleKey: "testimonial_4_role",
     },
     {
-      image: "images/testimonials/client5.png",
+      image: "images/testimonials/client5.jpg",
       stars: 5,
       textKey: "testimonial_5_text",
       nameKey: "testimonial_5_name",
       roleKey: "testimonial_5_role",
     },
     {
-      image: "images/testimonials/client6.png",
+      image: "images/testimonials/client6.jpg",
       stars: 4,
       textKey: "testimonial_6_text",
       nameKey: "testimonial_6_name",
@@ -400,14 +399,14 @@ document.addEventListener("DOMContentLoaded", () => {
       roleKey: "testimonial_7_role",
     },
     {
-      image: "images/testimonials/client8.png",
+      image: "images/testimonials/client8.jpg",
       stars: 4,
       textKey: "testimonial_8_text",
       nameKey: "testimonial_8_name",
       roleKey: "testimonial_8_role",
     },
     {
-      image: "images/testimonials/client9.png",
+      image: "images/testimonials/client9.jpg",
       stars: 5,
       textKey: "testimonial_9_text",
       nameKey: "testimonial_9_name",
@@ -468,6 +467,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateContent(lang);
     localStorage.setItem("siteLang", lang);
     displayTestimonials();
+    setupTestimonialEvents();
   }
 
   if (languageSelect) {
@@ -584,8 +584,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Testimonials Slider
   const slider = document.querySelector(".testimonial-slider");
-  const prevBtn = document.querySelector(".prev-btn");
-  const nextBtn = document.querySelector(".next-btn");
   let slideIndex = 0;
 
   function displayTestimonials() {
@@ -612,8 +610,12 @@ document.addEventListener("DOMContentLoaded", () => {
   function moveSlider(direction) {
     const slideWidth = slider.querySelector(".testimonial-item").clientWidth;
     const totalItems = slider.querySelectorAll(".testimonial-item").length;
+    
+    // Invert the direction for RTL languages
+    const isRtl = document.body.classList.contains('rtl');
+    const adjustedDirection = isRtl ? -direction : direction;
 
-    slideIndex += direction;
+    slideIndex += adjustedDirection;
 
     if (slideIndex < 0) {
       slideIndex = totalItems - 1;
@@ -624,14 +626,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const newTransform = -slideIndex * slideWidth;
     slider.style.transform = `translateX(${newTransform}px)`;
   }
-
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => moveSlider(1));
+  
+  function setupTestimonialEvents() {
+    const prevBtn = document.querySelector(".prev-btn");
+    const nextBtn = document.querySelector(".next-btn");
+    
+    if (prevBtn) {
+        // Remove existing listeners to prevent multiple events
+        const prevClone = prevBtn.cloneNode(true);
+        prevBtn.parentNode.replaceChild(prevClone, prevBtn);
+        prevClone.addEventListener("click", () => moveSlider(1));
+    }
+    
+    if (nextBtn) {
+        const nextClone = nextBtn.cloneNode(true);
+        nextBtn.parentNode.replaceChild(nextClone, nextBtn);
+        nextClone.addEventListener("click", () => moveSlider(-1));
+    }
   }
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => moveSlider(-1));
-  }
 
   // Dynamic Text for About Me
   const dynamicTextElement = document.getElementById("dynamicText");
@@ -728,6 +741,7 @@ document.addEventListener("DOMContentLoaded", () => {
   displayWorks(portfolioItems);
   setupPagination(portfolioItems);
   displayTestimonials();
+  setupTestimonialEvents();
   type();
   AOS.init({ once: true });
 });
