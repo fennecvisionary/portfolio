@@ -61,15 +61,14 @@
         <i class="fas fa-moon"></i>
       </button>
     </div>
-     </div>
   </header>
 
-  <div class="search-container">
-    <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
-    <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
-  </div>
+  <div class="top-section-container">
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="ابحث عن عمل..." aria-label="بحث في الأعمال">
+      <button id="searchButton" aria-label="بحث"><i class="fas fa-search"></i></button>
+    </div>
 
-  <main id="main-content">
     <section class="carousel" aria-label="معرض أعمال Fennec Visionary">
       <div class="slides">
         <figure>
@@ -90,7 +89,9 @@
         </figure>
       </div>
     </section>
-
+  </div>
+  
+  <main id="main-content">
     <section id="services">
       <h2 data-aos="fade-up" data-lang-key="services_title">خدماتي</h2>
       <div class="services-grid">
@@ -163,240 +164,176 @@
       </div>
     </section>
 
-    <section id="works" class="portfolio">
-      <h2 data-aos="fade-up" data-lang-key="works_title">من أعمالي</h2>
-      <div class="grid" id="works-grid">
-      </div>
-      <div class="pagination" id="pagination-container">
+    <section id="works">
+      <div class="container">
+        <h2 data-aos="fade-up" data-lang-key="works_title">أعمالي</h2>
+        <div class="tags-filter">
+          <a href="#" class="tag-link active" data-tag="all">الكل</a>
+          <a href="#" class="tag-link" data-tag="logos">الشعارات</a>
+          <a href="#" class="tag-link" data-tag="branding">الهوية البصرية</a>
+          <a href="#" class="tag-link" data-tag="flyers">الفلايرز</a>
+          <a href="#" class="tag-link" data-tag="social-media">سوشيال ميديا</a>
+          <a href="#" class="tag-link" data-tag="packaging">التغليف</a>
+          <a href="#" class="tag-link" data-tag="illustrations">الرسوم التوضيحية</a>
+        </div>
+        <div class="works-grid" id="works-grid">
+          </div>
+        <div id="no-results" style="display: none;">
+          <h3 data-lang-key="no_results_heading">لم يتم العثور على نتائج</h3>
+          <p data-lang-key="no_results_text">جرب استخدام كلمات بحث أخرى</p>
+        </div>
+        <div id="pagination-container"></div>
       </div>
     </section>
 
     <section id="testimonials" class="testimonials-section">
-      <h2 class="section-title" data-lang-key="testimonials_title">آراء العملاء</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card" data-aos="fade-up">
-          <div class="client-info">
-            <img src="../images/clients/client1.jpg" alt="صورة العميل محمد علي" class="client-photo" loading="lazy">
-            <div>
-              <h4>محمد علي</h4>
-              <span>مدير شركة</span>
+      <div class="container">
+        <h2 data-aos="fade-up" data-lang-key="testimonials_title">آراء العملاء</h2>
+        <div class="testimonial-slider-container">
+          <div class="testimonial-slider">
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_1_text">
+                "تجربة رائعة! المصمم قدم لي هوية بصرية فاقت توقعاتي، كان محترفاً ومتعاوناً جدا."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_1_name">محمد علي</span>
+                <span class="client-role" data-lang-key="testimonial_1_role">مدير شركة</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_2_text">
+                "أنصح بالتعامل معه بشدة. قام بتصميم موقع ويب بسيط وجذاب في وقت قياسي."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_2_name">فاطمة الزهراء</span>
+                <span class="client-role" data-lang-key="testimonial_2_role">مؤسسة شركة ناشئة</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_3_text">
+                "عمل متقن وتواصل ممتاز. فهم متطلباتي بسرعة وقدم لي تصميمًا فريدًا ومبدعًا."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_3_name">عبد القادر</span>
+                <span class="client-role" data-lang-key="testimonial_3_role">صاحب متجر إلكتروني</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_4_text">
+                "المصمم مبدع في أفكاره ومرن في التعديلات. سعيد جدًا بالنتيجة النهائية لتصميم التغليف."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_4_name">نور الهدى</span>
+                <span class="client-role" data-lang-key="testimonial_4_role">صاحبة علامة تجارية</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_5_text">
+                "بكل احترافية، حوّل رؤيتي إلى تصميم شعار يعبر عن علامتي التجارية تمامًا. شكرًا جزيلًا."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_5_name">يوسف الخالد</span>
+                <span class="client-role" data-lang-key="testimonial_5_role">ريادي أعمال</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_6_text">
+                "سرعة في الإنجاز وجودة عالية في التصميم. كان اختيارًا موفقًا للتعاون معه في هذا المشروع."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_6_name">مريم صقر</span>
+                <span class="client-role" data-lang-key="testimonial_6_role">مديرة مشروع</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_7_text">
+                "التصميم الجديد لقائمة الطعام أبهرني. لقد أضاف لمسة عصرية وفنية رائعة."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_7_name">خالد السعدي</span>
+                <span class="client-role" data-lang-key="testimonial_7_role">صاحب مطعم</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_8_text">
+                "ساعدني في تصميم شعار يعكس فني. النتيجة كانت استثنائية وأشكرك على صبرك واهتمامك بالتفاصيل."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_8_name">ليلى مراد</span>
+                <span class="client-role" data-lang-key="testimonial_8_role">فنانة تشكيلية</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_9_text">
+                "تصميم إعلاناتي على السوشيال ميديا أحدث فرقاً كبيراً. زيادة في التفاعل والعملاء."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_9_name">هشام العماري</span>
+                <span class="client-role" data-lang-key="testimonial_9_role">مدرب شخصي</span>
+              </div>
+            </div>
+            <div class="testimonial-item">
+              <p class="testimonial-text" data-lang-key="testimonial_10_text">
+                "التعامل كان مريحاً للغاية. فهم احتياجاتي وأضاف لمسات سحرية لتصاميم بطاقات الأعمال."
+              </p>
+              <div class="client-info">
+                <span class="client-name" data-lang-key="testimonial_10_name">سارة عبد الله</span>
+                <span class="client-role" data-lang-key="testimonial_10_role">مصممة أزياء</span>
+              </div>
             </div>
           </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"تجربة رائعة! المصمم قدم لي هوية بصرية فاقت توقعاتي، كان محترفاً ومتعاوناً جداً."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
-          <div class="client-info">
-            <img src="../images/clients/client2.jpg" alt="صورة العميل فاطمة الزهراء" class="client-photo" loading="lazy">
-            <div>
-              <h4>فاطمة الزهراء</h4>
-              <span>مؤسسة شركة ناشئة</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"أنصح بالتعامل معه بشدة. قام بتصميم موقع ويب بسيط وجذاب في وقت قياسي."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
-          <div class="client-info">
-            <img src="../images/clients/client3.jpg" alt="صورة العميل عبد القادر" class="client-photo" loading="lazy">
-            <div>
-              <h4>عبد القادر</h4>
-              <span>صاحب متجر إلكتروني</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"عمل متقن وتواصل ممتاز. فهم متطلباتي بسرعة وقدم لي تصميمًا فريدًا ومبدعًا."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
-          <div class="client-info">
-            <img src="../images/clients/client4.jpg" alt="صورة العميل نور الهدى" class="client-photo" loading="lazy">
-            <div>
-              <h4>نور الهدى</h4>
-              <span>صاحبة علامة تجارية</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"المصمم مبدع في أفكاره ومرن في التعديلات. سعيد جدًا بالنتيجة النهائية لتصميم التغليف."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="400">
-          <div class="client-info">
-            <img src="../images/clients/client5.jpg" alt="صورة العميل يوسف الخالد" class="client-photo" loading="lazy">
-            <div>
-              <h4>يوسف الخالد</h4>
-              <span>ريادي أعمال</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"بكل احترافية، حوّل رؤيتي إلى تصميم شعار يعبر عن علامتي التجارية تمامًا. شكرًا جزيلًا."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="500">
-          <div class="client-info">
-            <img src="../images/clients/client6.jpg" alt="صورة العميل مريم صقر" class="client-photo" loading="lazy">
-            <div>
-              <h4>مريم صقر</h4>
-              <span>مديرة مشروع</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"سرعة في الإنجاز وجودة عالية في التصميم. كان اختيارًا موفقًا للتعاون معه في هذا المشروع."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="600">
-          <div class="client-info">
-            <img src="../images/clients/client7.jpg" alt="صورة العميل خالد السعدي" class="client-photo" loading="lazy">
-            <div>
-              <h4>خالد السعدي</h4>
-              <span>صاحب مطعم</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"التصميم الجديد لقائمة الطعام أبهرني. لقد أضاف لمسة عصرية وفنية رائعة."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="700">
-          <div class="client-info">
-            <img src="../images/clients/client8.jpg" alt="صورة العميل ليلى مراد" class="client-photo" loading="lazy">
-            <div>
-              <h4>ليلى مراد</h4>
-              <span>فنانة تشكيلية</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"ساعدني في تصميم شعار يعكس فني. النتيجة كانت استثنائية وأشكرك على صبرك واهتمامك بالتفاصيل."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="800">
-          <div class="client-info">
-            <img src="../images/clients/client9.jpg" alt="صورة العميل هشام العماري" class="client-photo" loading="lazy">
-            <div>
-              <h4>هشام العماري</h4>
-              <span>مدرب شخصي</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <p>"تصميم إعلاناتي على السوشيال ميديا أحدث فرقاً كبيراً. زيادة في التفاعل والعملاء."</p>
-        </div>
-        <div class="testimonial-card" data-aos="fade-up" data-aos-delay="900">
-          <div class="client-info">
-            <img src="../images/clients/client10.jpg" alt="صورة العميل سارة عبد الله" class="client-photo" loading="lazy">
-            <div>
-              <h4>سارة عبد الله</h4>
-              <span>مصممة أزياء</span>
-            </div>
-          </div>
-          <div class="star-rating">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <p>"التعامل كان مريحاً للغاية. فهم احتياجاتي وأضاف لمسات سحرية لتصاميم بطاقات الأعمال."</p>
+          <button class="prev-btn" aria-label="شاهد الرأي السابق"><i class="fas fa-chevron-right"></i></button>
+          <button class="next-btn" aria-label="شاهد الرأي التالي"><i class="fas fa-chevron-left"></i></button>
         </div>
       </div>
+    </section>
 
-      <section id="about-me" class="about-me-section">
-        <div class="about-content">
-          <h2 class="dynamic-text-title" data-lang-key="about_me_title"></h2>
-          <div class="about-details">
-            <div class="bio-card-container">
-              <div class="profile-card">
-                <div class="profile-image-container">
-                  <img id="profile-image" src="images/profile.jpg" alt="صورة الملف الشخصي" loading="lazy">
-                  <span class="availability-dot"></span>
-                </div>
-
-                <h3 class="experience-title" data-lang-key="experienceTitle">
-                  🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة
-                </h3>
-                <div class="bio-text" data-lang-key="about_me_bio">
-                  <p>
-                    مصمم جرافيك بخبرة تفوق 12 عامًا، متخصص في تصميم الشعارات والهويات البصرية وبروفايلات الشركات، إضافة إلى الكتالوجات، المطبوعات، وتصاميم السوشيال ميديا. تعاونت مع كبرى الشركات محليًا ودوليًا في الخليج والسعودية وكندا وأمريكا، مقدّمًا حلولًا إبداعية مبتكرة تعكس الاحترافية والتميّز.
-                    شعارنا مستوحى من الفنك الجزائري، رمز الذكاء والهوية الوطنية، ليجسد مزيجًا فريدًا من الثقافة، الإبداع، والاحتراف.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-          </div>
+    <section id="about-me" class="about-me-section">
+      <div class="about-content">
+        <h2 class="section-title" data-aos="fade-up" data-lang-key="nav_about_me">نبذة عني</h2>
+        <div class="dynamic-text-container" data-aos="fade-up" data-aos-delay="200">
+          <p class="dynamic-text-title">
+            <span id="dynamicText"></span><span class="pulse-cursor"></span>
+          </p>
         </div>
-        <div class="tools-container">
-          <h3 class="tools-title" data-lang-key="tools_title">أدواتي</h3>
-          <div class="tools-grid">
-            <div class="tool-item" data-tool-name="photoshop" data-aos="zoom-in" data-aos-delay="100">
-              <img src="images/photoshop-icon.png" alt="Adobe Photoshop">
+        <div class="about-details" data-aos="fade-up" data-aos-delay="300">
+          <div class="profile-card">
+            <div class="profile-image-container">
+              <img src="images/me.jpg" alt="صورة مصمم الجرافيك - Fennec Visionary">
             </div>
-            <div class="tool-item" data-tool-name="illustrator" data-aos="zoom-in" data-aos-delay="200">
-              <img src="images/illustrator-icon.png" alt="Adobe Illustrator">
-            </div>
-            <div class="tool-item" data-tool-name="indesign" data-aos="zoom-in" data-aos-delay="300">
-              <img src="images/indesign-icon.png" alt="Adobe InDesign">
-            </div>
-            <div class="tool-item" data-tool-name="html" data-aos="zoom-in" data-aos-delay="400">
-              <img src="images/Adobe-XD-icon.png" alt="HTML5">
-            </div>
-            <div class="tool-item" data-tool-name="css" data-aos="zoom-in" data-aos-delay="500">
-              <img src="images/Adobe-Lightroom-icon.png" alt="CSS3">
-            </div>
-            <div class="tool-item" data-tool-name="js" data-aos="zoom-in" data-aos-delay="600">
-              <img src="images/figma-icon.png" alt="JavaScript">
-              <div class="logo-carousel">
-              </div>
+            <h3 class="profile-name">Fennec Visionary</h3>
+            <p class="profile-role" data-lang-key="experienceTitle">🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة</p>
+            <div class="socials">
+              <a href="#" aria-label="Behance"><i class="fab fa-behance"></i></a>
+              <a href="#" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             </div>
           </div>
-        </div>
-        </div>
-        <section class="logo-carousel-section">
-          <div class="logo-carousel">
-            <div class="logos-slide">
-              <img src="images/bank/b-01.jpg">
-              <img src="images/bank/b-02.jpg">
-              <img src="images/bank/b-03.jpg">
-              <img src="images/bank/b-04.jpg">
-              <img src="images/bank/b-05.jpg">
-              <img src="images/bank/b-06.jpg">
-              <img src="images/bank/b-07.jpg">
-              <img src="images/bank/b-08.jpg">
-              <img src="images/bank/b-09.jpg">
-              <img src="images/bank/b-10.jpg">
+          <div class="bio-text">
+            <p class="bio" data-lang-key="about_me_bio">
+              مصمم جرافيك بخبرة تفوق 12 عامًا، متخصص في تصميم الشعارات والهويات البصرية وبروفايلات الشركات، إضافة إلى الكتالوجات، المطبوعات، وتصاميم السوشيال ميديا. تعاونت مع كبرى الشركات محليًا ودوليًا في الخليج والسعودية وكندا وأمريكا، مقدّمًا حلولًا إبداعية مبتكرة تعكس الاحترافية والتميّز.
 
-              <img src="images/bank/b-01.jpg">
-              <img src="images/bank/b-02.jpg">
-              <img src="images/bank/b-03.jpg">
-              <img src="images/bank/b-04.jpg">
-              <img src="images/bank/b-05.jpg">
-              <img src="images/bank/b-06.jpg">
-              <img src="images/bank/b-07.jpg">
-              <img src="images/bank/b-08.jpg">
-              <img src="images/bank/b-09.jpg">
-              <img src="images/bank/b-10.jpg">
-            </div>
-        </section>
+              شعارنا مستوحى من الفنك الجزائري، رمز الذكاء والهوية الوطنية، ليجسد مزيجًا فريدًا من الثقافة، الإبداع، والاحتراف.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title" data-lang-key="contact_title">تواصل معي</h2>
+        <p class="contact-email" data-lang-key="contact_email_label">البريد الإلكتروني: contact@fennecvisionary.com</p>
+        <p class="contact-phone" data-lang-key="contact_phone_label">الهاتف: +213 551 234 567</p>
+      </div>
+    </section>
+
   </main>
-  <footer id="contact" role="contentinfo">
-    <h2 data-aos="fade-up" data-lang-key="contact_title">تواصل معي</h2>
-    <address data-aos="fade-up" data-aos-delay="100">
-      <p data-lang-key="contact_phone_label">الهاتف: <a href="tel:+213696947598">+213 696 94 75 98</a></p>
-      <p data-lang-key="contact_email_label">البريد الإلكتروني: <a href="mailto:fennecvisionary@gmail.com">fennecvisionary@gmail.com</a></p>
-    </address>
-    <div class="socials" data-aos="fade-up" data-aos-delay="200">
-      <a href="https://facebook.com/fennecvisionary" target="_blank" rel="noopener noreferrer me" aria-label="تابعنا على فيسبوك" class="facebook"><i class="fab fa-facebook"></i></a>
-      <a href="https://instagram.com/fennecvisionary" target="_blank" rel="noopener noreferrer me" aria-label="تابعنا على إنستغرام" class="instagram"><i class="fab fa-instagram"></i></a>
-      <a href="https://wa.me/+213696947598" target="_blank" rel="noopener noreferrer me" aria-label="تواصل معنا على واتساب" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://tiktok.com/@fennecvisionary" target="_blank" rel="noopener noreferrer me" aria-label="تابعنا على تيك توك" class="tiktok"><i class="fab fa-tiktok"></i></a>
-    </div>
-    <p class="copy" data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
+
+  <footer>
+    <p data-lang-key="copy">© 2025 Fennec Visionary. جميع الحقوق محفوظة.</p>
   </footer>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -437,18 +374,14 @@
       content: "";
       width: 40px;
       height: 40px;
-      border: 4px solid #f3f3f3;
-      border-top: 4px solid var(--primary-color);
+      border: 5px solid rgba(0, 0, 0, 0.1);
+      border-top-color: var(--primary-color);
       border-radius: 50%;
-      animation: spin 1s linear infinite;
+      animation: spinner 1s linear infinite;
     }
 
-    @keyframes spin {
-      0% {
-        transform: rotate(0deg);
-      }
-
-      100% {
+    @keyframes spinner {
+      to {
         transform: rotate(360deg);
       }
     }
