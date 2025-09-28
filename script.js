@@ -365,7 +365,7 @@ document.addEventListener("DOMContentLoaded", () => {
       roleKey: "testimonial_2_role",
     },
     {
-      image: "images/testimonials/client3.jpg",
+      image: "images/testimonials/client3.png",
       stars: 5,
       textKey: "testimonial_3_text",
       nameKey: "testimonial_3_name",
@@ -379,7 +379,7 @@ document.addEventListener("DOMContentLoaded", () => {
       roleKey: "testimonial_4_role",
     },
     {
-      image: "images/testimonials/client5.jpg",
+      image: "images/testimonials/client5.png",
       stars: 5,
       textKey: "testimonial_5_text",
       nameKey: "testimonial_5_name",
@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", () => {
       roleKey: "testimonial_9_role",
     },
     {
-      image: "images/testimonials/client10.png",
+      image: "images/testimonials/client10.jpg",
       stars: 4,
       textKey: "testimonial_10_text",
       nameKey: "testimonial_10_name",
