@@ -972,119 +972,127 @@ section {
 }
 /* Styling for the Logo Carousel Section */
 .logo-carousel-section {
-    background-color: var(--light-bg-color);
-    padding: 5rem 2rem;
-    text-align: center;
-    /* Added to prevent horizontal overflow */
-    overflow: hidden;
-    width: 100%;
+  background-color: var(--light-bg-color);
+  padding: 5rem 2rem;
+  text-align: center;
 }
 
 .dark-mode .logo-carousel-section {
-    background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color);
 }
 
 .logo-carousel {
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    width: 100%;
-    margin-top: 2rem;
+  overflow: hidden; /* This hides the overflowing logos */
+  white-space: nowrap; /* Prevents logos from wrapping to the next line */
+  position: relative;
+  width: 100%;
+  margin-top: 2rem;
 }
 
 .logos-slide {
-    display: inline-flex;
-    animation: slide-logos 30s linear infinite;
-    /* Added to prevent a tiny gap */
-    width: max-content;
+  display: inline-flex;
+  animation: slide-logos 30s linear infinite; /* Adjust speed here */
 }
 
 /* Stop animation on hover */
 .logo-carousel:hover .logos-slide {
-    animation-play-state: paused;
+  animation-play-state: paused;
 }
 
 .logos-slide img {
-    height: 80px;
-    width: auto;
-    margin: 0 20px;
-    filter: grayscale(100%);
-    transition: filter 0.3s ease;
+  height: 80px;
+  width: auto;
+  margin: 0 20px;
+  filter: grayscale(100%); /* Make logos grayscale by default */
+  transition: filter 0.3s ease;
 }
 
 .logos-slide img:hover {
-    filter: grayscale(0%);
+  filter: grayscale(0%); /* Full color on hover */
 }
 
 /* Dark Mode styles for logos */
 .dark-mode .logos-slide img {
-    filter: grayscale(100%) brightness(0.7);
+  filter: grayscale(100%) brightness(0.7); /* Adjust brightness for dark mode */
 }
 
 .dark-mode .logos-slide img:hover {
-    filter: grayscale(0%) brightness(1);
+  filter: grayscale(0%) brightness(1);
 }
 
 /* Keyframes for the continuous scrolling animation */
 @keyframes slide-logos {
-    from {
-        transform: translateX(0);
-    }
-    to {
-        transform: translateX(-50%);
-    }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
-/* Contact Section */
-.contact-section {
-  background-color: var(--light-bg-color);
+/* Footer & Contact Section - قسم الفوتر والتواصل */
+footer {
+  /* لون الخلفية للقسم في جميع الأوضاع */
+  background-color: var(--secondary-color);
+  /* لون النص الافتراضي في الوضع الفاتح */
+  color: var(--dark-text-color);
+  text-align: center;
+  padding: 2rem;
 }
 
-.dark-mode .contact-section {
-  background-color: var(--dark-bg-color);
+/* الأنماط الخاصة بالروابط داخل الفوتر */
+footer a {
+  /* هذه القاعدة ستجعل جميع الروابط داخل الفوتر باللون البرتقالي */
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.social-contact {
+/* تأثير التمرير على الروابط */
+footer a:hover {
+  color: var(--light-text-color);
+}
+
+/* حاوية أيقونات وسائل التواصل الاجتماعي */
+.socials {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
-  margin-top: 2rem;
+  gap: 1rem;
+  margin: 1.5rem 0;
 }
 
-.social-contact a {
-  font-size: 2rem;
-  color: var(--secondary-color);
-  transition: transform 0.3s, color 0.3s;
+/* الأنماط الافتراضية لأيقونات وسائل التواصل الاجتماعي */
+.socials a {
+  font-size: 1.8rem;
+  color: var(--dark-text-color);
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.social-contact a:hover {
-  color: var(--primary-color);
-  transform: scale(1.2);
+/* تأثير التمرير على الأيقونات (الرفع قليلاً) */
+.socials a:hover {
+  transform: translateY(-5px);
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: var(--secondary-color);
-  color: white;
+/* ألوان أيقونات وسائل التواصل الاجتماعي عند التمرير */
+.socials .facebook:hover {
+  color: #3b5998;
+}
+.socials .instagram:hover {
+  color: #e1306c;
+}
+.socials .whatsapp:hover {
+  color: #25d366;
+}
+.socials .tiktok:hover {
+  color: #fe2c55;
 }
 
-/* Responsive Steps */
-@media (max-width: 768px) {
-  .steps-container {
-    flex-direction: column;
-  }
-
-  .step-card {
-    padding-bottom: 6rem;
-  }
-
-  .step-number-circle::before {
-    content: "\f063";
-  }
+/* أنماط النص الخاص بحقوق النشر */
+.copy {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  opacity: 0.7;
 }
-
 /* Logo Styles */
 .logo {
   height: 60px;
