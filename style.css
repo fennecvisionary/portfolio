@@ -1282,7 +1282,7 @@ body.dark-mode .close-work a:hover {
 .work-nav-arrows {
     display: flex;
     justify-content: space-between;
-    position: absolute; /* تتحرك مع محتوى الصفحة ونزول الفأرة */
+    position: absolute; /* 💡 هذا يضمن أنها تتحرك مع نزول الصفحة 💡 */
     top: 50%; /* توسيط عمودي */
     width: 100%;
     /* زيادة الحد الأقصى للعرض لتبتعد الأسهم أكثر عن محتوى العمل (900px) */
@@ -1291,6 +1291,7 @@ body.dark-mode .close-work a:hover {
     padding: 0 10px;
     pointer-events: none; 
     left: 50%;
+    /* يجب التأكد أن العنصر <main> يحتوي على position: relative */
     transform: translate(-50%, -50%); /* توسيط أفقي وعمودي */
 }
 
