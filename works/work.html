@@ -15,7 +15,7 @@
 <body class="light-mode rtl">
 
     <a href="#main-content" class="skip-link" data-lang-key="skip_link">تخطي إلى المحتوى الرئيسي</a>
-    
+
     <div class="close-work">
         <a href="../index.html#works" aria-label="العودة إلى الأعمال"><i class="fas fa-times"></i></a>
     </div>
@@ -55,10 +55,6 @@
     </div>
 
     <main id="main-content">
-        <div class="work-nav-arrows">
-            <button class="work-nav-arrow prev-work" aria-label="العمل السابق"><i class="fas fa-chevron-right"></i></button>
-            <button class="work-nav-arrow next-work" aria-label="العمل التالي"><i class="fas fa-chevron-left"></i></button>
-        </div>
         <div class="work-details" data-aos="fade-up">
             <h1 id="work-title"></h1>
             <p id="work-details-text"></p>
@@ -73,10 +69,10 @@
             <a href="../index.html#works" class="back-to-works">العودة إلى الأعمال</a>
             <div class="comments-box">
                 <h3>💬 شاركنا رأيك</h3>
-                <div class="fb-comments" 
-                    data-href="https://fennecvisionary.github.io/portfolio/works/work.html" 
-                    data-width="100%" 
-                    data-numposts="5" 
+                <div class="fb-comments"
+                    data-href="https://fennecvisionary.github.io/portfolio/works/work.html"
+                    data-width="100%"
+                    data-numposts="5"
                     data-colorscheme="light"></div>
             </div>
         </div>
@@ -177,7 +173,7 @@
             // أسهم التنقل داخل معرض الصور
             galleryContainer.addEventListener('mouseenter', () => {
                 const navRight = document.createElement('span');
-                navRight.classList.add('nav-arrow', 'nav-right');
+                navRight.classList.add('gallery-nav-arrow', 'nav-right'); // تم تعديل الاسم
                 navRight.innerHTML = '&#10095;';
                 navRight.addEventListener('click', () => {
                     const newIndex = (currentIndex + 1) % work.galleryImages.length;
@@ -185,7 +181,7 @@
                 });
 
                 const navLeft = document.createElement('span');
-                navLeft.classList.add('nav-arrow', 'nav-left');
+                navLeft.classList.add('gallery-nav-arrow', 'nav-left'); // تم تعديل الاسم
                 navLeft.innerHTML = '&#10094;';
                 navLeft.addEventListener('click', () => {
                     const newIndex = (currentIndex - 1 + work.galleryImages.length) % work.galleryImages.length;
@@ -197,7 +193,7 @@
             });
 
             galleryContainer.addEventListener('mouseleave', () => {
-                const arrows = galleryContainer.querySelectorAll('.nav-arrow');
+                const arrows = galleryContainer.querySelectorAll('.gallery-nav-arrow'); // تم تعديل الاسم
                 arrows.forEach(arrow => arrow.remove());
             });
 
