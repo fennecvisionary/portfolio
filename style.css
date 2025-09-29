@@ -1208,7 +1208,7 @@ body main {
 }
 /* تنسيقات زر الإغلاق "X" */
 .close-work {
-    position: fixed;
+    position: absolute; /* تم التعديل إلى absolute */
     top: 20px;
     right: 20px;
     z-index: 1000;
@@ -1221,66 +1221,66 @@ body main {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--dark-text-color);
+    background-color: rgba(247, 87, 35, 0.2);
+    color: var(--primary-color);
     font-size: 1.5rem;
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(247, 87, 35, 0.1);
     transition: all 0.3s ease;
 }
 
 .close-work a:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(247, 87, 35, 0.4);
 }
 
 /* تنسيقات الوضع الداكن */
 body.dark-mode .close-work a {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(247, 87, 35, 0.2);
     color: var(--light-text-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(247, 87, 35, 0.1);
 }
 
 body.dark-mode .close-work a:hover {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(247, 87, 35, 0.4);
 }
 
 /* تنسيقات أسهم التنقل بين الأعمال */
 .work-nav-arrows {
     display: flex;
     justify-content: space-between;
-    position: fixed;
+    position: absolute; /* تم التعديل إلى absolute */
     top: 50%;
     width: 100%;
     transform: translateY(-50%);
     z-index: 999;
     padding: 0 20px;
-    pointer-events: none; /* لتجنب حجب المحتوى الذي في الخلفية */
+    pointer-events: none;
 }
 
 .work-nav-arrow {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
+    background-color: rgba(247, 87, 35, 0.2);
+    color: var(--primary-color);
     border: none;
     padding: 15px 15px;
     cursor: pointer;
     font-size: 2rem;
     border-radius: 50%;
     transition: background-color 0.3s ease;
-    pointer-events: auto; /* السماح بالتفاعل مع الزر */
+    pointer-events: auto;
 }
 
 .work-nav-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(247, 87, 35, 0.4);
 }
 
 /* تنسيقات الوضع الداكن */
 body.dark-mode .work-nav-arrow {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--dark-text-color);
+    background-color: rgba(247, 87, 35, 0.2);
+    color: var(--light-text-color);
 }
 
 body.dark-mode .work-nav-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(247, 87, 35, 0.4);
 }
 
 /* تنسيقات معرض الصور الداخلية */
@@ -1292,8 +1292,8 @@ body.dark-mode .work-nav-arrow:hover {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba(247, 87, 35, 0.2);
+    color: var(--primary-color);
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -1303,7 +1303,7 @@ body.dark-mode .work-nav-arrow:hover {
 }
 
 .work-gallery .nav-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(247, 87, 35, 0.4);
 }
 
 .work-gallery .nav-left {
@@ -1325,6 +1325,23 @@ body.dark-mode .work-nav-arrow:hover {
         height: 35px;
         font-size: 1.2rem;
     }
+}
+
+/* إضافة هذا الكود لتحديد الموضع النسبي للعناصر */
+.work-details {
+    position: relative;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: var(--light-card-bg);
+    border-radius: 12px;
+    box-shadow: var(--light-shadow);
+    transition: all 0.3s ease;
+}
+
+body.dark-mode .work-details {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
 
 /* تنسيقات قسم آراء العملاء */
