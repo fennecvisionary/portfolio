@@ -1244,8 +1244,51 @@ body.dark-mode .close-work a:hover {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* تنسيقات الأسهم للتنقل بين الأعمال */
-.nav-arrow {
+/* تنسيقات أسهم التنقل بين الأعمال */
+.work-nav-arrows {
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 999;
+    padding: 0 20px;
+    pointer-events: none; /* لتجنب حجب المحتوى الذي في الخلفية */
+}
+
+.work-nav-arrow {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    pointer-events: auto; /* السماح بالتفاعل مع الزر */
+}
+
+.work-nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* تنسيقات الوضع الداكن */
+body.dark-mode .work-nav-arrow {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .work-nav-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* تنسيقات معرض الصور الداخلية */
+.work-gallery {
+    position: relative;
+}
+
+.work-gallery .nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1259,16 +1302,29 @@ body.dark-mode .close-work a:hover {
     transition: background-color 0.3s ease;
 }
 
-.nav-arrow:hover {
+.work-gallery .nav-arrow:hover {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
-.prev-work {
-    left: 20px;
+.work-gallery .nav-left {
+    right: 10px;
 }
 
-.next-work {
-    right: 20px;
+.work-gallery .nav-right {
+    left: 10px;
+}
+
+@media (max-width: 768px) {
+    .close-work {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .close-work a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
 }
 
 /* تنسيقات قسم آراء العملاء */
