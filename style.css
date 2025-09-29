@@ -1225,7 +1225,7 @@ body.dark-mode .work-details {
 }
 /*
     ======================================
-    تنسيقات زر الإغلاق "X" - ثابت تحت القائمة الرئيسية بلون برتقالي
+    تنسيقات زر الإغلاق "X" - ثابت تحت القائمة الرئيسية بلون برتقالي مع تغيير اللون عند الهوفر
     ======================================
 */
 .close-work {
@@ -1245,32 +1245,33 @@ body.dark-mode .work-details {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* تم تغيير الخلفية للون البرتقالي الثابت */
+    /* اللون البرتقالي الثابت */
     background-color: var(--primary-color); 
-    color: #fff; /* لون أيقونة الإغلاق أبيض */
+    color: #fff; 
     font-size: 1.5rem;
-    /* إزالة تأثير التمويه والشفافية */
-    /* border: 1px solid var(--primary-color); */
     border: none;
     transition: all 0.3s ease;
 }
 
-/* الإخفاء عند التمرير (تأثير الهوفر المطلوب) */
+/* تغيير لون الزر عند التمرير (تأثير الهوفر) */
 .close-work a:hover {
-    opacity: 0;
-    pointer-events: none;
+    background-color: #d44d1e; /* برتقالي أغمق عند التمرير */
+    color: #fff;
+    opacity: 1; /* التأكد من بقائه مرئياً */
+    pointer-events: auto; 
 }
 
 /* تنسيقات الوضع الداكن لزر الإغلاق - يبقى برتقالياً */
 body.dark-mode .close-work a {
     background-color: var(--primary-color);
     color: #fff;
-    /* إزالة الحدود الشفافة للوضع الداكن */
     border: none;
 }
 
 body.dark-mode .close-work a:hover {
-    opacity: 0;
+    background-color: #d44d1e;
+    color: #fff;
+    opacity: 1;
 }
 
 /*
@@ -1328,7 +1329,7 @@ body.dark-mode .work-nav-arrow:hover {
     ======================================
 */
 @media (max-width: 768px) {
-    /* تعديل موضع زر الإغلاق على الشاشات الصغيرة - ليظهر في الزاوية */
+    /* تعديل موضع زر الإغلاق على الشاشات الصغيرة */
     .close-work {
         top: 10px;
         right: 10px;
