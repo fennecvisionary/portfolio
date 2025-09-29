@@ -1031,281 +1031,302 @@ footer a:hover {
 
 /* Back Button */
 .back-to-works {
-  display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 3rem;
-  transition: background-color 0.3s ease;
+  display: block; /* لجعله يتوسط الصفحة */
+  width: fit-content; /* يضبط عرض الزر ليناسب محتواه */
+  margin-left: auto;
+  margin-right: auto; /* هذا الكود هو المسؤول عن التوسيط الأفقي */
+
+  /* الخصائص الأخرى التي كانت موجودة مسبقاً */
+  background-color: var(--primary-color);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 3rem;
+  transition: background-color 0.3s ease;
 }
 
 .back-btn:hover,
 .back-to-works:hover {
-  background-color: #d44d1e;
+  background-color: #d44d1e;
 }
 
 .back-btn:hover {
-  background-color: #d94a1f;
+  background-color: #d94a1f;
 }
 
 /* Work Details and Slider Container */
 .work-details {
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 2rem;
-  background-color: var(--light-card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative; /* تم إضافة هذه الخاصية لتوجيه العناصر المطلقة */
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background-color: var(--light-card-bg); /* تم تصحيح اسم المتغير */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Ensures the title and paragraph are centered */
 }
 
 /* Slider Styles */
 .slider-container {
-  position: relative;
-  max-width: 100%;
-  margin: 20px auto;
-  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+  margin: 20px auto;
+  overflow: hidden;
 }
 
 .slides-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .slide-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: none;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: none; /* Hide all images by default */
 }
 
 /* Dots */
 .dots-container {
-  text-align: center;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 5px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  cursor: pointer;
 }
 
 .dot.active {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
-/* Navigation Arrows (أسهم معرض الصور الداخلية) */
+/* Navigation Arrows */
 .nav-arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: auto;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-right {
-  left: auto;
-  right: 0;
-  border-radius: 3px 0 0 3px;
+  left: auto;
+  right: 0;
+  border-radius: 3px 0 0 3px;
 }
 
 .nav-left {
-  left: 0;
-  right: auto;
+  left: 0;
+  right: auto;
 }
 
 .nav-arrow:hover {
   background-color: rgba(0, 0, 0, 0.8);
-  color: var(--primary-color); /* برتقالي عند التمرير */
 }
 
 /* التعديلات الجديدة الخاصة بصفحة work.html */
+/* لضمان أن محتوى الصفحة يبدأ بعد الهيدر وشريط البحث */
 body main {
-  padding-top: 150px;
+  padding-top: 150px; /* مسافة علوية كافية للمحتوى */
 }
 
 @media (max-width: 768px) {
-  body main {
-    padding-top: 180px;
-  }
+  body main {
+    padding-top: 180px; /* مسافة أكبر على الموبايل لتجنب التداخل */
+  }
 }
 
 .dark-mode .work-details {
-  background-color: var(--dark-card-bg);
+  background-color: var(--dark-card-bg); /* تم تصحيح اسم المتغير */
 }
 
 /* تنسيقات حاوية الوسوم */
 .tags-container {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap; /* يضمن انتقال الوسوم إلى سطر جديد عند الحاجة */
+  justify-content: center;
+  gap: 0.5rem; /* يضيف مسافة موحدة بين جميع الوسوم */
 }
 
 /* التنسيقات العامة للوسوم */
 .tag-link {
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 25px;
-  font-weight: bold;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  border: 1px solid var(--primary-color);
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 25px;
+  font-weight: bold;
+  white-space: nowrap; /* يمنع التفاف النص */
+  transition: all 0.3s ease; /* يطبق الانتقال على كل الخصائص */
+  border: 1px solid var(--primary-color);
 }
 
 /* تنسيقات وضع الإضاءة (Light Mode) */
 .light-mode .tag-link {
-  background-color: var(--light-card-bg);
-  color: var(--primary-color);
+  background-color: var(--light-card-bg);
+  color: var(--primary-color);
 }
 
 .light-mode .tag-link:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 
 /* تنسيقات الوضع الداكن (Dark Mode) */
 .dark-mode .tag-link {
-  background-color: var(--dark-card-bg);
-  color: var(--primary-color);
+  background-color: var(--dark-card-bg);
+  color: var(--primary-color);
 }
 
 .dark-mode .tag-link:hover {
-  background-color: var(--primary-color);
-  color: #fff;
+  background-color: var(--primary-color);
+  color: #fff;
 }
-
 /* تنسيقات زر الإغلاق "X" */
 .close-work {
-    position: absolute; /* تم التعديل إلى absolute */
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    transition: opacity 0.3s ease;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
 }
 
 .close-work a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--dark-text-color);
-    font-size: 1.5rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--dark-text-color);
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
 .close-work a:hover {
-    opacity: 0;
-    pointer-events: none;
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
 /* تنسيقات الوضع الداكن */
 body.dark-mode .close-work a {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: var(--light-text-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--light-text-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 body.dark-mode .close-work a:hover {
-    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* تنسيقات أسهم التنقل بين الأعمال */
 .work-nav-arrows {
-    display: flex;
-    justify-content: space-between;
-    position: absolute; /* تم التعديل إلى absolute */
-    top: 50%;
-    width: calc(100% + 40px); /* تم تعديل العرض لتقريب الأسهم */
-    transform: translateY(-50%);
-    z-index: 999;
-    padding: 0;
-    pointer-events: none;
-    left: -20px; /* تم التعديل لتقريب الأسهم */
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+    z-index: 999;
+    padding: 0 20px;
+    pointer-events: none; /* لتجنب حجب المحتوى الذي في الخلفية */
 }
 
 .work-nav-arrow {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    border: none;
-    padding: 15px 15px;
-    cursor: pointer;
-    font-size: 2rem;
-    border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    pointer-events: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+    pointer-events: auto; /* السماح بالتفاعل مع الزر */
 }
 
 .work-nav-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: var(--primary-color); /* اللون البرتقالي عند التمرير */
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* تنسيقات الوضع الداكن */
 body.dark-mode .work-nav-arrow {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--dark-text-color);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--dark-text-color);
 }
 
 body.dark-mode .work-nav-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    color: var(--primary-color);
+    background-color: rgba(255, 255, 255, 0.4);
 }
 
+/* تنسيقات معرض الصور الداخلية */
+.work-gallery {
+    position: relative;
+}
+
+.work-gallery .nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 99;
+    font-size: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.work-gallery .nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.work-gallery .nav-left {
+    right: 10px;
+}
+
+.work-gallery .nav-right {
+    left: 10px;
+}
 
 @media (max-width: 768px) {
-    .close-work {
-        top: 10px;
-        right: 10px;
-    }
-   
-    .close-work a {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
-
-    .work-nav-arrow {
-        padding: 10px;
-        font-size: 1.5rem;
-    }
+    .close-work {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .close-work a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
 }
+
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
   padding: 80px 20px;
