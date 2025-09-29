@@ -1276,57 +1276,61 @@ body.dark-mode .close-work a:hover {
 
 /*
     ======================================
-    تنسيقات أسهم التنقل بين الأعمال (الخارجية - ثابتة في الشاشة ومنخفضة)
+    تنسيقات أسهم التنقل بين الأعمال (الثابتة والمُوَسَّطة عمودياً)
     ======================================
 */
 .work-nav-arrows {
     display: flex;
     justify-content: space-between;
-    /* ثابتة ولا تتحرك عند نزول الصفحة */
+    /* 💡 تأكيد الثبات */
     position: fixed; 
     
-    /* إنزال الأسهم إلى 73.5% من ارتفاع الشاشة */
-    top: 73.5%; 
+    top: 50%; /* توسيط عمودي */
     
     width: 100%;
-    /* زيادة الحد الأقصى للعرض لتبتعد الأسهم أكثر عن محتوى العمل */
     max-width: 1200px; 
     z-index: 999;
-    padding: 0 10px;
+    padding: 0 20px; 
     pointer-events: none; 
     left: 50%;
-    /* توسيط أفقي فقط */
-    transform: translateX(-50%); 
+    /* 💡 التوسيط المثالي (أفقي وعمودي) لمنع الحركة */
+    transform: translate(-50%, -50%); 
 }
 
 .work-nav-arrow {
+    pointer-events: auto;
+    width: 50px; 
+    height: 50px; 
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    
     background-color: rgba(0, 0, 0, 0.4);
     color: white;
     border: none;
-    padding: 15px 15px;
     cursor: pointer;
-    font-size: 2rem;
+    font-size: 1.5rem; 
     border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    pointer-events: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
 }
 
 .work-nav-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    /* اللون البرتقالي عند التمرير */
-    color: var(--primary-color); 
+    background-color: var(--primary-color); 
+    color: #fff;
+    transform: scale(1.1);
 }
 
-/* تنسيقات الوضع الداكن للأسهم الخارجية */
+/* الوضع الداكن للأسهم الخارجية */
 body.dark-mode .work-nav-arrow {
     background-color: rgba(255, 255, 255, 0.2);
     color: var(--dark-text-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 body.dark-mode .work-nav-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    /* اللون البرتقالي عند التمرير في الوضع الداكن */
-    color: var(--primary-color);
+    background-color: var(--primary-color);
+    color: #fff;
 }
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
@@ -1830,7 +1834,7 @@ body.dark-mode .comments-box {
 /* 💡 ضروري: مسافة علوية كافية لـ main لمنع حجب المحتوى بواسطة الهيدر الثابت فقط */
 main {
   /* لترك مسافة كافية للهيدر الثابت (~70px) + هامش بسيط */
-  padding-top: 100px; 
+  padding-top: 120px; 
   padding-bottom: 50px;
   position: relative;
 }
