@@ -1792,3 +1792,33 @@ body.dark-mode .comments-box {
     padding: 15px;
   }
 }
+/*
+    ======================================
+    تجاوز تنسيقات شريط البحث ليصبح ثابتاً في صفحة الأعمال
+    ======================================
+*/
+.search-container.fixed-search-bar {
+    position: fixed; 
+    top: 70px; /* يقع أسفل الهيدر الثابت */
+    left: 0; 
+    right: 0; 
+    
+    transform: none; /* إلغاء التوسيط المطلق القديم */
+    
+    /* تنسيقات إضافية للمظهر الثابت */
+    max-width: 100%; 
+    padding: 10px 5%; 
+    background-color: var(--light-card-bg); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); 
+    border-radius: 0; 
+}
+
+/* تنسيق الوضع الداكن للتجاوز الثابت */
+.dark-mode .search-container.fixed-search-bar {
+    background-color: var(--dark-card-bg); 
+}
+
+/* ⚠️ تأكد أيضاً من تعديل هذا الجزء لضمان عدم حجب المحتوى: */
+main {
+  padding-top: 140px; 
+}
