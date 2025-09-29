@@ -1206,286 +1206,7 @@ body main {
   background-color: var(--primary-color);
   color: #fff;
 }
-/* Back Button */
-.back-to-works {
-  display: block;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: var(--primary-color);
-  color: #fff;
-  padding: 12px 24px;
-  border-radius: 25px;
-  text-decoration: none;
-  font-weight: bold;
-  margin-top: 3rem;
-  transition: background-color 0.3s ease;
-}
 
-.back-btn:hover,
-.back-to-works:hover {
-  background-color: #d44d1e;
-}
-
-.back-btn:hover {
-  background-color: #d94a1f;
-}
-
-/* Work Details and Slider Container - تم دمج التنسيقات وضبط الموضع النسبي */
-.work-details {
-  position: relative; /* ضروري لضبط موضع الأسهم المطلق داخله */
-  max-width: 900px;
-  margin: 4rem auto;
-  padding: 2rem;
-  background-color: var(--light-card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-/* Dark Mode for Work Details */
-.dark-mode .work-details {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
-}
-
-/* Slider Styles */
-.slider-container {
-  position: relative;
-  max-width: 100%;
-  margin: 20px auto;
-  overflow: hidden;
-}
-
-.slides-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-.slide-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  display: none;
-}
-
-/* Dots */
-.dots-container {
-  text-align: center;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.dot {
-  height: 15px;
-  width: 15px;
-  margin: 0 5px;
-  background-color: #bbb;
-  border-radius: 50%;
-  display: inline-block;
-  transition: background-color 0.6s ease;
-  cursor: pointer;
-}
-
-.dot.active {
-  background-color: var(--primary-color);
-}
-
-/* Navigation Arrows (أسهم معرض الصور الداخلية - كودك الأصلي) */
-.nav-arrow {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: auto;
-  padding: 16px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  z-index: 100;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.nav-right {
-  left: auto;
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
-
-.nav-left {
-  left: 0;
-  right: auto;
-}
-
-.nav-arrow:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-  color: var(--primary-color); /* إضافة اللون البرتقالي عند التمرير للتناسق */
-}
-
-/* التعديلات الجديدة الخاصة بصفحة work.html */
-body main {
-  padding-top: 150px;
-}
-
-@media (max-width: 768px) {
-  body main {
-    padding-top: 180px;
-  }
-}
-
-/* تنسيقات حاوية الوسوم */
-.tags-container {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-/* التنسيقات العامة للوسوم */
-.tag-link {
-  text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 25px;
-  font-weight: bold;
-  white-space: nowrap;
-  transition: all 0.3s ease;
-  border: 1px solid var(--primary-color);
-}
-
-/* تنسيقات وضع الإضاءة (Light Mode) */
-.light-mode .tag-link {
-  background-color: var(--light-card-bg);
-  color: var(--primary-color);
-}
-
-.light-mode .tag-link:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-
-/* تنسيقات الوضع الداكن (Dark Mode) */
-.dark-mode .tag-link {
-  background-color: var(--dark-card-bg);
-  color: var(--primary-color);
-}
-
-.dark-mode .tag-link:hover {
-  background-color: var(--primary-color);
-  color: #fff;
-}
-
-/* تنسيقات زر الإغلاق "X" (Fixed/يختفي عند التمرير) */
-.close-work {
-    position: fixed; /* ثابت بالنسبة للنافذة */
-    top: 20px;
-    right: 20px;
-    z-index: 1000;
-    transition: opacity 0.3s ease;
-}
-
-.close-work a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--dark-text-color);
-    font-size: 1.5rem;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.close-work a:hover {
-    opacity: 0; /* الإخفاء عند التمرير */
-    pointer-events: none;
-}
-
-/* تنسيقات الوضع الداكن لزر الإغلاق */
-body.dark-mode .close-work a {
-    background-color: rgba(0, 0, 0, 0.2);
-    color: var(--light-text-color);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-body.dark-mode .close-work a:hover {
-    opacity: 0;
-}
-
-/* تنسيقات أسهم التنقل بين الأعمال (الخارجية) */
-.work-nav-arrows {
-    display: flex;
-    justify-content: space-between;
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    max-width: 940px; /* لتوسيع الأسهم قليلاً خارج بطاقة العمل (900px) */
-    z-index: 999;
-    padding: 0 10px;
-    pointer-events: none;
-    left: 50%;
-    transform: translate(-50%, -50%); /* التوسيط وضبط الموضع العمودي */
-}
-
-.work-nav-arrow {
-    background-color: rgba(0, 0, 0, 0.4);
-    color: white;
-    border: none;
-    padding: 15px 15px;
-    cursor: pointer;
-    font-size: 2rem;
-    border-radius: 50%;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    pointer-events: auto;
-}
-
-.work-nav-arrow:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-    color: var(--primary-color);
-}
-
-/* تنسيقات الوضع الداكن للأسهم الخارجية */
-body.dark-mode .work-nav-arrow {
-    background-color: rgba(255, 255, 255, 0.2);
-    color: var(--dark-text-color);
-}
-
-body.dark-mode .work-nav-arrow:hover {
-    background-color: rgba(255, 255, 255, 0.4);
-    color: var(--primary-color);
-}
-
-@media (max-width: 768px) {
-    .close-work {
-        top: 10px;
-        right: 10px;
-    }
-    
-    .close-work a {
-        width: 35px;
-        height: 35px;
-        font-size: 1.2rem;
-    }
-
-    .work-nav-arrow {
-        padding: 10px;
-        font-size: 1.5rem;
-    }
-}
 /* إضافة هذا الكود لتحديد الموضع النسبي للعناصر */
 .work-details {
     position: relative;
@@ -1502,7 +1223,129 @@ body.dark-mode .work-details {
     background-color: var(--dark-card-bg);
     box-shadow: var(--dark-shadow);
 }
+/*
+    ======================================
+    تنسيقات زر الإغلاق "X" - أسفل القائمة الرئيسية (ثابت)
+    ======================================
+*/
+.close-work {
+    /* Fixed position لتثبيته في أعلى الصفحة وتحريكه مع التمرير */
+    position: fixed;
+    /* ضبط الموضع ليكون أسفل الهيدر (يمكن تعديله ليناسب ارتفاع قائمتك) */
+    top: 120px; 
+    right: 20px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+}
 
+.close-work a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* إضافة تأثير تمويه للخلفية */
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--dark-text-color);
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* الإخفاء عند التمرير لمنع تداخل الزر مع الشعار/القائمة */
+.close-work a:hover {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* تنسيقات الوضع الداكن لزر الإغلاق */
+body.dark-mode .close-work a {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--light-text-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .close-work a:hover {
+    opacity: 0;
+}
+
+/*
+    ======================================
+    تنسيقات أسهم التنقل بين الأعمال (الخارجية - متحركة ومتوسطة)
+    ======================================
+*/
+.work-nav-arrows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute; /* تتحرك مع محتوى الصفحة (غير ثابتة) */
+    top: 50%; /* توسيط عمودي */
+    width: 100%;
+    max-width: 940px; /* ليتجاوز بطاقة العمل بقليل */
+    z-index: 999;
+    padding: 0 10px;
+    pointer-events: none; /* يسمح بالنقر على محتوى الصفحة خلف الأسهم */
+    left: 50%;
+    transform: translate(-50%, -50%); /* توسيط أفقي وعمودي نهائي */
+}
+
+.work-nav-arrow {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    padding: 15px 15px;
+    cursor: pointer;
+    font-size: 2rem;
+    border-radius: 50%; /* دائري */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    pointer-events: auto; /* يسمح بالنقر على الزر نفسه */
+}
+
+.work-nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: var(--primary-color); /* اللون البرتقالي عند التمرير */
+}
+
+/* تنسيقات الوضع الداكن للأسهم الخارجية */
+body.dark-mode .work-nav-arrow {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--dark-text-color);
+}
+
+body.dark-mode .work-nav-arrow:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: var(--primary-color);
+}
+
+
+/*
+    ======================================
+    Media Queries (لضبط التنسيقات على الشاشات الصغيرة)
+    ======================================
+*/
+@media (max-width: 768px) {
+    /* تعديل موضع زر الإغلاق على الشاشات الصغيرة */
+    .close-work {
+        top: 10px;
+        right: 10px;
+    }
+    
+    .close-work a {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .work-nav-arrows {
+        max-width: 100%;
+        padding: 0 5px;
+    }
+    .work-nav-arrow {
+        padding: 10px;
+        font-size: 1.5rem;
+    }
+}
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
   padding: 80px 20px;
