@@ -18,7 +18,7 @@
 
   <header class="site-header">
     <div class="logo">
-    <a href="./">
+    <a href="../index.html">
         <img src="../images/logo.png" alt="Fennec Visionary Light Logo" class="logo-light">
         
         <img src="../images/logo-dark.png" alt="Fennec Visionary Dark Logo" class="logo-dark">
@@ -26,12 +26,12 @@
 </div>
     <nav class="main-nav" aria-label="Main Navigation">
     <ul role="list">
-        <li role="listitem"><a href="#services" data-lang-key="nav_services">خدماتي</a></li>
-        <li role="listitem"><a href="#how-it-works" data-lang-key="nav_how_it_works">كيف نعمل</a></li>
-        <li role="listitem"><a href="#works" data-lang-key="nav_works">أعمالي</a></li>
-        <li role="listitem"><a href="#testimonials" data-lang-key="nav_testimonials">آراء العملاء</a></li>
-        <li role="listitem"><a href="#contact" data-lang-key="nav_contact">تواصل معي</a></li>
-        <li role="listitem"><a href="#about-me" data-lang-key="nav_about_me">عني</a></li>
+        <li role="listitem"><a href="../index.html#services" data-lang-key="nav_services">خدماتي</a></li>
+        <li role="listitem"><a href="../index.html#how-it-works" data-lang-key="nav_how_it_works">كيف نعمل</a></li>
+        <li role="listitem"><a href="../index.html#works" data-lang-key="nav_works">أعمالي</a></li>
+        <li role="listitem"><a href="../index.html#testimonials" data-lang-key="nav_testimonials">آراء العملاء</a></li>
+        <li role="listitem"><a href="../index.html#contact" data-lang-key="nav_contact">تواصل معي</a></li>
+        <li role="listitem"><a href="../index.html#about-me" data-lang-key="nav_about_me">عني</a></li>
     </ul>
 </nav>
         <div class="header-controls">
@@ -67,10 +67,10 @@
         <div class="comments-box">
     <h3>💬 شاركنا رأيك</h3>
     <div class="fb-comments" 
-         data-href="https://fennecvisionary.github.io/portfolio/works/work.html" 
-         data-width="100%" 
-         data-numposts="5" 
-         data-colorscheme="light"></div>
+            data-href="https://fennecvisionary.github.io/portfolio/works/work.html" 
+            data-width="100%" 
+            data-numposts="5" 
+            data-colorscheme="light"></div>
 </div>
 
     </main>
@@ -208,23 +208,21 @@
         });
     </script>
 
-    <!-- Facebook SDK script -->
     <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/ar_AR/sdk.js#xfbml=1&version=v17.0">
     </script>
 
     <script src="../script.js"></script>
     <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-    if (menuToggle && mainNav) {
-      menuToggle.addEventListener('click', function() {
-        mainNav.classList.toggle('is-open');
-      });
-    }
-  });
-</script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const mainNav = document.querySelector('.main-nav');
+            if (menuToggle && mainNav) {
+                menuToggle.addEventListener('click', function() {
+                    mainNav.classList.toggle('is-open');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
