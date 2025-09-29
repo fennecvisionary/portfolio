@@ -1252,12 +1252,12 @@ body.dark-mode .close-work a:hover {
     justify-content: space-between;
     position: absolute;
     top: 50%;
-    width: calc(100% + 40px); /* Adjust width to make arrows closer */
+    width: calc(100% + 40px);
     transform: translateY(-50%);
     z-index: 999;
     padding: 0;
     pointer-events: none;
-    left: -20px; /* Align to the left */
+    left: -20px;
 }
 
 .work-nav-arrow {
@@ -1274,7 +1274,7 @@ body.dark-mode .close-work a:hover {
 
 .work-nav-arrow:hover {
     background-color: rgba(0, 0, 0, 0.8);
-    color: var(--primary-color); /* اللون البرتقالي عند التمرير */
+    color: var(--primary-color);
 }
 
 /* تنسيقات الوضع الداكن */
@@ -1293,7 +1293,7 @@ body.dark-mode .work-nav-arrow:hover {
     position: relative;
 }
 
-.work-gallery .nav-arrow {
+.work-gallery .gallery-nav-arrow { /* تم التعديل إلى gallery-nav-arrow */
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -1307,9 +1307,9 @@ body.dark-mode .work-nav-arrow:hover {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.work-gallery .nav-arrow:hover {
+.work-gallery .gallery-nav-arrow:hover { /* تم التعديل إلى gallery-nav-arrow */
     background-color: rgba(0, 0, 0, 0.8);
-    color: var(--primary-color); /* اللون البرتقالي عند التمرير */
+    color: var(--primary-color);
 }
 
 .work-gallery .nav-left {
