@@ -1206,6 +1206,70 @@ body main {
   background-color: var(--primary-color);
   color: #fff;
 }
+/* تنسيقات زر الإغلاق "X" */
+.close-work {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.close-work a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--dark-text-color);
+    font-size: 1.5rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.close-work a:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* تنسيقات الوضع الداكن */
+body.dark-mode .close-work a {
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--light-text-color);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode .close-work a:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* تنسيقات الأسهم للتنقل بين الأعمال */
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    z-index: 99;
+    font-size: 2rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.prev-work {
+    left: 20px;
+}
+
+.next-work {
+    right: 20px;
+}
 
 /* تنسيقات قسم آراء العملاء */
 .testimonials-section {
