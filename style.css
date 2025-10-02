@@ -332,54 +332,93 @@ ul[role="list"] {
 /* ======================================
    Works Section (Portfolio)
    ======================================
+/*
+======================================
+تنسيقات توسيط شريط البحث والتجاوب
+======================================
 */
+
+/* 1. الحاوية الجديدة للتوسيط */
+.search-and-filter-wrapper {
+    /* يجعل العناصر بداخله (البحث والأقسام) في المنتصف عمودياً */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* توسيط أفقي */
+    width: 100%;
+    margin: 30px 0 40px; /* مسافة أعلى وأسفل */
+}
+
+/* 2. تنسيق شريط البحث (جعله أنيقاً ومُوَسَّطاً) */
 .search-container {
-  display: flex;
-  max-width: 500px;
-  margin: 0 auto 30px;
-  border-radius: 50px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  padding: 10px 20px;
-  transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    width: 90%; /* تجاوبي: يأخذ 90% من عرض الحاوية */
+    max-width: 550px; /* عرض أقصى محدد على الشاشات الكبيرة */
+    /* 💡 التعديل الحاسم: لضمان التوسيط بغض النظر عن اتجاه اللغة */
+    margin-left: auto !important; 
+    margin-right: auto !important;
+    /* تصميم أنيق */
+    background-color: var(--light-card-bg); /* خلفية فاتحة */
+    border-radius: 50px; /* حواف مستديرة بالكامل */
+    box-shadow: var(--light-shadow); /* ظل خفيف */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, box-shadow 0.3s;
 }
+
+/* الوضع الداكن لشريط البحث */
 .dark-mode .search-container {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
-.search-container.fixed-search-bar {
-    position: absolute !important; 
-    top: 100px !important;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%); 
-    max-width: 500px;
-    width: 90%; 
-    z-index: 100;
-    background-color: transparent; 
-    box-shadow: none; 
-    border-radius: 50px; 
-    padding: 10px 20px; 
+
+.search-container input[type="text"] {
+    flex-grow: 1; /* جعل الحقل يأخذ كل المساحة المتاحة */
+    border: none;
+    background: transparent;
+    padding: 5px 10px;
+    font-size: 1rem;
+    color: var(--light-text-color);
 }
-.search-container input {
-  flex-grow: 1;
-  border: none;
-  background: transparent;
-  padding: 5px 15px;
-  font-size: 1rem;
-  outline: none;
-  color: var(--light-text-color);
+
+.dark-mode .search-container input[type="text"] {
+    color: var(--dark-text-color);
 }
-.dark-mode .search-container input {
-  color: var(--dark-text-color);
+
+.search-container input[type="text"]:focus {
+    outline: none; /* إزالة الحدود عند التركيز */
 }
+
 .search-container button {
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 5px 10px;
+    background: none;
+    border: none;
+    color: var(--primary-color); /* استخدام لون الموقع الأساسي */
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+/* 3. توسيط حاوية الأقسام */
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* توسيط الأقسام/الفلاتر أفقياً */
+    gap: 10px;
+    max-width: 1000px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* 4. التجاوبية (Mobile Responsive) */
+@media (max-width: 600px) {
+    .search-container {
+        padding: 8px 10px; /* تصغير التباعد الداخلي */
+        width: 95%; /* زيادة عرضه قليلاً على الموبايل */
+    }
+    .search-container input[type="text"] {
+        font-size: 0.9rem;
+    }
 }
 
 .tags-filter {
@@ -971,7 +1010,6 @@ ul[role="list"] {
     left: 0; /* تحريك القائمة للداخل في LTR */
   }
   
-
   /* 4. إظهار وتنسيق زر الإغلاق */
   .menu-close {
     display: block; 
