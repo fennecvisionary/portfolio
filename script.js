@@ -1,768 +1,555 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // تحديد العناصر الأساسية في الصفحة
-  const body = document.body;
-  const modeToggle = document.getElementById("mode-toggle");
-  const languageSelect = document.getElementById("language-select");
-  const worksGrid = document.getElementById("works-grid");
-  const paginationContainer = document.getElementById("pagination-container");
-  const searchInput = document.getElementById("searchInput");
-  const searchButton = document.getElementById("searchButton");
-  const tags = document.querySelectorAll(".tag-link");
-  const navLinks = document.querySelectorAll(".main-nav a");
-  const hoverImage = document.getElementById("hover-tool-image");
+    // تحديد العناصر الأساسية في الصفحة
+    const body = document.body;
+    const modeToggle = document.getElementById("mode-toggle");
+    const languageSelect = document.getElementById("language-select");
+    const worksGrid = document.getElementById("works-grid");
+    const paginationContainer = document.getElementById("pagination-container");
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+    const tags = document.querySelectorAll(".tag-link");
+    const navLinks = document.querySelectorAll(".main-nav a");
+    const hoverImage = document.getElementById("hover-tool-image");
 
-  // بيانات اللغات
-  const translations = {
-    ar: {
-      skip_link: "تخطي إلى المحتوى الرئيسي",
-      nav_services: "الخدمات",
-      nav_how_it_works: "منهجيتنا",
-      nav_works: "إبداعاتنا",
-      nav_testimonials: "آراء العملاء",
-      nav_tools: "أدواتنا",
-      nav_contact: "تواصل",
-      nav_about_me: "عني",
-      services_title: "خدماتنا",
-      service_logo: "تصميم الشعارات",
-      service_card: "بطاقات العمل",
-      service_brochure: "الفلاير والبروشور",
-      service_invoice: "الفواتير",
-      service_catalog: "الكتالوجات",
-      service_social: "قوالب السوشيال ميديا",
-      service_packaging: "تصميم التغليف",
-      service_tshirt: "القمصان والهوديز",
-      tools_title: "أدواتنا",
-      works_title: "إبداعاتنا",
-      contact_title: "تواصل معنا",
-      contact_phone_label: "الهاتف:",
-      contact_email_label: "البريد الإلكتروني:",
-      copy: "© 2025 Fennec Visionary. جميع الحقوق محفوظة.",
-      search_placeholder: "ابحث عن عمل...",
-      no_results_heading: "لم يتم العثور على نتائج",
-      no_results_text: "جرب استخدام كلمات بحث أخرى",
-      howItWorksTitle: "مراحل العمل",
-      howItWorksSubtitle: "عملية تعاون مدروسة لضمان نتائج ملموسة وفعّالة.",
-      step1Title: "المرحلة 1: البحث ",
-      step1Desc: "ندرس لك نشاطك وأهدافك وجمهورك لفهم احتياجاتك بوضوح ودقة.    ",
-      step2Title: "المرحلة 2: التخطيط",
-      step2Desc:
-        "نضع لك استراتيجية واضحة واتجاهاً إبداعياً يعكس هوية علامتك التجارية.",
-      step3Title: "المرحلة 3: التصميم",
-      step3Desc:
-        "نحوّل أفكارك إلى هوية بصرية متناسقة وقوية تترك أثراً دائماً في جمهور علامتك.",
-      step4Title: "المرحلة 4: التسليم",
-      step4Desc:
-        "نقدّم لك الملفات النهائية مع دعم ومتابعة لضمان انطلاقة ناجحة وواثقة لعملك.",
-      testimonials_title: "آراء العملاء",
-      testimonial_1_text:
-        "تجربة رائعة! المصمم قدم لي هوية بصرية فاقت توقعاتي، كان محترفاً ومتعاوناً جدا.",
-      testimonial_1_name: "محمد علي",
-      testimonial_1_role: "مدير شركة",
-      testimonial_2_text:
-        "أنصح بالتعامل معه بشدة. قام بتصميم موقع ويب بسيط وجذاب في وقت قياسي.",
-      testimonial_2_name: "فاطمة الزهراء",
-      testimonial_2_role: "مؤسسة شركة ناشئة",
-      testimonial_3_text:
-        "عمل متقن وتواصل ممتاز. فهم متطلباتي بسرعة وقدم لي تصميمًا فريدًا ومبدعًا.",
-      testimonial_3_name: "عبد القادر",
-      testimonial_3_role: "صاحب متجر إلكتروني",
-      testimonial_4_text:
-        "المصمم مبدع في أفكاره ومرن في التعديلات. سعيد جدًا بالنتيجة النهائية لتصميم التغليف.",
-      testimonial_4_name: "نور الهدى",
-      testimonial_4_role: "صاحبة علامة تجارية",
-      testimonial_5_text:
-        "بكل احترافية، حوّل رؤيتي إلى تصميم شعار يعبر عن علامتي التجارية تمامًا. شكرًا جزيلًا.",
-      testimonial_5_name: "يوسف الخالد",
-      testimonial_5_role: "ريادي أعمال",
-      testimonial_6_text:
-        "سرعة في الإنجاز وجودة عالية في التصميم. كان اختيارًا موفقًا للتعاون معه في هذا المشروع.",
-      testimonial_6_name: "مريم صقر",
-      testimonial_6_role: "مديرة مشروع",
-      testimonial_7_text:
-        "التصميم الجديد لقائمة الطعام أبهرني. لقد أضاف لمسة عصرية وفنية رائعة.",
-      testimonial_7_name: "خالد السعدي",
-      testimonial_7_role: "صاحب مطعم",
-      testimonial_8_text:
-        "ساعدني في تصميم شعار يعكس فني. النتيجة كانت استثنائية وأشكرك على صبرك واهتمامك بالتفاصيل.",
-      testimonial_8_name: "ليلى مراد",
-      testimonial_8_role: "فنانة تشكيلية",
-      testimonial_9_text:
-        "تصميم إعلاناتي على السوشيال ميديا أحدث فرقاً كبيراً. زيادة في التفاعل والعملاء.",
-      testimonial_9_name: "هشام العماري",
-      testimonial_9_role: "مدرب شخصي",
-      testimonial_10_text:
-        "التعامل كان مريحاً للغاية. فهم احتياجاتي وأضاف لمسات سحرية لتصاميم بطاقات الأعمال.",
-      testimonial_10_name: "سارة عبد الله",
-      testimonial_10_role: "مصممة أزياء",
-      experienceTitle: "🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة",
-      about_me_bio:
-        "مصمم جرافيك بخبرة تفوق 12 عامًا، متخصص في تصميم الشعارات والهويات البصرية وبروفايلات الشركات، إضافة إلى الكتالوجات، المطبوعات، وتصاميم السوشيال ميديا. تعاونت مع كبرى الشركات محليًا ودوليًا في الخليج والسعودية وكندا وأمريكا، مقدّمًا حلولًا إبداعية مبتكرة تعكس الاحترافية والتميّز.\n\nشعارنا مستوحى من الفنك الجزائري، رمز الذكاء والهوية الوطنية، ليجسد مزيجًا فريدًا من الثقافة، الإبداع، والاحتراف."
-    },
-    en: {
-      skip_link: "Skip to main content",
-      nav_services: "Services",
-      nav_how_it_works: "Process",
-      nav_works: "Creations",
-      nav_testimonials: "Reviews",
-      nav_tools: "Tools",
-      nav_contact: "Contact",
-      nav_about_me: "About",
-      services_title: "Services",
-      service_logo: "Logo Design",
-      service_card: "Business Cards",
-      service_brochure: "Flyers & Brochures",
-      service_invoice: "Invoices",
-      service_catalog: "Catalogs",
-      service_social: "Social Media Templates",
-      service_packaging: "Packaging Design",
-      service_tshirt: "T-shirts & Hoodies",
-      tools_title: "Our Tools",
-      works_title: "Our Creations",
-      contact_title: "Contact Us",
-      contact_phone_label: "Phone:",
-      contact_email_label: "Email:",
-      copy: "© 2025 Fennec Visionary. All rights reserved.",
-      search_placeholder: "Search for work...",
-      no_results_heading: "No Results Found",
-      no_results_text: "Try using different keywords",
-      howItWorksTitle: "How We Work",
-      howItWorksSubtitle:
-        "A carefully crafted collaboration process designed to deliver real and effective results.",
-      step1Title: "Phase 1: Discovery",
-      step1Desc:
-        "We analyze your business, goals, and audience to gain a clear understanding of your needs.",
-      step2Title: "Phase 2: Planning",
-      step2Desc:
-        "We build a clear strategy and set a creative direction that reflects your brand identity.",
-      step3Title: "Phase 3: Design",
-      step3Desc:
-        "We shape ideas into a consistent and memorable visual identity that inspires trust and growth.",
-      step4Title: "Phase 4: Delivery",
-      step4Desc:
-        "We deliver the final files and provide support to ensure a confident launch.",
-      testimonials_title: "Customer Reviews",
-      testimonial_1_text:
-        "A great experience! The designer provided a visual identity that exceeded my expectations. He was very professional and cooperative.",
-      testimonial_1_name: "Mohamed Ali",
-      testimonial_1_role: "Company Manager",
-      testimonial_2_text:
-        "I highly recommend working with him. He designed a simple yet attractive website in record time.",
-      testimonial_2_name: "Fatima Al-Zahra",
-      testimonial_2_role: "Startup Founder",
-      testimonial_3_text:
-        "Excellent work and communication. He quickly understood my requirements and delivered a unique and creative design.",
-      testimonial_3_name: "Abdul Qader",
-      testimonial_3_role: "Online Store Owner",
-      testimonial_4_text:
-        "The designer is creative with his ideas and flexible with modifications. I am very happy with the final packaging design.",
-      testimonial_4_name: "Noor Al-Huda",
-      testimonial_4_role: "Brand Owner",
-      testimonial_5_text:
-        "With complete professionalism, he transformed my vision into a logo design that perfectly represents my brand. Thank you very much.",
-      testimonial_5_name: "Youssef Al-Khaled",
-      testimonial_5_role: "Entrepreneur",
-      testimonial_6_text:
-        "Fast execution and high-quality design. It was a successful choice to collaborate with him on this project.",
-      testimonial_6_name: "Mariam Saqr",
-      testimonial_6_role: "Project Manager",
-      testimonial_7_text:
-        "The new menu design for my restaurant impressed me. It added a wonderful modern and artistic touch.",
-      testimonial_7_name: "Khaled Al-Saadi",
-      testimonial_7_role: "Restaurant Owner",
-      testimonial_8_text:
-        "He helped me design a logo that reflects my art. The result was exceptional, and I thank you for your patience and attention to detail.",
-      testimonial_8_name: "Laila Mourad",
-      testimonial_8_role: "Fine Artist",
-      testimonial_9_text:
-        "The design of my social media ads made a big difference. There was an increase in engagement and clients.",
-      testimonial_9_name: "Hisham Al-Ammari",
-      testimonial_9_role: "Personal Trainer",
-      testimonial_10_text:
-        "The experience was very comfortable. He understood my needs and added magical touches to the business card designs.",
-      testimonial_10_name: "Sara Abdullah",
-      testimonial_10_role: "Fashion Designer",
-      experienceTitle:
-        "🦊 Fennec Visionary | Visual Creativity that Builds Unique Identity",
-      about_me_bio:
-        "A graphic designer with over 12 years of experience, specialized in logos, visual identities, and corporate profiles, as well as catalogues, print materials, and social media designs. I have collaborated with leading companies locally and internationally across the Gulf, Saudi Arabia, Canada, and the USA, delivering innovative solutions that reflect professionalism and excellence.\n\nOur logo is inspired by the Algerian fennec, a symbol of ingenuity and national identity, embodying a unique blend of culture, creativity, and professionalism."
-    },
-    fr: {
-      skip_link: "Passer au contenu principal",
-      nav_services: "Services",
-      nav_how_it_works: "Processus",
-      nav_works: "Créations",
-      nav_tools: "Outils",
-      nav_testimonials: "Avis",
-      nav_contact: "Contact",
-      nav_about_me: "About",
-      services_title: "Mes Services",
-      service_logo: "Conception de Logos",
-      service_card: "Cartes de Visite",
-      service_brochure: "Flyers & Brochures",
-      service_invoice: "Factures",
-      service_catalog: "Catalogues",
-      service_social: "Modèles pour Réseaux Sociaux",
-      service_packaging: "Conception d'Emballages",
-      service_tshirt: "T-shirts et Hoodies",
-      tools_title: "Nos Outils",
-      works_title: "Nos Créations",
-      contact_title: "Nos Contacts",
-      contact_phone_label: "Téléphone:",
-      contact_email_label: "E-mail:",
-      copy: "© 2025 Fennec Visionary. Tous droits réservés.",
-      search_placeholder: "Rechercher un travail...",
-      no_results_heading: "Aucun Résultat Trouvé",
-      no_results_text: "Essayez d'utiliser des mots-clés différents",
-      howItWorksTitle: "Étapes de Travail",
-      howItWorksSubtitle:
-        "Un processus de collaboration conçu pour garantir des résultats concrets et efficaces.",
-      step1Title: "Phase 1: Découverte",
-      step1Desc:
-        "Nous étudions votre activité, vos objectifs et votre audience afin de cerner clairement vos besoins",
-      step2Title: "Phase 2: Planification",
-      step2Desc:
-        "Nous élaborons une stratégie claire et une direction créative adaptées à l’identité de votre marque.",
-      step3Title: "Phase 3: Design",
-      step3Desc:
-        "Nous transformons les idées en une identité visuelle cohérente et mémorable.",
-      step4Title: "Phase 4: Livraison",
-      step4Desc:
-        "Nous fournissons les fichiers finaux avec un accompagnement pour un lancement en toute confiance.",
-      testimonials_title: "Avis Clients",
-      testimonial_1_text:
-        "Une excellente expérience ! Le designer a fourni une identité visuelle qui a dépassé mes attentes. Il a été très professionnel et coopératif.",
-      testimonial_1_name: "Mohamed Ali",
-      testimonial_1_role: "Manager d'entreprise",
-      testimonial_2_text:
-        "Je recommande vivement de travailler avec lui. Il a conçu un site web simple mais attrayant en un temps record.",
-      testimonial_2_name: "Fatima Al-Zahra",
-      testimonial_2_role: "Fondatrice de startup",
-      testimonial_3_text:
-        "Un travail impeccable et une excellente communication. Il a rapidement compris mes exigences et a livré un design unique et créatif.",
-      testimonial_3_name: "Abdul Qader",
-      testimonial_3_role: "Propriétaire de boutique en ligne",
-      testimonial_4_text:
-        "Le designer est créatif dans ses idées et flexible avec les modifications. Je suis très satisfait du design final de l'emballage.",
-      testimonial_4_name: "Noor Al-Huda",
-      testimonial_4_role: "Propriétaire de marque",
-      testimonial_5_text:
-        "Avec un professionnalisme total, il a transformé ma vision en un logo qui représente parfaitement ma marque. Merci beaucoup.",
-      testimonial_5_name: "Youssef Al-Khaled",
-      testimonial_5_role: "Entrepreneur",
-      testimonial_6_text:
-        "Rapidité d'exécution et haute qualité de conception. C'était un excellent choix de collaborer avec lui sur ce projet.",
-      testimonial_6_name: "Mariam Saqr",
-      testimonial_6_role: "Chef de projet",
-      testimonial_7_text:
-        "Le nouveau design du menu de mon restaurant m'a impressionné. Il a ajouté une touche moderne et artistique merveilleuse.",
-      testimonial_7_name: "Khaled Al-Saadi",
-      testimonial_7_role: "Propriétaire de restaurant",
-      testimonial_8_text:
-        "Il m'a aidé à concevoir un logo qui reflète mon art. Le résultat a été exceptionnel, et je vous remercie pour votre patience et votre attention aux détails.",
-      testimonial_8_name: "Laila Mourad",
-      testimonial_8_role: "Artiste plasticienne",
-      testimonial_9_text:
-        "La conception de mes publicités sur les réseaux sociaux a fait une grande différence. Il y a eu une augmentation de l'engagement et des clients.",
-      testimonial_9_name: "Hisham Al-Ammari",
-      testimonial_9_role: "Coach personnel",
-      testimonial_10_text:
-        "La collaboration a été très agréable. Il a compris mes besoins et a ajouté des touches magiques aux designs de cartes de visite.",
-      testimonial_10_name: "Sara Abdullah",
-      testimonial_10_role: "Créatrice de mode",
-      experienceTitle:
-        "🦊 Fennec Visionary | Une créativité visuelle qui forge une identité unique",
-      about_me_bio:
-        "Graphiste avec plus de 12 ans d’expérience, spécialisé dans la création de logos, d’identités visuelles et de profils d’entreprise, ainsi que dans la conception de catalogues, d’imprimés et de visuels pour les réseaux sociaux. J’ai collaboré avec de grandes entreprises au niveau local et international, notamment dans le Golfe, en Arabie Saoudite, au Canada et aux États-Unis, en proposant des solutions créatives et professionnelles.\n\nNotre logo s’inspire du fennec algérien, symbole d’ingéniosité et d’identité nationale, pour incarner un mélange unique de culture, de créativité et de professionnalisme."
+    // إضافة تعريفات العناصر الجديدة للقائمة المنسدلة (تعديل القائمة)
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mainNav = document.querySelector(".main-nav");
+    const menuClose = document.querySelector(".menu-close"); // الزر الجديد للإغلاق
+
+    // وظيفة إغلاق القائمة
+    function closeMenu() {
+        mainNav.classList.remove("is-open");
     }
-  };
 
-  // إضافة أنماط للنتائج غير الموجودة
-  const noResultsStyle = document.createElement("style");
-  noResultsStyle.textContent = `
-        .no-results {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 3rem;
-            color: var(--light-text-color);
-        }
-        .dark-mode .no-results {
-            color: var(--dark-text-color);
-        }
-        .no-results i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: var(--primary-color);
-        }
-        .no-results h3 {
-            margin-bottom: 0.5rem;
-            color: inherit;
-        }
-        .page-link.prev-page, .page-link.next-page {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        body.rtl .page-link.prev-page i {
-            transform: rotate(180deg);
-        }
-        body.rtl .page-link.next-page i {
-            transform: rotate(180deg);
-        }
-    `;
-  document.head.appendChild(noResultsStyle);
+    // وظيفة فتح/إغلاق القائمة
+    function toggleMenu() {
+        mainNav.classList.toggle("is-open");
+    }
 
-  // وظيفة تبديل الوضع (ليلي/نهاري)
-  function toggleMode() {
-    body.classList.toggle("dark-mode");
-    body.classList.toggle("light-mode");
-    const isDarkMode = body.classList.contains("dark-mode");
-    localStorage.setItem("darkMode", isDarkMode);
-    modeToggle.innerHTML = isDarkMode
-      ? '<i class="fas fa-sun"></i>'
-      : '<i class="fas fa-moon"></i>';
-    modeToggle.setAttribute(
-      "aria-label",
-      isDarkMode ? "تفعيل الوضع الفاتح" : "تفعيل الوضع الداكن"
-    );
-  }
+    // ربط أزرار التحكم بالوظائف
+    if (menuToggle) {
+        menuToggle.addEventListener("click", toggleMenu);
+    }
+    if (menuClose) {
+        menuClose.addEventListener("click", closeMenu);
+    }
 
-  // وظيفة تبديل اللغة
-  function setLanguage(lang) {
-    document.querySelectorAll("[data-lang-key]").forEach((element) => {
-      const key = element.getAttribute("data-lang-key");
-      const translation = translations[lang][key];
-      if (translation) {
-        if (
-          element.tagName === "INPUT" &&
-          element.hasAttribute("placeholder")
-        ) {
-          element.placeholder = translation;
-        } else {
-          // التحقق من وجود رابط بداخل العنصر
-          const link = element.querySelector("a");
-          if (link) {
-            element.innerHTML = `${translation} <a href="${link.href}">${link.textContent}</a>`;
-          } else {
-            element.textContent = translation;
-          }
-        }
-      }
+    // إغلاق القائمة عند النقر على أي رابط (لتسهيل التنقل في الهاتف)
+    navLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
     });
 
-    document.querySelector("#how-it-works h2").textContent =
-      translations[lang]["howItWorksTitle"];
-    document.querySelector("#how-it-works .subtitle").textContent =
-      translations[lang]["howItWorksSubtitle"];
+    // بيانات اللغات (محتوى ملف data.js) - تم نقله هنا لتوفير الكود كاملاً
+    const translations = {
+        ar: {
+            skip_link: "تخطي إلى المحتوى الرئيسي",
+            menu_toggle: "فتح القائمة",
+            nav_services: "خدماتي",
+            nav_how_it_works: "كيف نعمل",
+            nav_works: "أعمالي",
+            nav_testimonials: "آراء العملاء",
+            nav_tools: "أدواتنا",
+            nav_contact: "تواصل معي",
+            nav_about_me: "عني",
+            header_btn_contact: "تواصل معي",
+            hero_title: "تصميمات بصرية تخطف الأنظار، وتحقق الأهداف",
+            hero_description: "أنا Fennec Visionary، مصمم جرافيك متخصص في بناء العلامات التجارية والهويات البصرية القوية التي تترك أثراً.",
+            hero_btn_works: "شاهد أعمالي",
+            hero_btn_contact: "اطلب خدمتي",
+            services_title: "خدماتي",
+            services_subtitle: "حلول تصميم شاملة لهويتك البصرية وتواجدك الرقمي.",
+            service_logo: "تصميم الشعارات",
+            service_logo_desc: "إنشاء شعارات فريدة وعصرية تعكس جوهر علامتك التجارية.",
+            service_card: "بطاقات العمل",
+            service_card_desc: "تصميم بطاقات عمل احترافية تترك انطباعاً مميزاً.",
+            service_brochure: "الفلاير والبروشور",
+            service_brochure_desc: "تصاميم مطبوعة إبداعية لإيصال رسالتك بوضوح.",
+            service_invoice: "الفواتير",
+            service_invoice_desc: "قوالب فواتير ووثائق عمل أنيقة ومنظمة.",
+            service_catalog: "الكتالوجات",
+            service_catalog_desc: "تصميم كتالوجات منتجات رقمية ومطبوعة جذابة.",
+            service_social: "قوالب السوشيال ميديا",
+            service_social_desc: "هوية موحدة وجاهزة للاستخدام على منصات التواصل.",
+            service_packaging: "تصميم التغليف",
+            service_packaging_desc: "حلول تغليف مبتكرة تلفت الانتباه في الرفوف.",
+            service_tshirt: "تيشرتات",
+            service_tshirt_desc: "تصاميم فريدة ومبتكرة للملابس والمطبوعات.",
+            works_title: "إبداعاتنا",
+            works_subtitle: "جولة سريعة في أحدث أعمالنا المختارة بعناية.",
+            search_placeholder: "ابحث عن تصميم محدد...",
+            search_button: "بحث",
+            tag_all: "الكل",
+            tag_logos: "شعارات",
+            tag_branding: "هوية بصرية",
+            tag_social_media: "سوشيال ميديا",
+            tag_packaging: "تغليف",
+            tag_print_design: "تصميم مطبوع",
+            how_it_works_title: "منهجيتنا في العمل",
+            how_it_works_subtitle: "عملية مدروسة لضمان أفضل النتائج والتعبير عن رؤيتك بدقة.",
+            step_brief: "الإحاطة والتحليل",
+            step_brief_desc: "نستمع جيداً لاحتياجاتك، رؤيتك، وجمهورك المستهدف لنفهم المشروع بالكامل.",
+            step_concept: "وضع المفهوم الأساسي",
+            step_concept_desc: "نقدم مقترحات أولية ومفاهيم تصميمية مبتكرة تتوافق مع الإحاطة.",
+            step_design: "التصميم والتطوير",
+            step_design_desc: "نطور التصميمات المختارة، مع التركيز على التفاصيل والدقة البصرية.",
+            step_final: "المراجعة والتسليم",
+            step_final_desc: "نقوم بالمراجعات النهائية وتسليم الملفات المصدرية بجودة عالية.",
+            testimonials_title: "آراء العملاء",
+            testimonials_subtitle: "ما يقوله عملاؤنا عن التجربة والنتائج.",
+            testimonial_1_text: "تصميم شعار احترافي ومبتكر، تجاوز توقعاتنا. السرعة في الإنجاز وجودة العمل لا تُضاهى. أنصح به بشدة!",
+            testimonial_1_name: "أحمد س.",
+            testimonial_1_role: "مدير تسويق",
+            testimonial_2_text: "خدمة عملاء ممتازة وتفهم عميق للمتطلبات. ساهمت تصاميمهم في نقل علامتنا التجارية إلى مستوى جديد من التميز.",
+            testimonial_2_name: "ليلى ح.",
+            testimonial_2_role: "رائدة أعمال",
+            testimonial_3_text: "أفضل مصمم تعاملت معه حتى الآن. الدقة في المواعيد والاحترافية في التعامل مع التعديلات شيء مذهل. شكراً جزيلاً!",
+            testimonial_3_name: "خالد ع.",
+            testimonial_3_role: "مالك شركة",
+            about_me_title: "عني",
+            about_me_p1: "أهلاً بك، أنا **Fennec Visionary**، مصمم جرافيك متمرس بخبرة تزيد عن 7 سنوات في تحويل الأفكار إلى هويات بصرية قوية ومؤثرة.",
+            about_me_p2: "شغفي يكمن في تصميم **الشعارات، الهويات البصرية، وتصاميم السوشيال ميديا**، مع التركيز دائماً على الابتكار والوضوح الوظيفي للتصميم.",
+            about_me_p3: "أؤمن بأن التصميم الجيد ليس مجرد مظهر جميل، بل هو حل لمشكلة تسويقية ويحمل رسالة واضحة. فلنتعاون سوياً لبناء بصمتك البصرية الفريدة.",
+            about_me_btn_contact: "تواصل الآن",
+            tools_title: "الأدوات التي أستخدمها",
+            tool_photoshop: "Adobe Photoshop",
+            tool_illustrator: "Adobe Illustrator",
+            tool_indesign: "Adobe InDesign",
+            tool_aftereffects: "Adobe After Effects",
+            tool_figma: "Figma",
+            contact_title: "تواصل معي",
+            contact_subtitle: "هل أنت مستعد لبدء مشروعك القادم؟ تواصل معي اليوم!",
+            form_name: "الاسم الكامل",
+            form_email: "البريد الإلكتروني",
+            form_service: "الخدمة المطلوبة",
+            form_service_select: "اختر خدمة",
+            form_service_other: "أخرى",
+            form_message: "رسالتك",
+            form_submit: "إرسال الرسالة",
+            social_links_title: "أو تواصل عبر:"
+        },
+        en: {
+            skip_link: "Skip to main content",
+            menu_toggle: "Open Menu",
+            nav_services: "Services",
+            nav_how_it_works: "How I Work",
+            nav_works: "My Works",
+            nav_testimonials: "Testimonials",
+            nav_tools: "Tools",
+            nav_contact: "Contact Me",
+            nav_about_me: "About Me",
+            header_btn_contact: "Get In Touch",
+            hero_title: "Visionary Designs That Capture Attention and Achieve Goals",
+            hero_description: "I am Fennec Visionary, a graphic designer specializing in building strong, impactful visual identities and branding.",
+            hero_btn_works: "View My Works",
+            hero_btn_contact: "Request Service",
+            services_title: "My Services",
+            services_subtitle: "Comprehensive design solutions for your visual identity and digital presence.",
+            service_logo: "Logo Design",
+            service_logo_desc: "Creating unique and modern logos that reflect the core of your brand.",
+            service_card: "Business Cards",
+            service_card_desc: "Designing professional business cards that leave a lasting impression.",
+            service_brochure: "Flyers and Brochures",
+            service_brochure_desc: "Creative print designs to clearly convey your message.",
+            service_invoice: "Invoices",
+            service_invoice_desc: "Elegant and organized invoice and business document templates.",
+            service_catalog: "Catalogs",
+            service_catalog_desc: "Designing attractive digital and print product catalogs.",
+            service_social: "Social Media Templates",
+            service_social_desc: "Unified and ready-to-use identity for social media platforms.",
+            service_packaging: "Packaging Design",
+            service_packaging_desc: "Innovative packaging solutions that stand out on shelves.",
+            service_tshirt: "T-Shirts",
+            service_tshirt_desc: "Unique and creative designs for apparel and prints.",
+            works_title: "My Creative Works",
+            works_subtitle: "A quick tour of my carefully selected latest projects.",
+            search_placeholder: "Search for a specific design...",
+            search_button: "Search",
+            tag_all: "All",
+            tag_logos: "Logos",
+            tag_branding: "Branding",
+            tag_social_media: "Social Media",
+            tag_packaging: "Packaging",
+            tag_print_design: "Print Design",
+            how_it_works_title: "My Working Methodology",
+            how_it_works_subtitle: "A well-thought-out process to ensure the best results and accurate expression of your vision.",
+            step_brief: "Briefing & Analysis",
+            step_brief_desc: "We carefully listen to your needs, vision, and target audience to fully understand the project.",
+            step_concept: "Concept Development",
+            step_concept_desc: "We present initial proposals and innovative design concepts aligned with the brief.",
+            step_design: "Design & Development",
+            step_design_desc: "We develop the chosen designs, focusing on visual detail and accuracy.",
+            step_final: "Review & Delivery",
+            step_final_desc: "We conduct final reviews and deliver high-quality source files.",
+            testimonials_title: "Client Testimonials",
+            testimonials_subtitle: "What our clients say about the experience and results.",
+            testimonial_1_text: "Professional and innovative logo design, exceeding our expectations. The speed of execution and quality of work are unmatched. Highly recommended!",
+            testimonial_1_name: "Ahmed S.",
+            testimonial_1_role: "Marketing Manager",
+            testimonial_2_text: "Excellent customer service and deep understanding of requirements. Their designs helped elevate our brand to a new level of excellence.",
+            testimonial_2_name: "Laila H.",
+            testimonial_2_role: "Entrepreneur",
+            testimonial_3_text: "The best designer I've dealt with so far. The punctuality and professionalism in handling modifications are amazing. Thank you very much!",
+            testimonial_3_name: "Khaled A.",
+            testimonial_3_role: "Company Owner",
+            about_me_title: "About Me",
+            about_me_p1: "Hello, I am **Fennec Visionary**, an experienced graphic designer with over 7 years of expertise in transforming ideas into powerful and influential visual identities.",
+            about_me_p2: "My passion lies in designing **Logos, Visual Identities, and Social Media Graphics**, always focusing on innovation and functional clarity in design.",
+            about_me_p3: "I believe good design is not just a beautiful appearance; it's a solution to a marketing problem and carries a clear message. Let's collaborate to build your unique visual footprint.",
+            about_me_btn_contact: "Contact Now",
+            tools_title: "Tools I Use",
+            tool_photoshop: "Adobe Photoshop",
+            tool_illustrator: "Adobe Illustrator",
+            tool_indesign: "Adobe InDesign",
+            tool_aftereffects: "Adobe After Effects",
+            tool_figma: "Figma",
+            contact_title: "Get In Touch",
+            contact_subtitle: "Ready to start your next project? Contact me today!",
+            form_name: "Full Name",
+            form_email: "Email Address",
+            form_service: "Requested Service",
+            form_service_select: "Select a service",
+            form_service_other: "Other",
+            form_message: "Your Message",
+            form_submit: "Send Message",
+            social_links_title: "Or connect via:"
+        }
+    };
 
-    for (let i = 1; i <= 4; i++) {
-      document.querySelector(
-        `.steps-container .step-card:nth-of-type(${i}) .step-title`
-      ).textContent = translations[lang][`step${i}Title`];
-      document.querySelector(
-        `.steps-container .step-card:nth-of-type(${i}) .step-description`
-      ).textContent = translations[lang][`step${i}Desc`];
+
+    // وظيفة تطبيق اللغة
+    function applyLanguage(lang) {
+        const t = translations[lang];
+        document.querySelectorAll('[data-lang-key]').forEach(el => {
+            const key = el.getAttribute('data-lang-key');
+            if (t[key]) {
+                if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+                    el.setAttribute('placeholder', t[key]);
+                } else {
+                    el.textContent = t[key];
+                }
+            }
+        });
+        // Update direction
+        body.classList.remove("rtl", "ltr");
+        body.classList.add(lang === "en" ? "ltr" : "rtl");
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.setAttribute('dir', lang === "en" ? "ltr" : "rtl");
     }
 
-    for (let i = 1; i <= 10; i++) {
-      const testimonialCard = document.querySelector(
-        `.testimonial-card:nth-of-type(${i})`
-      );
-      if (testimonialCard) {
-        const nameElement = testimonialCard.querySelector("h4");
-        const roleElement = testimonialCard.querySelector("span");
-        const textElement = testimonialCard.querySelector("p");
+    // ===================================
+    // بيانات الأعمال المُنشأة (100 عمل بـ 3 صور)
+    // ===================================
+    let worksData = [];
+    const NUM_WORKS = 100;
+    const allTags = ['logos', 'branding', 'social_media', 'packaging', 'print_design'];
 
-        if (nameElement)
-          nameElement.textContent = translations[lang][`testimonial_${i}_name`];
-        if (roleElement)
-          roleElement.textContent = translations[lang][`testimonial_${i}_role`];
-        if (textElement)
-          textElement.textContent = translations[lang][`testimonial_${i}_text`];
-      }
+    // وظيفة لإنشاء 100 عمل بـ 3 صور لكل عمل (لأغراض الاختبار)
+    function generateDummyWorks(count) {
+        const dummyWorks = [];
+        for (let i = 1; i <= count; i++) {
+            const randomTags = [allTags[Math.floor(Math.random() * allTags.length)]];
+            if (Math.random() > 0.6) {
+                let secondTag = allTags[Math.floor(Math.random() * allTags.length)];
+                if (secondTag !== randomTags[0]) {
+                    randomTags.push(secondTag);
+                }
+            }
+            const workID = String(i).padStart(3, '0'); // مثل 001, 002
+            dummyWorks.push({
+                id: i,
+                title_key: `work_title_${i}`,
+                desc_key: `work_desc_${i}`,
+                tags: randomTags,
+                // مسارات صور وهمية بـ 3 صور (يجب استبدالها بمسارات صورك الحقيقية)
+                images: [
+                    `images/works/work-${workID}-1.jpg`,
+                    `images/works/work-${workID}-2.jpg`,
+                    `images/works/work-${workID}-3.jpg`,
+                ],
+            });
+
+            // إضافة ترجمة وهمية لبيانات الترجمة الرئيسية
+            translations.ar[`work_title_${i}`] = `تصميم إبداعي رقم ${i}`;
+            translations.ar[`work_desc_${i}`] = `تفاصيل العمل ${i} في ${randomTags[0]}`;
+            translations.en[`work_title_${i}`] = `Creative Design No. ${i}`;
+            translations.en[`work_desc_${i}`] = `Details for work ${i} in ${randomTags[0]}`;
+        }
+        return dummyWorks;
     }
 
-    if (lang === "ar") {
-      document.documentElement.dir = "rtl";
-      document.documentElement.lang = "ar";
-      body.classList.add("rtl");
-      body.classList.remove("ltr");
-    } else {
-      document.documentElement.dir = "ltr";
-      document.documentElement.lang = lang;
-      body.classList.add("ltr");
-      body.classList.remove("rtl");
-    }
-    localStorage.setItem("language", lang);
+    worksData = generateDummyWorks(NUM_WORKS);
 
-    searchInput.placeholder = translations[lang].search_placeholder;
-  }
 
-  // وظيفة تبديل الصور
-  function setupToolImageHover() {
-    const dynamicTitle = document.querySelector(".dynamic-text-title");
-    const toolItems = document.querySelectorAll(".tool-item");
+    // ===================================
+    // منطق عرض الأعمال (مع تحديث السلايدر)
+    // ===================================
+    const itemsPerPage = 6;
+    let currentPage = 1;
+    let currentTag = 'all';
+    let currentSearch = '';
 
-    if (dynamicTitle) {
-      dynamicTitle.textContent = "مصمم غرافيكي";
-      dynamicTitle.addEventListener("mousemove", (e) => {
-        const cursor = document.createElement("span");
-        cursor.classList.add("pulse-cursor");
-        cursor.style.left = `${e.offsetX}px`;
-        cursor.style.top = `${e.offsetY}px`;
-        dynamicTitle.appendChild(cursor);
+
+    // ** وظيفة تهيئة السلايدر (Swiper) **
+    function initializeSwipers() {
+        // نستخدم setTimeout لضمان أن Swiper سيتم تهيئته بعد اكتمال عرض DOM
         setTimeout(() => {
-          cursor.remove();
-        }, 500);
-      });
+            document.querySelectorAll('.work-swiper-item').forEach(swiperElement => {
+                const isRTL = body.classList.contains('rtl');
+
+                // التحقق ما إذا كان Swiper قد تم تهيئته مسبقاً على هذا العنصر
+                if (swiperElement.swiper) {
+                    swiperElement.swiper.destroy(true, true);
+                }
+
+                new Swiper(swiperElement, {
+                    direction: 'horizontal',
+                    loop: true, // التنقل الدائري بين الصور
+                    effect: 'slide',
+                    speed: 400,
+                    // التنقل بواسطة الأزرار
+                    navigation: {
+                        nextEl: swiperElement.querySelector('.swiper-button-next'),
+                        prevEl: swiperElement.querySelector('.swiper-button-prev'),
+                    },
+                    // التنقل بواسطة النقاط (الترقيم)
+                    pagination: {
+                        el: swiperElement.querySelector('.swiper-pagination'),
+                        clickable: true,
+                    },
+                    // دعم الاتجاه من اليمين لليسار
+                    rtl: isRTL,
+                });
+            });
+        }, 50); // تأخير بسيط لضمان تهيئة DOM
     }
 
-    toolItems.forEach((item) => {
-      item.addEventListener("mouseover", () => {
-        const toolName = item.getAttribute("data-tool-name");
-        if (hoverImage) {
-          // تأكد من وجود العنصر
-          hoverImage.src = `images/${toolName}-full.jpg`;
-          hoverImage.classList.remove("hidden");
+
+    function loadWorks() {
+        if (worksData.length === 0) {
+            worksGrid.innerHTML = `<p class="text-center">عفواً، لم يتم تحميل بيانات الأعمال.</p>`;
+            return;
         }
-      });
-      item.addEventListener("mouseout", () => {
-        if (hoverImage) {
-          // تأكد من وجود العنصر
-          hoverImage.classList.add("hidden");
-        }
-      });
-    });
-  }
 
-  // إضافة فئة "active" للرابط عند النقر عليه
-  navLinks.forEach((link) => {
-    link.addEventListener("click", function () {
-      navLinks.forEach((item) => item.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
+        worksGrid.classList.remove('loading');
 
-  // تهيئة الصفحة عند التحميل
-  function initialize() {
-    const savedMode = localStorage.getItem("darkMode");
-    if (savedMode === "true") {
-      body.classList.add("dark-mode");
-      body.classList.remove("light-mode");
-      modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      modeToggle.setAttribute("aria-label", "تفعيل الوضع الفاتح");
-    } else {
-      body.classList.add("light-mode");
-      body.classList.remove("dark-mode");
-      modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      modeToggle.setAttribute("aria-label", "تفعيل الوضع الداكن");
-    }
-
-    const savedLang = localStorage.getItem("language") || "ar";
-    languageSelect.value = savedLang;
-    setLanguage(savedLang);
-
-    if (typeof AOS !== "undefined") {
-      AOS.init({
-        duration: 1000,
-        easing: "ease-in-out",
-        once: true,
-        mirror: false
-      });
-    }
-
-    if (typeof lightbox !== "undefined") {
-      lightbox.option({
-        resizeDuration: 200,
-        wrapAround: true,
-        showImageNumberLabel: true,
-        positionFromTop: 100
-      });
-    }
-  }
-
-  // بيانات الأعمال
-  const totalWorks = 100;
-  const itemsPerPage = 12;
-  let allWorks = [];
-  const workCategories = [
-    "شعار",
-    "تغليف",
-    "بطاقة عمل",
-    "تصميم مواقع",
-    "فلاير",
-    "تي شيرت",
-    "رسم",
-    "هوية بصرية"
-  ];
-
-  for (let i = 1; i <= totalWorks; i++) {
-    const categoryIndex = (i - 1) % workCategories.length;
-    const category = workCategories[categoryIndex];
-    const galleryImages = [
-      `images/work${i}/1.jpg`,
-      `images/work${i}/2.jpg`,
-      `images/work${i}/3.jpg`
-    ];
-    allWorks.push({
-      id: `work${i}`,
-      title: `تصميم ${category} رقم ${i}`,
-      mainImage: galleryImages[0],
-      galleryImages: galleryImages,
-      category: category,
-      details: `هذا العمل هو مثال رائع لتصميم ${category} تم إنشاؤه باستخدام أحدث تقنيات التصميم.`
-    });
-  }
-
-  let currentPage = 1;
-
-  // عرض الأعمال في الشبكة
-  function renderWorks(works, page = 1) {
-    worksGrid.innerHTML = "";
-    currentPage = page;
-
-    const start = (page - 1) * itemsPerPage;
-    const end = start + itemsPerPage;
-    const paginatedItems = works.slice(start, end);
-
-    if (paginatedItems.length === 0) {
-      const lang = localStorage.getItem("language") || "ar";
-      worksGrid.innerHTML = `
-                <div class="no-results">
-                    <i class="fas fa-search"></i>
-                    <h3>${translations[lang].no_results_heading}</h3>
-                    <p>${translations[lang].no_results_text}</p>
-                </div>
-            `;
-      paginationContainer.innerHTML = "";
-      return;
-    }
-
-    paginatedItems.forEach((work, index) => {
-      const itemDiv = document.createElement("div");
-      itemDiv.classList.add("item");
-      itemDiv.setAttribute("data-aos", "fade-up");
-      itemDiv.setAttribute("data-aos-delay", `${(index % 4) * 100}`);
-      itemDiv.setAttribute("data-work-id", work.id);
-
-      let lightboxLinks = "";
-      if (work.galleryImages && work.galleryImages.length > 1) {
-        work.galleryImages.slice(1).forEach((imgSrc, imgIndex) => {
-          lightboxLinks += `<a href="${imgSrc}" data-lightbox="work-gallery-${
-            work.id
-          }" data-title="${work.title} - صورة ${imgIndex + 2}"></a>`;
+        // 1. Filter by Tag
+        let filteredWorks = worksData.filter(work => {
+            if (currentTag === 'all') return true;
+            return work.tags.includes(currentTag);
         });
-      }
 
-      itemDiv.innerHTML = `
-                <a href="works/work.html?id=${work.id}" class="work-link" data-title="${work.title}">
-                    <img src="${work.mainImage}" alt="${work.title}" loading="lazy">
-                    <div class="overlay">
-                        <i class="fas fa-eye"></i>
+        // 2. Filter by Search (case-insensitive)
+        if (currentSearch) {
+            const searchLower = currentSearch.toLowerCase();
+            const lang = localStorage.getItem("siteLang") || 'ar';
+
+            filteredWorks = filteredWorks.filter(work => {
+                const title = translations[lang][work.title_key] || '';
+                const titleMatch = title.toLowerCase().includes(searchLower);
+                const tagsMatch = work.tags.some(tag => tag.toLowerCase().includes(searchLower));
+                return titleMatch || tagsMatch;
+            });
+        }
+
+        const totalPages = Math.ceil(filteredWorks.length / itemsPerPage);
+        currentPage = Math.min(currentPage, totalPages > 0 ? totalPages : 1);
+
+        const start = (currentPage - 1) * itemsPerPage;
+        const end = start + itemsPerPage;
+        const worksToDisplay = filteredWorks.slice(start, end);
+
+        worksGrid.innerHTML = '';
+        const lang = localStorage.getItem("siteLang") || 'ar';
+
+
+        if (worksToDisplay.length === 0) {
+            worksGrid.innerHTML = `<p class="text-center">عفواً، لا توجد نتائج مطابقة لفلتر البحث أو التصنيف المحدد.</p>`;
+        } else {
+            worksToDisplay.forEach(work => {
+                const title = translations[lang][work.title_key] || work.title_key;
+
+                const item = document.createElement('div');
+                item.className = 'work-item';
+                item.setAttribute('data-aos', 'zoom-in');
+                item.setAttribute('data-tags', work.tags.join(' '));
+
+                // الهيكل الجديد للسلايدر (Swiper)
+                item.innerHTML = `
+                    <div class="swiper-container work-swiper-item" dir="ltr">
+                        <div class="swiper-wrapper">
+                            ${work.images.map((imgUrl, index) => `
+                                <div class="swiper-slide">
+                                    <a href="${imgUrl}" data-lightbox="work-group-${work.id}" data-title="${title} (صورة ${index + 1}/3)" aria-label="عرض العمل: ${title} - صورة ${index + 1}">
+                                        <img src="${imgUrl}" alt="${title} صورة ${index + 1}">
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-pagination"></div>
                     </div>
-                </a>
-                ${lightboxLinks}
-            `;
-      worksGrid.appendChild(itemDiv);
+                `;
+                worksGrid.appendChild(item);
+            });
+
+            // تهيئة السلايدرات بعد إضافة العناصر لـ DOM
+            initializeSwipers();
+        }
+
+        renderPagination(totalPages);
+    }
+
+    // وظيفة عرض التنقل بين الصفحات (التقليب بين الأعمال)
+    function renderPagination(totalPages) {
+        paginationContainer.innerHTML = '';
+        const isRTL = body.classList.contains('rtl');
+
+        if (totalPages > 1) {
+            // زر السابق
+            const prevLink = document.createElement('a');
+            prevLink.href = "#works";
+            prevLink.textContent = isRTL ? '>' : '<';
+            prevLink.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
+            prevLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage > 1) {
+                    currentPage--;
+                    loadWorks();
+                }
+            });
+            paginationContainer.appendChild(prevLink);
+
+            // أرقام الصفحات
+            for (let i = 1; i <= totalPages; i++) {
+                const pageLink = document.createElement('a');
+                pageLink.href = "#works";
+                pageLink.textContent = i;
+                pageLink.className = `page-link ${currentPage === i ? 'active' : ''}`;
+                pageLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPage = i;
+                    loadWorks();
+                });
+                paginationContainer.appendChild(pageLink);
+            }
+
+            // زر التالي
+            const nextLink = document.createElement('a');
+            nextLink.href = "#works";
+            nextLink.textContent = isRTL ? '<' : '>';
+            nextLink.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
+            nextLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    loadWorks();
+                }
+            });
+            paginationContainer.appendChild(nextLink);
+        }
+    }
+
+    // ربط أحداث الفلتر والبحث
+    tags.forEach(tag => {
+        tag.addEventListener('click', (e) => {
+            e.preventDefault();
+            tags.forEach(t => t.classList.remove('active'));
+            e.currentTarget.classList.add('active');
+            currentTag = e.currentTarget.getAttribute('data-tag');
+            currentPage = 1;
+            loadWorks();
+        });
     });
 
-    AOS.refresh();
-    renderPagination(works);
-  }
-
-  // إنشاء أزرار الترقيم
-  function renderPagination(works) {
-    paginationContainer.innerHTML = "";
-    const pageCount = Math.ceil(works.length / itemsPerPage);
-
-    if (pageCount <= 1) return;
-
-    if (currentPage > 1) {
-      const prevLink = document.createElement("a");
-      prevLink.href = "#works";
-      prevLink.classList.add("page-link", "prev-page");
-      prevLink.innerHTML = '<i class="fas fa-chevron-right"></i>';
-      prevLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderWorks(works, currentPage - 1);
-        window.scrollTo({
-          top: worksGrid.offsetTop - 100,
-          behavior: "smooth"
-        });
-      });
-      paginationContainer.appendChild(prevLink);
-    }
-
-    for (let i = 1; i <= pageCount; i++) {
-      const pageLink = document.createElement("a");
-      pageLink.href = "#works";
-      pageLink.classList.add("page-link");
-      if (i === currentPage) pageLink.classList.add("active");
-      pageLink.textContent = i;
-      pageLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderWorks(works, i);
-        window.scrollTo({
-          top: worksGrid.offsetTop - 100,
-          behavior: "smooth"
-        });
-      });
-      paginationContainer.appendChild(pageLink);
-    }
-
-    if (currentPage < pageCount) {
-      const nextLink = document.createElement("a");
-      nextLink.href = "#works";
-      nextLink.classList.add("page-link", "next-page");
-      nextLink.innerHTML = '<i class="fas fa-chevron-left"></i>';
-      nextLink.addEventListener("click", (e) => {
-        e.preventDefault();
-        renderWorks(works, currentPage + 1);
-        window.scrollTo({
-          top: worksGrid.offsetTop - 100,
-          behavior: "smooth"
-        });
-      });
-      paginationContainer.appendChild(nextLink);
-    }
-  }
-
-  // وظيفة البحث والترشيح
-  function filterWorks(searchTerm) {
-    searchTerm = searchTerm.toLowerCase().trim();
-
-    if (!searchTerm) {
-      return allWorks;
-    }
-
-    return allWorks.filter(
-      (work) =>
-        work.title.toLowerCase().includes(searchTerm) ||
-        work.category.toLowerCase().includes(searchTerm) ||
-        work.details.toLowerCase().includes(searchTerm)
-    );
-  }
-
-  // البحث عند الكتابة
-  searchInput.addEventListener("input", (e) => {
-    const filteredWorks = filterWorks(e.target.value);
-    renderWorks(filteredWorks, 1);
-  });
-
-  // البحث عند الضغط على زر البحث
-  searchButton.addEventListener("click", () => {
-    const filteredWorks = filterWorks(searchInput.value);
-    renderWorks(filteredWorks, 1);
-  });
-
-  // البحث عند الضغط على Enter
-  searchInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      const filteredWorks = filterWorks(searchInput.value);
-      renderWorks(filteredWorks, 1);
-    }
-  });
-
-  // إضافة المستمعين للأحداث
-  modeToggle.addEventListener("click", toggleMode);
-  languageSelect.addEventListener("change", (e) => {
-    setLanguage(e.target.value);
-    renderWorks(allWorks, currentPage);
-  });
-
-  // إضافة مستمعي الأحداث للوسوم
-  tags.forEach((tag) => {
-    tag.addEventListener("click", function (event) {
-      event.preventDefault();
-      const searchTerm = this.textContent.trim();
-      searchInput.value = searchTerm;
-      const filteredWorks = filterWorks(searchTerm);
-      renderWorks(filteredWorks, 1);
-
-      window.scrollTo({
-        top: worksGrid.offsetTop - 100,
-        behavior: "smooth"
-      });
+    searchButton.addEventListener('click', (e) => {
+        currentSearch = searchInput.value.trim();
+        currentTag = 'all'; // Reset tag filter
+        tags.forEach(t => t.classList.remove('active'));
+        document.querySelector('[data-tag="all"]').classList.add('active');
+        currentPage = 1;
+        loadWorks();
     });
-  });
 
-  // تشغيل وظيفة تهيئة الصور بعد تحميل الصفحة
-  setupToolImageHover();
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            searchButton.click();
+        }
+    });
 
-  // تشغيل وظيفة التهيئة عند تحميل الصفحة
-  initialize();
 
-  // عرض الأعمال للمرة الأولى
-  renderWorks(allWorks, 1);
-});
-document.addEventListener("DOMContentLoaded", () => {
-  // Mobile navigation toggle
-  const menuToggle = document.getElementById("menuToggle");
-  const mainNav = document.getElementById("main-nav");
-  const menuCloseBtn = document.querySelector(".menu-close-btn");
-  const navLinks = mainNav.querySelectorAll("a");
+    // ===================================
+    // Language and mode toggle logic
+    // ===================================
 
-  // Function to open the side menu
-  function openMenu() {
-    mainNav.classList.add("active");
-    menuToggle.style.display = "none";
-    menuCloseBtn.style.display = "block";
-  }
+    // Load saved settings from localStorage
+    const savedLang = localStorage.getItem("siteLang") || "ar";
+    const savedMode = localStorage.getItem("siteMode") || "light-mode";
 
-  // Function to close the side menu
-  function closeMenu() {
-    mainNav.classList.remove("active");
-    menuToggle.style.display = "block";
-    menuCloseBtn.style.display = "none";
-  }
+    // Apply saved settings
+    body.classList.add(savedMode);
+    applyLanguage(savedLang);
+    languageSelect.value = savedLang;
+    modeToggle.innerHTML =
+        savedMode === "light-mode"
+            ? '<i class="fas fa-moon"></i>'
+            : '<i class="fas fa-sun"></i>';
 
-  // Event listeners
-  menuToggle.addEventListener("click", openMenu);
-  menuCloseBtn.addEventListener("click", closeMenu);
+    // Toggle language
+    languageSelect.addEventListener("change", () => {
+        const lang = languageSelect.value;
+        localStorage.setItem("siteLang", lang);
+        applyLanguage(lang);
+        loadWorks(); // Reload works to update titles and descriptions and re-initialize swipers
+    });
 
-  // Close menu when a link is clicked
-  navLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
+    // Toggle mode
+    modeToggle.addEventListener("click", () => {
+        if (body.classList.contains("light-mode")) {
+            body.classList.remove("light-mode");
+            body.classList.add("dark-mode");
+            modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            localStorage.setItem("siteMode", "dark-mode");
+        } else {
+            body.classList.remove("dark-mode");
+            body.classList.add("light-mode");
+            modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            localStorage.setItem("siteMode", "light-mode");
+        }
+    });
 
-  // Language and mode toggle
-  const languageSelect = document.getElementById("language-select");
-  const modeToggle = document.getElementById("mode-toggle");
-  const body = document.body;
 
-  // Load saved settings from localStorage
-  const savedLang = localStorage.getItem("siteLang") || "ar";
-  const savedMode = localStorage.getItem("siteMode") || "light-mode";
+    // ===================================
+    // Initial Loads and Animations
+    // ===================================
+    AOS.init({
+        duration: 800,
+        once: true,
+    });
 
-  body.classList.add(savedMode);
-  body.classList.add(savedLang === "en" ? "ltr" : "rtl");
-  languageSelect.value = savedLang;
-  modeToggle.innerHTML =
-    savedMode === "light-mode"
-      ? '<i class="fas fa-moon"></i>'
-      : '<i class="fas fa-sun"></i>';
+    // Load current works on page load
+    loadWorks();
 
-  // Toggle language
-  languageSelect.addEventListener("change", () => {
-    const lang = languageSelect.value;
-    body.classList.remove("rtl", "ltr");
-    body.classList.add(lang === "en" ? "ltr" : "rtl");
-    localStorage.setItem("siteLang", lang);
-  });
+    // Update current year in footer
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-  // Toggle mode
-  modeToggle.addEventListener("click", () => {
-    if (body.classList.contains("light-mode")) {
-      body.classList.remove("light-mode");
-      body.classList.add("dark-mode");
-      modeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-      localStorage.setItem("siteMode", "dark-mode");
-    } else {
-      body.classList.remove("dark-mode");
-      body.classList.add("light-mode");
-      modeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-      localStorage.setItem("siteMode", "light-mode");
+    // Tooltip image on hover (Assuming a separate div for image)
+    if (hoverImage) {
+        const toolIcons = document.querySelectorAll('.tool-icon');
+        toolIcons.forEach(icon => {
+            icon.addEventListener('mouseenter', () => {
+                const toolName = icon.getAttribute('data-tool');
+                const imageUrl = `images/tool-previews/${toolName}.jpg`; // Adjust path as needed
+                hoverImage.src = imageUrl;
+                hoverImage.style.opacity = '1';
+                hoverImage.style.transform = 'scale(1)';
+            });
+
+            icon.addEventListener('mouseleave', () => {
+                hoverImage.style.opacity = '0';
+                hoverImage.style.transform = 'scale(0.9)';
+            });
+        });
     }
-  });
 });
