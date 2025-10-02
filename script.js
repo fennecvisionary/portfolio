@@ -239,255 +239,150 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 
- // ===================================
-    // بيانات الأعمال المُنشأة
-    // ===================================
-    let worksData = [];
-    const NUM_WORKS = 100;
-    const allTags = ['logos', 'branding', 'social_media', 'packaging', 'print_design'];
+  // وظيفة عرض الأعمال والتنقل (تم الاحتفاظ بها كما هي في الملف الأصلي)
+  let worksData = []; // Assume this is loaded from data.js
+  const itemsPerPage = 6;
+  let currentPage = 1;
+  let currentTag = 'all';
+  let currentSearch = '';
 
-    // وظيفة لإنشاء 100 عمل بـ 3 صور لكل عمل (لأغراض الاختبار والتطبيق)
-    function generateDummyWorks(count) {
-        const dummyWorks = [];
-        for (let i = 1; i <= count; i++) {
-            const randomTags = [allTags[Math.floor(Math.random() * allTags.length)]];
-            if (Math.random() > 0.6) { // 40% chance of having two tags
-                let secondTag = allTags[Math.floor(Math.random() * allTags.length)];
-                if (secondTag !== randomTags[0]) {
-                    randomTags.push(secondTag);
-                }
-            }
-            dummyWorks.push({
-                id: i,
-                title_key: `work_title_${i}`,
-                desc_key: `work_desc_${i}`,
-                tags: randomTags,
-                // مسارات صور وهمية بـ 3 صور
-                images: [
-                    `images/works/thumb-${i}-1.jpg`, // الصورة 1 (الرئيسية)
-                    `images/works/thumb-${i}-2.jpg`, // الصورة 2
-                    `images/works/thumb-${i}-3.jpg`, // الصورة 3
-                ],
-                // إضافة ترجمة وهمية للعرض
-                translations: {
-                    ar: {
-                        [`work_title_${i}`]: `تصميم إبداعي رقم ${i}`,
-                        [`work_desc_${i}`]: `تفاصيل العمل رقم ${i} وهو من تصنيف ${randomTags.join(' و ')}`
-                    },
-                    en: {
-                        [`work_title_${i}`]: `Creative Design No. ${i}`,
-                        [`work_desc_${i}`]: `Details for work No. ${i}, categorized as ${randomTags.join(' and ')}`
-                    }
-                }
-            });
-
-            // دمج الترجمة الوهمية مع بيانات الترجمة الرئيسية
-            Object.assign(translations.ar, dummyWorks[i-1].translations.ar);
-            Object.assign(translations.en, dummyWorks[i-1].translations.en);
-        }
-        return dummyWorks;
+  function loadWorks() {
+    // Check if worksData is available (loaded from data.js)
+    if (typeof data !== 'undefined' && Array.isArray(data.works)) {
+      worksData = data.works;
+    } else {
+      console.error("Works data is not available. Check if data.js loaded correctly.");
+      worksGrid.innerHTML = `<p class="text-center">عفواً، لم يتم تحميل بيانات الأعمال.</p>`;
+      return;
     }
 
-    worksData = generateDummyWorks(NUM_WORKS);
+    worksGrid.classList.remove('loading');
 
-
-    // ===================================
-    // منطق عرض الأعمال (مع تحديث السلايدر)
-    // ===================================
-    const itemsPerPage = 6;
-    let currentPage = 1;
-    let currentTag = 'all';
-    let currentSearch = '';
-
-    function loadWorks() {
-        if (worksData.length === 0) {
-            console.error("Works data is empty.");
-            worksGrid.innerHTML = `<p class="text-center">عفواً، لم يتم تحميل بيانات الأعمال.</p>`;
-            return;
-        }
-
-        worksGrid.classList.remove('loading');
-
-        // 1. Filter by Tag
-        let filteredWorks = worksData.filter(work => {
-            if (currentTag === 'all') return true;
-            return work.tags.includes(currentTag);
-        });
-
-        // 2. Filter by Search (case-insensitive)
-        if (currentSearch) {
-            const searchLower = currentSearch.toLowerCase();
-            const lang = localStorage.getItem("siteLang") || 'ar';
-
-            filteredWorks = filteredWorks.filter(work => {
-                const title = translations[lang][work.title_key] || '';
-                const titleMatch = title.toLowerCase().includes(searchLower);
-                const tagsMatch = work.tags.some(tag => tag.toLowerCase().includes(searchLower));
-                return titleMatch || tagsMatch;
-            });
-        }
-
-        const totalPages = Math.ceil(filteredWorks.length / itemsPerPage);
-        currentPage = Math.min(currentPage, totalPages > 0 ? totalPages : 1);
-
-        const start = (currentPage - 1) * itemsPerPage;
-        const end = start + itemsPerPage;
-        const worksToDisplay = filteredWorks.slice(start, end);
-
-        worksGrid.innerHTML = '';
-        const lang = localStorage.getItem("siteLang") || 'ar';
-
-
-        if (worksToDisplay.length === 0) {
-            worksGrid.innerHTML = `<p class="text-center">عفواً، لا توجد نتائج مطابقة لفلتر البحث أو التصنيف المحدد.</p>`;
-        } else {
-            worksToDisplay.forEach(work => {
-                const title = translations[lang][work.title_key] || work.title_key;
-                const description = translations[lang][work.desc_key] || work.desc_key;
-                
-                const item = document.createElement('div');
-                item.className = 'work-item';
-                item.setAttribute('data-aos', 'zoom-in');
-                item.setAttribute('data-tags', work.tags.join(' '));
-                
-                // الهيكل الجديد للسلايدر (Swiper)
-                item.innerHTML = `
-                    <div class="swiper-container work-swiper-item" data-title="${title}" data-description="${description}">
-                        <div class="swiper-wrapper">
-                            ${work.images.map((imgUrl, index) => `
-                                <div class="swiper-slide">
-                                    <a href="${imgUrl}" data-lightbox="work-group-${work.id}" data-title="${title} (${index + 1}/3)" aria-label="عرض العمل: ${title} - صورة ${index + 1}">
-                                        <img src="${imgUrl}" alt="${title} صورة ${index + 1}">
-                                    </a>
-                                </div>
-                            `).join('')}
-                        </div>
-                        <div class="swiper-button-next"></div>
-                        <div class="swiper-button-prev"></div>
-                        <div class="swiper-pagination"></div>
-
-                        </div>
-                `;
-                worksGrid.appendChild(item);
-            });
-            
-            // تهيئة السلايدرات بعد إضافة العناصر لـ DOM
-            initializeSwipers();
-        }
-
-        renderPagination(totalPages);
-    }
-
-    // ** وظيفة تهيئة السلايدر (Swiper) **
-    function initializeSwipers() {
-        document.querySelectorAll('.work-swiper-item').forEach(swiperElement => {
-            // التحقق من اتجاه الصفحة
-            const isRTL = body.classList.contains('rtl');
-
-            new Swiper(swiperElement, {
-                direction: 'horizontal',
-                loop: true, // التنقل الدائري
-                effect: 'slide',
-                speed: 400,
-                // التنقل بواسطة الأزرار
-                navigation: {
-                    nextEl: swiperElement.querySelector('.swiper-button-next'),
-                    prevEl: swiperElement.querySelector('.swiper-button-prev'),
-                },
-                // التنقل بواسطة النقاط
-                pagination: {
-                    el: swiperElement.querySelector('.swiper-pagination'),
-                    clickable: true,
-                },
-                // دعم الاتجاه من اليمين لليسار
-                rtl: isRTL,
-                // لإعادة عرض الأزرار عند التحرك بالماوس على الشاشات الكبيرة
-                on: {
-                    init: function () {
-                        if (isRTL) {
-                            swiperElement.querySelector('.swiper-button-next').style.transform = 'rotate(180deg)';
-                            swiperElement.querySelector('.swiper-button-prev').style.transform = 'rotate(180deg)';
-                        }
-                    },
-                }
-            });
-        });
-    }
-
-    // وظيفة عرض التنقل بين الصفحات (تم الاحتفاظ بها)
-    function renderPagination(totalPages) {
-        paginationContainer.innerHTML = '';
-        if (totalPages > 1) {
-            const prevLink = document.createElement('a');
-            prevLink.href = "#works";
-            prevLink.textContent = '<';
-            // Adjust chevron direction for RTL
-            prevLink.className = `page-link ${body.classList.contains('rtl') ? 'rtl-chevron-prev' : 'ltr-chevron-prev'} ${currentPage === 1 ? 'disabled' : ''}`;
-            prevLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentPage > 1) {
-                    currentPage--;
-                    loadWorks();
-                }
-            });
-            paginationContainer.appendChild(prevLink);
-
-            for (let i = 1; i <= totalPages; i++) {
-                const pageLink = document.createElement('a');
-                pageLink.href = "#works";
-                pageLink.textContent = i;
-                pageLink.className = `page-link ${currentPage === i ? 'active' : ''}`;
-                pageLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage = i;
-                    loadWorks();
-                });
-                paginationContainer.appendChild(pageLink);
-            }
-
-            const nextLink = document.createElement('a');
-            nextLink.href = "#works";
-            nextLink.textContent = '>';
-            // Adjust chevron direction for RTL
-            nextLink.className = `page-link ${body.classList.contains('rtl') ? 'rtl-chevron-next' : 'ltr-chevron-next'} ${currentPage === totalPages ? 'disabled' : ''}`;
-            nextLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    loadWorks();
-                }
-            });
-            paginationContainer.appendChild(nextLink);
-        }
-    }
-
-    // ربط أحداث الفلتر والبحث (تم الاحتفاظ بها)
-    tags.forEach(tag => {
-        tag.addEventListener('click', (e) => {
-            e.preventDefault();
-            tags.forEach(t => t.classList.remove('active'));
-            e.currentTarget.classList.add('active');
-            currentTag = e.currentTarget.getAttribute('data-tag');
-            currentPage = 1;
-            loadWorks();
-        });
+    // 1. Filter by Tag
+    let filteredWorks = worksData.filter(work => {
+      if (currentTag === 'all') return true;
+      return work.tags.includes(currentTag);
     });
 
-    searchButton.addEventListener('click', (e) => {
-        currentSearch = searchInput.value.trim();
-        currentTag = 'all';
-        tags.forEach(t => t.classList.remove('active'));
-        document.querySelector('[data-tag="all"]').classList.add('active');
-        currentPage = 1;
-        loadWorks();
-    });
+    // 2. Filter by Search (case-insensitive)
+    if (currentSearch) {
+      const searchLower = currentSearch.toLowerCase();
+      filteredWorks = filteredWorks.filter(work => {
+        const titleMatch = (translations[localStorage.getItem("siteLang") || 'ar'][work.title_key] || '').toLowerCase().includes(searchLower);
+        const tagsMatch = work.tags.some(tag => tag.toLowerCase().includes(searchLower));
+        return titleMatch || tagsMatch;
+      });
+    }
 
-    searchInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            searchButton.click();
+    const totalPages = Math.ceil(filteredWorks.length / itemsPerPage);
+    currentPage = Math.min(currentPage, totalPages > 0 ? totalPages : 1);
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const worksToDisplay = filteredWorks.slice(start, end);
+
+    worksGrid.innerHTML = '';
+
+    if (worksToDisplay.length === 0) {
+      worksGrid.innerHTML = `<p class="text-center">عفواً، لا توجد نتائج مطابقة لفلتر البحث أو التصنيف المحدد.</p>`;
+    } else {
+      worksToDisplay.forEach(work => {
+        const title = translations[localStorage.getItem("siteLang") || 'ar'][work.title_key] || work.title_key;
+        const description = translations[localStorage.getItem("siteLang") || 'ar'][work.desc_key] || work.desc_key;
+        const item = document.createElement('div');
+        item.className = 'work-item';
+        item.setAttribute('data-aos', 'zoom-in');
+        item.setAttribute('data-tags', work.tags.join(' '));
+        item.innerHTML = `
+          <a href="${work.image_full}" data-lightbox="works-gallery" data-title="${title}" aria-label="عرض عمل: ${title}">
+            <img src="${work.image_thumb}" alt="${title}">
+            <div class="work-overlay">
+              <h4>${title}</h4>
+              <p>${description}</p>
+              <i class="fas fa-search-plus"></i>
+            </div>
+          </a>
+        `;
+        worksGrid.appendChild(item);
+      });
+    }
+
+    renderPagination(totalPages);
+  }
+
+  // وظيفة عرض التنقل بين الصفحات
+  function renderPagination(totalPages) {
+    paginationContainer.innerHTML = '';
+
+    if (totalPages > 1) {
+      const prevLink = document.createElement('a');
+      prevLink.href = "#works";
+      prevLink.textContent = '<';
+      prevLink.className = `page-link ${currentPage === 1 ? 'disabled' : ''}`;
+      prevLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage > 1) {
+          currentPage--;
+          loadWorks();
         }
+      });
+      paginationContainer.appendChild(prevLink);
+
+      for (let i = 1; i <= totalPages; i++) {
+        const pageLink = document.createElement('a');
+        pageLink.href = "#works";
+        pageLink.textContent = i;
+        pageLink.className = `page-link ${currentPage === i ? 'active' : ''}`;
+        pageLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          currentPage = i;
+          loadWorks();
+        });
+        paginationContainer.appendChild(pageLink);
+      }
+
+      const nextLink = document.createElement('a');
+      nextLink.href = "#works";
+      nextLink.textContent = '>';
+      nextLink.className = `page-link ${currentPage === totalPages ? 'disabled' : ''}`;
+      nextLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (currentPage < totalPages) {
+          currentPage++;
+          loadWorks();
+        }
+      });
+      paginationContainer.appendChild(nextLink);
+    }
+  }
+
+  // ربط أحداث الفلتر والبحث
+  tags.forEach(tag => {
+    tag.addEventListener('click', (e) => {
+      e.preventDefault();
+      tags.forEach(t => t.classList.remove('active'));
+      e.currentTarget.classList.add('active');
+      currentTag = e.currentTarget.getAttribute('data-tag');
+      currentPage = 1;
+      loadWorks();
     });
+  });
+
+  searchButton.addEventListener('click', (e) => {
+    currentSearch = searchInput.value.trim();
+    currentTag = 'all'; // Reset tag filter
+    tags.forEach(t => t.classList.remove('active'));
+    document.querySelector('[data-tag="all"]').classList.add('active');
+    currentPage = 1;
+    loadWorks();
+  });
+
+  searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      searchButton.click();
+    }
+  });
 
 
   // ===================================
