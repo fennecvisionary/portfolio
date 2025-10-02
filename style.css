@@ -971,7 +971,6 @@ ul[role="list"] {
     left: 0; /* تحريك القائمة للداخل في LTR */
   }
   
-
   /* 4. إظهار وتنسيق زر الإغلاق */
   .menu-close {
     display: block; 
