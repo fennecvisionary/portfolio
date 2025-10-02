@@ -409,11 +409,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // وظيفة عرض التنقل بين الصفحات (مُعدلة لتطبيق منطق النطاق)
+   // وظيفة عرض التنقل بين الصفحات (تم تعديل منطق النطاق وتثبيت حالة active)
 function renderPagination(totalPages) {
     paginationContainer.innerHTML = '';
     const maxVisiblePages = 5; // عدد الأزرار الأقصى الذي تريد عرضه
     const body = document.body;
+    
+    // التأكد من أن currentPage هو رقم قبل البدء
+    let safeCurrentPage = Number(currentPage);
 
     if (totalPages > 1) {
         // ===================================
@@ -426,26 +429,25 @@ function renderPagination(totalPages) {
             const halfRange = Math.floor(maxVisiblePages / 2);
             
             // حساب البداية الأولية (التوسيط حول الصفحة الحالية)
-            startPage = Math.max(1, currentPage - halfRange);
+            startPage = Math.max(1, safeCurrentPage - halfRange);
             endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
 
-            // تعديل النطاق إذا وصل إلى النهاية (لضمان ظهور maxVisiblePages)
+            // تعديل النطاق إذا وصل إلى النهاية
             if (endPage === totalPages) {
                 startPage = Math.max(1, totalPages - maxVisiblePages + 1);
             }
         }
 
         // ===================================
-        // 2. زر السهم السابق
+        // 2. زر السهم السابق (تجاهلته في الخطوة السابقة)
         // ===================================
         const prevLink = document.createElement('a');
         prevLink.href = "#works";
-        // يمكن استخدام أيقونات Font Awesome بدلاً من النص
         prevLink.innerHTML = body.classList.contains('rtl') ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-left"></i>'; 
-        prevLink.className = `page-link pagination-arrow ${currentPage === 1 ? 'disabled' : ''}`;
+        prevLink.className = `page-link pagination-arrow ${safeCurrentPage === 1 ? 'disabled' : ''}`;
         prevLink.addEventListener('click', (e) => {
             e.preventDefault();
-            if (currentPage > 1) {
+            if (safeCurrentPage > 1) {
                 currentPage--;
                 loadWorks();
             }
@@ -455,30 +457,33 @@ function renderPagination(totalPages) {
         // ===================================
         // 3. أزرار ترقيم الصفحات (المحددة بالنطاق)
         // ===================================
-        for (let i = startPage; i <= endPage; i++) { // 💡 التكرار من startPage إلى endPage فقط
+        for (let i = startPage; i <= endPage; i++) {
             const pageLink = document.createElement('a');
             pageLink.href = "#works";
             pageLink.textContent = i;
-            pageLink.className = `page-link ${currentPage === i ? 'active' : ''}`;
+            
+            // 💡 التعديل الحاسم: استخدام المقارنة الثلاثية لضمان تطابق النوع
+            const isActive = (i === safeCurrentPage) ? 'active' : '';
+            pageLink.className = `page-link ${isActive}`;
+            
             pageLink.addEventListener('click', (e) => {
                 e.preventDefault();
-                currentPage = i;
+                currentPage = i; // i هي قيمة رقمية سليمة
                 loadWorks();
             });
             paginationContainer.appendChild(pageLink);
         }
 
         // ===================================
-        // 4. زر السهم التالي
+        // 4. زر السهم التالي (تجاهلته في الخطوة السابقة)
         // ===================================
         const nextLink = document.createElement('a');
         nextLink.href = "#works";
-        // يمكن استخدام أيقونات Font Awesome بدلاً من النص
         nextLink.innerHTML = body.classList.contains('rtl') ? '<i class="fas fa-chevron-left"></i>' : '<i class="fas fa-chevron-right"></i>';
-        nextLink.className = `page-link pagination-arrow ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextLink.className = `page-link pagination-arrow ${safeCurrentPage === totalPages ? 'disabled' : ''}`;
         nextLink.addEventListener('click', (e) => {
             e.preventDefault();
-            if (currentPage < totalPages) {
+            if (safeCurrentPage < totalPages) {
                 currentPage++;
                 loadWorks();
             }
