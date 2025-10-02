@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchButton = document.getElementById("searchButton");
   const tags = document.querySelectorAll(".tag-link");
   const navLinks = document.querySelectorAll(".main-nav a");
+  const hoverImage = document.getElementById("hover-tool-image");
 
   // إضافة تعريفات العناصر الجديدة للقائمة المنسدلة (تعديل القائمة)
   const menuToggle = document.querySelector(".menu-toggle");
@@ -214,9 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
       social_links_title: "Or connect via:"
     }
   };
-
-
-  function applyLanguage(lang) {
+    function applyLanguage(lang) {
         // ... (وظيفة تطبيق اللغة) ...
         const t = translations[lang];
         document.querySelectorAll('[data-lang-key]').forEach(el => {
@@ -410,53 +409,83 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // وظيفة عرض التنقل بين الصفحات (تم الاحتفاظ بها)
-    function renderPagination(totalPages) {
-        paginationContainer.innerHTML = '';
-        if (totalPages > 1) {
-            const prevLink = document.createElement('a');
-            prevLink.href = "#works";
-            prevLink.textContent = '<';
-            // Adjust chevron direction for RTL
-            prevLink.className = `page-link ${body.classList.contains('rtl') ? 'rtl-chevron-prev' : 'ltr-chevron-prev'} ${currentPage === 1 ? 'disabled' : ''}`;
-            prevLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentPage > 1) {
-                    currentPage--;
-                    loadWorks();
-                }
-            });
-            paginationContainer.appendChild(prevLink);
+    // وظيفة عرض التنقل بين الصفحات (مُعدلة لتطبيق منطق النطاق)
+function renderPagination(totalPages) {
+    paginationContainer.innerHTML = '';
+    const maxVisiblePages = 5; // عدد الأزرار الأقصى الذي تريد عرضه
+    const body = document.body;
 
-            for (let i = 1; i <= totalPages; i++) {
-                const pageLink = document.createElement('a');
-                pageLink.href = "#works";
-                pageLink.textContent = i;
-                pageLink.className = `page-link ${currentPage === i ? 'active' : ''}`;
-                pageLink.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    currentPage = i;
-                    loadWorks();
-                });
-                paginationContainer.appendChild(pageLink);
+    if (totalPages > 1) {
+        // ===================================
+        // 1. منطق حساب النطاق (Range Logic)
+        // ===================================
+        let startPage = 1;
+        let endPage = totalPages;
+
+        if (totalPages > maxVisiblePages) {
+            const halfRange = Math.floor(maxVisiblePages / 2);
+            
+            // حساب البداية الأولية (التوسيط حول الصفحة الحالية)
+            startPage = Math.max(1, currentPage - halfRange);
+            endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+            // تعديل النطاق إذا وصل إلى النهاية (لضمان ظهور maxVisiblePages)
+            if (endPage === totalPages) {
+                startPage = Math.max(1, totalPages - maxVisiblePages + 1);
             }
-
-            const nextLink = document.createElement('a');
-            nextLink.href = "#works";
-            nextLink.textContent = '>';
-            // Adjust chevron direction for RTL
-            nextLink.className = `page-link ${body.classList.contains('rtl') ? 'rtl-chevron-next' : 'ltr-chevron-next'} ${currentPage === totalPages ? 'disabled' : ''}`;
-            nextLink.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    loadWorks();
-                }
-            });
-            paginationContainer.appendChild(nextLink);
         }
-    }
 
+        // ===================================
+        // 2. زر السهم السابق
+        // ===================================
+        const prevLink = document.createElement('a');
+        prevLink.href = "#works";
+        // يمكن استخدام أيقونات Font Awesome بدلاً من النص
+        prevLink.innerHTML = body.classList.contains('rtl') ? '<i class="fas fa-chevron-right"></i>' : '<i class="fas fa-chevron-left"></i>'; 
+        prevLink.className = `page-link pagination-arrow ${currentPage === 1 ? 'disabled' : ''}`;
+        prevLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPage > 1) {
+                currentPage--;
+                loadWorks();
+            }
+        });
+        paginationContainer.appendChild(prevLink);
+
+        // ===================================
+        // 3. أزرار ترقيم الصفحات (المحددة بالنطاق)
+        // ===================================
+        for (let i = startPage; i <= endPage; i++) { // 💡 التكرار من startPage إلى endPage فقط
+            const pageLink = document.createElement('a');
+            pageLink.href = "#works";
+            pageLink.textContent = i;
+            pageLink.className = `page-link ${currentPage === i ? 'active' : ''}`;
+            pageLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = i;
+                loadWorks();
+            });
+            paginationContainer.appendChild(pageLink);
+        }
+
+        // ===================================
+        // 4. زر السهم التالي
+        // ===================================
+        const nextLink = document.createElement('a');
+        nextLink.href = "#works";
+        // يمكن استخدام أيقونات Font Awesome بدلاً من النص
+        nextLink.innerHTML = body.classList.contains('rtl') ? '<i class="fas fa-chevron-left"></i>' : '<i class="fas fa-chevron-right"></i>';
+        nextLink.className = `page-link pagination-arrow ${currentPage === totalPages ? 'disabled' : ''}`;
+        nextLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            if (currentPage < totalPages) {
+                currentPage++;
+                loadWorks();
+            }
+        });
+        paginationContainer.appendChild(nextLink);
+    }
+}
     // ربط أحداث الفلتر والبحث (تم الاحتفاظ بها)
     tags.forEach(tag => {
         tag.addEventListener('click', (e) => {
@@ -530,3 +559,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 });
+
