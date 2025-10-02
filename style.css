@@ -1,1079 +1,1071 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic");
 @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
 *, *::before, *::after {
-  box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-  overflow-x: hidden;
+  overflow-x: hidden;
 }
 /* CSS Custom Properties for theming */
 :root {
-  --light-bg-color: #f0f2f5;
-  --light-card-bg: #ffffff;
-  --light-text-color: #333333;
-  --light-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --light-bg-color: #f0f2f5;
+  --light-card-bg: #ffffff;
+  --light-text-color: #333333;
+  --light-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 
-  --dark-bg-color: #1a1a1a;
-  --dark-card-bg: #2d2d2d;
-  --dark-text-color: #e0e0e0;
-  --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  --dark-bg-color: #1a1a1a;
+  --dark-card-bg: #2d2d2d;
+  --dark-text-color: #e0e0e0;
+  --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
-  --primary-color: #f75723; /* Orange */
-  --secondary-color: #2a6f2a; /* Green */
+  --primary-color: #f75723; /* Orange */
+  --secondary-color: #2a6f2a; /* Green */
 
-  --font-family-arabic: 'Tajawal', sans-serif;
-  --font-family-english: 'Poppins', sans-serif;
-  --header-height: 70px;
+  --font-family-arabic: 'Tajawal', sans-serif;
+  --font-family-english: 'Poppins', sans-serif;
+  --header-height: 70px;
 }
 
 /* Base Styles */
 body.rtl {
-  font-family: var(--font-family-arabic);
+  font-family: var(--font-family-arabic);
 }
 body.ltr {
-  font-family: var(--font-family-english);
+  font-family: var(--font-family-english);
 }
 
 /* Theme Switching */
 body.light-mode {
-  background-color: var(--light-bg-color);
-  color: var(--light-text-color);
+  background-color: var(--light-bg-color);
+  color: var(--light-text-color);
 }
 body.dark-mode {
-  background-color: var(--dark-bg-color);
-  color: var(--dark-text-color);
+  background-color: var(--dark-bg-color);
+  color: var(--dark-text-color);
 }
 
 /* Utility Classes */
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-  cursor: pointer;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  cursor: pointer;
 }
 .btn-primary {
-  background-color: var(--primary-color);
-  color: var(--light-card-bg);
-  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--light-card-bg);
+  border-color: var(--primary-color);
 }
 .btn-primary:hover {
-  background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 .btn-secondary {
-  background-color: transparent;
-  color: var(--primary-color);
-  border-color: var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
 }
 .btn-secondary:hover {
-  background-color: var(--primary-color);
-  color: var(--light-card-bg);
+  background-color: var(--primary-color);
+  color: var(--light-card-bg);
 }
 .btn-lg {
-  padding: 12px 24px;
-  font-size: 1.1rem;
+  padding: 12px 24px;
+  font-size: 1.1rem;
 }
 .btn-sm {
-  padding: 8px 16px;
-  font-size: 0.9rem;
+  padding: 8px 16px;
+  font-size: 0.9rem;
 }
 .text-center {
-  text-align: center;
+  text-align: center;
 }
 section {
-  padding: 80px 0;
+  padding: 80px 0;
 }
 .section-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  text-align: center;
-  color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  text-align: center;
+  color: var(--primary-color);
 }
 .section-subtitle {
-  font-size: 1.1rem;
-  margin-bottom: 50px;
-  text-align: center;
-  color: var(--light-text-color);
+  font-size: 1.1rem;
+  margin-bottom: 50px;
+  text-align: center;
+  color: var(--light-text-color);
 }
 .dark-mode .section-subtitle {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 ul[role="list"] {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 /* Skip Link */
 .skip-link {
-  position: absolute;
-  top: -40px;
-  left: 0;
-  background: var(--primary-color);
-  color: white;
-  padding: 8px;
-  z-index: 9999;
-  transition: top 0.3s;
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  z-index: 9999;
+  transition: top 0.3s;
 }
 .skip-link:focus {
-  top: 0;
-}
-
-/* ---------------------------------------------------- */
-/* 1. التعديل الحاسم لروابط التنقل الداخلي (تعويض ارتفاع الهيدر الثابت) */
-/* ---------------------------------------------------- */
-html {
-  /* تعويض ارتفاع الهيدر الثابت (70px + هامش) ليظهر المحتوى أسفله عند النقر على الروابط الداخلية */
-  scroll-padding-top: 90px; 
+  top: 0;
 }
 
 /* ======================================
-   Header and Navigation Styles
-   ======================================
+   Header and Navigation Styles
+   ======================================
 */
 .site-header {
-  position: fixed; /* 💡 الهيدر ثابت */
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  z-index: 1000; /* قيمة عالية ليبقى فوق كل شيء */
-  transition: background-color 0.3s, box-shadow 0.3s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
+  z-index: 100;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 .dark-mode .site-header {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 
 .logo img {
-  height: 60px;
-  transition: opacity 0.3s;
+  height: 60px;
+  transition: opacity 0.3s;
 }
 .logo-dark {
-  display: none;
+  display: none;
 }
 .dark-mode .logo-light {
-  display: none;
+  display: none;
 }
 .dark-mode .logo-dark {
-  display: inline-block;
+  display: inline-block;
 }
 
-/* إخفاء أزرار التحكم بالهاتف افتراضياً (لشاشات سطح المكتب) */
+/* 1. إخفاء أزرار التحكم بالهاتف افتراضياً (لشاشات سطح المكتب) */
 .menu-toggle, .menu-close {
-  display: none;
+  display: none;
 }
 
 .main-nav ul {
-  display: flex;
-  gap: 30px;
+  display: flex;
+  gap: 30px;
 }
 .main-nav a {
-  text-decoration: none;
-  color: var(--light-text-color);
-  font-weight: 500;
-  padding: 5px 0;
-  position: relative;
-  transition: color 0.3s;
+  text-decoration: none;
+  color: var(--light-text-color);
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s;
 }
 .dark-mode .main-nav a {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 .main-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  right: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary-color);
-  transition: width 0.3s;
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s;
 }
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--primary-color);
+  color: var(--primary-color);
 }
 .main-nav a:hover::after,
 .main-nav a.active::after {
-  width: 100%;
-  left: 0;
+  width: 100%;
+  left: 0;
 }
 
 .header-controls {
-  display: flex;
-  align-items: center;
-  gap: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
 .lang-selector select {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid var(--light-text-color);
-  background-color: var(--light-card-bg);
-  color: var(--light-text-color);
-  cursor: pointer;
-  transition: all 0.3s;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--light-text-color);
+  background-color: var(--light-card-bg);
+  color: var(--light-text-color);
+  cursor: pointer;
+  transition: all 0.3s;
 }
 .dark-mode .lang-selector select {
-  border-color: var(--dark-text-color);
-  background-color: var(--dark-card-bg);
-  color: var(--dark-text-color);
+  border-color: var(--dark-text-color);
+  background-color: var(--dark-card-bg);
+  color: var(--dark-text-color);
 }
 .mode-toggle {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--light-text-color);
-  transition: color 0.3s;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--light-text-color);
+  transition: color 0.3s;
 }
 .dark-mode .mode-toggle {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 .mode-toggle:hover {
-  color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 /* ======================================
-   Hero Section 
-   ======================================
+   Hero Section 
+   ======================================
 */
 .hero-section {
-  padding-top: calc(var(--header-height) + 100px); /* Adjust for fixed header */
-  padding-bottom: 100px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding-top: calc(var(--header-height) + 100px); /* Adjust for fixed header */
+  padding-bottom: 100px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .hero-section h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--primary-color);
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--primary-color);
 }
 .dark-mode .hero-section h1 {
-  color: var(--primary-color);
+  color: var(--primary-color);
 }
 .hero-section p {
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
 }
 .hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 /* ======================================
-   Services Section 
-   ======================================
+   Services Section 
+   ======================================
 */
 .services-section {
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
 }
 .dark-mode .services-section {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 .services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
 }
 .service-card {
-  text-align: center;
-  padding: 30px 20px;
-  border-radius: 10px;
-  background-color: var(--light-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s, background-color 0.3s;
-  border-bottom: 4px solid var(--primary-color);
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 10px;
+  background-color: var(--light-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, background-color 0.3s;
+  border-bottom: 4px solid var(--primary-color);
 }
 .dark-mode .service-card {
-  background-color: var(--dark-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 .service-icon {
-  font-size: 3rem;
-  color: var(--primary-color);
-  margin-bottom: 15px;
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
 }
 .service-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
 }
 .service-card p {
-  line-height: 1.6;
-  color: var(--light-text-color);
+  line-height: 1.6;
+  color: var(--light-text-color);
 }
 .dark-mode .service-card p {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 
 /* ======================================
-   Works Section (Portfolio)
-   ======================================
+   Works Section (Portfolio)
+   ======================================
 */
 .search-container {
-  display: flex;
-  max-width: 500px;
-  margin: 0 auto 30px;
-  border-radius: 50px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  padding: 10px 20px;
-  transition: all 0.3s;
+  display: flex;
+  max-width: 500px;
+  margin: 0 auto 30px;
+  border-radius: 50px;
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
+  padding: 10px 20px;
+  transition: all 0.3s;
 }
 .dark-mode .search-container {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 .search-container.fixed-search-bar {
-    position: absolute !important; 
-    top: 100px !important;
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%); 
-    max-width: 500px;
-    width: 90%; 
-    z-index: 100;
-    background-color: transparent; 
-    box-shadow: none; 
-    border-radius: 50px; 
-    padding: 10px 20px; 
+    position: absolute !important; 
+    top: 100px !important;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%); 
+    max-width: 500px;
+    width: 90%; 
+    z-index: 100;
+    background-color: transparent; 
+    box-shadow: none; 
+    border-radius: 50px; 
+    padding: 10px 20px; 
 }
 .search-container input {
-  flex-grow: 1;
-  border: none;
-  background: transparent;
-  padding: 5px 15px;
-  font-size: 1rem;
-  outline: none;
-  color: var(--light-text-color);
+  flex-grow: 1;
+  border: none;
+  background: transparent;
+  padding: 5px 15px;
+  font-size: 1rem;
+  outline: none;
+  color: var(--light-text-color);
 }
 .dark-mode .search-container input {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 .search-container button {
-  background: none;
-  border: none;
-  color: var(--primary-color);
-  font-size: 1.2rem;
-  cursor: pointer;
-  padding: 5px 10px;
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 5px 10px;
 }
 
 .tags-filter {
-  text-align: center;
-  margin-bottom: 50px;
+  text-align: center;
+  margin-bottom: 50px;
 }
 .tag-link {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--light-text-color);
-  padding: 8px 15px;
-  margin: 5px;
-  border-radius: 20px;
-  border: 1px solid var(--light-text-color);
-  transition: all 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  color: var(--light-text-color);
+  padding: 8px 15px;
+  margin: 5px;
+  border-radius: 20px;
+  border: 1px solid var(--light-text-color);
+  transition: all 0.3s;
 }
 .dark-mode .tag-link {
-  color: var(--dark-text-color);
-  border-color: var(--dark-text-color);
+  color: var(--dark-text-color);
+  border-color: var(--dark-text-color);
 }
 .tag-link:hover,
 .tag-link.active {
-  background-color: var(--primary-color);
-  color: var(--light-card-bg);
-  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--light-card-bg);
+  border-color: var(--primary-color);
 }
 
 .works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  min-height: 300px;
 }
 .work-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: var(--light-shadow);
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--light-shadow);
 }
 .work-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
 }
 .work-item a:hover img {
-  transform: scale(1.05);
+  transform: scale(1.05);
 }
 .work-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-  padding: 20px;
-  color: white;
-  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+  padding: 20px;
+  color: white;
+  text-align: center;
 }
 .work-item a:hover .work-overlay {
-  opacity: 1;
+  opacity: 1;
 }
 .work-overlay h4 {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  color: white;
 }
 .work-overlay p {
-  font-size: 1rem;
-  color: #ccc;
+  font-size: 1rem;
+  color: #ccc;
 }
 .work-overlay i {
-  font-size: 2rem;
-  margin-top: 15px;
-  color: var(--primary-color);
+  font-size: 2rem;
+  margin-top: 15px;
+  color: var(--primary-color);
 }
 
 .pagination-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 50px;
 }
 .page-link {
-  background-color: var(--light-card-bg);
-  color: var(--light-text-color);
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: all 0.3s;
+  background-color: var(--light-card-bg);
+  color: var(--light-text-color);
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: all 0.3s;
 }
 .dark-mode .page-link {
-  background-color: var(--dark-card-bg);
-  color: var(--dark-text-color);
-  border-color: #555;
+  background-color: var(--dark-card-bg);
+  color: var(--dark-text-color);
+  border-color: #555;
 }
 .page-link:hover,
 .page-link.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
 }
 .page-link.disabled {
-  opacity: 0.5;
-  pointer-events: none;
+  opacity: 0.5;
+  pointer-events: none;
 }
 /* قسم الأعمال (تعديل تنسيق عنصر العمل) */
 .works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  min-height: 300px;
 }
 .work-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: var(--light-shadow);
-  /* تحديد ارتفاع ثابت للعنصر لتجنب تغيير الحجم عند التنقل */
-  height: 350px; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--light-shadow);
+  /* تحديد ارتفاع ثابت للعنصر لتجنب تغيير الحجم عند التنقل */
+  height: 350px; 
 }
 .dark-mode .work-item {
-    box-shadow: var(--dark-shadow);
+    box-shadow: var(--dark-shadow);
 }
 
 /* تنسيق حاوية السلايدر (Swiper) */
 .swiper-container {
-  width: 100%;
-  height: 100%;
+  width: 100%;
+  height: 100%;
 }
 .swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: var(--light-card-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  font-size: 18px;
+  background: var(--light-card-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .dark-mode .swiper-slide {
-    background: var(--dark-card-bg);
+    background: var(--dark-card-bg);
 }
 
 .swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 /* تنسيق أزرار التنقل (للتنقل بين الصور داخل العمل الواحد) */
 .swiper-button-next,
 .swiper-button-prev {
-  color: var(--primary-color) !important;
-  opacity: 0;
-  transition: opacity 0.3s;
+  color: var(--primary-color) !important;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 /* إظهار الأزرار عند المرور فوق العمل */
 .work-item:hover .swiper-button-next,
 .work-item:hover .swiper-button-prev {
-    opacity: 1;
+    opacity: 1;
 }
 
 /* لتجنب تداخل الأزرار مع الوصف، سنقوم بتعديل موضعها قليلاً */
 .swiper-button-next::after,
 .swiper-button-prev::after {
-    font-size: 20px !important;
+    font-size: 20px !important;
 }
 
 /* تنسيق مؤشرات الترقيم أسفل كل عمل */
 .swiper-pagination {
-    bottom: 5px !important;
+    bottom: 5px !important;
 }
 .swiper-pagination-bullet-active {
-    background: var(--primary-color) !important;
+    background: var(--primary-color) !important;
 }
 
 /* إخفاء طبقة التداخل القديمة (لم نعد بحاجتها) */
 .work-overlay {
-  display: none !important;
+  display: none !important;
 }
 /* ======================================
-   How It Works Section 
-   ======================================
+   How It Works Section 
+   ======================================
 */
 .process-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 50px;
 }
 .step-card {
-  text-align: center;
-  padding: 30px 20px;
-  border-radius: 10px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  transition: transform 0.3s, background-color 0.3s;
-  position: relative;
+  text-align: center;
+  padding: 30px 20px;
+  border-radius: 10px;
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
+  transition: transform 0.3s, background-color 0.3s;
+  position: relative;
 }
 .dark-mode .step-card {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 .step-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 .step-number {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 15px;
-  box-shadow: 0 4px 8px rgba(247, 87, 35, 0.4);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 15px;
+  box-shadow: 0 4px 8px rgba(247, 87, 35, 0.4);
 }
 .step-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--primary-color);
 }
 .step-card p {
-  line-height: 1.6;
-  color: var(--light-text-color);
+  line-height: 1.6;
+  color: var(--light-text-color);
 }
 .dark-mode .step-card p {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 
 /* ======================================
-   Testimonials Section 
-   ======================================
+   Testimonials Section 
+   ======================================
 */
 .testimonials-section {
-  background-color: var(--light-bg-color);
+  background-color: var(--light-bg-color);
 }
 .dark-mode .testimonials-section {
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-bg-color);
 }
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
 }
 .testimonial-card {
-  padding: 30px;
-  border-radius: 10px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  transition: transform 0.3s;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
+  transition: transform 0.3s;
 }
 .dark-mode .testimonial-card {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 .testimonial-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px);
 }
 .rating {
-  color: gold;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
+  color: gold;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 .testimonial-card p {
-  font-style: italic;
-  margin-bottom: 15px;
-  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 15px;
+  line-height: 1.6;
 }
 .client-info {
-  border-top: 1px solid #eee;
-  padding-top: 15px;
-  text-align: right;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+  text-align: right;
 }
 .dark-mode .client-info {
-  border-color: #444;
+  border-color: #444;
 }
 .client-name {
-  font-weight: 700;
-  display: block;
-  color: var(--primary-color);
+  font-weight: 700;
+  display: block;
+  color: var(--primary-color);
 }
 .client-role {
-  font-size: 0.9rem;
-  color: var(--light-text-color);
+  font-size: 0.9rem;
+  color: var(--light-text-color);
 }
 .dark-mode .client-role {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 
 /* ======================================
-   About Me Section 
-   ======================================
+   About Me Section 
+   ======================================
 */
 .about-me-section {
-  padding-bottom: 50px;
+  padding-bottom: 50px;
 }
 .about-content {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  margin-bottom: 80px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 80px;
 }
 .about-text {
-  flex: 2;
+  flex: 2;
 }
 .about-text p {
-  margin-bottom: 20px;
-  line-height: 1.8;
-  font-size: 1.1rem;
+  margin-bottom: 20px;
+  line-height: 1.8;
+  font-size: 1.1rem;
 }
 .about-image {
-  flex: 1;
-  text-align: center;
+  flex: 1;
+  text-align: center;
 }
 .about-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: var(--light-shadow);
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: var(--light-shadow);
 }
 .dark-mode .about-image img {
-  box-shadow: var(--dark-shadow);
+  box-shadow: var(--dark-shadow);
 }
 
 .tools-section h3 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: var(--primary-color);
 }
 .tools-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 .tool-icon {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  cursor: pointer;
 }
 .tool-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s;
 }
 .dark-mode .tool-icon img {
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
 }
 .tool-icon:hover img {
-  transform: scale(1.1);
+  transform: scale(1.1);
 }
 .tool-tooltip {
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--primary-color);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  z-index: 10;
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-color);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  z-index: 10;
 }
 .tool-icon:hover .tool-tooltip {
-  opacity: 1;
+  opacity: 1;
 }
 
 /* ======================================
-   Contact Section 
-   ======================================
+   Contact Section 
+   ======================================
 */
 .contact-section {
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
 }
 .dark-mode .contact-section {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
 }
 .contact-form {
-  max-width: 600px;
-  margin: 0 auto 50px;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: var(--light-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 0 auto 50px;
+  padding: 30px;
+  border-radius: 10px;
+  background-color: var(--light-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .dark-mode .contact-form {
-  background-color: var(--dark-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .form-group {
-  margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .contact-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: var(--light-text-color);
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: var(--light-text-color);
 }
 .dark-mode .contact-form label {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  background-color: var(--light-card-bg);
-  color: var(--light-text-color);
-  transition: border-color 0.3s;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: var(--light-card-bg);
+  color: var(--light-text-color);
+  transition: border-color 0.3s;
 }
 .dark-mode .contact-form input,
 .dark-mode .contact-form select,
-.dark-form textarea {
-  background-color: #333;
-  border-color: #555;
-  color: var(--dark-text-color);
+.dark-mode .contact-form textarea {
+  background-color: #333;
+  border-color: #555;
+  color: var(--dark-text-color);
 }
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: var(--primary-color);
-  outline: none;
+  border-color: var(--primary-color);
+  outline: none;
 }
 .btn-submit {
-  width: 100%;
-  font-size: 1.1rem;
+  width: 100%;
+  font-size: 1.1rem;
 }
 
 .social-links {
-  text-align: center;
+  text-align: center;
 }
 .social-links h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
 }
 .social-links a {
-  display: inline-block;
-  font-size: 1.8rem;
-  color: var(--light-text-color);
-  margin: 0 10px;
-  transition: color 0.3s, transform 0.3s;
+  display: inline-block;
+  font-size: 1.8rem;
+  color: var(--light-text-color);
+  margin: 0 10px;
+  transition: color 0.3s, transform 0.3s;
 }
 .dark-mode .social-links a {
-  color: var(--dark-text-color);
+  color: var(--dark-text-color);
 }
 .social-links a:hover {
-  color: var(--primary-color);
-  transform: translateY(-3px);
+  color: var(--primary-color);
+  transform: translateY(-3px);
 }
 
 /* ======================================
-   Footer Styles 
-   ======================================
+   Footer Styles 
+   ======================================
 */
 .site-footer {
-  text-align: center;
-  padding: 20px 0;
-  background-color: var(--light-bg-color);
-  border-top: 1px solid #eee;
-  position: relative;
-  font-size: 0.9rem;
+  text-align: center;
+  padding: 20px 0;
+  background-color: var(--light-bg-color);
+  border-top: 1px solid #eee;
+  position: relative;
+  font-size: 0.9rem;
 }
 .dark-mode .site-footer {
-  background-color: var(--dark-bg-color);
-  border-color: #333;
+  background-color: var(--dark-bg-color);
+  border-color: #333;
 }
 .back-to-top {
-  position: absolute;
-  top: -20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
+  position: absolute;
+  top: -20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
 }
 .back-to-top:hover {
-  background-color: #e64a19;
+  background-color: #e64a19;
 }
 
 /* ======================================
-   RESPONSIVENESS (Mobile First Overrides)
-   التجاوبية مع الأجهزة
-   ======================================
+   RESPONSIVENESS (Mobile First Overrides)
+   ======================================
 */
 @media (max-width: 1024px) {
-  /* تجاوبية عامة للشاشات المتوسطة والكبيرة قليلاً */
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .hero-section h1 {
+    font-size: 2.5rem;
   }
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
 }
 
 /* التجاوبية مع شاشات الهاتف (أقل من 768 بكسل) */
 @media (max-width: 768px) {
-  /* -------------------
-     تنسيق شريط الرأس (Header)
-     ------------------- */
-  .site-header {
-    padding: 0 15px;
-    height: 60px; /* تصغير ارتفاع الهيدر قليلاً */
-    justify-content: space-between;
-  }
-
-  .logo img {
-    height: 45px; /* تصغير الشعار */
+  /* 2. إظهار زر الفتح (الهامبرغر) */
+  .menu-toggle {
+    display: block; 
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* تم تكبير الحجم قليلاً */
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 110; 
+    order: 0; /* وضعه في البداية */
   }
 
-  .header-controls {
-    display: none; /* إخفاء عناصر التحكم الأخرى لتوفير المساحة */
-  }
-  
-  /* إظهار زر الفتح (الهامبرغر) */
-  .menu-toggle {
-    display: block; 
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--primary-color);
-    z-index: 110; 
-  }
+  .site-header {
+    padding: 0 15px; /* تقليل الحشو */
+    justify-content: space-between;
+  }
 
+  .logo {
+    order: 1; /* وضعه في المنتصف */
+  }
 
-  /* -------------------
-     تنسيق القائمة الجانبية (Mobile Nav)
-     ------------------- */
-  .main-nav {
-    position: fixed;
-    top: 60px; /* تبدأ أسفل الهيدر (60px) */
-    width: 80%; /* عرض القائمة */
-    max-width: 300px;
-    height: calc(100vh - 60px); /* تأخذ باقي ارتفاع الشاشة */
-    overflow-y: auto; /* يسمح بالتمرير داخل القائمة */
-    background-color: var(--light-card-bg); 
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: 105;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-  }
+  .header-controls {
+    order: 2; /* وضعه في النهاية */
+  }
 
-  .dark-mode .main-nav {
-      background-color: var(--dark-card-bg);
-  }
-  
-  /* إخفاء القائمة لـ RTL (العربية) وتحريكها لليمين عند الفتح */
-  body.rtl .main-nav {
-      right: 0;
-      transform: translateX(100%); /* مخفية */
-      align-items: flex-end; /* محاذاة عناصر القائمة لليمين */
-  }
-  body.rtl .main-nav.is-open {
-    transform: translateX(0); /* تظهر */
-  }
-  
-  /* إخفاء القائمة لـ LTR (الإنجليزية) وتحريكها لليسار عند الفتح */
-  body.ltr .main-nav {
-      left: 0;
-      right: auto;
-      transform: translateX(-100%); /* مخفية */
-      align-items: flex-start;
-  }
-  body.ltr .main-nav.is-open {
-    transform: translateX(0); /* تظهر */
-  }
-  
-  /* تنسيق قائمة الروابط */
-  .main-nav ul {
-    flex-direction: column;
-    width: 100%;
-  }
+  /* 3. تنسيق القائمة المنسدلة (main-nav) كقائمة جانبية */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    width: 80%; /* عرض القائمة */
+    max-width: 300px;
+    height: 100%;
+    background-color: var(--light-card-bg); 
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* تحريك سلس */
+    z-index: 105;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    align-items: flex-start; /* محاذاة لليسار افتراضياً */
+  }
 
-  .main-nav li {
-    margin: 0;
-    width: 100%;
-    text-align: inherit;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .main-nav a {
-    display: block;
-    padding: 15px 5px;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  .main-nav a::after {
-    display: none; /* إخفاء خط الـ hover */
-  }
-
-  /* -------------------
-     تجاوبية المحتوى والشبكات
-     ------------------- */
-  .hero-section {
-    padding-top: calc(60px + 50px); /* تعديل المسافة العلوية ليتناسب مع الهيدر الجديد */
-    padding-bottom: 50px;
-  }
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-  .hero-section p {
-    font-size: 1rem;
-  }
-  .hero-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .btn-lg {
-    width: 100%;
-    text-align: center;
-  }
-  /* جعل شبكات الخدمات والأعمال عموداً واحداً */
-  .services-grid,
-  .works-grid,
-  .process-steps,
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .dark-mode .main-nav {
+      background-color: var(--dark-card-bg);
   }
   
-  .about-content {
-    flex-direction: column-reverse; /* ترتيب الصورة فوق النص في الموبايل */
-  }
-  .about-image {
-    margin-bottom: 30px;
-  }
+  /* إخفاء القائمة خارج الشاشة لـ RTL (من اليمين لليسار) */
+  body.rtl .main-nav {
+      right: -100%;
+      align-items: flex-end; /* لكي تظهر العناصر محاذية للزاوية التي تفتح منها (اليمين) */
+  }
+  /* إخفاء القائمة خارج الشاشة لـ LTR (من اليسار لليمين) */
+  body.ltr .main-nav {
+      left: -100%;
+      right: auto;
+  }
+
+
+  /* إظهار القائمة عندما تكون is-open */
+  body.rtl .main-nav.is-open {
+    right: 0; /* تحريك القائمة للداخل في RTL */
+  }
+  body.ltr .main-nav.is-open {
+    left: 0; /* تحريك القائمة للداخل في LTR */
+  }
+  
+
+  /* 4. إظهار وتنسيق زر الإغلاق */
+  .menu-close {
+    display: block; 
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--light-text-color);
+    margin-bottom: 2rem;
+  }
+  .dark-mode .menu-close {
+    color: var(--dark-text-color);
+  }
+  /* محاذاة زر الإغلاق ليتناسب مع اتجاه القائمة */
+  body.rtl .menu-close {
+      align-self: flex-start; /* وضعه في الزاوية العلوية اليسرى داخل القائمة RTL */
+  }
+  body.ltr .menu-close {
+      align-self: flex-end; /* وضعه في الزاوية العلوية اليمنى داخل القائمة LTR */
+  }
+
+
+  /* تنسيق الروابط داخل القائمة */
+  .main-nav ul {
+    flex-direction: column; /* ترتيب الروابط عمودياً */
+    width: 100%;
+  }
+
+  .main-nav li {
+    margin: 0;
+    width: 100%;
+    text-align: inherit;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .dark-mode .main-nav li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 15px 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .main-nav a::after {
+    display: none; /* إخفاء خط الـ hover في الهاتف */
+  }
+
+
+  /* تعديلات على أقسام المحتوى */
+  .hero-section {
+    padding-top: calc(var(--header-height) + 50px);
+    padding-bottom: 50px;
+  }
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-lg {
+    width: 100%;
+    text-align: center;
+  }
+  .about-content {
+    flex-direction: column-reverse;
+  }
+  .about-image {
+    margin-bottom: 30px;
+  }
 }
 
 /* لضمان إخفاء أزرار الهاتف في وضع سطح المكتب (الشاشات الكبيرة) */
 @media (min-width: 769px) {
-  /* إعادة إظهار عناصر التحكم المخفية في الموبايل */
-  .header-controls {
-    display: flex !important;
+  .menu-toggle, .menu-close {
+    display: none !important;
   }
-  .menu-toggle, .menu-close {
-    display: none !important;
-  }
 
-  /* نضمن أن القائمة تظهر بشكلها العادي في الشاشات الكبيرة */
-  .main-nav {
-      display: block !important;
-      position: static;
-      box-shadow: none;
-      transition: none;
-      width: auto;
-      height: auto;
-      padding: 0;
-      transform: none !important;
-  }
-  
-  .main-nav ul {
-      flex-direction: row;
-  }
+  /* نضمن أن القائمة تظهر بشكلها العادي في الشاشات الكبيرة */
+  .main-nav {
+      display: block !important;
+      position: static;
+      box-shadow: none;
+      transition: none;
+      width: auto;
+      height: auto;
+      padding: 0;
+  }
+  
+  .main-nav ul {
+      flex-direction: row;
+  }
 }
