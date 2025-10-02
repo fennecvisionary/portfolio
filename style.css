@@ -1074,5 +1074,6 @@ html {
   }
   
   .main-nav ul {
-      flex-direction: row
-    
+      flex-direction: row;
+  }
+}
