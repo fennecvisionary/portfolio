@@ -495,7 +495,80 @@ ul[role="list"] {
   opacity: 0.5;
   pointer-events: none;
 }
+/* قسم الأعمال (تعديل تنسيق عنصر العمل) */
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  min-height: 300px;
+}
+.work-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: var(--light-shadow);
+  /* تحديد ارتفاع ثابت للعنصر لتجنب تغيير الحجم عند التنقل */
+  height: 350px; 
+}
+.dark-mode .work-item {
+    box-shadow: var(--dark-shadow);
+}
 
+/* تنسيق حاوية السلايدر (Swiper) */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: var(--light-card-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dark-mode .swiper-slide {
+    background: var(--dark-card-bg);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* تنسيق أزرار التنقل (للتنقل بين الصور داخل العمل الواحد) */
+.swiper-button-next,
+.swiper-button-prev {
+  color: var(--primary-color) !important;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+/* إظهار الأزرار عند المرور فوق العمل */
+.work-item:hover .swiper-button-next,
+.work-item:hover .swiper-button-prev {
+    opacity: 1;
+}
+
+/* لتجنب تداخل الأزرار مع الوصف، سنقوم بتعديل موضعها قليلاً */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+    font-size: 20px !important;
+}
+
+/* تنسيق مؤشرات الترقيم أسفل كل عمل */
+.swiper-pagination {
+    bottom: 5px !important;
+}
+.swiper-pagination-bullet-active {
+    background: var(--primary-color) !important;
+}
+
+/* إخفاء طبقة التداخل القديمة (لم نعد بحاجتها) */
+.work-overlay {
+  display: none !important;
+}
 /* ======================================
    How It Works Section 
    ======================================
