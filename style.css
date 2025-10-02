@@ -503,36 +503,69 @@ ul[role="list"] {
   color: var(--primary-color);
 }
 
+/*
+======================================
+تنسيقات حاوية ترقيم الصفحات (Pagination)
+======================================
+*/
 .pagination-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin-top: 50px;
+    display: flex;
+    justify-content: center; /* توسيط أرقام الصفحات */
+    align-items: center;
+    gap: 5px; /* تقليل المسافة بين الأزرار قليلاً لزيادة المساحة على الموبايل */
+    margin-top: 50px;
+    padding: 0 10px; /* إضافة تباعد داخلي لمنع التصاق الأزرار بحافة الشاشة */
+    
+    /* 💡 مهم للتجاوب: السماح بالتمرير الأفقي داخل الحاوية نفسها */
+    overflow-x: auto; 
+    flex-wrap: nowrap; /* إبقاء جميع العناصر في سطر واحد */
+    
+    /* إخفاء شريط التمرير الأفقي الذي قد يظهر في المتصفحات */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE و Edge */
 }
+/* إخفاء شريط التمرير في WebKit (Chrome, Safari) */
+.pagination-container::-webkit-scrollbar {
+    display: none;
+}
+
+/*
+======================================
+تنسيق زر الصفحة (Page Link)
+======================================
+*/
 .page-link {
-  background-color: var(--light-card-bg);
-  color: var(--light-text-color);
-  border: 1px solid #ccc;
-  padding: 8px 12px;
-  border-radius: 5px;
-  text-decoration: none;
-  transition: all 0.3s;
+    /* 💡 مهم للتجاوب: منع انكماش العنصر أقل من عرضه المحدد */
+    flex-shrink: 0; 
+    
+    background-color: var(--light-card-bg);
+    color: var(--light-text-color);
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: all 0.3s;
+    
+    /* لتحديد حد أدنى لعرض الزر */
+    min-width: 40px; 
+    text-align: center;
 }
-.dark-mode .page-link {
-  background-color: var(--dark-card-bg);
-  color: var(--dark-text-color);
-  border-color: #555;
-}
-.page-link:hover,
-.page-link.active {
-  background-color: var(--primary-color);
-  color: white;
-  border-color: var(--primary-color);
-}
-.page-link.disabled {
-  opacity: 0.5;
-  pointer-events: none;
+
+/* ... بقية تنسيقات الوضع الداكن والـ hover تبقى كما هي ... */
+
+/*
+======================================
+التعديلات الخاصة بالشاشات الصغيرة
+(يجب وضعها داخل استعلام الميديا @media)
+======================================
+*/
+@media (max-width: 768px) {
+    .page-link {
+        /* تصغير حجم زر الصفحة على الموبايل */
+        padding: 6px 10px; 
+        font-size: 0.9rem; /* تصغير حجم الخط */
+        min-width: 35px;
+    }
 }
 /* قسم الأعمال (تعديل تنسيق عنصر العمل) */
 .works-grid {
