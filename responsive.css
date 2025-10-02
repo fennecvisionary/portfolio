@@ -1,178 +1,1 @@
-/* 1. Global Box Sizing */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
 
-/* 2. Fluid Images */
-img, video, picture, svg {
-  max-width: 100%;
-  height: auto;
-}
-
-/* 3. Responsive Text (Optional) */
-body {
-  font-size: 16px; /* Base font size */
-}
-
-/* 4. Common Breakpoints */
-/* Small devices (phones, 600px and below) */
-@media only screen and (max-width: 600px) {
-  /* Add small screen styles here */
-}
-
-/* Medium devices (tablets, 601px to 768px) */
-@media only screen and (min-width: 601px) and (max-width: 768px) {
-  /* Add medium screen styles here */
-}
-
-/* Large devices (laptops/desktops, 769px to 1200px) */
-@media only screen and (min-width: 769px) and (max-width: 1200px) {
-  /* Add large screen styles here */
-}
-
-/* Extra large devices (large desktops, 1201px and up) */
-@media only screen and (min-width: 1201px) {
-  /* Add extra large screen styles here */
-}
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .site-header {
-        padding: 1rem;
-    }
-
-    .logo img {
-        height: 50px;
-    }
-
-    /* إخفاء القائمة الرئيسية على الجوال بشكل افتراضي */
-    .main-nav {
-        display: none;
-        width: 100%;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        /* استخدام الألوان الأساسية */
-        background-color: var(--light-card-bg);
-        box-shadow: var(--light-shadow);
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem 0;
-    }
-
-    /* أنماط الوضع الداكن للقائمة المفتوحة */
-    .dark-mode .main-nav {
-        background-color: var(--dark-card-bg);
-        box-shadow: var(--dark-shadow);
-    }
-    
-    .dark-mode .main-nav a {
-        color: var(--dark-text-color);
-    }
-
-    /* إظهار القائمة عندما تكون مفتوحة */
-    .main-nav.is-open {
-        display: flex;
-    }
-}
-/* إخفاء زر القائمة افتراضيًا على جميع الشاشات */
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--primary-color);
-}
-
-/* الأنماط الخاصة بالجوال: إظهار الزر وإخفاء القائمة */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* يظهر الزر على شاشات الجوال */
-    }
-
-    .main-nav {
-        display: none; /* يخفي القائمة الرئيسية على شاشات الجوال */
-    }
-}
-/*
-    ========================================================
-    قواعد التجاوبية - الشاشات المتوسطة والصغيرة (حتى 768px)
-    ========================================================
-*/
-@media (max-width: 768px) {
-    
-    /*
-        --------------------------------------
-        1. الإعدادات العامة للمحتوى
-        --------------------------------------
-    */
-
-    /* ضبط المسافة العلوية لـ main (ضروري) */
-    /* لترك مسافة كافية للهيدر وشريط البحث بعد التكيف */
-    main {
-        padding-top: 180px !important; 
-    }
-
-    /* ضمان أن حاوية التفاصيل تستخدم كامل عرض الشاشة */
-    .work-details {
-        margin: 20px 0;
-        padding: 0 10px;
-    }
-    
-    /* تصغير حجم العنوان والنص */
-    .work-details h1 {
-        font-size: 1.8rem;
-    }
-    .work-details p {
-        font-size: 1rem;
-    }
-    
-    /*
-        --------------------------------------
-        2. العناصر الثابتة (Fixed Elements)
-        --------------------------------------
-    */
-    
-    /* شريط البحث */
-    .search-container.fixed-search-bar {
-        width: 95%; /* استخدام عرض أكبر لملء الشاشة */
-        padding: 8px 15px; /* تقليل الحشو */
-        /* الحفاظ على top: 70px لتثبيته أسفل الهيدر مباشرة */
-        top: 70px !important; 
-    }
-    
-    /* زر الإغلاق "X" */
-    .close-work {
-        /* تصغير حجم الزر وتقريبه من الحافة */
-        top: 80px; 
-        right: 10px; 
-    }
-    .close-work a {
-        width: 35px; 
-        height: 35px;
-        font-size: 1.2rem;
-    }
-
-    /* أسهم التنقل الخارجية (Prev/Next) */
-    /* 💡 الأفضل إخفاؤها على الهواتف للاعتماد على التمرير الداخلي في المعرض */
-    .work-nav-arrows {
-        display: none; 
-    }
-    
-    /*
-        --------------------------------------
-        3. تحسين معرض الصور (Slider/Gallery)
-        --------------------------------------
-    */
-    .work-gallery {
-        margin-top: 15px;
-    }
-    .work-gallery img {
-        /* ضمان أن الصور لا تفيض عن عرض الشاشة */
-        width: 100%;
-        height: auto;
-    }
-}
