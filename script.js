@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // إضافة تعريفات العناصر الجديدة للقائمة المنسدلة (تعديل القائمة)
   const menuToggle = document.querySelector(".menu-toggle");
   const mainNav = document.querySelector(".main-nav");
-  const menuClose = document.querySelector(".menu-close"); // الزر الجديد للإغلاق
-
+  
  // وظيفة إغلاق القائمة (مُعدلة لإعادة زر الفتح إلى حالة الهامبرغر عند الإغلاق)
 function closeMenu() {
     mainNav.classList.remove("is-open");
@@ -42,10 +41,7 @@ function toggleMenu() {
 if (menuToggle) {
     menuToggle.addEventListener("click", toggleMenu);
 }
-if (menuClose) {
-    menuClose.addEventListener("click", closeMenu); 
-}
-
+  
 // إغلاق القائمة عند النقر على أي رابط (لتسهيل التنقل في الهاتف)
 navLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
@@ -575,4 +571,3 @@ function renderPagination(totalPages) {
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 });
-
