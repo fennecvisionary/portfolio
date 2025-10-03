@@ -1126,3 +1126,120 @@ ul[role="list"] {
       flex-direction: row;
   }
 }
+/* ==============================================================
+   1. تخطيط الموبايل (Grid & Flexbox) - يعمل حتى 768 بكسل
+   ==============================================================
+*/
+@media (max-width: 768px) {
+    
+    /* 🔴 (1) إخفاء زر الهمبرغر المكرر الذي قد يظهر خارج حاوية الضوابط */
+    .site-header > .menu-toggle {
+        display: none !important;
+    }
+
+    /* 🔴 (2) إعداد الـ site-header بـ Grid و position: relative للقائمة المنسدلة */
+    .site-header {
+        position: relative; /* ضروري للقائمة المنسدلة لتظهر من أسفل الهيدر */
+        display: grid; 
+        grid-template-columns: 1fr; 
+        grid-template-rows: auto auto; 
+        height: auto; 
+        padding: 10px 20px; 
+    }
+    
+    /* B. الشعار في السطر الأول في الوسط */
+    .logo {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+        justify-self: center; 
+        padding-bottom: 5px; 
+        margin-right: 0; 
+    }
+    
+    /* C. حاوية الضوابط في السطر الثاني (Flexbox للفصل بين اليمين واليسار) */
+    .header-controls {
+        grid-row: 2 / 3;
+        grid-column: 1 / 2;
+        
+        display: flex; 
+        align-items: center;
+        justify-content: space-between; /* يفصل بين المجموعة اليمنى وزر التواصل */
+        width: 100%;
+        margin: 0;
+    }
+    
+    /* D. إعداد تجميعة اليمين (اللغة، الوضع، الهامبرغر) */
+    .right-controls-group {
+        display: flex;
+        align-items: center;
+        gap: 10px; 
+    }
+
+    /* E. إظهار زر الهامبرغر في موضعه الصحيح داخل المجموعة */
+    .right-controls-group .menu-toggle {
+        display: block !important; 
+    }
+    
+    /* 🔴 (3) إعداد القائمة الرئيسية (.main-nav) لتظهر تحت السطر الثاني */
+    .main-nav {
+        display: none; 
+        position: absolute; /* تحديد الموضع المطلق */
+        top: 100%; /* يبدأ من أسفل رأس الصفحة الحالي */
+        right: 0;
+        left: 0;
+        z-index: 100; 
+        width: 100%;
+        
+        /* تأثير الانتقال */
+        transition: transform 0.3s ease-out;
+        transform: translateY(-100%); 
+        
+        /* خصائص المظهر (استخدم لونك الخاص) */
+        background-color: var(--light-card-bg, white);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-nav.is-open {
+        display: block; 
+        transform: translateY(0); 
+    }
+}
+/* ==============================================================
+   2. إعادة ضبط التخطيط للديسكتوب (لشاشات 769 بكسل وأكبر)
+   ==============================================================
+*/
+@media (min-width: 769px) {
+    
+    /* A. إلغاء إعدادات Grid والعودة إلى Flexbox */
+    .site-header {
+        display: flex; /* العودة لتخطيط الديسكتوب المعتاد */
+        position: unset; 
+        grid-template-columns: unset; 
+        grid-template-rows: unset;
+    }
+    
+    /* B. إخفاء زر الهمبرغر على الديسكتوب وإظهار القائمة */
+    .menu-toggle {
+        display: none !important;
+    }
+    .main-nav {
+        display: flex !important; /* إظهار القائمة الرئيسية بشكل أفقي */
+        position: unset; /* إلغاء التموضع المطلق */
+        transform: unset; /* إلغاء تحويل الموبايل */
+    }
+    
+    /* C. تأكيد أن المجموعة اليمنى وعناصر التحكم تستخدم Flexbox لتخطيط السطر الواحد */
+    .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px; 
+    }
+    .right-controls-group {
+        display: flex;
+        align-items: center;
+        gap: 20px; 
+    }
+    .logo {
+        justify-self: unset; /* إلغاء توسيط الموبايل */
+    }
+}
