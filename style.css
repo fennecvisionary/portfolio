@@ -1126,18 +1126,23 @@ ul[role="list"] {
       flex-direction: row;
   }
 }
-/* ======================================
-   تنسيق زر التواصل كأيقونة في جميع الأجهزة
-   ======================================
-*/
+/* ==========================================================
+   الأنماط العامة: تحويل زر التواصل إلى أيقونة (في كل الأجهزة)
+   ========================================================== */
+
+/* إلغاء الحجم الكبير لـ btn-sm والاعتماد على حجم الأيقونة */
+.btn-sm {
+    padding: 10px 12px; /* تم تعديله ليتناسب مع الأيقونة */
+    font-size: 0.9rem;
+}
+
 .btn-primary {
-    /* إلغاء خاصية inline-block وتطبيق Flex لتوسيط الأيقونة */
+    /* تطبيق Flexbox لتوسيط الأيقونة */
     display: flex !important;
     align-items: center;
     justify-content: center;
     /* ضبط الحجم ليتناسب مع الأيقونة */
-    padding: 10px 12px; 
-    min-width: 45px; /* حجم أدنى مناسب لـ Click area */
+    min-width: 45px;
     width: auto;
 }
 
@@ -1149,13 +1154,40 @@ ul[role="list"] {
 /* تنسيق الأيقونة داخل الزر */
 .btn-primary i {
     font-size: 1.2rem;
-    margin: 0; /* إزالة أي تباعد قد يفصله عن النص المخفي */
+    margin: 0; 
 }
-@media (max-width: 768px) {
-    /* ... (بقية أنماط الـ Grid و Flexbox للهيدر) ... */
-
-    .header-controls .btn-primary {
-        /* تصغير حجم الزر أكثر على الهاتف ليتناسب مع التصميم الصغير */
-        padding: 8px 10px; 
-        min-width: 40px; 
+@media (min-width: 769px) {
+    
+    /* إلغاء إعدادات Grid والعودة إلى Flexbox */
+    .site-header {
+        display: flex; 
+        position: unset; 
+        grid-template-columns: unset; 
+        grid-template-rows: unset;
     }
+    
+    /* إخفاء زر الهمبرغر نهائياً على الديسكتوب وإظهار القائمة */
+    .menu-toggle {
+        display: none !important;
+    }
+    .main-nav {
+        display: flex !important; 
+        position: unset; 
+        transform: unset;
+    }
+    
+    /* التأكد من أن عناصر التحكم في سطر واحد */
+    .header-controls {
+        display: flex;
+        align-items: center;
+        gap: 20px; 
+    }
+    .right-controls-group {
+        display: flex;
+        align-items: center;
+        gap: 20px; 
+    }
+    .logo {
+        justify-self: unset; 
+    }
+}
