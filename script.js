@@ -571,3 +571,4 @@ function renderPagination(totalPages) {
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
 });
+
