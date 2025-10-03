@@ -1227,3 +1227,61 @@ ul[role="list"] {
     }
     /* ... (بقية تنسيقات القائمة الجانبية كما هي في ملفك) ... */
 }
+/* ======================================
+   التجاوبية (Mobile/Tablet Responsiveness)
+   ======================================
+*/
+@media (max-width: 992px) {
+
+    /* 1. إخفاء النص (يعمل الآن بعد تعديل index.html) */
+    .btn-text-mobile-hide {
+        display: none !important; 
+    }
+    
+    /* 2. حل مشكلة عدم التقلص: إزالة التباعد الأفقي تمامًا من الـ Header نفسه */
+    .site-header {
+      padding: 0 0; 
+    }
+
+    /* 3. تصغير حجم الشعار وعناصر التحكم */
+    .logo img {
+        height: 40px; 
+    }
+    
+    /* 4. إعادة التباعد على عناصر الأطفال فقط لضمان 100% عرض */
+    .logo {
+        padding-inline-start: 10px; /* تباعد الشعار من الحافة */
+    }
+    
+    .header-controls {
+        /* تباعد الأزرار من الحافة */
+        padding-inline-end: 10px;
+        gap: 5px; /* تباعد ضيق بين الأزرار */
+        flex-shrink: 0;
+    }
+
+    /* 5. تنسيق الزر ليصبح أيقونة مربعة صغيرة (38x38 بكسل) */
+    .header-controls .btn-primary.btn-sm.contact-btn {
+        padding: 0; 
+        width: 38px; 
+        height: 38px; 
+        min-width: 0; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem; 
+        border-radius: 8px; 
+    }
+
+    /* 6. إظهار زر فتح القائمة (Menu Toggle) وإخفاء شريط التنقل */
+    .menu-toggle {
+        display: block; 
+    }
+    .main-nav {
+        /* إخفاء القائمة في وضع الهاتف لترك المساحة */
+        display: none; 
+        /* يجب استبدال هذه بـ flex-direction: column; ووضعها كقائمة جانبية off-canvas */
+    }
+    
+    /* ... (بقية تنسيقات القائمة الجانبية كما هي في ملفك) ... */
+}
