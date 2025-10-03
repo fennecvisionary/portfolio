@@ -1126,3 +1126,46 @@ ul[role="list"] {
       flex-direction: row;
   }
 }
+@media (max-width: 992px) {
+    
+    /* 1. إخفاء النص داخل زر التواصل */
+    .btn-text-mobile-hide {
+        display: none !important; 
+    }
+    
+    /* 2. ضمان أن الـ header لا يملك تباعداً يسبب التمرير الأفقي */
+    .site-header {
+      padding: 0; 
+    }
+    
+    /* 3. إضافة التباعد الفعلي على أطراف عناصر التحكم الداخلية */
+    .logo {
+        padding-inline-start: 15px; 
+    }
+    
+    .header-controls {
+        padding-inline-end: 15px;
+        gap: 5px; /* تباعد ضيق جداً بين الأزرار */
+        flex-shrink: 0;
+    }
+
+    /* 4. تنسيق الزر ليصبح أيقونة صغيرة */
+    .header-controls .btn-primary.btn-sm.contact-btn {
+        padding: 0; /* إزالة التباعد الداخلي الأفقي */
+        width: 40px; /* تثبيت العرض */
+        height: 40px; /* تثبيت الارتفاع */
+        min-width: 0; 
+        display: flex; /* لمركزة الأيقونة */
+        justify-content: center;
+        align-items: center;
+        font-size: 1.1rem; /* حجم الأيقونة */
+        border-radius: 8px; 
+    }
+
+    /* 5. إزالة أي هوامش حول الأيقونة */
+    .contact-btn i {
+        margin: 0; 
+    }
+    
+    /* ... (بقية التنسيقات تبقى كما هي) ... */
+}
