@@ -170,7 +170,7 @@ ul[role="list"] {
 }
 
 /* 1. إخفاء أزرار التحكم بالهاتف افتراضياً (لشاشات سطح المكتب) */
-.menu-toggle, .menu-close {
+.menu-toggle {
   display: none;
 }
 
@@ -1106,10 +1106,9 @@ ul[role="list"] {
 
 /* لضمان إخفاء أزرار الهاتف في وضع سطح المكتب (الشاشات الكبيرة) */
 @media (min-width: 769px) {
-  .menu-toggle, .menu-close {
+  .menu-toggle {
     display: none !important;
   }
-
   /* نضمن أن القائمة تظهر بشكلها العادي في الشاشات الكبيرة */
   .main-nav {
       display: block !important;
@@ -1124,4 +1123,3 @@ ul[role="list"] {
   .main-nav ul {
       flex-direction: row;
   }
-}
