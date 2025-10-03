@@ -973,153 +973,168 @@ ul[role="list"] {
 }
 
 /* ======================================
-   RESPONSIVENESS (Mobile First Overrides)
-   ======================================
+   RESPONSIVENESS (Mobile First Overrides)
+   ======================================
 */
 @media (max-width: 1024px) {
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
+  .hero-section h1 {
+    font-size: 2.5rem;
+  }
 }
 
 /* التجاوبية مع شاشات الهاتف (أقل من 768 بكسل) */
 @media (max-width: 768px) {
-  /* 2. إظهار زر الفتح (الهامبرغر) */
-  .menu-toggle {
-    display: block; 
-    background: none;
-    border: none;
-    font-size: 1.8rem; /* تم تكبير الحجم قليلاً */
-    cursor: pointer;
-    color: var(--primary-color);
-    z-index: 110; 
-    order: 0; /* وضعه في البداية */
-  }
+    /* 💡 الكود الجديد لتصغير الشعار */
+    .logo img {
+        height: 35px; /* تم تحديد الارتفاع الجديد */
+        width: auto;
+    }
+    
+  /* 2. إظهار زر الفتح (الهامبرغر) */
+  .menu-toggle {
+    display: block; 
+    background: none;
+    border: none;
+    font-size: 1.8rem; 
+    cursor: pointer;
+    color: var(--primary-color);
+    z-index: 110; 
+    order: 0; 
+  }
+    
+    /* 💡 لإصلاح مشكلة اللون الداكن للأيقونة */
+    .dark-mode .menu-toggle {
+        color: var(--dark-text-color, #e0e0e0); 
+    }
+    .dark-mode .main-nav a {
+        color: var(--dark-text-color, #e0e0e0);
+    }
 
-  .site-header {
-    padding: 0 15px; /* تقليل الحشو */
-    justify-content: space-between;
-  }
+  .site-header {
+    padding: 0 15px; 
+    justify-content: space-between;
+  }
 
-  .logo {
-    order: 1; /* وضعه في المنتصف */
-  }
+  .logo {
+    order: 1; 
+  }
 
-  .header-controls {
-    order: 2; /* وضعه في النهاية */
-  }
+  .header-controls {
+    order: 2; 
+  }
 
-  /* 3. تنسيق القائمة المنسدلة (main-nav) كقائمة جانبية */
-  .main-nav {
-    position: fixed;
-    top: 0;
-    width: 80%; /* عرض القائمة */
-    max-width: 300px;
-    height: 100%;
-    background-color: var(--light-card-bg); 
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* تحريك سلس */
-    z-index: 105;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-    align-items: flex-start; /* محاذاة لليسار افتراضياً */
-  }
+  /* 3. تنسيق القائمة المنسدلة (main-nav) كقائمة جانبية */
+  .main-nav {
+    position: fixed;
+    top: 0;
+    width: 80%; 
+    max-width: 300px;
+    height: 100%;
+    background-color: var(--light-card-bg); 
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+    z-index: 105;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 20px;
+    align-items: flex-start; 
+  }
 
-  .dark-mode .main-nav {
-      background-color: var(--dark-card-bg);
-  }
-  
-  /* إخفاء القائمة خارج الشاشة لـ RTL (من اليمين لليسار) */
-  body.rtl .main-nav {
-      right: -100%;
-      align-items: flex-end; /* لكي تظهر العناصر محاذية للزاوية التي تفتح منها (اليمين) */
-  }
-  /* إخفاء القائمة خارج الشاشة لـ LTR (من اليسار لليمين) */
-  body.ltr .main-nav {
-      left: -100%;
-      right: auto;
-  }
-
-
-  /* إظهار القائمة عندما تكون is-open */
-  body.rtl .main-nav.is-open {
-    right: 0; /* تحريك القائمة للداخل في RTL */
-  }
-  body.ltr .main-nav.is-open {
-    left: 0; /* تحريك القائمة للداخل في LTR */
-  }
-  
-  /* تنسيق الروابط داخل القائمة */
-  .main-nav ul {
-    flex-direction: column; /* ترتيب الروابط عمودياً */
-    width: 100%;
-  }
-
-  .main-nav li {
-    margin: 0;
-    width: 100%;
-    text-align: inherit;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .dark-mode .main-nav li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .main-nav a {
-    display: block;
-    padding: 15px 5px;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  .main-nav a::after {
-    display: none; /* إخفاء خط الـ hover في الهاتف */
-  }
+  .dark-mode .main-nav {
+      background-color: var(--dark-card-bg);
+  }
+  
+  /* إخفاء القائمة خارج الشاشة لـ RTL (من اليمين لليسار) */
+  body.rtl .main-nav {
+      right: -100%;
+      align-items: flex-end; 
+  }
+  /* إخفاء القائمة خارج الشاشة لـ LTR (من اليسار لليمين) */
+  body.ltr .main-nav {
+      left: -100%;
+      right: auto;
+  }
 
 
-  /* تعديلات على أقسام المحتوى */
-  .hero-section {
-    padding-top: calc(var(--header-height) + 50px);
-    padding-bottom: 50px;
-  }
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-  .hero-section p {
-    font-size: 1rem;
-  }
-  .hero-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .btn-lg {
-    width: 100%;
-    text-align: center;
-  }
-  .about-content {
-    flex-direction: column-reverse;
-  }
-  .about-image {
-    margin-bottom: 30px;
-  }
+  /* إظهار القائمة عندما تكون is-open */
+  body.rtl .main-nav.is-open {
+    right: 0; 
+  }
+  body.ltr .main-nav.is-open {
+    left: 0; 
+  }
+  
+  /* تنسيق الروابط داخل القائمة */
+  .main-nav ul {
+    flex-direction: column; 
+    width: 100%;
+  }
+
+  .main-nav li {
+    margin: 0;
+    width: 100%;
+    text-align: inherit;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .dark-mode .main-nav li {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .main-nav a {
+    display: block;
+    padding: 15px 5px;
+    font-size: 1.1rem;
+    font-weight: 500;
+  }
+  .main-nav a::after {
+    display: none; 
+  }
+
+
+  /* تعديلات على أقسام المحتوى */
+  .hero-section {
+    padding-top: calc(var(--header-height) + 50px);
+    padding-bottom: 50px;
+  }
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-lg {
+    width: 100%;
+    text-align: center;
+  }
+  .about-content {
+    flex-direction: column-reverse;
+  }
+  .about-image {
+    margin-bottom: 30px;
+  }
 }
 
 /* لضمان إخفاء أزرار الهاتف في وضع سطح المكتب (الشاشات الكبيرة) */
 @media (min-width: 769px) {
-  .menu-toggle {
-    display: none !important;
-  }
-  /* نضمن أن القائمة تظهر بشكلها العادي في الشاشات الكبيرة */
-  .main-nav {
-      display: block !important;
-      position: static;
-      box-shadow: none;
-      transition: none;
-      width: auto;
-      height: auto;
-      padding: 0;
-  }
-  
-  .main-nav ul {
-      flex-direction: row;
-  }
+  .menu-toggle {
+    display: none !important;
+  }
+  /* نضمن أن القائمة تظهر بشكلها العادي في الشاشات الكبيرة */
+  .main-nav {
+      display: block !important;
+      position: static;
+      box-shadow: none;
+      transition: none;
+      width: auto;
+      height: auto;
+      padding: 0;
+  }
+  
+  .main-nav ul {
+      flex-direction: row;
+  }
+}
