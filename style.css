@@ -1126,30 +1126,48 @@ ul[role="list"] {
       flex-direction: row;
   }
 }
+/* ======================================
+   التجاوبية (Mobile/Tablet Responsiveness)
+   ======================================
+*/
 @media (max-width: 992px) {
-    
-    /* 1. إخفاء النص داخل زر التواصل */
+
+    /* 1. إظهار زر التحكم بالهاتف (Menu Toggle) */
+    .menu-toggle {
+        display: block;
+        font-size: 1.4rem;
+        z-index: 101;
+    }
+
+    /* 2. إخفاء النص داخل زر التواصل */
     .btn-text-mobile-hide {
         display: none !important; 
     }
     
-    /* 2. ضمان أن الـ header لا يملك تباعداً يسبب التمرير الأفقي */
+    /* 3. تعديل تنسيق الـ Header لضمان عدم وجود مسافات جانبية زائدة */
     .site-header {
+      /* إزالة التباعد الداخلي من الهيدر نفسه لتجنب التمرير الأفقي */
       padding: 0; 
+      /* يجب تعديل ارتفاع الشعار في Mobile ليناسب الـ Header */
     }
-    
-    /* 3. إضافة التباعد الفعلي على أطراف عناصر التحكم الداخلية */
+    .logo img {
+        height: 45px; /* تصغير حجم الشعار على الهاتف */
+    }
+
+    /* 4. إضافة التباعد الفعلي على أطراف عناصر التحكم الداخلية */
     .logo {
+        /* تباعد من بداية السطر (اليمين في RTL) */
         padding-inline-start: 15px; 
     }
     
     .header-controls {
+        /* تباعد من نهاية السطر (اليسار في RTL) */
         padding-inline-end: 15px;
-        gap: 5px; /* تباعد ضيق جداً بين الأزرار */
+        gap: 5px; /* تباعد ضيق بين الأزرار */
         flex-shrink: 0;
     }
 
-    /* 4. تنسيق الزر ليصبح أيقونة صغيرة */
+    /* 5. تنسيق زر التواصل ليصبح أيقونة صغيرة */
     .header-controls .btn-primary.btn-sm.contact-btn {
         padding: 0; /* إزالة التباعد الداخلي الأفقي */
         width: 40px; /* تثبيت العرض */
@@ -1159,13 +1177,53 @@ ul[role="list"] {
         justify-content: center;
         align-items: center;
         font-size: 1.1rem; /* حجم الأيقونة */
-        border-radius: 8px; 
+        border-radius: 8px; /* يمكن استخدام 50% لجعله دائرياً */
     }
 
-    /* 5. إزالة أي هوامش حول الأيقونة */
+    /* 6. إزالة أي هوامش حول الأيقونة */
     .contact-btn i {
         margin: 0; 
     }
+
+    /* 7. تنسيق القائمة الجانبية (Off-Canvas Menu) */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        width: 80%;
+        max-width: 300px;
+        background-color: var(--light-card-bg);
+        box-shadow: -4px 0 8px rgba(0, 0, 0, 0.2);
+        padding-top: var(--header-height);
+        z-index: 99;
+        /* استخدام transform لتحريك القائمة لتحسين الأداء */
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* إخفاء القائمة في الاتجاه الافتراضي (RTL) */
+    .rtl .main-nav {
+        right: 0;
+        transform: translateX(100%); /* إزاحتها خارج الشاشة لليمين */
+    }
+    /* إظهار القائمة في RTL */
+    .rtl .main-nav.is-open {
+        transform: translateX(0); 
+    }
     
-    /* ... (بقية التنسيقات تبقى كما هي) ... */
+    /* لاتجاه LTR */
+    .ltr .main-nav {
+        left: 0;
+        transform: translateX(-100%); /* إزاحتها خارج الشاشة لليسار */
+    }
+    /* إظهار القائمة في LTR */
+    .ltr .main-nav.is-open {
+        transform: translateX(0); 
+    }
+    
+    /* تنسيق الروابط عمودياً */
+    .main-nav ul {
+        flex-direction: column; 
+        padding: 0 20px; 
+    }
+    /* ... (بقية تنسيقات القائمة الجانبية كما هي في ملفك) ... */
 }
