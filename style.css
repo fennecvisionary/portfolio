@@ -1050,28 +1050,6 @@ ul[role="list"] {
     left: 0; /* تحريك القائمة للداخل في LTR */
   }
   
-  /* 4. إظهار وتنسيق زر الإغلاق */
-  .menu-close {
-    display: block; 
-    background: none;
-    border: none;
-    font-size: 1.8rem;
-    cursor: pointer;
-    color: var(--light-text-color);
-    margin-bottom: 2rem;
-  }
-  .dark-mode .menu-close {
-    color: var(--dark-text-color);
-  }
-  /* محاذاة زر الإغلاق ليتناسب مع اتجاه القائمة */
-  body.rtl .menu-close {
-      align-self: flex-start; /* وضعه في الزاوية العلوية اليسرى داخل القائمة RTL */
-  }
-  body.ltr .menu-close {
-      align-self: flex-end; /* وضعه في الزاوية العلوية اليمنى داخل القائمة LTR */
-  }
-
-
   /* تنسيق الروابط داخل القائمة */
   .main-nav ul {
     flex-direction: column; /* ترتيب الروابط عمودياً */
