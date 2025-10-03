@@ -17,28 +17,39 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainNav = document.querySelector(".main-nav");
   const menuClose = document.querySelector(".menu-close"); // الزر الجديد للإغلاق
 
-  // وظيفة إغلاق القائمة
-  function closeMenu() {
+ // وظيفة إغلاق القائمة (مُعدلة لإعادة زر الفتح إلى حالة الهامبرغر عند الإغلاق)
+function closeMenu() {
     mainNav.classList.remove("is-open");
-  }
+    // التأكد من أن أيقونة زر الفتح تعود للهامبرغر عند الإغلاق بأي طريقة
+    menuToggle.innerHTML = '<i class="fas fa-bars"></i>'; 
+}
 
-  // وظيفة فتح/إغلاق القائمة
-  function toggleMenu() {
+// وظيفة فتح/إغلاق القائمة (مُعدلة لإدارة أيقونة زر الفتح)
+function toggleMenu() {
     mainNav.classList.toggle("is-open");
-  }
 
-  // ربط أزرار التحكم بالوظائف
-  if (menuToggle) {
+    // تبديل أيقونة زر الفتح بناءً على حالة القائمة
+    if (mainNav.classList.contains("is-open")) {
+        // القائمة مفتوحة: عرض أيقونة الإغلاق (X)
+        menuToggle.innerHTML = '<i class="fas fa-times"></i>';
+    } else {
+        // القائمة مغلقة: عرض أيقونة الفتح (الهامبرغر)
+        menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+}
+
+// ربط أزرار التحكم بالوظائف
+if (menuToggle) {
     menuToggle.addEventListener("click", toggleMenu);
-  }
-  if (menuClose) {
-    menuClose.addEventListener("click", closeMenu);
-  }
+}
+if (menuClose) {
+    menuClose.addEventListener("click", closeMenu); 
+}
 
-  // إغلاق القائمة عند النقر على أي رابط (لتسهيل التنقل في الهاتف)
-  navLinks.forEach((link) => {
+// إغلاق القائمة عند النقر على أي رابط (لتسهيل التنقل في الهاتف)
+navLinks.forEach((link) => {
     link.addEventListener("click", closeMenu);
-  });
+});
 
   // بيانات اللغات (محتوى ملف data.js) - تم نقله هنا لتوفير الكود كاملاً
   const translations = {
