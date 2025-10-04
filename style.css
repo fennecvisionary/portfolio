@@ -530,6 +530,28 @@ ul[role="list"] {
     display: none !important;
 }
 /* ======================================
+   Interactive Stats Styles (Active State)
+   ======================================
+*/
+
+/* نمط الأيقونة عندما تكون نشطة (Liked/Saved) */
+.work-stats .stat-item.active {
+    /* تغيير لون الخلفية للون الأساسي (Orange) */
+    background-color: var(--primary-color); 
+}
+
+.work-stats .stat-item.active i {
+    /* تغيير لون الأيقونة نفسها للأبيض لتكون واضحة */
+    color: var(--light-card-bg); 
+}
+
+/* نمط لجعل الأيقونة قابلة للنقر */
+.clickable-stat {
+    user-select: none; /* لمنع تحديد النص عند النقر */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s; /* إضافة حركة سلسة */
+}
+/* ======================================
    Pagination Styles
    ======================================
 */
