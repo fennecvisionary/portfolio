@@ -583,76 +583,76 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", closeMenu);
     });
 
-    // ===================================
-    // Online Status Logic for About Me Section
-    // ===================================
+  // ===================================
+// Online Status Logic for About Me Section
+// ===================================
 
-    function checkOnlineStatus() {
-        const now = new Date();
-        const currentHour = now.getHours();
-        const currentMinute = now.getMinutes();
-        const totalMinutes = currentHour * 60 + currentMinute;
-        
-        const statusDot = document.getElementById('online-status-dot');
-        const statusText = document.getElementById('status-text');
+function checkOnlineStatus() {
+    const now = new Date();
+    const currentHour = now.getHours();
+    const currentMinute = now.getMinutes();
+    const totalMinutes = currentHour * 60 + currentMinute;
+    
+    const statusDot = document.getElementById('online-status-dot');
+    const statusText = document.getElementById('status-text');
 
-        if (!statusDot || !statusText) return; 
+    if (!statusDot || !statusText) return; 
 
-        // الحصول على اللغة الحالية لجلب النص الصحيح
-        const lang = localStorage.getItem("siteLang") || "ar";
-        const data = translations[lang];
+    // الحصول على اللغة الحالية لجلب النص الصحيح
+    const lang = localStorage.getItem("siteLang") || "ar";
+    const data = translations[lang];
 
-        // النافذة الأولى: 8:00 ص (480 دقيقة) إلى 4:00 م (960 دقيقة)
-        const start1 = 8 * 60; 
-        const end1 = 16 * 60; 
+    // النافذة الأولى: 8:00 ص (480 دقيقة) إلى 4:00 م (960 دقيقة)
+    const start1 = 8 * 60; 
+    const end1 = 16 * 60; 
 
-        // النافذة الثانية: 7:00 م (1140 دقيقة) إلى 1:00 ص (60 دقيقة - اليوم التالي)
-        const start2 = 19 * 60; 
-        const end2_normalized = 1 * 60; 
-        
-        let isOnline = false;
-        
-        // التحقق من النافذة الأولى
-        if (totalMinutes >= start1 && totalMinutes < end1) {
-            isOnline = true;
-        } 
-        // التحقق من النافذة الثانية (تتجاوز منتصف الليل)
-        // يجب أن نعتبر أن 1:00 ص هي اليوم التالي
-        else if (totalMinutes >= start2 || totalMinutes < end2_normalized) {
-            isOnline = true;
-        }
-
-        if (isOnline) {
-            statusDot.classList.add('is-online');
-            statusDot.classList.remove('is-offline');
-            statusText.classList.add('is-online'); // تطبيق اللون الأخضر على النص
-            statusText.classList.remove('is-offline');
-            statusText.textContent = data.status_online; // استخدام الترجمة
-        } else {
-            statusDot.classList.add('is-offline');
-            statusDot.classList.remove('is-online');
-            statusText.classList.add('is-offline'); // تطبيق اللون الأحمر على النص
-            statusText.classList.remove('is-online');
-            statusText.textContent = data.status_offline; // استخدام الترجمة
-        }
+    // النافذة الثانية: 7:00 م (1140 دقيقة) إلى 1:00 ص (60 دقيقة - اليوم التالي)
+    const start2 = 19 * 60; 
+    const end2_normalized = 1 * 60; 
+    
+    let isOnline = false;
+    
+    // التحقق من النافذة الأولى
+    if (totalMinutes >= start1 && totalMinutes < end1) {
+        isOnline = true;
+    } 
+    // التحقق من النافذة الثانية (تتجاوز منتصف الليل)
+    else if (totalMinutes >= start2 || totalMinutes < end2_normalized) {
+        isOnline = true;
     }
+
+    if (isOnline) {
+        statusDot.classList.add('is-online');
+        statusDot.classList.remove('is-offline');
+        statusText.classList.add('is-online'); 
+        statusText.classList.remove('is-offline');
+        statusText.textContent = data.status_online; // استخدام الترجمة
+    } else {
+        statusDot.classList.add('is-offline');
+        statusDot.classList.remove('is-online');
+        statusText.classList.add('is-offline'); 
+        statusText.classList.remove('is-online');
+        statusText.textContent = data.status_offline; // استخدام الترجمة
+    }
+}
+
+// 💡 التعديل الحاسم: إعادة الاستدعاء الفوري للدالة لضمان تعيين الحالة بسرعة
+checkOnlineStatus(); 
+setInterval(checkOnlineStatus, 60000); // تحديث كل 60 ثانية (1 دقيقة)
     
-    // تشغيل التحقق من الحالة فوراً ثم كل دقيقة لتحديثها
-    checkOnlineStatus();
-    setInterval(checkOnlineStatus, 60000); // تحديث كل 60 ثانية (1 دقيقة)
-    
-    // ===================================
-    // End of Online Status Logic
-    // ===================================
+// ===================================
+// End of Online Status Logic
+// ===================================
 
 
-    const savedLang = localStorage.getItem("siteLang") || "ar";
-    const savedMode = localStorage.getItem("siteMode") || "light-mode";
+const savedLang = localStorage.getItem("siteLang") || "ar";
+const savedMode = localStorage.getItem("siteMode") || "light-mode";
 
-    body.classList.add(savedMode);
-    applyLanguage(savedLang); // ستستدعي applyLanguage بدورها checkOnlineStatus لتحديث النص واللون
-    languageSelect.value = savedLang;
-    modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+body.classList.add(savedMode);
+// ✅ هذا الاستدعاء سيعمل أيضاً، لكن الاستدعاء المباشر أعلاه يضمن سرعة أكبر
+applyLanguage(savedLang); 
+languageSelect.value = savedLang;
+modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
 
     languageSelect.addEventListener("change", () => {
         const lang = languageSelect.value;
