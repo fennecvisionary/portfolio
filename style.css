@@ -20,7 +20,7 @@ body {
   --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
   --primary-color: #f75723; /* Orange */
-  --secondary-color: #f75723; /* Orange */
+  --secondary-color: #2ecc71; /* 💡 القيمة الخضراء لحالة الاتصال */
 
   --font-family-arabic: 'Tajawal', sans-serif;
   --font-family-english: 'Poppins', sans-serif;
@@ -886,7 +886,7 @@ ul[role="list"] {
     padding: 30px 20px;
     border-radius: 10px;
     position: relative;
-    border-bottom: 4px solid var(--secondary-color);
+    border-bottom: 4px solid var(--primary-color);
     background-color: var(--light-card-bg);
     box-shadow: var(--light-shadow);
 }
@@ -901,7 +901,7 @@ ul[role="list"] {
     transform: translateX(50%);
     width: 30px;
     height: 30px;
-    background-color: var(--secondary-color);
+    background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
     display: flex;
@@ -913,13 +913,13 @@ ul[role="list"] {
 }
 .step-icon {
     font-size: 2.5rem;
-    color: var(--secondary-color);
+    color: var(--primary-color);
     margin-bottom: 15px;
 }
 .step-card h3 {
     font-size: 1.3rem;
     margin-bottom: 10px;
-    color: var(--secondary-color);
+    color: var(--primary-color);
 }
 .step-card p {
     line-height: 1.6;
@@ -1097,38 +1097,37 @@ ul[role="list"] {
 }
 
 /* ======================================
-  تنسيقات مؤشر الحالة ومواعيد العمل وأيقونات السوشيال ميديا (إضافات مُحدثة)
-  ======================================
+ تنسيقات مؤشر الحالة ومواعيد العمل وأيقونات السوشيال ميديا 
+ ======================================
 */
 
-/* حاوية الحالة الرئيسية */
+/* حاوية الحالة الرئيسية (تم توسيطها) */
 .status-info-container {
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* محاذاة في LTR */
+    align-items: center; /* توسيط العناصر الداخلية */
     margin-bottom: 25px;
+    
+    /* لتوسيط الحاوية بأكملها وجعل عرضها يطابق الجدول */
+    max-width: 300px; 
+    margin-left: auto;
+    margin-right: auto;
 }
-
-/* تصحيح محاذاة في وضع RTL */
-body.rtl .status-info-container {
-    align-items: flex-end; /* المحاذاة لليمين في RTL */
-}
-
 
 /* مؤشر الحالة (النقطة ونص الحالة) */
 .status-indicator {
     display: flex;
     align-items: center;
-    gap: 10px; /* المسافة بين النقطة والنص */
+    gap: 10px; 
     margin-bottom: 10px;
 }
 
 /* مؤشر الحالة (النقطة) */
 .status-dot {
-    width: 14px; /* تصغير حجم النقطة لتكون بجوار النص */
+    width: 14px; 
     height: 14px;
     border-radius: 50%;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, box-shadow 0.3s;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -1141,26 +1140,32 @@ body.rtl .status-info-container {
 
 /* حالة الاتصال (الأخضر) */
 .status-dot.is-online {
-    background-color: var(--secondary-color); /* الأخضر */
+    /* النقطة تتماشى مع لون النص باستخدام المتغير */
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 8px var(--secondary-color); 
 }
 .status-text.is-online {
-    color: var(--secondary-color); /* لون النص أخضر */
+    /* النص يتماشى مع لون النقطة باستخدام المتغير */
+    color: var(--secondary-color); 
 }
 
 /* حالة عدم الاتصال (الأحمر) */
 .status-dot.is-offline {
-    background-color: #e74c3c; /* أحمر */
+    background-color: #e74c3c;
 }
 .status-text.is-offline {
-    color: #e74c3c; /* لون النص أحمر */
+    color: #e74c3c;
+}
+.dark-mode .status-dot.is-offline {
+    box-shadow: 0 0 4px #e74c3c;
 }
 .dark-mode .status-text.is-offline {
-    color: #ff6b6b; /* أحمر أفتح للوضع الداكن */
+    color: #ff6b6b;
 }
 
 /* ======================================
-  تنسيقات جدول مواعيد العمل
-  ======================================
+ تنسيقات جدول مواعيد العمل
+ ======================================
 */
 
 .working-hours-table {
@@ -1169,7 +1174,11 @@ body.rtl .status-info-container {
     border-collapse: collapse;
     font-size: 0.95rem;
     margin-top: 15px;
-    border: 1px solid rgba(0, 0, 0, 0.1); /* إطار للجدول */
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    
+    /* لتوسيط الجدول */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .dark-mode .working-hours-table {
@@ -1179,7 +1188,7 @@ body.rtl .status-info-container {
 .working-hours-table th, 
 .working-hours-table td {
     padding: 10px 15px;
-    text-align: inherit;
+    text-align: inherit; 
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
@@ -1206,10 +1215,17 @@ body.rtl .status-info-container {
     background-color: var(--dark-card-bg);
 }
 
-/* أيقونات التواصل الاجتماعي (لم تتغير جوهرياً) */
+/* تحديد عمود الوقت */
+.working-hours-table .time-col {
+    font-weight: 600; 
+    color: var(--primary-color);
+}
+
+
+/* أيقونات التواصل الاجتماعي */
 .social-links-about {
     display: flex;
-    justify-content: center;
+    justify-content: center; /* لتوسيط الأيقونات */
     gap: 15px;
     margin-top: 20px;
 }
