@@ -207,15 +207,27 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentFilter = 'all';
     let currentSearchTerm = '';
 
-    // محاكاة 100 عمل
+    // محاكاة 100 عمل، كل عمل يحتوي على 3 صور
     for (let i = 1; i <= 100; i++) {
         const categories = ['logos', 'branding', 'social_media', 'packaging', 'print_design'];
         const tags = [categories[i % categories.length], categories[(i + 1) % categories.length]].filter((v, idx, a) => a.indexOf(v) === idx);
+        
+        // **********************************************
+        // 🚨 التغيير هنا: كل عمل الآن يحمل مصفوفة من 3 صور
+        // يجب أن تتأكد من وجود المسارات: 
+        // images/works/work_1_1.jpg, images/works/work_1_2.jpg, images/works/work_1_3.jpg
+        // **********************************************
+        const imageBase = `images/works/work_${i}`; // مسار أساسي (مثلاً: images/works/work_1)
+
         worksData.push({
             id: i,
             title: `Project Title ${i}`,
-            // استخدام 10 صور متكررة للمحاكاة، يجب وضع مسارات صور حقيقية هنا
-            image: `images/works/project_${i % 10 + 1}.jpg`, 
+            // مصفوفة مسارات الصور: الصورة الأولى هي الواجهة، والباقي للتفاصيل
+            images: [
+                `${imageBase}_1.jpg`, 
+                `${imageBase}_2.jpg`, 
+                `${imageBase}_3.jpg`
+            ],
             tags: tags,
             views: Math.floor(Math.random() * 500) + 10,
             likes: Math.floor(Math.random() * 100) + 5,
@@ -225,17 +237,32 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function renderWorkCard(work) {
-        // توليد الهيكل HTML لبطاقة عمل واحدة مع طبقة الإحصائيات الشفافة
         const lang = localStorage.getItem("siteLang") || "ar";
         const likeText = lang === 'ar' ? 'إعجاب' : 'Like';
         const viewText = lang === 'ar' ? 'مشاهدة' : 'View';
         const saveText = lang === 'ar' ? 'حفظ' : 'Save';
+        
+        // الصورة الأولى في المصفوفة هي صورة الواجهة
+        const primaryImage = work.images[0];
+        
+        // إنشاء روابط Lightbox إضافية للصورتين الثانية والثالثة (مخفية)
+        let hiddenLinks = '';
+        if (work.images.length > 1) {
+            // يبدأ من الصورة الثانية (المؤشر 1)
+            for (let j = 1; j < work.images.length; j++) {
+                // نستخدم class="hidden" لإخفاء الروابط من العرض، لكن Lightbox سيجدها
+                hiddenLinks += `
+                    <a href="${work.images[j]}" data-lightbox="portfolio-group-${work.id}" data-title="${work.title} - ${lang === 'ar' ? 'صورة' : 'Image'} ${j + 1}" class="hidden" aria-hidden="true">
+                        ${work.title} ${lang === 'ar' ? 'صورة إضافية' : 'Extra Image'} ${j + 1}
+                    </a>
+                `;
+            }
+        }
 
-        // استخدام data-lightbox="portfolio" لتجميع الصور للتقليب بينها
         return `
             <div class="work-item ${work.primaryTag}" data-aos="fade-up">
-                <a href="${work.image}" data-lightbox="portfolio" data-title="${work.title} - ${work.primaryTag}" aria-label="${work.title}">
-                    <img src="${work.image}" alt="${work.title}" loading="lazy">
+                <a href="${primaryImage}" data-lightbox="portfolio-group-${work.id}" data-title="${work.title} - ${lang === 'ar' ? 'صورة' : 'Image'} 1" aria-label="${work.title} ${lang === 'ar' ? 'صورة الواجهة' : 'Primary Image'}">
+                    <img src="${primaryImage}" alt="${work.title}" loading="lazy">
                     <div class="work-overlay">
                         <div class="work-title">${work.title}</div>
                         <div class="work-stats">
@@ -245,6 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                     </div>
                 </a>
+                ${hiddenLinks}
             </div>
         `;
     }
@@ -376,7 +404,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ===================================
-    // وظائف الترجمة
+    // وظائف الترجمة (لم يتم تعديلها)
     // ===================================
 
     function applyLanguage(lang) {
@@ -430,7 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // ===================================
-    // وظائف القائمة الجانبية (Mobile Menu)
+    // وظائف القائمة الجانبية (لم يتم تعديلها)
     // ===================================
 
     function closeMenu() {
@@ -463,7 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ===================================
-    // منطق اللغة والمظهر (Language & Theme Logic)
+    // منطق اللغة والمظهر (لم يتم تعديله)
     // ===================================
 
     const savedLang = localStorage.getItem("siteLang") || "ar";
@@ -496,7 +524,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ===================================
-    // التحميل الأولي والرسوم المتحركة
+    // التحميل الأولي والرسوم المتحركة (لم يتم تعديله)
     // ===================================
     if (typeof AOS !== 'undefined') {
         AOS.init({
@@ -505,13 +533,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
     
-    // ********** التشغيل الأولي للأعمال **********
     loadWorks(); 
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
     // ===================================
-    // منطق التمرير لأعلى (Scroll to Top Logic)
+    // منطق التمرير لأعلى (لم يتم تعديله)
     // ===================================
     const backToTopButton = document.querySelector('.back-to-top');
     if (backToTopButton) {
@@ -527,7 +554,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // ===================================
-    // منطق الأدوات العائمة (Tool Hover Logic)
+    // منطق الأدوات العائمة (لم يتم تعديله)
     // ===================================
     document.querySelectorAll('.tool-card').forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -565,7 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ===================================
-    // منطق الفلترة والبحث
+    // منطق الفلترة والبحث (لم يتم تعديله)
     // ===================================
 
     // ربط أحداث الفلترة
