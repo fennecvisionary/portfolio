@@ -59,7 +59,10 @@
             <button id="mode-toggle" class="mode-toggle" aria-label="Toggle Dark/Light Mode">
                 <i class="fas fa-moon"></i>
             </button>
-            <a href="#contact" class="btn btn-primary btn-sm" data-lang-key="header_btn_contact">تواصل معي</a>
+            <a href="#contact" class="btn btn-primary btn-sm contact-btn" data-lang-key="header_btn_contact" aria-label="تواصل معي">
+                <i class="fas fa-paper-plane"></i> 
+                <span class="btn-text-mobile-hide">تواصل معي</span>
+            </a>
         </div>
     </header>
 
@@ -125,62 +128,98 @@
             </div>
         </section>
 
-        <section class="works-section" id="works">
-            <div class="container">
-                <h2 class="section-title" data-lang-key="works_title">إبداعاتنا</h2>
-                <p class="section-subtitle" data-lang-key="works_subtitle">جولة سريعة في أحدث أعمالنا المختارة بعناية.</p>
-
-                <div class="search-container fixed-search-bar" data-aos="fade-down" data-aos-duration="1000">
-                    <input type="text" id="searchInput" data-lang-key="search_placeholder" placeholder="ابحث عن تصميم محدد...">
-                    <button id="searchButton" aria-label="Search" data-lang-key="search_button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-
-                <div class="tags-filter" data-aos="fade-up">
-                    <a href="#" class="tag-link active" data-tag="all" data-lang-key="tag_all">الكل</a>
-                    <a href="#" class="tag-link" data-tag="logos" data-lang-key="tag_logos">شعارات</a>
-                    <a href="#" class="tag-link" data-tag="branding" data-lang-key="tag_branding">هوية بصرية</a>
-                    <a href="#" class="tag-link" data-tag="social_media" data-lang-key="tag_social_media">سوشيال ميديا</a>
-                    <a href="#" class="tag-link" data-tag="packaging" data-lang-key="tag_packaging">تغليف</a>
-                    <a href="#" class="tag-link" data-tag="print_design" data-lang-key="tag_print_design">تصميم مطبوع</a>
-                </div>
-
-                <div class="works-grid loading" id="works-grid">
-                </div>
-
-                <div class="pagination-container" id="pagination-container" data-aos="fade-up">
-                </div>
-            </div>
-        </section>
-
         <section class="how-it-works-section" id="how-it-works">
             <div class="container">
                 <h2 class="section-title" data-lang-key="how_it_works_title">منهجيتنا في العمل</h2>
                 <p class="section-subtitle" data-lang-key="how_it_works_subtitle">عملية مدروسة لضمان أفضل النتائج والتعبير عن رؤيتك بدقة.</p>
 
-                <div class="process-steps">
+                <div class="steps-grid">
                     <div class="step-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="step-number">1</div>
+                        <i class="fas fa-lightbulb step-icon"></i>
                         <h3 data-lang-key="step_brief">الإحاطة والتحليل</h3>
                         <p data-lang-key="step_brief_desc">نستمع جيداً لاحتياجاتك، رؤيتك، وجمهورك المستهدف لنفهم المشروع بالكامل.</p>
                     </div>
                     <div class="step-card" data-aos="fade-up" data-aos-delay="200">
                         <div class="step-number">2</div>
+                        <i class="fas fa-drafting-compass step-icon"></i>
                         <h3 data-lang-key="step_concept">وضع المفهوم الأساسي</h3>
                         <p data-lang-key="step_concept_desc">نقدم مقترحات أولية ومفاهيم تصميمية مبتكرة تتوافق مع الإحاطة.</p>
                     </div>
                     <div class="step-card" data-aos="fade-up" data-aos-delay="300">
                         <div class="step-number">3</div>
+                        <i class="fas fa-paint-brush step-icon"></i>
                         <h3 data-lang-key="step_design">التصميم والتطوير</h3>
                         <p data-lang-key="step_design_desc">نطور التصميمات المختارة، مع التركيز على التفاصيل والدقة البصرية.</p>
                     </div>
                     <div class="step-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="step-number">4</div>
+                        <i class="fas fa-check-circle step-icon"></i>
                         <h3 data-lang-key="step_final">المراجعة والتسليم</h3>
                         <p data-lang-key="step_final_desc">نقوم بالمراجعات النهائية وتسليم الملفات المصدرية بجودة عالية.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <section class="works-section" id="works">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="works_title">إبداعاتنا</h2>
+                <p class="section-subtitle" data-lang-key="works_subtitle">جولة سريعة في أحدث أعمالنا المختارة بعناية.</p>
+
+                <div class="search-and-filter-wrapper">
+                    <div class="search-container">
+                        <button id="searchButton" aria-label="Search" data-lang-key="search_button">بحث</button>
+                        <input type="text" id="searchInput" placeholder="ابحث عن تصميم محدد..." data-lang-key="search_placeholder" aria-label="Search input">
+                    </div>
+                    
+                    <div class="tags-container" id="tags-container">
+                        <button class="tag-link active" data-filter="all" data-lang-key="tag_all">الكل</button>
+                        <button class="tag-link" data-filter="logos" data-lang-key="tag_logos">شعارات</button>
+                        <button class="tag-link" data-filter="branding" data-lang-key="tag_branding">هوية بصرية</button>
+                        <button class="tag-link" data-filter="social-media" data-lang-key="tag_social_media">سوشيال ميديا</button>
+                        <button class="tag-link" data-filter="packaging" data-lang-key="tag_packaging">تغليف</button>
+                        <button class="tag-link" data-filter="print-design" data-lang-key="tag_print_design">تصميم مطبوع</button>
+                    </div>
+                </div>
+
+                <div class="works-grid" id="works-grid">
+                    <div class="loading"></div>
+                </div>
+                
+                <div class="pagination-container text-center" id="pagination-container">
+                    </div>
+            </div>
+        </section>
+
+        <section class="tools-section" id="tools">
+            <div class="container">
+                <h2 class="section-title" data-lang-key="tools_title">الأدوات التي أستخدمها</h2>
+                <p class="section-subtitle" data-lang-key="tools_subtitle">أدوات إبداعية احترافية لضمان جودة عالية في كل تصميم.</p>
+
+                <div class="tools-grid">
+                    <div class="tool-card" data-tool="photoshop" data-aos="fade-up" data-aos-delay="100">
+                        <img src="images/tools/photoshop.png" alt="Adobe Photoshop">
+                        <span data-lang-key="tool_photoshop">Adobe Photoshop</span>
+                    </div>
+                    <div class="tool-card" data-tool="illustrator" data-aos="fade-up" data-aos-delay="200">
+                        <img src="images/tools/illustrator.png" alt="Adobe Illustrator">
+                        <span data-lang-key="tool_illustrator">Adobe Illustrator</span>
+                    </div>
+                    <div class="tool-card" data-tool="indesign" data-aos="fade-up" data-aos-delay="300">
+                        <img src="images/tools/indesign.png" alt="Adobe InDesign">
+                        <span data-lang-key="tool_indesign">Adobe InDesign</span>
+                    </div>
+                    <div class="tool-card" data-tool="aftereffects" data-aos="fade-up" data-aos-delay="400">
+                        <img src="images/tools/aftereffects.png" alt="Adobe After Effects">
+                        <span data-lang-key="tool_aftereffects">Adobe After Effects</span>
+                    </div>
+                    <div class="tool-card" data-tool="figma" data-aos="fade-up" data-aos-delay="500">
+                        <img src="images/tools/figma.png" alt="Figma">
+                        <span data-lang-key="tool_figma">Figma</span>
+                    </div>
+                </div>
+                <div id="hover-tool-image" class="hover-tool-image" style="display: none;"></div>
             </div>
         </section>
 
@@ -190,32 +229,18 @@
                 <p class="section-subtitle" data-lang-key="testimonials_subtitle">ما يقوله عملاؤنا عن التجربة والنتائج.</p>
 
                 <div class="testimonials-grid">
-                    <div class="testimonial-card" data-aos="fade-up">
-                        <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <p data-lang-key="testimonial_1_text">"تصميم شعار احترافي ومبتكر، تجاوز توقعاتنا. السرعة في الإنجاز وجودة العمل لا تُضاهى. أنصح به بشدة!"</p>
-                        <div class="client-info">
-                            <span class="client-name" data-lang-key="testimonial_1_name">أحمد س.</span>
-                            <span class="client-role" data-lang-key="testimonial_1_role">مدير تسويق</span>
-                        </div>
-                    </div>
                     <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
                         <div class="rating">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p data-lang-key="testimonial_2_text">"خدمة عملاء ممتازة وتفهم عميق للمتطلبات. ساهمت تصاميمهم في نقل علامتنا التجارية إلى مستوى جديد من التميز."</p>
+                        <p data-lang-key="testimonial_1_text">تصميم شعار احترافي ومبتكر، تجاوز توقعاتنا. السرعة في الإنجاز وجودة العمل لا تُضاهى. أنصح به بشدة!</p>
                         <div class="client-info">
-                            <span class="client-name" data-lang-key="testimonial_2_name">ليلى ح.</span>
-                            <span class="client-role" data-lang-key="testimonial_2_role">رائدة أعمال</span>
+                            <span class="client-name" data-lang-key="testimonial_1_name">أحمد س.</span>
+                            <span class="client-role" data-lang-key="testimonial_1_role">مدير تسويق</span>
                         </div>
                     </div>
                     <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
@@ -224,9 +249,23 @@
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p data-lang-key="testimonial_2_text">خدمة عملاء ممتازة وتفهم عميق للمتطلبات. ساهمت تصاميمهم في نقل علامتنا التجارية إلى مستوى جديد من التميز.</p>
+                        <div class="client-info">
+                            <span class="client-name" data-lang-key="testimonial_2_name">ليلى ح.</span>
+                            <span class="client-role" data-lang-key="testimonial_2_role">رائدة أعمال</span>
+                        </div>
+                    </div>
+                    <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
                         </div>
-                        <p data-lang-key="testimonial_3_text">"أفضل مصمم تعاملت معه حتى الآن. الدقة في المواعيد والاحترافية في التعامل مع التعديلات شيء مذهل. شكراً جزيلاً!"</p>
+                        <p data-lang-key="testimonial_3_text">أفضل مصمم تعاملت معه حتى الآن. الدقة في المواعيد والاحترافية في التعامل مع التعديلات شيء مذهل. شكراً جزيلاً!</p>
                         <div class="client-info">
                             <span class="client-name" data-lang-key="testimonial_3_name">خالد ع.</span>
                             <span class="client-role" data-lang-key="testimonial_3_role">مالك شركة</span>
@@ -240,40 +279,14 @@
             <div class="container">
                 <h2 class="section-title" data-lang-key="about_me_title">عني</h2>
                 <div class="about-content">
-                    <div class="about-text" data-aos="fade-left">
-                        <p data-lang-key="about_me_p1">أهلاً بك، أنا **Fennec Visionary**، مصمم جرافيك متمرس بخبرة تزيد عن 7 سنوات في تحويل الأفكار إلى هويات بصرية قوية ومؤثرة.</p>
-                        <p data-lang-key="about_me_p2">شغفي يكمن في تصميم **الشعارات، الهويات البصرية، وتصاميم السوشيال ميديا**، مع التركيز دائماً على الابتكار والوضوح الوظيفي للتصميم.</p>
+                    <div class="about-text" data-aos="fade-right">
+                        <p data-lang-key="about_me_p1">أهلاً بك، أنا <strong>Fennec Visionary</strong>، مصمم جرافيك متمرس بخبرة تزيد عن 7 سنوات في تحويل الأفكار إلى هويات بصرية قوية ومؤثرة.</p>
+                        <p data-lang-key="about_me_p2">شغفي يكمن في تصميم <strong>الشعارات، الهويات البصرية، وتصاميم السوشيال ميديا</strong>، مع التركيز دائماً على الابتكار والوضوح الوظيفي للتصميم.</p>
                         <p data-lang-key="about_me_p3">أؤمن بأن التصميم الجيد ليس مجرد مظهر جميل، بل هو حل لمشكلة تسويقية ويحمل رسالة واضحة. فلنتعاون سوياً لبناء بصمتك البصرية الفريدة.</p>
-                        <a href="#contact" class="btn btn-primary" data-lang-key="about_me_btn_contact">تواصل الآن</a>
+                        <a href="#contact" class="btn btn-primary btn-lg" data-lang-key="about_me_btn_contact">تواصل الآن</a>
                     </div>
-                    <div class="about-image" data-aos="fade-right">
-                        <img src="images/about-me.jpg" alt="صورة المصمم Fennec Visionary">
-                    </div>
-                </div>
-
-                <div class="tools-section">
-                    <h3 data-lang-key="tools_title">الأدوات التي أستخدمها</h3>
-                    <div class="tools-grid">
-                        <div class="tool-icon" data-tool="photoshop">
-                            <img src="images/icons/photoshop.png" alt="Adobe Photoshop">
-                            <div class="tool-tooltip" data-lang-key="tool_photoshop">Adobe Photoshop</div>
-                        </div>
-                        <div class="tool-icon" data-tool="illustrator">
-                            <img src="images/icons/illustrator.png" alt="Adobe Illustrator">
-                            <div class="tool-tooltip" data-lang-key="tool_illustrator">Adobe Illustrator</div>
-                        </div>
-                        <div class="tool-icon" data-tool="indesign">
-                            <img src="images/icons/indesign.png" alt="Adobe InDesign">
-                            <div class="tool-tooltip" data-lang-key="tool_indesign">Adobe InDesign</div>
-                        </div>
-                        <div class="tool-icon" data-tool="aftereffects">
-                            <img src="images/icons/aftereffects.png" alt="Adobe After Effects">
-                            <div class="tool-tooltip" data-lang-key="tool_aftereffects">Adobe After Effects</div>
-                        </div>
-                        <div class="tool-icon" data-tool="figma">
-                            <img src="images/icons/figma.png" alt="Figma">
-                            <div class="tool-tooltip" data-lang-key="tool_figma">Figma</div>
-                        </div>
+                    <div class="about-image" data-aos="fade-left">
+                        <img src="images/me.jpg" alt="Fennec Visionary">
                     </div>
                 </div>
             </div>
@@ -284,45 +297,50 @@
                 <h2 class="section-title" data-lang-key="contact_title">تواصل معي</h2>
                 <p class="section-subtitle" data-lang-key="contact_subtitle">هل أنت مستعد لبدء مشروعك القادم؟ تواصل معي اليوم!</p>
 
-                <form class="contact-form" data-aos="fade-up">
-                    <div class="form-group">
-                        <label for="name" data-lang-key="form_name">الاسم الكامل</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" data-lang-key="form_email">البريد الإلكتروني</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service" data-lang-key="form_service">الخدمة المطلوبة</label>
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected data-lang-key="form_service_select">اختر خدمة</option>
-                            <option value="Logo Design" data-lang-key="service_logo">تصميم شعار</option>
-                            <option value="Branding" data-lang-key="tag_branding">هوية بصرية</option>
-                            <option value="Social Media" data-lang-key="tag_social_media">تصاميم سوشيال ميديا</option>
-                            <option value="Print Design" data-lang-key="tag_print_design">تصميم مطبوع</option>
-                            <option value="Other" data-lang-key="form_service_other">أخرى</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" data-lang-key="form_message">رسالتك</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary btn-submit" data-lang-key="form_submit">إرسال الرسالة <i class="fas fa-paper-plane"></i></button>
-                </form>
+                <div class="contact-content">
+                    <form class="contact-form" data-aos="fade-up">
+                        <div class="form-group">
+                            <label for="name" class="visually-hidden" data-lang-key="form_name">الاسم الكامل</label>
+                            <input type="text" id="name" name="name" placeholder="الاسم الكامل" data-lang-key="form_name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="visually-hidden" data-lang-key="form_email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" data-lang-key="form_email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" class="visually-hidden" data-lang-key="form_service">الخدمة المطلوبة</label>
+                            <select id="service" name="service" aria-label="الخدمة المطلوبة" required>
+                                <option value="" disabled selected data-lang-key="form_service_select">اختر خدمة</option>
+                                <option value="logo" data-lang-key="service_logo">تصميم الشعارات</option>
+                                <option value="branding" data-lang-key="tag_branding">هوية بصرية</option>
+                                <option value="social-media" data-lang-key="tag_social_media">سوشيال ميديا</option>
+                                <option value="packaging" data-lang-key="tag_packaging">تغليف</option>
+                                <option value="other" data-lang-key="form_service_other">أخرى</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="visually-hidden" data-lang-key="form_message">رسالتك</label>
+                            <textarea id="message" name="message" rows="5" placeholder="رسالتك" data-lang-key="form_message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg" data-lang-key="form_submit">إرسال الرسالة</button>
+                    </form>
 
-                <div class="social-links" data-aos="fade-up" data-aos-delay="100">
-                    <h3 data-lang-key="social_links_title">أو تواصل عبر:</h3>
-                    <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" target="_blank" aria-label="Behance"><i class="fab fa-behance"></i></a>
-                    <a href="#" target="_blank" aria-label="Dribbble"><i class="fab fa-dribbble"></i></a>
-                    <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="social-links-card" data-aos="fade-up" data-aos-delay="200">
+                        <h3 data-lang-key="social_links_title">أو تواصل عبر:</h3>
+                        <div class="social-links">
+                            <a href="#" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                            <a href="#" target="_blank" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                            <a href="#" target="_blank" aria-label="Behance"><i class="fab fa-behance"></i></a>
+                            <a href="#" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+
     </main>
 
-    <footer class="site-footer">
+    <footer>
         <a href="#top" class="back-to-top" aria-label="Back to top">
             <i class="fas fa-arrow-up"></i>
         </a>
@@ -370,10 +388,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script src="data.js"></script>
     <script src="script.js"></script>
-    
-</body> 
+</body>
 
 </html>
