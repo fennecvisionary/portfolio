@@ -1065,14 +1065,33 @@ ul[role="list"] {
     flex: 1;
     /* 🟢 الكود الذي وسّط زر "تواصل الآن" */
     text-align: center; 
+    
+    /* 🟢 التعديل الجديد: تنسيق البطاقة (Card) */
+    background-color: var(--light-card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
 }
+/* 🟢 التعديل الجديد: تنسيق البطاقة في الوضع المظلم */
+.dark-mode .about-text {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+}
+
 .about-text p {
     line-height: 1.8;
     margin-bottom: 20px;
     font-size: 1.1rem;
-    /* 💡 ضمان بقاء الفقرات محاذية لليمين وعدم توسيطها */
+    /* 💡 الافتراضي: العربية (RTL) - من اليمين لليسار */
+    direction: rtl; 
     text-align: right; 
 }
+/* 💡 كلاس اختياري: إذا أردت فقرة محددة بالإنجليزية (LTR)، أضف هذا الكلاس إليها في HTML */
+.about-text .ltr-content {
+    direction: ltr;
+    text-align: left;
+}
+
 .about-text strong {
     color: var(--primary-color);
 }
@@ -1101,7 +1120,7 @@ ul[role="list"] {
     overflow: hidden; 
     border-radius: 50%; 
     
-    /* 🟢 التعديل الحاسم: استخدام التوسيط الكتلي الموثوق */
+    /* 🟢 التوسيط الكتلي */
     display: block; 
     margin-left: auto; 
     margin-right: auto; 
