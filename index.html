@@ -162,35 +162,36 @@
             </div>
         </section>
 
-        <section class="works-section" id="works">
-            <div class="container">
-                <h2 class="section-title" data-lang-key="works_title">إبداعاتنا</h2>
-                <p class="section-subtitle" data-lang-key="works_subtitle">جولة سريعة في أحدث أعمالنا المختارة بعناية.</p>
+        <section id="works" class="section">
+    <div class="container" data-aos="fade-up">
+        <h2 class="section-title" data-lang-key="works_title">إبداعاتنا</h2>
+        <p class="section-subtitle" data-lang-key="works_subtitle">جولة سريعة في أحدث أعمالنا المختارة بعناية.</p>
 
-                <div class="search-and-filter-wrapper">
-                    <div class="search-container">
-                        <button id="searchButton" aria-label="Search" data-lang-key="search_button">بحث</button>
-                        <input type="text" id="searchInput" placeholder="ابحث عن تصميم محدد..." data-lang-key="search_placeholder" aria-label="Search input">
-                    </div>
-                    
-                    <div class="tags-container" id="tags-container">
-                        <button class="tag-link active" data-filter="all" data-lang-key="tag_all">الكل</button>
-                        <button class="tag-link" data-filter="logos" data-lang-key="tag_logos">شعارات</button>
-                        <button class="tag-link" data-filter="branding" data-lang-key="tag_branding">هوية بصرية</button>
-                        <button class="tag-link" data-filter="social-media" data-lang-key="tag_social_media">سوشيال ميديا</button>
-                        <button class="tag-link" data-filter="packaging" data-lang-key="tag_packaging">تغليف</button>
-                        <button class="tag-link" data-filter="print-design" data-lang-key="tag_print_design">تصميم مطبوع</button>
-                    </div>
-                </div>
-
-                <div class="works-grid" id="works-grid">
-                    <div class="loading"></div>
-                </div>
-                
-                <div class="pagination-container text-center" id="pagination-container">
-                    </div>
+        <div class="works-controls">
+            <div class="filter-tags">
+                <a href="#" class="tag-link active" data-filter="all" data-lang-key="tag_all">الكل</a>
+                <a href="#" class="tag-link" data-filter="logos" data-lang-key="tag_logos">شعارات</a>
+                <a href="#" class="tag-link" data-filter="branding" data-lang-key="tag_branding">هوية بصرية</a>
+                <a href="#" class="tag-link" data-filter="social_media" data-lang-key="tag_social_media">سوشيال ميديا</a>
+                <a href="#" class="tag-link" data-filter="packaging" data-lang-key="tag_packaging">تغليف</a>
+                <a href="#" class="tag-link" data-filter="print_design" data-lang-key="tag_print_design">تصميم مطبوع</a>
             </div>
-        </section>
+            <div class="search-box">
+                <input type="text" id="searchInput" data-lang-key="search_placeholder" placeholder="ابحث عن تصميم محدد...">
+                <button id="searchButton" data-lang-key="search_button" aria-label="بحث">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="works-grid" id="works-grid">
+            <div class="loading"></div> </div>
+        
+        <div class="pagination-container" id="pagination-container">
+            </div>
+
+    </div>
+</section>
 
         <section class="tools-section" id="tools">
             <div class="container">
