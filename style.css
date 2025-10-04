@@ -1053,8 +1053,8 @@ ul[role="list"] {
 
 
 /* ======================================
-   About Me Section 
-   ======================================
+    About Me Section 
+    ======================================
 */
 .about-content {
     display: flex;
@@ -1072,28 +1072,87 @@ ul[role="list"] {
 .about-text strong {
     color: var(--primary-color);
 }
+*/
 .about-image {
-    /* تم إضافة position: relative لتمكين وضع النقطة بشكل مطلق */
     position: relative; 
     flex: 1;
-    max-width: 400px;
+    max-width: 300px; /* 💡 تصغير حجم الحاوية الكلية */
     text-align: center;
 }
 
 .about-image .image-wrapper {
-    position: relative; /* لتموضع النقطة فوق الصورة */
+    /* 💡 التعديل: حجم ثابت للإطار الدائري والإطار الديناميكي */
+    width: 250px; 
+    height: 250px; 
+    overflow: hidden; 
+    border-radius: 50%; /* شكل دائري للصورة */
     display: inline-block; 
     margin-bottom: 20px;
+    
+    /* الإطار: إطار أساسي وآخر خارجي ديناميكي (shadow) */
+    border: 5px solid var(--light-card-bg); /* إطار أبيض/فاتح داخلي */
+    box-shadow: 0 0 0 5px var(--primary-color); /* إطار خارجي افتراضي (برتقالي) */
+    
+    transition: all 0.3s ease; /* حركة سلسة لتغيير اللون */
+    position: relative; /* لتثبيت الأيقونة بداخله */
+}
+
+/* 💡 وضعية الوضع المظلم لإطار الصورة */
+.dark-mode .about-image .image-wrapper {
+    border-color: var(--dark-card-bg); 
 }
 
 .about-image img {
     width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: var(--light-shadow);
+    height: 100%; 
+    object-fit: cover; /* تغطية مثالية للمساحة */
+    border-radius: 0; 
+    box-shadow: none;
 }
-.dark-mode .about-image img {
-    box-shadow: var(--dark-shadow);
+
+/* 💡 إطار الصورة في حالة الاتصال (الأخضر) */
+.about-image .image-wrapper.is-online {
+    box-shadow: 0 0 0 5px var(--secondary-color), 0 0 15px var(--secondary-color-transparent); /* ظل أخضر قوي */
+}
+
+/* 💡 إطار الصورة في حالة عدم الاتصال (الأحمر) */
+.about-image .image-wrapper.is-offline {
+    box-shadow: 0 0 0 5px #e74c3c; /* ظل أحمر */
+}
+
+/* 💡 تنسيقات أيقونة المعرف (اللون البرتقالي) */
+.id-badge-icon {
+    position: absolute;
+    bottom: 0px; 
+    right: 0px; 
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color); /* اللون البرتقالي الأساسي */
+    color: var(--light-card-bg); 
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    border: 3px solid var(--light-card-bg); 
+    z-index: 10;
+}
+
+.dark-mode .id-badge-icon {
+    border-color: var(--dark-card-bg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* 💡 تنسيق حاوية الحالة لتكون أسفل الصورة مباشرة */
+.status-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 25px;
+    max-width: 300px;  /* هذا يساعد في توسيطها */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* ======================================
@@ -1124,10 +1183,13 @@ ul[role="list"] {
 
 /* مؤشر الحالة (النقطة) */
 .status-dot {
-    width: 14px; 
+    width: 14px;  
     height: 14px;
     border-radius: 50%;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    /* 💡 التعديل: العودة إلى اللون الأبيض الافتراضي (أو الشفاف) مع ظل */
+    background-color: var(--light-card-bg, #ffffff); 
+    
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, opacity 0.3s; 
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
@@ -1140,18 +1202,18 @@ ul[role="list"] {
 
 /* حالة الاتصال (الأخضر) */
 .status-dot.is-online {
-    /* النقطة تتماشى مع لون النص باستخدام المتغير */
     background-color: var(--secondary-color);
     box-shadow: 0 0 8px var(--secondary-color); 
+    animation: pulse 1.5s infinite; 
 }
 .status-text.is-online {
-    /* النص يتماشى مع لون النقطة باستخدام المتغير */
     color: var(--secondary-color); 
 }
 
-/* حالة عدم الاتصال (الأحمر) */
+/* حالة عدم الاتصال (الأحمر) - لا تغيير هنا */
 .status-dot.is-offline {
-    background-color: #e74c3c;
+    background-color: #e74c3c; 
+    animation: none;
 }
 .status-text.is-offline {
     color: #e74c3c;
@@ -1243,6 +1305,24 @@ ul[role="list"] {
 .social-links-about a:hover {
     color: var(--primary-color);
     transform: scale(1.1);
+}
+
+/* ======================================
+ حركة النبض لمؤشر الحالة (جديد)
+ ====================================== */
+@keyframes pulse {
+    0% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.9);
+        opacity: 0.7;
+    }
 }
 /* ======================================
    Contact Section 
