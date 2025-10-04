@@ -525,7 +525,10 @@ ul[role="list"] {
     color: var(--primary-color);
 }
 
-
+/* أضف هذا النمط في أي مكان في style.css */
+.work-item a.hidden {
+    display: none !important;
+}
 /* ======================================
    Pagination Styles
    ======================================
