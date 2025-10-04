@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainNav = document.querySelector(".main-nav");
 
     // ===================================
-    // بيانات الترجمة (Translation Data)
+    // بيانات الترجمة (Translation Data) - تم إضافة ترجمة الجدول
     // ===================================
     const translations = {
         ar: {
@@ -106,7 +106,15 @@ document.addEventListener("DOMContentLoaded", () => {
             form_service_other: "أخرى",
             form_message: "رسالتك",
             form_submit: "إرسال الرسالة",
-            social_links_title: "أو تواصل عبر:"
+            social_links_title: "أو تواصل عبر:",
+            // مفاتيح جديدة لحالة الاتصال وجدول المواعيد
+            status_online: "متصل حاليًا 👋", 
+            status_offline: "غير متصل حاليًا 😴",
+            working_hours_title: "أوقات العمل",
+            period_morning: "الفترة الصباحية",
+            time_morning: "8:00 سا - 16:00 سا",
+            period_evening: "الفترة المسائية",
+            time_evening: "19:00 سا - 01:00 سا"
         },
         en: {
             skip_link: "Skip to main content",
@@ -193,13 +201,21 @@ document.addEventListener("DOMContentLoaded", () => {
             form_service_other: "Other",
             form_message: "Your Message",
             form_submit: "Send Message",
-            social_links_title: "Or contact via:"
+            social_links_title: "Or contact via:",
+            // مفاتيح جديدة لحالة الاتصال وجدول المواعيد
+            status_online: "Currently Online 👋",
+            status_offline: "Currently Offline 😴",
+            working_hours_title: "Working Hours",
+            period_morning: "Morning Period",
+            time_morning: "8:00 AM - 4:00 PM",
+            period_evening: "Evening Period",
+            time_evening: "7:00 PM - 1:00 AM"
         }
     };
 
 
     // ===================================
-    // بيانات الأعمال ومحرك الفلترة والترقيم
+    // بيانات الأعمال ومحرك الفلترة والترقيم (تم الاحتفاظ بها)
     // ===================================
 
     const WORKS_PER_PAGE = 9;
@@ -233,7 +249,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ========================================================
-    // وظائف الإحصائيات التفاعلية (Likes/Saves) - المحاكاة عبر Local Storage
+    // وظائف الإحصائيات التفاعلية (Likes/Saves) - المحاكاة عبر Local Storage (تم الاحتفاظ بها)
     // ========================================================
 
     // دمج الإحصائيات المخزنة محليًا مع البيانات الأولية
@@ -359,7 +375,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // وظائف الترقيم والتحميل (لم يتم تغييرها جوهرياً)
+    // وظائف الترقيم والتحميل (تم الاحتفاظ بها)
     function renderPagination(totalWorks, worksPerPage, currentPage) {
         if (!paginationContainer) return;
         paginationContainer.innerHTML = '';
@@ -512,6 +528,24 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
         
+        // تحديث محتوى الجدول يدوياً
+        const worksTable = document.querySelector('.working-hours-table');
+        if (worksTable) {
+            // تحديث عنوان الجدول
+            worksTable.querySelector('th[data-lang-key="working_hours_title"]').textContent = data.working_hours_title;
+            
+            // تحديث محتوى الصفوف
+            const rows = worksTable.querySelectorAll('tbody tr');
+            if (rows[0]) {
+                rows[0].querySelector('td:first-child').textContent = data.period_morning;
+                rows[0].querySelector('td:last-child').textContent = data.time_morning;
+            }
+            if (rows[1]) {
+                rows[1].querySelector('td:first-child').textContent = data.period_evening;
+                rows[1].querySelector('td:last-child').textContent = data.time_evening;
+            }
+        }
+
         const serviceSelect = document.getElementById('service');
         if (serviceSelect) {
             serviceSelect.querySelectorAll('option').forEach(option => {
@@ -521,6 +555,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
+        
+        // إعادة التحقق من الحالة لتطبيق اللون والنص الصحيح بعد تغيير اللغة
+        checkOnlineStatus(); 
     }
     
     function closeMenu() {
@@ -546,18 +583,81 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", closeMenu);
     });
 
+    // ===================================
+    // Online Status Logic for About Me Section
+    // ===================================
+
+    function checkOnlineStatus() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        const totalMinutes = currentHour * 60 + currentMinute;
+        
+        const statusDot = document.getElementById('online-status-dot');
+        const statusText = document.getElementById('status-text');
+
+        if (!statusDot || !statusText) return; 
+
+        // الحصول على اللغة الحالية لجلب النص الصحيح
+        const lang = localStorage.getItem("siteLang") || "ar";
+        const data = translations[lang];
+
+        // النافذة الأولى: 8:00 ص (480 دقيقة) إلى 4:00 م (960 دقيقة)
+        const start1 = 8 * 60; 
+        const end1 = 16 * 60; 
+
+        // النافذة الثانية: 7:00 م (1140 دقيقة) إلى 1:00 ص (60 دقيقة - اليوم التالي)
+        const start2 = 19 * 60; 
+        const end2_normalized = 1 * 60; 
+        
+        let isOnline = false;
+        
+        // التحقق من النافذة الأولى
+        if (totalMinutes >= start1 && totalMinutes < end1) {
+            isOnline = true;
+        } 
+        // التحقق من النافذة الثانية (تتجاوز منتصف الليل)
+        // يجب أن نعتبر أن 1:00 ص هي اليوم التالي
+        else if (totalMinutes >= start2 || totalMinutes < end2_normalized) {
+            isOnline = true;
+        }
+
+        if (isOnline) {
+            statusDot.classList.add('is-online');
+            statusDot.classList.remove('is-offline');
+            statusText.classList.add('is-online'); // تطبيق اللون الأخضر على النص
+            statusText.classList.remove('is-offline');
+            statusText.textContent = data.status_online; // استخدام الترجمة
+        } else {
+            statusDot.classList.add('is-offline');
+            statusDot.classList.remove('is-online');
+            statusText.classList.add('is-offline'); // تطبيق اللون الأحمر على النص
+            statusText.classList.remove('is-online');
+            statusText.textContent = data.status_offline; // استخدام الترجمة
+        }
+    }
+    
+    // تشغيل التحقق من الحالة فوراً ثم كل دقيقة لتحديثها
+    checkOnlineStatus();
+    setInterval(checkOnlineStatus, 60000); // تحديث كل 60 ثانية (1 دقيقة)
+    
+    // ===================================
+    // End of Online Status Logic
+    // ===================================
+
+
     const savedLang = localStorage.getItem("siteLang") || "ar";
     const savedMode = localStorage.getItem("siteMode") || "light-mode";
 
     body.classList.add(savedMode);
-    applyLanguage(savedLang);
+    applyLanguage(savedLang); // ستستدعي applyLanguage بدورها checkOnlineStatus لتحديث النص واللون
     languageSelect.value = savedLang;
     modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
 
     languageSelect.addEventListener("change", () => {
         const lang = languageSelect.value;
         localStorage.setItem("siteLang", lang);
-        applyLanguage(lang);
+        applyLanguage(lang); // تحديث اللغة ثم تحديث الحالة فوراً
         loadWorks();
     });
 
