@@ -5,9 +5,7 @@
 }
 
 body {
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
+  overflow-x: hidden; /* لمنع التمرير الأفقي العام */
 }
 /* CSS Custom Properties for theming */
 :root {
@@ -22,7 +20,7 @@ body {
   --dark-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
   --primary-color: #f75723; /* Orange */
-  --secondary-color: #2a6f2a; /* Green */
+  --secondary-color: #f75723; /* Orange */
 
   --font-family-arabic: 'Tajawal', sans-serif;
   --font-family-english: 'Poppins', sans-serif;
@@ -146,7 +144,8 @@ ul[role="list"] {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 40px;
+  /* تقليل التباعد الأفقي الافتراضي للمرونة */
+  padding: 0 20px; 
   background-color: var(--light-card-bg);
   box-shadow: var(--light-shadow);
   z-index: 100;
@@ -334,10 +333,11 @@ ul[role="list"] {
 /* ======================================
    Works Section (Portfolio)
    ======================================
-/*
-======================================
-تنسيقات توسيط شريط البحث والتجاوب
-======================================
+*/
+
+/* ======================================
+   تنسيقات توسيط شريط البحث والتجاوب
+   ======================================
 */
 
 /* 1. الحاوية الجديدة للتوسيط */
@@ -373,7 +373,6 @@ ul[role="list"] {
     background-color: var(--dark-card-bg);
     box-shadow: var(--dark-shadow);
 }
-
 .search-container input[type="text"] {
     flex-grow: 1; /* جعل الحقل يأخذ كل المساحة المتاحة */
     border: none;
@@ -382,15 +381,12 @@ ul[role="list"] {
     font-size: 1rem;
     color: var(--light-text-color);
 }
-
 .dark-mode .search-container input[type="text"] {
     color: var(--dark-text-color);
 }
-
 .search-container input[type="text"]:focus {
     outline: none; /* إزالة الحدود عند التركيز */
 }
-
 .search-container button {
     background: none;
     border: none;
@@ -422,709 +418,658 @@ ul[role="list"] {
         font-size: 0.9rem;
     }
 }
-
 .tags-filter {
-  text-align: center;
-  margin-bottom: 50px;
+    text-align: center;
+    margin-bottom: 50px;
 }
 .tag-link {
-  display: inline-block;
-  text-decoration: none;
-  color: var(--light-text-color);
-  padding: 8px 15px;
-  margin: 5px;
-  border-radius: 20px;
-  border: 1px solid var(--light-text-color);
-  transition: all 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    color: var(--light-text-color);
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: var(--light-card-bg);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
 }
 .dark-mode .tag-link {
-  color: var(--dark-text-color);
-  border-color: var(--dark-text-color);
+    background-color: var(--dark-card-bg);
+    color: var(--dark-text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .tag-link:hover,
 .tag-link.active {
-  background-color: var(--primary-color);
-  color: var(--light-card-bg);
-  border-color: var(--primary-color);
-}
-
-.works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  min-height: 300px;
-}
-.work-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: var(--light-shadow);
-}
-.work-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-  display: block;
-}
-.work-item a:hover img {
-  transform: scale(1.05);
-}
-.work-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  transition: opacity 0.3s;
-  padding: 20px;
-  color: white;
-  text-align: center;
-}
-.work-item a:hover .work-overlay {
-  opacity: 1;
-}
-.work-overlay h4 {
-  font-size: 1.5rem;
-  margin-bottom: 5px;
-  color: white;
-}
-.work-overlay p {
-  font-size: 1rem;
-  color: #ccc;
-}
-.work-overlay i {
-  font-size: 2rem;
-  margin-top: 15px;
-  color: var(--primary-color);
-}
-/*
-======================================
-تنسيقات حاوية ترقيم الصفحات (Pagination)
-======================================
-*/
-.pagination-container {
-    display: flex;
-    justify-content: center; /* توسيط أرقام الصفحات */
-    align-items: center;
-    gap: 5px; /* مسافة أقل بين الأزرار لزيادة المساحة على الموبايل */
-    margin-top: 50px;
-    padding: 0 10px; /* تباعد داخلي لمنع التصاق الأزرار بحافة الشاشة */
-    
-    /* 💡 أهم خصائص التجاوب */
-    overflow-x: auto; /* السماح بالتمرير الأفقي الذكي داخل الحاوية نفسها */
-    flex-wrap: nowrap; /* إبقاء جميع العناصر في سطر واحد دائماً */
-}
-
-/*
-======================================
-تنسيق زر الصفحة (Page Link)
-======================================
-*/
-.page-link {
-    /* 💡 مهم جداً: منع انكماش العنصر أقل من عرضه المحدد على الموبايل */
-    flex-shrink: 0; 
-    
-    background-color: var(--light-card-bg);
-    color: var(--light-text-color);
-    border: 1px solid #ccc;
-    padding: 8px 12px;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: all 0.3s;
-    
-    /* تحديد حد أدنى للعرض للتحكم في الحجم */
-    min-width: 40px; 
-    text-align: center;
-}
-
-.dark-mode .page-link {
-    background-color: var(--dark-card-bg);
-    color: var(--dark-text-color);
-    border-color: #555;
-}
-
-.page-link:hover,
-.page-link.active {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--light-card-bg);
     border-color: var(--primary-color);
-}
-.page-link.disabled {
-    opacity: 0.5;
-    pointer-events: none;
+    transform: translateY(-2px);
 }
 
-/*
-======================================
-التعديلات الخاصة بالشاشات الصغيرة
-(يجب وضعها داخل استعلام الميديا @media)
-======================================
-*/
-@media (max-width: 768px) {
-    .page-link {
-        /* تصغير حجم زر الصفحة على الموبايل لتوفير مساحة أكبر */
-        padding: 6px 10px; 
-        font-size: 0.9rem; 
-        min-width: 35px; /* تصغير العرض الأدنى قليلاً */
-    }
-}
-
-/* قسم الأعمال (تعديل تنسيق عنصر العمل) */
 .works-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  min-height: 300px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
 }
-.work-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-  box-shadow: var(--light-shadow);
-  /* تحديد ارتفاع ثابت للعنصر لتجنب تغيير الحجم عند التنقل */
-  height: 350px; 
+.work-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
+    transition: transform 0.3s;
 }
-.dark-mode .work-item {
+.dark-mode .work-card {
     box-shadow: var(--dark-shadow);
 }
-
-/* تنسيق حاوية السلايدر (Swiper) */
-.swiper-container {
-  width: 100%;
-  height: 100%;
+.work-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s;
 }
-.swiper-slide {
-  text-align: center;
-  font-size: 18px;
-  background: var(--light-card-bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.work-card:hover img {
+    transform: scale(1.05);
 }
-.dark-mode .swiper-slide {
-    background: var(--dark-card-bg);
+.work-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+    text-align: center;
 }
-
-.swiper-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* تنسيق أزرار التنقل (للتنقل بين الصور داخل العمل الواحد) */
-.swiper-button-next,
-.swiper-button-prev {
-  color: var(--primary-color) !important;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-/* إظهار الأزرار عند المرور فوق العمل */
-.work-item:hover .swiper-button-next,
-.work-item:hover .swiper-button-prev {
+.work-card:hover .work-overlay {
     opacity: 1;
 }
-
-/* لتجنب تداخل الأزرار مع الوصف، سنقوم بتعديل موضعها قليلاً */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-    font-size: 20px !important;
+.work-overlay h4 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+.work-overlay p {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+.work-link-icon {
+    font-size: 2rem;
+    color: white;
+    transition: color 0.3s;
+}
+.work-link-icon:hover {
+    color: var(--primary-color);
+}
+.pagination-container {
+    margin-top: 50px;
+}
+.pagination-container .page-button {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 1px solid var(--primary-color);
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.pagination-container .page-button.active,
+.pagination-container .page-button:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+.pagination-container .page-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: transparent;
+    color: var(--primary-color);
 }
 
-/* تنسيق مؤشرات الترقيم أسفل كل عمل */
-.swiper-pagination {
-    bottom: 5px !important;
-}
-.swiper-pagination-bullet-active {
-    background: var(--primary-color) !important;
-}
 
-/* إخفاء طبقة التداخل القديمة (لم نعد بحاجتها) */
-.work-overlay {
-  display: none !important;
-}
 /* ======================================
    How It Works Section 
    ======================================
 */
-.process-steps {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+.how-it-works-section {
+    background-color: var(--light-bg-color);
+}
+.dark-mode .how-it-works-section {
+    background-color: var(--dark-bg-color);
+}
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
 }
 .step-card {
-  text-align: center;
-  padding: 30px 20px;
-  border-radius: 10px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  transition: transform 0.3s, background-color 0.3s;
-  position: relative;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 10px;
+    position: relative;
+    border-bottom: 4px solid var(--secondary-color);
+    background-color: var(--light-card-bg);
+    box-shadow: var(--light-shadow);
 }
 .dark-mode .step-card {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
-}
-.step-card:hover {
-  transform: translateY(-5px);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
 .step-number {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto 15px;
-  box-shadow: 0 4px 8px rgba(247, 87, 35, 0.4);
+    position: absolute;
+    top: -15px;
+    right: 50%;
+    transform: translateX(50%);
+    width: 30px;
+    height: 30px;
+    background-color: var(--secondary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1rem;
+    z-index: 10;
+}
+.step-icon {
+    font-size: 2.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 15px;
 }
 .step-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 10px;
-  color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--secondary-color);
 }
 .step-card p {
-  line-height: 1.6;
-  color: var(--light-text-color);
+    line-height: 1.6;
 }
-.dark-mode .step-card p {
-  color: var(--dark-text-color);
+
+
+/* ======================================
+   Tools Section 
+   ======================================
+*/
+.tools-section {
+    background-color: var(--light-card-bg);
 }
+.dark-mode .tools-section {
+    background-color: var(--dark-card-bg);
+}
+.tools-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.tool-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    width: 150px;
+    background-color: var(--light-bg-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.dark-mode .tool-card {
+    background-color: var(--dark-bg-color);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+.tool-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+.tool-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+.tool-card span {
+    font-weight: 500;
+    color: var(--light-text-color);
+}
+.dark-mode .tool-card span {
+    color: var(--dark-text-color);
+}
+/* تنسيق الصورة العائمة (tool hover) */
+.hover-tool-image {
+    position: fixed;
+    pointer-events: none; /* لمنع حظر النقرات */
+    z-index: 9999;
+    background-color: var(--light-card-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    padding: 5px;
+    transition: opacity 0.1s;
+}
+.hover-tool-image img {
+    width: 100px; /* حجم الصورة العائمة */
+    height: 100px;
+    display: block;
+}
+
 
 /* ======================================
    Testimonials Section 
    ======================================
 */
 .testimonials-section {
-  background-color: var(--light-bg-color);
+    background-color: var(--light-bg-color);
 }
 .dark-mode .testimonials-section {
-  background-color: var(--dark-bg-color);
+    background-color: var(--dark-bg-color);
 }
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
 }
 .testimonial-card {
-  padding: 30px;
-  border-radius: 10px;
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  transition: transform 0.3s;
+    padding: 30px;
+    border-radius: 10px;
+    background-color: var(--light-card-bg);
+    box-shadow: var(--light-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border-left: 4px solid var(--primary-color);
 }
 .dark-mode .testimonial-card {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+    border-left-color: var(--primary-color);
 }
 .testimonial-card:hover {
-  transform: translateY(-5px);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 .rating {
-  color: gold;
-  margin-bottom: 15px;
-  font-size: 1.1rem;
+    color: gold;
+    margin-bottom: 15px;
 }
 .testimonial-card p {
-  font-style: italic;
-  margin-bottom: 15px;
-  line-height: 1.6;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    min-height: 100px;
 }
 .client-info {
-  border-top: 1px solid #eee;
-  padding-top: 15px;
-  text-align: right;
-}
-.dark-mode .client-info {
-  border-color: #444;
+    display: flex;
+    flex-direction: column;
 }
 .client-name {
-  font-weight: 700;
-  display: block;
-  color: var(--primary-color);
+    font-weight: 700;
+    color: var(--primary-color);
 }
 .client-role {
-  font-size: 0.9rem;
-  color: var(--light-text-color);
+    font-size: 0.9rem;
+    color: var(--light-text-color);
 }
 .dark-mode .client-role {
-  color: var(--dark-text-color);
+    color: var(--dark-text-color);
 }
+
 
 /* ======================================
    About Me Section 
    ======================================
 */
-.about-me-section {
-  padding-bottom: 50px;
-}
 .about-content {
-  display: flex;
-  gap: 40px;
-  align-items: center;
-  margin-bottom: 80px;
+    display: flex;
+    align-items: center;
+    gap: 50px;
 }
 .about-text {
-  flex: 2;
+    flex: 1;
 }
 .about-text p {
-  margin-bottom: 20px;
-  line-height: 1.8;
-  font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+.about-text strong {
+    color: var(--primary-color);
 }
 .about-image {
-  flex: 1;
-  text-align: center;
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
 }
 .about-image img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 10px;
-  box-shadow: var(--light-shadow);
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
 }
 .dark-mode .about-image img {
-  box-shadow: var(--dark-shadow);
+    box-shadow: var(--dark-shadow);
 }
 
-.tools-section h3 {
-  text-align: center;
-  margin-bottom: 30px;
-  font-size: 2rem;
-  color: var(--primary-color);
-}
-.tools-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
-}
-.tool-icon {
-  position: relative;
-  width: 80px;
-  height: 80px;
-  cursor: pointer;
-}
-.tool-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1));
-  transition: transform 0.3s;
-}
-.dark-mode .tool-icon img {
-  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
-}
-.tool-icon:hover img {
-  transform: scale(1.1);
-}
-.tool-tooltip {
-  position: absolute;
-  bottom: -30px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: var(--primary-color);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  z-index: 10;
-}
-.tool-icon:hover .tool-tooltip {
-  opacity: 1;
-}
 
 /* ======================================
    Contact Section 
    ======================================
 */
 .contact-section {
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
+    background-color: var(--light-bg-color);
 }
 .dark-mode .contact-section {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
+    background-color: var(--dark-bg-color);
+}
+.contact-content {
+    display: flex;
+    gap: 50px;
+    max-width: 900px;
+    margin: 0 auto;
 }
 .contact-form {
-  max-width: 600px;
-  margin: 0 auto 50px;
-  padding: 30px;
-  border-radius: 10px;
-  background-color: var(--light-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    flex: 2;
+    background-color: var(--light-card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
 }
 .dark-mode .contact-form {
-  background-color: var(--dark-bg-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
 .form-group {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
-.contact-form label {
-  display: block;
-  margin-bottom: 8px;
-  font-weight: 500;
-  color: var(--light-text-color);
-}
-.dark-mode .contact-form label {
-  color: var(--dark-text-color);
-}
-.contact-form input,
+.contact-form input[type="text"],
+.contact-form input[type="email"],
 .contact-form select,
 .contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1rem;
-  background-color: var(--light-card-bg);
-  color: var(--light-text-color);
-  transition: border-color 0.3s;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+    transition: border-color 0.3s, background-color 0.3s;
 }
-.dark-mode .contact-form input,
+.dark-mode .contact-form input[type="text"],
+.dark-mode .contact-form input[type="email"],
 .dark-mode .contact-form select,
 .dark-mode .contact-form textarea {
-  background-color: #333;
-  border-color: #555;
-  color: var(--dark-text-color);
+    border-color: #555;
+    background-color: #3e3e3e;
+    color: var(--dark-text-color);
 }
 .contact-form input:focus,
 .contact-form select:focus,
 .contact-form textarea:focus {
-  border-color: var(--primary-color);
-  outline: none;
+    border-color: var(--primary-color);
+    outline: none;
 }
-.btn-submit {
-  width: 100%;
-  font-size: 1.1rem;
+.social-links-card {
+    flex: 1;
+    background-color: var(--light-card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--light-shadow);
+    text-align: center;
+    align-self: flex-start;
 }
-
-.social-links {
-  text-align: center;
+.dark-mode .social-links-card {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
 }
-.social-links h3 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  color: var(--primary-color);
+.social-links-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
 }
 .social-links a {
-  display: inline-block;
-  font-size: 1.8rem;
-  color: var(--light-text-color);
-  margin: 0 10px;
-  transition: color 0.3s, transform 0.3s;
+    font-size: 2rem;
+    margin: 0 10px;
+    color: var(--light-text-color);
+    transition: color 0.3s;
 }
 .dark-mode .social-links a {
-  color: var(--dark-text-color);
+    color: var(--dark-text-color);
 }
 .social-links a:hover {
-  color: var(--primary-color);
-  transform: translateY(-3px);
+    color: var(--primary-color);
 }
+
 
 /* ======================================
    Footer Styles 
    ======================================
 */
-.site-footer {
-  text-align: center;
-  padding: 20px 0;
-  background-color: var(--light-bg-color);
-  border-top: 1px solid #eee;
-  position: relative;
-  font-size: 0.9rem;
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: var(--light-card-bg);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
+    position: relative;
+    font-size: 0.9rem;
 }
-.dark-mode .site-footer {
-  background-color: var(--dark-bg-color);
-  border-color: #333;
+.dark-mode footer {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
 .back-to-top {
-  position: absolute;
-  top: -20px;
-  right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: var(--primary-color);
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  transition: background-color 0.3s;
-}
-.back-to-top:hover {
-  background-color: #e64a19;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s;
+    z-index: 90;
 }
 
 
 /* ======================================
-   RESPONSIVENESS (Mobile First Overrides)
+   Mobile/Tablet Responsiveness
    ======================================
 */
-@media (max-width: 1024px) {
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
+@media (max-width: 992px) {
+
+    /* 1. إظهار زر التحكم بالهاتف (Menu Toggle) */
+    .menu-toggle {
+        display: block;
+        font-size: 1.4rem;
+        z-index: 101;
+        /* لجعل زر فتح القائمة بنفس حجم زر الوضع الداكن */
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--light-text-color);
+    }
+    .dark-mode .menu-toggle {
+        color: var(--dark-text-color);
+    }
+
+    /* 2. إخفاء النص داخل زر التواصل وتصغير الشعار */
+    .btn-text-mobile-hide {
+        display: none !important; /* إخفاء نص "تواصل معي" */
+    }
+    .logo img {
+        height: 40px; /* تصغير الشعار على الهاتف */
+    }
+
+    /* 3. حل مشكلة تجاوز الشاشة في الهيدر */
+    .site-header {
+      padding: 0 0; /* إزالة التباعد الأفقي تمامًا من الـ Header نفسه */
+      /* نستخدم justify-content: space-between; في التنسيق الأساسي */
+    }
+    /* وضع التباعد على عناصر الأطفال لضمان 100% عرض سليم */
+    .logo {
+        padding-inline-start: 10px; 
+    }
+    .header-controls {
+        padding-inline-end: 10px;
+        gap: 5px; /* تباعد ضيق بين الأزرار */
+        flex-shrink: 0;
+    }
+
+    /* 4. تنسيق زر التواصل ليصبح أيقونة صغيرة */
+    .header-controls .btn-primary.btn-sm.contact-btn {
+        padding: 0; 
+        width: 38px; 
+        height: 38px; 
+        min-width: 0; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem; 
+        border-radius: 8px; 
+    }
+    .contact-btn i {
+        margin: 0; 
+    }
+    
+    /* 5. تنسيق القائمة الجانبية (Off-Canvas Menu) */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        height: 100vh;
+        width: 70%;
+        max-width: 300px;
+        background-color: var(--light-card-bg);
+        box-shadow: var(--light-shadow);
+        padding-top: var(--header-height);
+        z-index: 99;
+        transition: transform 0.3s ease-in-out;
+    }
+    .dark-mode .main-nav {
+        background-color: var(--dark-card-bg);
+        box-shadow: var(--dark-shadow);
+    }
+
+    /* RTL - إزاحة القائمة لليمين (إخفاء) */
+    .rtl .main-nav {
+        right: 0;
+        transform: translateX(100%); 
+    }
+    /* RTL - إظهار القائمة */
+    .rtl .main-nav.is-open {
+        transform: translateX(0); 
+    }
+    
+    /* LTR - إزاحة القائمة لليسار (إخفاء) */
+    .ltr .main-nav {
+        left: 0;
+        transform: translateX(-100%); 
+    }
+    /* LTR - إظهار القائمة */
+    .ltr .main-nav.is-open {
+        transform: translateX(0); 
+    }
+  
+    /* تنسيق الروابط داخل القائمة */
+    .main-nav ul {
+        flex-direction: column; /* ترتيب الروابط عمودياً */
+        width: 100%;
+    }
+
+    .main-nav li {
+        margin: 0;
+        width: 100%;
+        text-align: inherit;
+        /* استخدام rgba للشفافية بناءً على وضع الإضاءة */
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 0 15px;
+    }
+    .dark-mode .main-nav li {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-nav a {
+        display: block;
+        padding: 15px 0;
+        font-size: 1.1rem;
+        font-weight: 500;
+    }
+    .main-nav a::after {
+        display: none; /* إخفاء خط الـ hover في الهاتف */
+    }
+
+
+    /* تعديلات على أقسام المحتوى */
+    section {
+        padding: 50px 0; /* تقليل التباعد الرأسي للأقسام */
+    }
+    .hero-section {
+        padding-top: calc(var(--header-height) + 50px);
+        padding-bottom: 50px;
+        min-height: auto;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .services-grid,
+    .steps-grid,
+    .testimonials-grid {
+        grid-template-columns: 1fr; /* عرض عمود واحد */
+    }
+    
+    /* قسم عني (About Me) */
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-image {
+        max-width: 100%;
+        order: -1; /* وضع الصورة في الأعلى */
+    }
+    .about-text {
+        text-align: center;
+    }
+    .about-text .btn-lg {
+        width: 100%;
+    }
+
+    /* قسم التواصل (Contact) */
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .social-links-card {
+        padding: 20px;
+    }
+    .contact-form {
+        padding: 20px;
+    }
+    
 }
-
-/* التجاوبية مع شاشات الهاتف (أقل من 768 بكسل) */
-@media (max-width: 768px) {
-  /* 2. إظهار زر الفتح (الهامبرغر) */
-  .menu-toggle {
-    display: block; 
-    background: none;
-    border: none;
-    font-size: 1.8rem; /* تم تكبير الحجم قليلاً */
-    cursor: pointer;
-    color: var(--primary-color);
-    z-index: 110; 
-    order: 0; /* وضعه في البداية */
-  }
-
-  .site-header {
-    padding: 0 15px; /* تقليل الحشو */
-    justify-content: space-between;
-  }
-
-  .logo {
-    order: 1; /* وضعه في المنتصف */
-  }
-
-  .header-controls {
-    order: 2; /* وضعه في النهاية */
-  }
-
-  /* 3. تنسيق القائمة المنسدلة (main-nav) كقائمة جانبية */
-  .main-nav {
-    position: fixed;
-    top: 0;
-    width: 80%; /* عرض القائمة */
-    max-width: 300px;
-    height: 100%;
-    background-color: var(--light-card-bg); 
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
-    transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* تحريك سلس */
-    z-index: 105;
-    display: flex;
-    flex-direction: column;
-    padding: 30px 20px;
-    align-items: flex-start; /* محاذاة لليسار افتراضياً */
-  }
-
-  .dark-mode .main-nav {
-      background-color: var(--dark-card-bg);
-  }
-  
-  /* إخفاء القائمة خارج الشاشة لـ RTL (من اليمين لليسار) */
-  body.rtl .main-nav {
-      right: -100%;
-      align-items: flex-end; /* لكي تظهر العناصر محاذية للزاوية التي تفتح منها (اليمين) */
-  }
-  /* إخفاء القائمة خارج الشاشة لـ LTR (من اليسار لليمين) */
-  body.ltr .main-nav {
-      left: -100%;
-      right: auto;
-  }
-
-
-  /* إظهار القائمة عندما تكون is-open */
-  body.rtl .main-nav.is-open {
-    right: 0; /* تحريك القائمة للداخل في RTL */
-  }
-  body.ltr .main-nav.is-open {
-    left: 0; /* تحريك القائمة للداخل في LTR */
-  }
-  
-  /* تنسيق الروابط داخل القائمة */
-  .main-nav ul {
-    flex-direction: column; /* ترتيب الروابط عمودياً */
-    width: 100%;
-  }
-
-  .main-nav li {
-    margin: 0;
-    width: 100%;
-    text-align: inherit;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .dark-mode .main-nav li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  .main-nav a {
-    display: block;
-    padding: 15px 5px;
-    font-size: 1.1rem;
-    font-weight: 500;
-  }
-  .main-nav a::after {
-    display: none; /* إخفاء خط الـ hover في الهاتف */
-  }
-
-
-  /* تعديلات على أقسام المحتوى */
-  .hero-section {
-    padding-top: calc(var(--header-height) + 50px);
-    padding-bottom: 50px;
-  }
-  .hero-section h1 {
-    font-size: 2rem;
-  }
-  .hero-section p {
-    font-size: 1rem;
-  }
-  .hero-actions {
-    flex-direction: column;
-    gap: 10px;
-  }
-  .btn-lg {
-    width: 100%;
-    text-align: center;
-  }
-  .about-content {
-    flex-direction: column-reverse;
-  }
-  .about-image {
-    margin-bottom: 30px;
-  }
-}
-
-/* لضمان إخفاء أزرار الهاتف في وضع سطح المكتب (الشاشات الكبيرة) */
-@media (min-width: 769px) {
-  .menu-toggle, .menu-close {
-    display: none !important;
-  }
-
-  /* نضمن أن القائمة تظهر بشكلها العادي في الشاشات الكبيرة */
-  .main-nav {
-      display: block !important;
-      position: static;
-      box-shadow: none;
-      transition: none;
-      width: auto;
-      height: auto;
-      padding: 0;
-  }
-  
-  .main-nav ul {
-      flex-direction: row;
-  }
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    .btn-lg {
+        width: 100%;
+    }
 }
