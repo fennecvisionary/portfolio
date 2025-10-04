@@ -196,6 +196,185 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+
+    // ===================================
+    // بيانات الأعمال ومحرك الفلترة والترقيم
+    // ===================================
+
+    const WORKS_PER_PAGE = 9;
+    const worksData = [];
+    let currentPage = 1;
+    let currentFilter = 'all';
+    let currentSearchTerm = '';
+
+    // محاكاة 100 عمل
+    for (let i = 1; i <= 100; i++) {
+        const categories = ['logos', 'branding', 'social_media', 'packaging', 'print_design'];
+        const tags = [categories[i % categories.length], categories[(i + 1) % categories.length]].filter((v, idx, a) => a.indexOf(v) === idx);
+        worksData.push({
+            id: i,
+            title: `Project Title ${i}`,
+            // استخدام 10 صور متكررة للمحاكاة، يجب وضع مسارات صور حقيقية هنا
+            image: `images/works/project_${i % 10 + 1}.jpg`, 
+            tags: tags,
+            views: Math.floor(Math.random() * 500) + 10,
+            likes: Math.floor(Math.random() * 100) + 5,
+            saved: Math.floor(Math.random() * 20) + 1,
+            primaryTag: tags[0]
+        });
+    }
+
+    function renderWorkCard(work) {
+        // توليد الهيكل HTML لبطاقة عمل واحدة مع طبقة الإحصائيات الشفافة
+        const lang = localStorage.getItem("siteLang") || "ar";
+        const likeText = lang === 'ar' ? 'إعجاب' : 'Like';
+        const viewText = lang === 'ar' ? 'مشاهدة' : 'View';
+        const saveText = lang === 'ar' ? 'حفظ' : 'Save';
+
+        // استخدام data-lightbox="portfolio" لتجميع الصور للتقليب بينها
+        return `
+            <div class="work-item ${work.primaryTag}" data-aos="fade-up">
+                <a href="${work.image}" data-lightbox="portfolio" data-title="${work.title} - ${work.primaryTag}" aria-label="${work.title}">
+                    <img src="${work.image}" alt="${work.title}" loading="lazy">
+                    <div class="work-overlay">
+                        <div class="work-title">${work.title}</div>
+                        <div class="work-stats">
+                            <span title="${likeText}" class="stat-item"><i class="fas fa-heart"></i> ${work.likes}</span>
+                            <span title="${viewText}" class="stat-item"><i class="fas fa-eye"></i> ${work.views}</span>
+                            <span title="${saveText}" class="stat-item"><i class="fas fa-bookmark"></i> ${work.saved}</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        `;
+    }
+
+    function renderPagination(totalWorks, worksPerPage, currentPage) {
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+        const totalPages = Math.ceil(totalWorks / worksPerPage);
+
+        if (totalPages <= 1) return;
+
+        const createPageItem = (page, text, isDisabled = false, isCurrent = false) => {
+            const li = document.createElement('li');
+            li.className = `page-item ${isCurrent ? 'active' : ''} ${isDisabled ? 'disabled' : ''}`;
+            const a = document.createElement('a');
+            a.className = 'page-link';
+            a.href = '#';
+            a.textContent = text;
+            a.setAttribute('data-page', page);
+            if (!isDisabled && !isCurrent) {
+                a.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    // الانتقال لصفحة جديدة
+                    loadWorks(currentFilter, currentSearchTerm, page);
+                    // الانتقال إلى بداية قسم الأعمال بعد تغيير الصفحة
+                    document.getElementById('works').scrollIntoView({ behavior: 'smooth' });
+                });
+            }
+            li.appendChild(a);
+            return li;
+        };
+
+        const ul = document.createElement('ul');
+        ul.className = 'pagination';
+        const lang = localStorage.getItem("siteLang") || "ar";
+
+        // زر السابق
+        ul.appendChild(createPageItem(currentPage - 1, (lang === 'ar' ? 'السابق' : 'Previous'), currentPage === 1));
+
+        // ترقيم الصفحات (عرض مبسط)
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = Math.min(totalPages, currentPage + 2);
+
+        if (currentPage <= 3) endPage = Math.min(totalPages, 5);
+        if (currentPage > totalPages - 2) startPage = Math.max(1, totalPages - 4);
+
+        if (startPage > 1) {
+            ul.appendChild(createPageItem(1, '1'));
+            if (startPage > 2) {
+                const liDots = document.createElement('li');
+                liDots.className = 'page-item disabled';
+                liDots.innerHTML = '<span class="page-link">...</span>';
+                ul.appendChild(liDots);
+            }
+        }
+
+        for (let i = startPage; i <= endPage; i++) {
+            ul.appendChild(createPageItem(i, i.toString(), false, i === currentPage));
+        }
+
+        if (endPage < totalPages) {
+            if (endPage < totalPages - 1) {
+                const liDots = document.createElement('li');
+                liDots.className = 'page-item disabled';
+                liDots.innerHTML = '<span class="page-link">...</span>';
+                ul.appendChild(liDots);
+            }
+            ul.appendChild(createPageItem(totalPages, totalPages.toString()));
+        }
+
+        // زر التالي
+        ul.appendChild(createPageItem(currentPage + 1, (lang === 'ar' ? 'التالي' : 'Next'), currentPage === totalPages));
+
+        paginationContainer.appendChild(ul);
+    }
+
+    function loadWorks(filter = currentFilter, searchTerm = currentSearchTerm, page = currentPage) {
+        if (!worksGrid || !paginationContainer) return; 
+
+        // حفظ الحالة الجديدة
+        currentFilter = filter;
+        currentSearchTerm = searchTerm;
+        currentPage = page;
+
+        // 1. التصفية
+        let filteredWorks = worksData;
+
+        if (filter !== 'all') {
+            filteredWorks = filteredWorks.filter(work => work.primaryTag === filter);
+        }
+
+        // 2. البحث
+        if (searchTerm) {
+            const lowerSearchTerm = searchTerm.toLowerCase();
+            filteredWorks = filteredWorks.filter(work => 
+                work.title.toLowerCase().includes(lowerSearchTerm) || 
+                work.tags.some(tag => tag.toLowerCase().includes(lowerSearchTerm))
+            );
+        }
+        
+        // عرض رسالة إذا لم توجد نتائج
+        if (filteredWorks.length === 0) {
+            const message = localStorage.getItem("siteLang") === 'ar' ? 'عذراً، لا توجد أعمال مطابقة.' : 'Sorry, no matching works found.';
+            worksGrid.innerHTML = `<div class="no-results-message">${message}</div>`;
+            paginationContainer.innerHTML = '';
+            return;
+        }
+
+        // 3. حساب الترقيم
+        const startIndex = (currentPage - 1) * WORKS_PER_PAGE;
+        const endIndex = startIndex + WORKS_PER_PAGE;
+        const worksToDisplay = filteredWorks.slice(startIndex, endIndex);
+
+        // 4. عرض الأعمال
+        worksGrid.innerHTML = worksToDisplay.map(renderWorkCard).join('');
+
+        // 5. عرض الترقيم
+        renderPagination(filteredWorks.length, WORKS_PER_PAGE, currentPage);
+
+        // إعادة تهيئة Lightbox
+        if (typeof lightbox !== 'undefined') {
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'disableScrolling': true
+            });
+        }
+    }
+
+
     // ===================================
     // وظائف الترجمة
     // ===================================
@@ -250,11 +429,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     
-    // دالة وهمية لتحميل الأعمال (يجب أن يتم تطويرها لتعمل)
-    function loadWorks() {
-        console.log('Works loading simulated.');
-    }
-
     // ===================================
     // وظائف القائمة الجانبية (Mobile Menu)
     // ===================================
@@ -330,8 +504,9 @@ document.addEventListener("DOMContentLoaded", () => {
             once: true,
         });
     }
-
-    loadWorks();
+    
+    // ********** التشغيل الأولي للأعمال **********
+    loadWorks(); 
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
@@ -390,7 +565,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // ===================================
-    // منطق الفلترة والبحث (Filtering and Search Logic)
+    // منطق الفلترة والبحث
     // ===================================
 
     // ربط أحداث الفلترة
@@ -401,8 +576,8 @@ document.addEventListener("DOMContentLoaded", () => {
             tags.forEach(t => t.classList.remove('active'));
             // تعيين حالة النشاط للزر الحالي
             tag.classList.add('active');
-            // استدعاء دالة loadWorks مع الفلتر الجديد (يجب تطويرها)
-            loadWorks(tag.getAttribute('data-filter'));
+            // استدعاء دالة loadWorks مع الفلتر الجديد، وإعادة تعيين البحث والصفحة إلى 1
+            loadWorks(tag.getAttribute('data-filter'), '', 1);
         });
     });
 
@@ -410,15 +585,11 @@ document.addEventListener("DOMContentLoaded", () => {
     searchButton.addEventListener('click', (e) => {
         e.preventDefault();
         const searchTerm = searchInput.value.trim();
-        if (searchTerm) {
-             // إزالة تحديد الفلاتر عند البحث
-            tags.forEach(t => t.classList.remove('active'));
-             // استدعاء دالة loadWorks مع مصطلح البحث (يجب تطويرها)
-            loadWorks('all', searchTerm);
-        } else {
-            // إذا كان حقل البحث فارغًا، أعد تحميل كل شيء
-            loadWorks('all');
-        }
+        // إزالة تحديد الفلاتر عند البحث، وبدء من الصفحة الأولى
+        tags.forEach(t => t.classList.remove('active'));
+        document.querySelector('.tag-link[data-filter="all"]').classList.add('active');
+        
+        loadWorks('all', searchTerm, 1);
     });
 
     // تفعيل البحث بالضغط على Enter
