@@ -1063,22 +1063,25 @@ ul[role="list"] {
 }
 .about-text {
     flex: 1;
+    /* 🟢 الكود الذي وسّط زر "تواصل الآن" */
+    text-align: center; 
 }
 .about-text p {
     line-height: 1.8;
     margin-bottom: 20px;
     font-size: 1.1rem;
+    /* 💡 ضمان بقاء الفقرات محاذية لليمين وعدم توسيطها */
+    text-align: right; 
 }
 .about-text strong {
     color: var(--primary-color);
 }
-/* 💡 إضافة تنسيق لتوسيط الأيقونات الاجتماعية ضمن عمود النص */
+/* 💡 حذف تنسيق .social-links-about القديم الذي كان في عمود النص */
 .social-links-about {
     display: flex;
     gap: 15px;
     margin-top: 20px;
-    /* 🟢 التعديل: توسيط الأيقونات أسفل النص مباشرة */
-    justify-content: flex-start; /* أو flex-start في حالة العربية */
+    /* 🔴 تم تغيير justify-content إلى center في الفئة الجديدة أدناه */
 }
 
 /* 🟢 التعديل: تطبيق التوسيط على العمود الأيمن بالكامل */
@@ -1329,18 +1332,26 @@ ul[role="list"] {
 }
 
 
-/* أيقونات التواصل الاجتماعي في قسم النص */
-.social-links-about a {
+/* 🟢 التعديل: تنسيق أيقونات التواصل الاجتماعي الجديدة في عمود الصورة */
+.social-links-profile {
+    display: flex;
+    justify-content: center; /* 💡 التوسيط الأفقي المثالي للأيقونات */
+    gap: 15px;
+    margin-top: 25px; /* زيادة المسافة عن الجدول */
+    margin-bottom: 25px; /* مسافة عن حافة القسم */
+}
+
+.social-links-profile a {
     color: var(--light-text-color);
     font-size: 1.5rem;
     transition: color 0.3s, transform 0.3s;
 }
 
-.dark-mode .social-links-about a {
+.dark-mode .social-links-profile a {
     color: var(--dark-text-color);
 }
 
-.social-links-about a:hover {
+.social-links-profile a:hover {
     color: var(--primary-color);
     transform: scale(1.1);
 }
