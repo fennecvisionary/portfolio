@@ -583,7 +583,7 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", closeMenu);
     });
 
- // ===================================
+// ===================================
 // Online Status Logic for About Me Section
 // ===================================
 
@@ -596,18 +596,20 @@ function checkOnlineStatus() {
     // البحث عن العناصر هنا
     const statusDot = document.getElementById('online-status-dot');
     const statusText = document.getElementById('status-text');
+    // 💡 العنصر الجديد: إطار الصورة
+    const imageWrapper = document.getElementById('profile-image-wrapper'); 
 
     // إذا لم يتم العثور على العناصر، نتوقف
-    if (!statusDot || !statusText) return; 
+    if (!statusDot || !statusText || !imageWrapper) return; // 💡 تحديث شرط الإيقاف
 
     const lang = localStorage.getItem("siteLang") || "ar";
     const data = translations[lang] || {}; 
 
     // منطق التوقيت
-    const start1 = 8 * 60; 
-    const end1 = 16 * 60; 
-    const start2 = 19 * 60; 
-    const end2_normalized = 1 * 60; 
+    const start1 = 8 * 60; // 8:00 ص
+    const end1 = 16 * 60; // 4:00 م
+    const start2 = 19 * 60; // 7:00 م
+    const end2_normalized = 1 * 60; // 1:00 ص
     
     let isOnline = false;
     
@@ -625,6 +627,11 @@ function checkOnlineStatus() {
         
         statusText.classList.add('is-online'); 
         statusText.classList.remove('is-offline');
+        
+        // 🟢 تطبيق الحالة على إطار الصورة
+        imageWrapper.classList.add('is-online');
+        imageWrapper.classList.remove('is-offline');
+        
         statusText.textContent = data.status_online || "Online Now"; 
     } else {
         // حالة عدم الاتصال (Offline): تطبيق الأحمر
@@ -633,6 +640,11 @@ function checkOnlineStatus() {
         
         statusText.classList.add('is-offline'); 
         statusText.classList.remove('is-online');
+        
+        // 🔴 تطبيق الحالة على إطار الصورة
+        imageWrapper.classList.add('is-offline');
+        imageWrapper.classList.remove('is-online');
+        
         statusText.textContent = data.status_offline || "Offline Now";
     }
 }
@@ -648,7 +660,6 @@ setInterval(checkOnlineStatus, 60000); // تحديث كل 60 ثانية (1 دق�
 
 const savedLang = localStorage.getItem("siteLang") || "ar";
 const savedMode = localStorage.getItem("siteMode") || "light-mode";
-
 body.classList.add(savedMode);
 // ✅ هذا الاستدعاء سيعمل أيضاً، لكن الاستدعاء المباشر أعلاه يضمن سرعة أكبر
 applyLanguage(savedLang); 
