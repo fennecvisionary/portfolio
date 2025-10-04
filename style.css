@@ -1072,76 +1072,133 @@ ul[role="list"] {
 .about-text strong {
     color: var(--primary-color);
 }
-*/
+/* 💡 إضافة تنسيق لتوسيط الأيقونات الاجتماعية ضمن عمود النص */
+.social-links-about {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    /* 🟢 التعديل: توسيط الأيقونات أسفل النص مباشرة */
+    justify-content: flex-start; /* أو flex-start في حالة العربية */
+}
+
+/* 🟢 التعديل: تطبيق التوسيط على العمود الأيمن بالكامل */
 .about-image {
     position: relative; 
     flex: 1;
-    max-width: 300px; /* 💡 تصغير حجم الحاوية الكلية */
-    text-align: center;
+    max-width: 350px; /* زيادة قليلاً لتضمين الجدول 300px */
+    
+    /* 💡 التوسيط الاحتياطي (خاصة للعناصر المضمنة مثل image-wrapper في حال كان inline) */
+    text-align: center; 
 }
 
 .about-image .image-wrapper {
-    /* 💡 التعديل: حجم ثابت للإطار الدائري والإطار الديناميكي */
-    width: 250px; 
-    height: 250px; 
+    /* 💡 تصغير الحجم */
+    width: 220px; 
+    height: 220px; 
     overflow: hidden; 
-    border-radius: 50%; /* شكل دائري للصورة */
-    display: inline-block; 
+    border-radius: 50%; 
+    
+    /* 🟢 التعديل الحاسم: استخدام التوسيط الكتلي الموثوق */
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    
     margin-bottom: 20px;
     
     /* الإطار: إطار أساسي وآخر خارجي ديناميكي (shadow) */
-    border: 5px solid var(--light-card-bg); /* إطار أبيض/فاتح داخلي */
-    box-shadow: 0 0 0 5px var(--primary-color); /* إطار خارجي افتراضي (برتقالي) */
+    box-shadow: 
+        0 0 0 5px var(--light-card-bg), 
+        0 0 0 10px var(--primary-color); 
     
-    transition: all 0.3s ease; /* حركة سلسة لتغيير اللون */
-    position: relative; /* لتثبيت الأيقونة بداخله */
+    transition: all 0.3s ease; 
+    position: relative; 
 }
 
 /* 💡 وضعية الوضع المظلم لإطار الصورة */
 .dark-mode .about-image .image-wrapper {
-    border-color: var(--dark-card-bg); 
+    /* الطبقة الداخلية تصبح بلون خلفية الكارد المظلمة */
+    box-shadow: 
+        0 0 0 5px var(--dark-card-bg), 
+        0 0 0 10px var(--primary-color); 
+}
+
+/* 💡 إطار الصورة في حالة الاتصال (الأخضر) */
+.about-image .image-wrapper.is-online {
+    box-shadow: 
+        0 0 0 5px var(--light-card-bg), 
+        0 0 0 10px var(--secondary-color), 
+        0 0 20px var(--secondary-color); 
+}
+
+/* 💡 إطار الصورة في حالة عدم الاتصال (الأحمر) */
+.about-image .image-wrapper.is-offline {
+    box-shadow: 
+        0 0 0 5px var(--light-card-bg), 
+        0 0 0 10px #e74c3c; 
+}
+
+/* 💡 وضعية الوضع المظلم للحالات */
+.dark-mode .about-image .image-wrapper.is-online {
+    box-shadow: 
+        0 0 0 5px var(--dark-card-bg), 
+        0 0 0 10px var(--secondary-color),
+        0 0 20px var(--secondary-color); 
+}
+.dark-mode .about-image .image-wrapper.is-offline {
+    box-shadow: 
+        0 0 0 5px var(--dark-card-bg),
+        0 0 0 10px #e74c3c;
 }
 
 .about-image img {
     width: 100%;
     height: 100%; 
-    object-fit: cover; /* تغطية مثالية للمساحة */
+    object-fit: cover; 
     border-radius: 0; 
     box-shadow: none;
 }
 
-/* 💡 إطار الصورة في حالة الاتصال (الأخضر) */
-.about-image .image-wrapper.is-online {
-    box-shadow: 0 0 0 5px var(--secondary-color), 0 0 15px var(--secondary-color-transparent); /* ظل أخضر قوي */
+
+/* ======================================
+    تنسيق الاسم الموثق (Fennec Visionary)
+    ======================================
+*/
+.verified-name-container {
+    text-align: center; /* لتوسيط الاسم بالكامل */
+    margin-bottom: 20px;
+    
+    /* 🟢 التوسيط الكتلي */
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-/* 💡 إطار الصورة في حالة عدم الاتصال (الأحمر) */
-.about-image .image-wrapper.is-offline {
-    box-shadow: 0 0 0 5px #e74c3c; /* ظل أحمر */
-}
-
-/* 💡 تنسيقات أيقونة المعرف (اللون البرتقالي) */
-.id-badge-icon {
-    position: absolute;
-    bottom: 0px; 
-    right: 0px; 
-    width: 40px;
-    height: 40px;
-    background-color: var(--primary-color); /* اللون البرتقالي الأساسي */
-    color: var(--light-card-bg); 
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
+.profile-name {
+    display: inline-flex; /* لجمع الاسم والشارة في سطر واحد */
     align-items: center;
-    font-size: 1.2rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
-    border: 3px solid var(--light-card-bg); 
-    z-index: 10;
+    font-size: 1.4rem;
+    font-weight: normal; 
+    color: var(--text-color);
+    margin: 0;
 }
 
-.dark-mode .id-badge-icon {
-    border-color: var(--dark-card-bg);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+.profile-name strong {
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.verified-badge {
+    color: var(--secondary-color); 
+    font-size: 1rem;
+    margin-right: 5px; 
+    margin-top: 3px;
+}
+/* تنسيق الوضع المظلم للأسماء والألوان */
+.dark-mode .profile-name {
+    color: var(--dark-text-color);
+}
+.dark-mode .profile-name strong {
+    color: var(--dark-text-color);
 }
 
 /* 💡 تنسيق حاوية الحالة لتكون أسفل الصورة مباشرة */
@@ -1150,28 +1207,17 @@ ul[role="list"] {
     flex-direction: column;
     align-items: center; 
     margin-bottom: 25px;
-    max-width: 300px;  /* هذا يساعد في توسيطها */
+    
+    /* 🟢 التوسيط الكتلي */
+    max-width: 300px; 
     margin-left: auto;
     margin-right: auto;
 }
 
 /* ======================================
- تنسيقات مؤشر الحالة ومواعيد العمل وأيقونات السوشيال ميديا 
- ======================================
+    تنسيقات مؤشر الحالة ومواعيد العمل وأيقونات السوشيال ميديا 
+    ======================================
 */
-
-/* حاوية الحالة الرئيسية (تم توسيطها) */
-.status-info-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* توسيط العناصر الداخلية */
-    margin-bottom: 25px;
-    
-    /* لتوسيط الحاوية بأكملها وجعل عرضها يطابق الجدول */
-    max-width: 300px; 
-    margin-left: auto;
-    margin-right: auto;
-}
 
 /* مؤشر الحالة (النقطة ونص الحالة) */
 .status-indicator {
@@ -1186,7 +1232,6 @@ ul[role="list"] {
     width: 14px;  
     height: 14px;
     border-radius: 50%;
-    /* 💡 التعديل: العودة إلى اللون الأبيض الافتراضي (أو الشفاف) مع ظل */
     background-color: var(--light-card-bg, #ffffff); 
     
     transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s, opacity 0.3s; 
@@ -1210,7 +1255,7 @@ ul[role="list"] {
     color: var(--secondary-color); 
 }
 
-/* حالة عدم الاتصال (الأحمر) - لا تغيير هنا */
+/* حالة عدم الاتصال (الأحمر) */
 .status-dot.is-offline {
     background-color: #e74c3c; 
     animation: none;
@@ -1226,8 +1271,8 @@ ul[role="list"] {
 }
 
 /* ======================================
- تنسيقات جدول مواعيد العمل
- ======================================
+    تنسيقات جدول مواعيد العمل
+    ======================================
 */
 
 .working-hours-table {
@@ -1238,7 +1283,7 @@ ul[role="list"] {
     margin-top: 15px;
     border: 1px solid rgba(0, 0, 0, 0.1); 
     
-    /* لتوسيط الجدول */
+    /* 🟢 التوسيط الكتلي */
     margin-left: auto;
     margin-right: auto;
 }
@@ -1284,14 +1329,7 @@ ul[role="list"] {
 }
 
 
-/* أيقونات التواصل الاجتماعي */
-.social-links-about {
-    display: flex;
-    justify-content: center; /* لتوسيط الأيقونات */
-    gap: 15px;
-    margin-top: 20px;
-}
-
+/* أيقونات التواصل الاجتماعي في قسم النص */
 .social-links-about a {
     color: var(--light-text-color);
     font-size: 1.5rem;
@@ -1308,8 +1346,8 @@ ul[role="list"] {
 }
 
 /* ======================================
- حركة النبض لمؤشر الحالة (جديد)
- ====================================== */
+    حركة النبض لمؤشر الحالة (جديد)
+    ====================================== */
 @keyframes pulse {
     0% {
         transform: scale(0.9);
@@ -1325,8 +1363,8 @@ ul[role="list"] {
     }
 }
 /* ======================================
-   Contact Section 
-   ======================================
+    Contact Section 
+    ======================================
 */
 .contact-section {
     background-color: var(--light-bg-color);
@@ -1410,7 +1448,6 @@ ul[role="list"] {
 .social-links a:hover {
     color: var(--primary-color);
 }
-
 
 /* ======================================
    Footer Styles 
