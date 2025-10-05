@@ -912,3 +912,28 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+
+// في ملف JavaScript الخاص بك (أو داخل <script> في نهاية <body>)
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            
+            // إغلاق كل الإجابات المفتوحة الأخرى أولاً
+            faqQuestions.forEach(q => {
+                if (q !== question && q.classList.contains('active')) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('open');
+                }
+            });
+            
+            // تبديل حالة السؤال الحالي (فتح/إغلاق)
+            question.classList.toggle('active');
+            answer.classList.toggle('open');
+        });
+    });
+});
