@@ -1181,6 +1181,10 @@ html[dir="rtl"] .client-info {
         display: none; /* إخفاء الأسهم على الهاتف */
     }
 }
+/* أضف هذا لتجنب تقطع الحركة أثناء سحب المستخدم بإصبعه */
+.testimonials-grid.no-transition {
+    transition: none !important;
+}
 /* ======================================
     About Me Section 
     ======================================
@@ -1834,5 +1838,3 @@ footer {
         width: 100%;
     }
 }
-
-
