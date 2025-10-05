@@ -18,7 +18,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainNav = document.querySelector(".main-nav");
 
     // ===================================
-    // بيانات الترجمة (Translation Data) - تم إضافة ترجمة الجدول
+    // تحديد عناصر قسم آراء العملاء
+    // ===================================
+    const testimonialsContainer = document.querySelector(".testimonials-grid");
+    const testimonialCards = document.querySelectorAll(".testimonial-card");
+    const prevArrow = document.querySelector(".arrow-prev");
+    const nextArrow = document.querySelector(".arrow-next");
+    
+    let currentTestimonialIndex = 0;
+    const totalTestimonials = testimonialCards.length;
+    // ===================================
+
+    // ===================================
+    // بيانات الترجمة (Translation Data) - 10 آراء للعملاء
     // ===================================
     const translations = {
         ar: {
@@ -85,6 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial_3_text: "أفضل مصمم تعاملت معه حتى الآن. الدقة في المواعيد والاحترافية في التعامل مع التعديلات شيء مذهل. شكراً جزيلاً!",
             testimonial_3_name: "خالد ع.",
             testimonial_3_role: "مالك شركة",
+            testimonial_4_text: "النتائج كانت مذهلة، وموقع الويب الذي صمموه لنا أصبح محط إعجاب الجميع. تعاون فعال ومحترف.",
+            testimonial_4_name: "فاطمة م.",
+            testimonial_4_role: "مطور منتجات",
+            testimonial_5_text: "احترافية عالية والتزام بالمواعيد. التصاميم كانت عصرية وتلبي تماماً متطلبات علامتنا التجارية.",
+            testimonial_5_name: "يوسف ن.",
+            testimonial_5_role: "مستثمر",
+            testimonial_6_text: "تجربة رائعة! سهولة في التواصل وقدرة ممتازة على تحويل الأفكار إلى تصاميم جذابة وواقعية. أنصح بهم.",
+            testimonial_6_name: "مريم أ.",
+            testimonial_6_role: "صاحبة متجر إلكتروني",
+            testimonial_7_text: "الجودة تفوق السعر بكثير. حصلنا على هوية بصرية متكاملة ساهمت في نمو أعمالنا بشكل كبير.",
+            testimonial_7_name: "علي ز.",
+            testimonial_7_role: "مدير مشروع",
+            testimonial_8_text: "مهارات تصميم استثنائية. فهموا رؤيتنا بسرعة وقدموا حلولاً إبداعية غير تقليدية.",
+            testimonial_8_name: "نورة س.",
+            testimonial_8_role: "محلل بيانات",
+            testimonial_9_text: "خدمة لا تشوبها شائبة. من أول خطوة إلى تسليم المشروع النهائي، كان كل شيء سلساً ومتقناً.",
+            testimonial_9_name: "طارق ج.",
+            testimonial_9_role: "مصمم داخلي",
+            testimonial_10_text: "أكثر ما أعجبني هو المرونة في التعامل وتقبل التعديلات بصدر رحب. النتيجة النهائية فاقت التوقعات.",
+            testimonial_10_name: "هند ع.",
+            testimonial_10_role: "مديرة محتوى",
             about_me_title: "عني",
             about_me_p1: "أهلاً بك، أنا **Fennec Visionary**، مصمم جرافيك متمرس بخبرة تزيد عن 7 سنوات في تحويل الأفكار إلى هويات بصرية قوية ومؤثرة.",
             about_me_p2: "شغفي يكمن في تصميم **الشعارات، الهويات البصرية، وتصاميم السوشيال ميديا**، مع التركيز دائماً على الابتكار والوضوح الوظيفي للتصميم.",
@@ -107,7 +140,6 @@ document.addEventListener("DOMContentLoaded", () => {
             form_message: "رسالتك",
             form_submit: "إرسال الرسالة",
             social_links_title: "أو تواصل عبر:",
-            // مفاتيح جديدة لحالة الاتصال وجدول المواعيد
             status_online: "متصل حاليًا 👋", 
             status_offline: "غير متصل حاليًا 😴",
             working_hours_title: "أوقات العمل",
@@ -180,6 +212,27 @@ document.addEventListener("DOMContentLoaded", () => {
             testimonial_3_text: "The best designer I have worked with so far. The punctuality and professionalism in handling modifications are amazing. Thank you!",
             testimonial_3_name: "Khaled A.",
             testimonial_3_role: "Company Owner",
+            testimonial_4_text: "The results were amazing, and the website they designed for us became the focus of everyone's admiration. Effective and professional cooperation.",
+            testimonial_4_name: "Fatimah M.",
+            testimonial_4_role: "Product Developer",
+            testimonial_5_text: "High professionalism and punctuality. The designs were modern and perfectly met our brand requirements.",
+            testimonial_5_name: "Yousef N.",
+            testimonial_5_role: "Investor",
+            testimonial_6_text: "Great experience! Easy communication and excellent ability to turn ideas into attractive and realistic designs. I recommend them.",
+            testimonial_6_name: "Mariam A.",
+            testimonial_6_role: "E-commerce Store Owner",
+            testimonial_7_text: "The quality far exceeds the price. We obtained an integrated visual identity that greatly contributed to the growth of our business.",
+            testimonial_7_name: "Ali Z.",
+            testimonial_7_role: "Project Manager",
+            testimonial_8_text: "Exceptional design skills. They quickly understood our vision and provided creative, unconventional solutions.",
+            testimonial_8_name: "Noura S.",
+            testimonial_8_role: "Data Analyst",
+            testimonial_9_text: "Impeccable service. From the first step to the final project delivery, everything was smooth and perfected.",
+            testimonial_9_name: "Tariq J.",
+            testimonial_9_role: "Interior Designer",
+            testimonial_10_text: "What impressed me most was the flexibility in dealing and the willingness to accept modifications openly. The final result exceeded expectations.",
+            testimonial_10_name: "Hind A.",
+            testimonial_10_role: "Content Manager",
             about_me_title: "About Me",
             about_me_p1: "Hello, I am **Fennec Visionary**, an experienced graphic designer with over 7 years of expertise in transforming ideas into strong, impactful visual identities.",
             about_me_p2: "My passion lies in designing **Logos, Visual Identities, and Social Media Designs**, always focusing on innovation and functional clarity in design.",
@@ -202,7 +255,6 @@ document.addEventListener("DOMContentLoaded", () => {
             form_message: "Your Message",
             form_submit: "Send Message",
             social_links_title: "Or contact via:",
-            // مفاتيح جديدة لحالة الاتصال وجدول المواعيد
             status_online: "Currently Online 👋",
             status_offline: "Currently Offline 😴",
             working_hours_title: "Working Hours",
@@ -215,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // ===================================
-    // بيانات الأعمال ومحرك الفلترة والترقيم (تم الاحتفاظ بها)
+    // بيانات الأعمال ومحرك الفلترة والترقيم (لم يتم تغييرها)
     // ===================================
 
     const WORKS_PER_PAGE = 9;
@@ -224,7 +276,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentFilter = 'all';
     let currentSearchTerm = '';
 
-    // توليد البيانات الأولية (القيم العشوائية)
+    // توليد البيانات الأولية
     for (let i = 1; i <= 100; i++) {
         const categories = ['logos', 'branding', 'social_media', 'packaging', 'print_design'];
         const tags = [categories[i % categories.length], categories[(i + 1) % categories.length]].filter((v, idx, a) => a.indexOf(v) === idx);
@@ -240,7 +292,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${imageBase}_3.jpg`
             ],
             tags: tags,
-            // القيم الأولية العشوائية التي سيبدأ منها العداد
             views: Math.floor(Math.random() * 500) + 10, 
             likes: Math.floor(Math.random() * 100) + 5,
             saved: Math.floor(Math.random() * 20) + 1,
@@ -248,13 +299,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // ========================================================
-    // وظائف الإحصائيات التفاعلية (Likes/Saves) - المحاكاة عبر Local Storage (تم الاحتفاظ بها)
-    // ========================================================
-
-    // دمج الإحصائيات المخزنة محليًا مع البيانات الأولية
+    // وظائف الإحصائيات التفاعلية
     function initializeStats() {
-        // قراءة العدادات من التخزين المحلي
         const storedStats = JSON.parse(localStorage.getItem('worksStats')) || {};
         let needsUpdate = false;
         
@@ -262,20 +308,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const id = work.id;
             
             if (storedStats[id]) {
-                // تحديث بيانات الـ worksData بالقيم المحفوظة محلياً (التي تفاعل معها الزائر في الجلسات السابقة)
                 work.likes = storedStats[id].likes || work.likes;
                 work.saved = storedStats[id].saved || work.saved;
                 work.views = storedStats[id].views || work.views; 
             }
             
-            // إضافة البيانات الجديدة إلى التخزين المحلي إذا كانت غير موجودة (للمرة الأولى)
              if (!storedStats[id]) {
                 storedStats[id] = { likes: work.likes, saved: work.saved, views: work.views };
                 needsUpdate = true;
              }
         });
         
-        // حفظ التحديثات إذا كانت هناك بيانات جديدة
         if (needsUpdate || !localStorage.getItem('worksStats')) {
             localStorage.setItem('worksStats', JSON.stringify(storedStats));
         }
@@ -283,7 +326,6 @@ document.addEventListener("DOMContentLoaded", () => {
         return worksData;
     }
 
-    // وظيفة تحديث الإحصائية (الإعجاب أو الحفظ)
     function updateStatAndRender(workId, statType) {
         let stats = JSON.parse(localStorage.getItem('worksStats'));
         const work = worksData.find(w => w.id === workId);
@@ -292,36 +334,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let countKey = statType === 'like' ? 'likes' : 'saved';
 
-        // مفتاح خاص لتخزين حالة إعجاب/حفظ المستخدم الحالي (لمنع التكرار)
         const userActionKey = `user_${statType}_${workId}`;
         const hasActed = localStorage.getItem(userActionKey) === 'true';
         
         if (hasActed) {
-            // إلغاء الإجراء: إنقاص العداد
             stats[workId][countKey]--;
             localStorage.removeItem(userActionKey);
         } else {
-            // تنفيذ الإجراء: زيادة العداد
             stats[workId][countKey]++;
             localStorage.setItem(userActionKey, 'true');
         }
 
-        // تحديث العداد في مصفوفة البيانات الرئيسية
         work[countKey] = stats[workId][countKey];
 
-        // حفظ البيانات في Local Storage
         localStorage.setItem('worksStats', JSON.stringify(stats));
 
-        // إعادة عرض الصفحة لتحديث الأرقام وتغيير لون الأيقونة
         loadWorks(currentFilter, currentSearchTerm, currentPage);
     }
     
-    // ربط مستمعي الأحداث بأيقونات الإحصائيات القابلة للنقر
     function bindStatEvents() {
         document.querySelectorAll('.clickable-stat').forEach(stat => {
             stat.addEventListener('click', function(e) {
                 e.preventDefault();
-                e.stopPropagation(); // منع فتح الـ Lightbox عند النقر على الأيقونة
+                e.stopPropagation();
                 
                 const workId = parseInt(this.getAttribute('data-id'));
                 const statType = this.getAttribute('data-action');
@@ -338,14 +373,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const viewText = lang === 'ar' ? 'مشاهدة' : 'View';
         const saveText = lang === 'ar' ? 'حفظ' : 'Save';
         
-        // الصورة الأولى في المصفوفة هي صورة الواجهة
         const primaryImage = work.images[0];
         
-        // التحقق من حالة المستخدم لهذا العمل (Local Storage)
         const isLiked = localStorage.getItem(`user_like_${work.id}`) === 'true';
         const isSaved = localStorage.getItem(`user_save_${work.id}`) === 'true';
         
-        // إنشاء روابط Lightbox إضافية للصورتين الثانية والثالثة (مخفية)
         let hiddenLinks = '';
         if (work.images.length > 1) {
             for (let j = 1; j < work.images.length; j++) {
@@ -375,7 +407,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
     }
 
-    // وظائف الترقيم والتحميل (تم الاحتفاظ بها)
+    // وظائف الترقيم والتحميل
     function renderPagination(totalWorks, worksPerPage, currentPage) {
         if (!paginationContainer) return;
         paginationContainer.innerHTML = '';
@@ -477,7 +509,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         worksGrid.innerHTML = worksToDisplay.map(renderWorkCard).join('');
         
-        // ربط الأحداث بعد تحميل العناصر
         bindStatEvents(); 
 
         renderPagination(filteredWorks.length, WORKS_PER_PAGE, currentPage);
@@ -491,6 +522,60 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
+    // ========================================================
+    // وظيفة تحديث شريط آراء العملاء (مُصحَّحَة)
+    // ========================================================
+    function updateTestimonialSlider() {
+        if (testimonialCards.length === 0 || !testimonialsContainer) return;
+
+        // 1. تحديد عدد البطاقات المرئية بناءً على حجم الشاشة
+        const cardsInView = window.innerWidth <= 768 ? 1 : 3;
+        const totalTestimonials = testimonialCards.length;
+        
+        // 2. حساب الحد الأقصى لـ currentTestimonialIndex
+        // هذا يمثل أقصى عدد مرات انزلاق ممكنة
+        const maxIndex = Math.max(0, totalTestimonials - cardsInView); 
+
+        // 3. ضبط حدود المؤشر
+        if (currentTestimonialIndex < 0) {
+            currentTestimonialIndex = 0;
+        }
+        if (currentTestimonialIndex > maxIndex) {
+            currentTestimonialIndex = maxIndex;
+        }
+
+        // 4. حساب مسافة الانزلاق (باستخدام getBoundingClientRect لضمان الدقة)
+        const cardElement = testimonialCards[0];
+        const cardWidth = cardElement.getBoundingClientRect().width;
+        
+        let spacing = window.innerWidth <= 768 ? 20 : 30; // مطابقة لـ margin-right/gap في CSS
+        let slideDistance = cardWidth + spacing;
+        
+        // 5. حساب قيمة التحويل النهائية
+        let translationX = currentTestimonialIndex * slideDistance;
+
+        // 6. تطبيق تعديل الاتجاه (RTL/LTR)
+        const isRTL = document.documentElement.dir === 'rtl';
+        
+        // في LTR، المؤشر الإيجابي (TranslationX الإيجابي) يعني تحريك الحاوية لليسار (قيمة سالبة)
+        if (!isRTL) {
+            translationX = -translationX;
+        } 
+        
+        // 7. تطبيق التحويل
+        testimonialsContainer.style.transform = `translateX(${translationX}px)`;
+
+        // 8. تحديث حالة الأزرار (تفعيل/تعطيل)
+        if (totalTestimonials <= cardsInView) {
+            prevArrow.disabled = true;
+            nextArrow.disabled = true;
+        } else {
+            prevArrow.disabled = currentTestimonialIndex === 0;
+            nextArrow.disabled = currentTestimonialIndex === maxIndex;
+        }
+    }
+    // ========================================================
+    
 
     // ===================================
     // وظائف الترجمة والقائمة الجانبية والمظهر
@@ -531,10 +616,8 @@ document.addEventListener("DOMContentLoaded", () => {
         // تحديث محتوى الجدول يدوياً
         const worksTable = document.querySelector('.working-hours-table');
         if (worksTable) {
-            // تحديث عنوان الجدول
             worksTable.querySelector('th[data-lang-key="working_hours_title"]').textContent = data.working_hours_title;
             
-            // تحديث محتوى الصفوف
             const rows = worksTable.querySelectorAll('tbody tr');
             if (rows[0]) {
                 rows[0].querySelector('td:first-child').textContent = data.period_morning;
@@ -556,8 +639,11 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
         
-        // إعادة التحقق من الحالة لتطبيق اللون والنص الصحيح بعد تغيير اللغة
-        checkOnlineStatus(); 
+        checkOnlineStatus();
+        
+        // تحديث شريط الآراء لضبط اتجاهه الجديد وإعادة ضبطه
+        currentTestimonialIndex = 0; 
+        updateTestimonialSlider(); 
     }
     
     function closeMenu() {
@@ -583,93 +669,74 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", closeMenu);
     });
 
-// ===================================
-// Online Status Logic for About Me Section
-// ===================================
+    function checkOnlineStatus() {
+        const now = new Date();
+        const currentHour = now.getHours();
+        const currentMinute = now.getMinutes();
+        const totalMinutes = currentHour * 60 + currentMinute;
+        
+        const statusDot = document.getElementById('online-status-dot');
+        const statusText = document.getElementById('status-text');
+        const imageWrapper = document.getElementById('profile-image-wrapper'); 
 
-function checkOnlineStatus() {
-    const now = new Date();
-    const currentHour = now.getHours();
-    const currentMinute = now.getMinutes();
-    const totalMinutes = currentHour * 60 + currentMinute;
-    
-    // البحث عن العناصر هنا
-    const statusDot = document.getElementById('online-status-dot');
-    const statusText = document.getElementById('status-text');
-    // 💡 العنصر الجديد: إطار الصورة
-    const imageWrapper = document.getElementById('profile-image-wrapper'); 
+        if (!statusDot || !statusText || !imageWrapper) return; 
 
-    // إذا لم يتم العثور على العناصر، نتوقف
-    if (!statusDot || !statusText || !imageWrapper) return; // 💡 تحديث شرط الإيقاف
+        const lang = localStorage.getItem("siteLang") || "ar";
+        const data = translations[lang] || {}; 
 
-    const lang = localStorage.getItem("siteLang") || "ar";
-    const data = translations[lang] || {}; 
+        const start1 = 8 * 60; // 8:00 ص
+        const end1 = 16 * 60; // 4:00 م
+        const start2 = 19 * 60; // 7:00 م
+        const end2_normalized = 1 * 60; // 1:00 ص
+        
+        let isOnline = false;
+        
+        if (totalMinutes >= start1 && totalMinutes < end1) {
+            isOnline = true;
+        } 
+        else if (totalMinutes >= start2 || totalMinutes < end2_normalized) {
+            isOnline = true;
+        }
 
-    // منطق التوقيت
-    const start1 = 8 * 60; // 8:00 ص
-    const end1 = 16 * 60; // 4:00 م
-    const start2 = 19 * 60; // 7:00 م
-    const end2_normalized = 1 * 60; // 1:00 ص
-    
-    let isOnline = false;
-    
-    if (totalMinutes >= start1 && totalMinutes < end1) {
-        isOnline = true;
-    } 
-    else if (totalMinutes >= start2 || totalMinutes < end2_normalized) {
-        isOnline = true;
+        if (isOnline) {
+            statusDot.classList.add('is-online');
+            statusDot.classList.remove('is-offline');
+            
+            statusText.classList.add('is-online'); 
+            statusText.classList.remove('is-offline');
+            
+            imageWrapper.classList.add('is-online');
+            imageWrapper.classList.remove('is-offline');
+            
+            statusText.textContent = data.status_online || "Online Now"; 
+        } else {
+            statusDot.classList.add('is-offline');
+            statusDot.classList.remove('is-online');
+            
+            statusText.classList.add('is-offline'); 
+            statusText.classList.remove('is-online');
+            
+            imageWrapper.classList.add('is-offline');
+            imageWrapper.classList.remove('is-online');
+            
+            statusText.textContent = data.status_offline || "Offline Now";
+        }
     }
 
-    if (isOnline) {
-        // حالة الاتصال (Online): تفعيل النبض والأخضر
-        statusDot.classList.add('is-online');
-        statusDot.classList.remove('is-offline');
-        
-        statusText.classList.add('is-online'); 
-        statusText.classList.remove('is-offline');
-        
-        // 🟢 تطبيق الحالة على إطار الصورة
-        imageWrapper.classList.add('is-online');
-        imageWrapper.classList.remove('is-offline');
-        
-        statusText.textContent = data.status_online || "Online Now"; 
-    } else {
-        // حالة عدم الاتصال (Offline): تطبيق الأحمر
-        statusDot.classList.add('is-offline');
-        statusDot.classList.remove('is-online');
-        
-        statusText.classList.add('is-offline'); 
-        statusText.classList.remove('is-online');
-        
-        // 🔴 تطبيق الحالة على إطار الصورة
-        imageWrapper.classList.add('is-offline');
-        imageWrapper.classList.remove('is-online');
-        
-        statusText.textContent = data.status_offline || "Offline Now";
-    }
-}
+    checkOnlineStatus(); 
+    setInterval(checkOnlineStatus, 60000); 
 
-// 💡 الاستدعاءات: يجب أن تكون هنا لتضمن تشغيل الدالة فوراً
-checkOnlineStatus(); 
-setInterval(checkOnlineStatus, 60000); // تحديث كل 60 ثانية (1 دقيقة)
-
-// ===================================
-// End of Online Status Logic
-// ===================================
-
-
-const savedLang = localStorage.getItem("siteLang") || "ar";
-const savedMode = localStorage.getItem("siteMode") || "light-mode";
-body.classList.add(savedMode);
-// ✅ هذا الاستدعاء سيعمل أيضاً، لكن الاستدعاء المباشر أعلاه يضمن سرعة أكبر
-applyLanguage(savedLang); 
-languageSelect.value = savedLang;
-modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
+    const savedLang = localStorage.getItem("siteLang") || "ar";
+    const savedMode = localStorage.getItem("siteMode") || "light-mode";
+    body.classList.add(savedMode);
+    applyLanguage(savedLang); 
+    languageSelect.value = savedLang;
+    modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>' : '<i class="fas fa-sun"></i>';
 
     languageSelect.addEventListener("change", () => {
         const lang = languageSelect.value;
         localStorage.setItem("siteLang", lang);
-        applyLanguage(lang); // تحديث اللغة ثم تحديث الحالة فوراً
+        applyLanguage(lang);
         loadWorks();
     });
 
@@ -694,9 +761,38 @@ modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>
         });
     }
     
-    // ********** التشغيل الأولي: تهيئة الإحصائيات قبل تحميل الأعمال **********
+    // ========================================================
+    // مستمعو أحداث أسهم آراء العملاء (المنطق المصحَّح)
+    // ========================================================
+    if (prevArrow && nextArrow) {
+        
+        // عند النقر على السهم السابق
+        prevArrow.addEventListener("click", () => {
+            // الرجوع للخلف دائماً يعني تقليل مؤشر الشريحة
+            currentTestimonialIndex--;
+            updateTestimonialSlider();
+        });
+
+        // عند النقر على السهم التالي
+        nextArrow.addEventListener("click", () => {
+            // التقدم للأمام دائماً يعني زيادة مؤشر الشريحة
+            currentTestimonialIndex++;
+            updateTestimonialSlider();
+        });
+        
+        // مستمع حدث تغيير حجم النافذة (للتجاوب)
+        window.addEventListener('resize', () => {
+            currentTestimonialIndex = 0; 
+            updateTestimonialSlider();
+        });
+    }
+    // ========================================================
+
+
+    // ********** التشغيل الأولي **********
     initializeStats();
     loadWorks(); 
+    updateTestimonialSlider();
 
     document.getElementById('currentYear').textContent = new Date().getFullYear();
     
@@ -705,7 +801,7 @@ modeToggle.innerHTML = savedMode === "light-mode" ? '<i class="fas fa-moon"></i>
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
                 backToTopButton.style.opacity = '1';
-                backToTopButton.style.visibility = 'visible';
+                backToTopButton.style.visibility = 'visible'; 
             } else {
                 backToTopButton.style.opacity = '0';
                 backToTopButton.style.visibility = 'hidden';
