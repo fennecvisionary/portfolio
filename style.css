@@ -991,9 +991,8 @@ ul[role="list"] {
     height: 100px;
     display: block;
 }
-
 /* ======================================
-    Testimonials Section (الكود النهائي والمصحح مع التنسيقات البصرية)
+    Testimonials Section (الكود النهائي والمؤكد)
     ====================================== */
 
 /* 1. القسم الأساسي (Section) */
@@ -1006,24 +1005,22 @@ ul[role="list"] {
     background-color: var(--dark-bg-color);
 }
 
-/* 2. الحاوية الداخلية (تستخدم class="container testimonials-inner-container") */
+/* 2. الحاوية الداخلية (سطح المكتب) */
 .testimonials-section .container {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    /* زيادة الحشو لتباعد الأسهم (تم تثبيته على 100px) */
-    padding: 0 100px;
+    padding: 0 100px; 
 }
 
-/* 3. حاوية الحصر (الـ Viewport الجديد) */
-/* **هذه هي الحاوية المسؤولة عن إخفاء البطاقات الزائدة** */
+/* 3. حاوية الحصر (الـ Viewport) */
 .testimonials-slider-viewport {
     position: relative;
-    overflow: hidden; /* **تخفي البطاقات الخارجة عن نطاق الـ 100% عرض** */
+    overflow: hidden; 
     width: 100%;
 }
 
-/* 4. شبكة الآراء (Testimonials Grid / Slider Container) */
+/* 4. شبكة الآراء (Grid) */
 .testimonials-grid {
     display: flex;
     flex-wrap: nowrap;
@@ -1034,7 +1031,7 @@ ul[role="list"] {
     transition: transform 0.4s ease-in-out;
 }
 
-/* 5. بطاقة الرأي (Testimonial Card) */
+/* 5. بطاقة الرأي (تحصر 3 بطاقات على سطح المكتب) */
 .testimonial-card {
     padding: 30px;
     border-radius: 10px;
@@ -1042,8 +1039,6 @@ ul[role="list"] {
     box-shadow: var(--light-shadow);
     transition: transform 0.3s, box-shadow 0.3s;
     border-left: 4px solid var(--primary-color);
-    
-    /* **لضمان عرض 3 بطاقات بالضبط (التعويض عن 2 فجوة بمقدار 60px)** */
     flex: 0 0 calc((100% - 60px) / 3);
     max-width: calc((100% - 60px) / 3);
 }
@@ -1057,132 +1052,133 @@ ul[role="list"] {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* === تنسيقات البطاقة الداخلية والتعديلات المطلوبة === */
-
-/* 5.1. لون النجوم الذهبي */
-.testimonial-card .rating {
-    color: #FFD700; /* اللون الذهبي المطلوب */
-    margin-bottom: 15px;
-}
-/* 5.2. تنسيق الفقرة */
+/* === تنسيقات البطاقة الداخلية (ثبات حجم الصورة وترتيبها) === */
+.testimonial-card .rating { color: #FFD700; margin-bottom: 15px; } 
 .testimonial-card p { font-style: italic; line-height: 1.6; margin-bottom: 20px; min-height: 100px; }
 
-/* 5.3. معلومات العميل (الصورة والاسم جنباً إلى جنب) */
+/* 5.3. معلومات العميل (الصورة والاسم) */
 .client-info { 
+    /* **يضمن أن الصورة والاسم/الدور يكونان في سطر واحد أفقياً** */
     display: flex; 
     align-items: center; 
     flex-direction: row; 
     gap: 15px; 
+    margin-top: 15px; 
 }
-html[dir="rtl"] .client-info { flex-direction: row-reverse; }
+html[dir="rtl"] .client-info { 
+    flex-direction: row-reverse; 
+}
 
-/* 5.4. الصورة الدائرية */
+/* 5.4. الصورة الدائرية والثابتة */
 .client-avatar { 
     width: 60px; 
     height: 60px; 
-    border-radius: 50%; /* دائرية بالكامل */
+    border-radius: 50%; 
     object-fit: cover; 
     border: 3px solid var(--primary-color);
+    flex-shrink: 0; 
 }
 
-/* 5.5. تفاصيل العميل */
-.client-details { display: flex; flex-direction: column; }
-.client-name { 
-    font-weight: 700; 
-    color: var(--primary-color); /* **اسم العميل بلون Primary** */
+/* 5.5. تفاصيل العميل (الاسم والدور في سطرين صغيرين) */
+.client-details {
+    /* **يضمن أن الاسم والدور يكونان في سطرين عمودياً** */
+    display: flex; 
+    flex-direction: column;
 }
-.client-role { font-size: 0.9rem; color: var(--light-text-color); }
+.client-name { 
+    font-weight: 600; 
+    color: var(--primary-color); 
+    font-size: 1rem; 
+    line-height: 1.2; 
+}
+.client-role { 
+    font-size: 0.85rem; 
+    color: var(--light-text-color); 
+    line-height: 1.2;
+}
 .dark-mode .client-role { color: var(--dark-text-color); }
 
 
-/* ======================================
-    6. تنسيق الأسهم (Navigation Arrows)
-    ====================================== */
-
+/* 6. تنسيق الأسهم (دائرية بالكامل ومتجاوبة ومع تأثير Hover) */
 .testimonial-nav-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    
     background: var(--light-card-bg);
     color: var(--primary-color);
     border: 1px solid var(--border-color);
-    width: 40px;
-    height: 40px;
+    width: 40px; 
+    height: 40px; 
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     z-index: 20;
-    border-radius: 50%;
+    border-radius: 50%; 
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s, opacity 0.3s;
+    transition: all 0.3s;
     font-size: 1rem;
     opacity: 0.9;
 }
+.testimonial-nav-arrow:not([disabled]):hover {
+    background-color: var(--primary-color);
+    color: white; 
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    opacity: 1;
+}
+.arrow-prev { left: 40px; }
+.arrow-next { right: 40px; }
+.testimonial-nav-arrow[disabled] { opacity: 0.4; cursor: not-allowed; }
 
-/* تحديد موقع الأسهم (تباعد 40px من حافة الحاوية الداخلية) */
-.arrow-prev {
-    left: 40px;
-}
-.arrow-next {
-    right: 40px;
-}
-
-/* حالة التعطيل */
-.testimonial-nav-arrow[disabled] {
-    opacity: 0.4;
-    cursor: not-allowed;
-    background-color: var(--light-card-bg);
-    color: var(--light-text-color);
-}
 
 /* ======================================
-    7. التجاوب (Responsive Design) - وضع الهاتف
+    7. التجاوب (Responsive Design) - وضع الهاتف 
     ====================================== */
 
 @media (max-width: 768px) {
     
-    /* تقليل حشو الحاوية الداخلية لترك مساحة كافية للأسهم على الهاتف */
+    /* 1. تصغير حجم الأسهم وتثبيتها على حافة الشاشة */
+    .testimonial-nav-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem; 
+    }
+    .arrow-prev { left: 5px; }
+    .arrow-next { right: 5px; }
+    
+    /* 2. تقليل حشو الحاوية لأقصى حد لفتح مساحة للبطاقة */
     .testimonials-section .container {
-        padding: 0 60px;
+        padding: 0 5px; 
     }
 
-    /* لضمان عرض بطاقة واحدة فقط في كل شريحة (وضع الهاتف) */
+    /* 3. تصغير حجم البطاقة ورؤيتها كاملة 100% */
     .testimonial-card {
-        flex: 0 0 calc(100% - 20px);
-        max-width: calc(100% - 20px);
-        margin-right: 20px;
-    }
-    
-    /* تعديل مواقع الأسهم لتكون أقرب للحافة على الهاتف */
-    .arrow-prev {
-        left: 5px;
-    }
-    .arrow-next {
-        right: 5px;
+        padding: 20px; 
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-right: 0; 
     }
     
     /* دعم العربية: تعديل مواقع الأسهم في وضع RTL (الهاتف) */
-    html[dir="rtl"] .arrow-prev {
-        right: 5px;
-        left: auto;
-    }
-    html[dir="rtl"] .arrow-next {
-        left: 5px;
-        right: auto;
+    html[dir="rtl"] .arrow-prev { right: 5px; left: auto; }
+    html[dir="rtl"] .arrow-next { left: 5px; right: auto; }
+
+    .testimonials-grid {
+        gap: 30px; 
     }
 }
 
 /* دعم العربية: تعديل مواقع الأسهم في وضع RTL على سطح المكتب */
 @media (min-width: 769px) {
-    html[dir="rtl"] .arrow-prev {
-        right: 40px;
-        left: auto;
-    }
-    html[dir="rtl"] .arrow-next {
-        left: 40px;
-        right: auto;
+    html[dir="rtl"] .arrow-prev { right: 40px; left: auto; }
+    html[dir="rtl"] .arrow-next { left: 40px; right: auto; }
+}
+/* لإخفاء الأسهم تمامًا على الأجهزة المحمولة (إذا كنت تريد الاعتماد كلياً على السحب) */
+@media (max-width: 768px) {
+    /* ... (التعديلات الأخرى تبقى كما هي) ... */
+    
+    .testimonial-nav-arrow {
+        display: none; /* إخفاء الأسهم على الهاتف */
     }
 }
 /* ======================================
@@ -1838,3 +1834,5 @@ footer {
         width: 100%;
     }
 }
+
+
