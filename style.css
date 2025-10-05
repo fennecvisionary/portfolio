@@ -1701,6 +1701,91 @@ html[dir="rtl"] .client-info {
     color: #000000; 
 }
 /* ======================================
+    Contact Section General Styles
+    (Adjusted for Desktop/Large Screens)
+    ======================================
+*/
+.contact-section {
+    background-color: var(--light-bg-color);
+}
+.dark-mode .contact-section {
+    background-color: var(--dark-bg-color);
+}
+.contact-content {
+    /* الخصائص الأصلية للشاشات الكبيرة */
+    display: flex;
+    gap: 50px;
+    max-width: 900px; /* تحديد عرض أقصى في المنتصف */
+    margin: 0 auto;
+    align-items: flex-start;
+}
+
+/* 1. نموذج التواصل (Contact Form) */
+.contact-form {
+    flex: 0.8; /* عرض أصغر نسبياً */
+    align-self: flex-start;
+    /* ... باقي التنسيقات ... */
+}
+
+/* 2. قسم الأسئلة الشائعة (FAQ Section) */
+.faq-section {
+    flex: 1.2; /* عرض أطول نسبياً */
+    align-self: flex-start;
+    /* ... باقي التنسيقات ... */
+}
+
+/* ======================================
+    MEDIA QUERY (للهاتف المحمول - العرض أقل من 768px)
+    ======================================
+*/
+@media (max-width: 768px) {
+    
+    .contact-content {
+        /* 1. جعل المحتوى يتكدس عمودياً */
+        flex-direction: column;
+        
+        /* 2. جعل المحتوى يملأ العرض ويتم توسيطه في الصفحة */
+        max-width: 90%; /* يسمح للمحتوى بملء معظم عرض الشاشة مع تباعد بسيط */
+        gap: 30px; /* تقليل الفجوة الرأسية بين الأقسام */
+    }
+
+    /* 3. جعل كلا القسمين يأخذان العرض الكامل */
+    .contact-form,
+    .faq-section {
+        flex: 1 1 100%; /* اجعل flex يأخذ العرض الكامل 100% */
+        width: 100%; 
+        max-width: none;
+        align-self: stretch; /* للتأكد من التمدد داخل الحاوية الجديدة */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* 4. استعادة خلفية FAQ على الهاتف (اختياري) */
+    /* إذا أردت أن تعود خلفية FAQ في وضع الهاتف لتبدو كبطاقة */
+    /*
+    .faq-section {
+        background-color: var(--light-card-bg); 
+        padding: 30px;
+        box-shadow: var(--light-shadow);
+    }
+    .dark-mode .faq-section {
+        background-color: var(--dark-card-bg);
+        box-shadow: var(--dark-shadow);
+    }
+    */
+    
+    /* 5. تنسيق الأسئلة الشائعة في وضع الهاتف */
+    .faq-item {
+        /* إزالة التباعد الإضافي الذي وضعناه ليتناسب مع العرض الأكبر */
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .faq-section h3 {
+        padding-right: 0;
+        text-align: center;
+    }
+}
+/* ======================================
     FAQ Section 
     ======================================
 */
