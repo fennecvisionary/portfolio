@@ -4,8 +4,13 @@
   box-sizing: border-box;
 }
 
-body {
-  overflow-x: hidden; /* لمنع التمرير الأفقي العام */
+html, body {
+    /* يضمن أن العرض لا يتجاوز عرض شاشة الجهاز */
+    width: 100%; 
+    /* يمنع ظهور شريط التمرير الأفقي غير المرغوب فيه في معظم الحالات */
+    overflow-x: hidden; 
+    margin: 0;
+    padding: 0;
 }
 /* CSS Custom Properties for theming */
 :root {
