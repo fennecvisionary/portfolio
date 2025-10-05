@@ -1626,12 +1626,17 @@ footer {
     background-color: var(--dark-card-bg);
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
+/* القاعدة الأساسية لزر العودة للأعلى */
 .back-to-top {
     position: fixed;
     bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    
+    /* استخدم 'inset-inline-end' لضمان التوافق مع RTL (العربية) و LTR */
+    inset-inline-end: 20px; 
+    right: unset; /* إلغاء خاصية right التقليدية */
+    
+    width: 40px; /* الحجم الافتراضي لسطح المكتب */
+    height: 40px; /* الحجم الافتراضي لسطح المكتب */
     background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
@@ -1640,8 +1645,26 @@ footer {
     align-items: center;
     font-size: 1.2rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, visibility 0.3s;
+    opacity: 0;
+    visibility: hidden;
     z-index: 90;
+}
+
+/* 📱 القاعدة الخاصة بالهواتف (لتصغير الحجم ومعالجة مشكلة العرض الزائد) */
+@media (max-width: 768px) {
+    .back-to-top {
+        /* 1. تصغير حجم الزر */
+        width: 35px;
+        height: 35px;
+        
+        /* 2. تصغير حجم الأيقونة بداخله */
+        font-size: 1rem; 
+        
+        /* 3. تقليل المسافة من الحافة لمنع ظهور شريط التمرير الأفقي */
+        inset-inline-end: 10px; /* أقرب إلى حافة الشاشة */
+        bottom: 10px; /* أقرب إلى الأسفل */
+    }
 }
 
 
