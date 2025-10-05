@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
             tool_photoshop: "Adobe Photoshop",
             tool_illustrator: "Adobe Illustrator",
             tool_indesign: "Adobe InDesign",
-            tool_aftereffects: "Adobe After Effects",
+            tool_aftereffects: "Adobe XD",
             tool_figma: "Figma",
             contact_title: "تواصل معي",
             contact_subtitle: "هل أنت مستعد لبدء مشروعك القادم؟ تواصل معي اليوم!",
