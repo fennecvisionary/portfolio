@@ -1953,6 +1953,50 @@ html[dir="rtl"] .client-info {
   }
 }
 /* ======================================
+    التجاوب (Responsive Design)
+    ======================================
+*/
+
+/* --------------------------------------
+    شاشات الأجهزة اللوحية (Tablet - 992px فأقل)
+    --------------------------------------
+*/
+@media (max-width: 992px) {
+    .logos-slide img {
+        height: 70px; /* تقليل حجم الشعار قليلاً */
+        margin: 0 15px; /* تقليل المسافة قليلاً */
+    }
+}
+
+/* --------------------------------------
+    شاشات الهواتف (Mobile - 768px فأقل)
+    --------------------------------------
+*/
+@media (max-width: 768px) {
+    .logo-carousel-section {
+        padding: 3rem 1rem; /* تقليل التباعد حول القسم */
+    }
+
+    .logos-slide {
+        animation: slide-logos-mobile 20s linear infinite; /* زيادة سرعة التمرير للهواتف (20 ثانية) */
+    }
+
+    .logos-slide img {
+        height: 50px; /* تقليل حجم الشعار بشكل كبير */
+        margin: 0 25px; /* زيادة المسافة بين الشعارات */
+    }
+
+    /* Keyframes خاص بالهواتف لسرعة مختلفة */
+    @keyframes slide-logos-mobile {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-50%);
+        }
+    }
+}
+/* ======================================
    Footer Styles 
    ======================================
 */
