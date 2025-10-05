@@ -1636,7 +1636,70 @@ html[dir="rtl"] .client-info {
     border-color: var(--primary-color);
     outline: none;
 }
+/* ======================================
+    Social Contact Links (تحت نموذج التواصل)
+    ======================================
+*/
+.social-contact-links {
+    margin-top: 30px; /* تباعد عن نموذج الإرسال */
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* خط فاصل */
+    text-align: center;
+}
+.dark-mode .social-contact-links {
+    border-top: 1px solid #444;
+}
 
+.social-contact-links h4 {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+.dark-mode .social-contact-links h4 {
+    color: var(--dark-text-color);
+}
+
+.social-icons-card {
+    display: flex;
+    justify-content: center; /* توسيط الأيقونات أفقياً */
+    gap: 15px;
+}
+
+.social-icons-card a {
+    font-size: 1.8rem;
+    color: var(--light-text-color); /* اللون الأساسي للأيقونة */
+    transition: color 0.3s;
+}
+.dark-mode .social-icons-card a {
+    color: var(--dark-text-color);
+}
+
+/* تأثير التمرير: يتحول اللون إلى اللون الأصلي */
+
+/* واتساب */
+.social-icons-card a.whatsapp:hover {
+    color: #25D366; 
+}
+
+/* الإيميل */
+.social-icons-card a.email:hover {
+    color: #D44638; 
+}
+
+/* إنستغرام */
+.social-icons-card a.instagram:hover {
+    color: #E1306C; 
+}
+
+/* فيسبوك */
+.social-icons-card a.facebook:hover {
+    color: #1877F2;
+}
+
+/* تيك توك */
+.social-icons-card a.tiktok:hover {
+    color: #000000; 
+}
 /* ======================================
     FAQ Section 
     ======================================
