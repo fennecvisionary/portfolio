@@ -179,6 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         faq_q8: "ماذا يرمز الثعلب البرتقالي في تصميمكم؟",
         faq_a8: "الثعلب البرتقالي يرمز إلى **الذكاء** و**السرعة** و**الفطنة** في التصميم، وهي القيم التي نعتمد عليها لتقديم حلول إبداعية ومميزة لعملائنا.",
+        carousel_title: "شركاء النجاح وثقة العملاء",
+        carousel_subtitle: "نحن فخورون بالعمل مع علامات تجارية رائدة حول العالم.",
     },
     en: {
         skip_link: "Skip to main content",
@@ -320,6 +322,8 @@ document.addEventListener("DOMContentLoaded", () => {
         
         faq_q8: "What does the orange fox symbolize in your design?",
         faq_a8: "The orange fox symbolizes **intelligence**, **speed**, and **cunning** in design—values we rely on to deliver creative and distinctive solutions to our clients.",
+       carousel_title: "Our Success Partners and Client Trust",
+       carousel_subtitle: "We are proud to work with leading brands around the globe.",
     }
 };
 
