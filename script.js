@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded", () => {
     
     let currentTestimonialIndex = 0;
     const totalTestimonials = testimonialCards.length;
+    
+    // متغيرات التمرير اليدوي (Swiping)
+    let isDragging = false;
+    let startX = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    const SLIDER_SENSITIVITY = 100; // حساسية السحب بالبكسل لتغيير الشريحة
     // ===================================
 
     // ===================================
@@ -523,20 +530,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ========================================================
-    // وظيفة تحديث شريط آراء العملاء (مُصحَّحَة)
+    // وظيفة تحديث شريط آراء العملاء (النهائية مع دعم Swiping)
     // ========================================================
     function updateTestimonialSlider() {
+        // نستخدم testimonialCards.length بدلاً من totalTestimonials لتجنب مشاكل النطاق
         if (testimonialCards.length === 0 || !testimonialsContainer) return;
 
-        // 1. تحديد عدد البطاقات المرئية بناءً على حجم الشاشة
+        // تحديد عدد البطاقات المرئية: 1 للهاتف، 3 لسطح المكتب
         const cardsInView = window.innerWidth <= 768 ? 1 : 3;
-        const totalTestimonials = testimonialCards.length;
-        
-        // 2. حساب الحد الأقصى لـ currentTestimonialIndex
-        // هذا يمثل أقصى عدد مرات انزلاق ممكنة
-        const maxIndex = Math.max(0, totalTestimonials - cardsInView); 
+        const maxIndex = Math.max(0, testimonialCards.length - cardsInView);  
 
-        // 3. ضبط حدود المؤشر
+        // ضبط حدود المؤشر
         if (currentTestimonialIndex < 0) {
             currentTestimonialIndex = 0;
         }
@@ -544,29 +548,27 @@ document.addEventListener("DOMContentLoaded", () => {
             currentTestimonialIndex = maxIndex;
         }
 
-        // 4. حساب مسافة الانزلاق (باستخدام getBoundingClientRect لضمان الدقة)
+        // حساب مسافة الانزلاق (بما في ذلك الفجوة 30px)
         const cardElement = testimonialCards[0];
         const cardWidth = cardElement.getBoundingClientRect().width;
-        
-        let spacing = window.innerWidth <= 768 ? 20 : 30; // مطابقة لـ margin-right/gap في CSS
+        let spacing = 30; // يتوافق مع 'gap: 30px' في CSS
         let slideDistance = cardWidth + spacing;
         
-        // 5. حساب قيمة التحويل النهائية
+        // حساب قيمة التحويل النهائية
         let translationX = currentTestimonialIndex * slideDistance;
 
-        // 6. تطبيق تعديل الاتجاه (RTL/LTR)
+        // تطبيق تعديل الاتجاه (RTL/LTR)
         const isRTL = document.documentElement.dir === 'rtl';
-        
-        // في LTR، المؤشر الإيجابي (TranslationX الإيجابي) يعني تحريك الحاوية لليسار (قيمة سالبة)
         if (!isRTL) {
             translationX = -translationX;
         } 
         
-        // 7. تطبيق التحويل
+        // تطبيق التحويل وحفظ القيمة لنقطة بداية السحب التالية
         testimonialsContainer.style.transform = `translateX(${translationX}px)`;
+        prevTranslate = translationX; 
 
-        // 8. تحديث حالة الأزرار (تفعيل/تعطيل)
-        if (totalTestimonials <= cardsInView) {
+        // تحديث حالة الأزرار
+        if (testimonialCards.length <= cardsInView) {
             prevArrow.disabled = true;
             nextArrow.disabled = true;
         } else {
@@ -574,8 +576,56 @@ document.addEventListener("DOMContentLoaded", () => {
             nextArrow.disabled = currentTestimonialIndex === maxIndex;
         }
     }
+
+
     // ========================================================
-    
+    // تفعيل وظيفة السحب اليدوي (Touch Events)
+    // ========================================================
+    if (testimonialsContainer) {
+        
+        // 3.1. عند لمس الشاشة (touchstart)
+        testimonialsContainer.addEventListener('touchstart', (event) => {
+            if (window.innerWidth <= 768) { 
+                isDragging = true;
+                startX = event.touches[0].clientX;
+                // تعطيل الـ transition مؤقتاً (يتطلب كلاس .no-transition في CSS)
+                testimonialsContainer.classList.add('no-transition');
+            }
+        });
+
+        // 3.2. أثناء تحريك اللمس (touchmove)
+        testimonialsContainer.addEventListener('touchmove', (event) => {
+            if (!isDragging || window.innerWidth > 768 || event.touches.length !== 1) return;
+
+            const currentX = event.touches[0].clientX;
+            const dragDistance = currentX - startX;
+            
+            // تطبيق الانتقال المؤقت للحركة السلسة
+            currentTranslate = prevTranslate + dragDistance;
+            testimonialsContainer.style.transform = `translateX(${currentTranslate}px)`;
+        });
+
+        // 4.3. عند إنهاء اللمس (touchend)
+        testimonialsContainer.addEventListener('touchend', () => {
+            if (!isDragging || window.innerWidth > 768) return;
+            isDragging = false;
+            
+            // إعادة تفعيل الـ transition
+            testimonialsContainer.classList.remove('no-transition'); 
+            
+            const movedBy = currentTranslate - prevTranslate; // المسافة النهائية المحسوبة
+
+            // تحديد الاتجاه بناءً على مسافة السحب
+            if (movedBy < -SLIDER_SENSITIVITY) { // سحب لليسار
+                currentTestimonialIndex++;
+            } else if (movedBy > SLIDER_SENSITIVITY) { // سحب لليمين
+                currentTestimonialIndex--;
+            }
+            
+            // تطبيق المؤشر النهائي والتأكد من الحدود
+            updateTestimonialSlider();
+        });
+    }
 
     // ===================================
     // وظائف الترجمة والقائمة الجانبية والمظهر
@@ -762,31 +812,28 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     
     // ========================================================
-    // مستمعو أحداث أسهم آراء العملاء (المنطق المصحَّح)
+    // ربط الأسهم والتحجيم بوظيفة update
     // ========================================================
+
+    // ربط أحداث النقر بالأسهم
     if (prevArrow && nextArrow) {
-        
-        // عند النقر على السهم السابق
-        prevArrow.addEventListener("click", () => {
-            // الرجوع للخلف دائماً يعني تقليل مؤشر الشريحة
+        prevArrow.addEventListener('click', () => {
             currentTestimonialIndex--;
             updateTestimonialSlider();
         });
 
-        // عند النقر على السهم التالي
-        nextArrow.addEventListener("click", () => {
-            // التقدم للأمام دائماً يعني زيادة مؤشر الشريحة
+        nextArrow.addEventListener('click', () => {
             currentTestimonialIndex++;
             updateTestimonialSlider();
         });
-        
-        // مستمع حدث تغيير حجم النافذة (للتجاوب)
-        window.addEventListener('resize', () => {
-            currentTestimonialIndex = 0; 
-            updateTestimonialSlider();
-        });
     }
-    // ========================================================
+
+    // تحديث عند تغيير حجم النافذة
+    window.addEventListener('resize', () => {
+        // عند تغيير الحجم، نعود للشريحة الأولى لضمان إعادة الحساب الصحيحة
+        currentTestimonialIndex = 0;
+        updateTestimonialSlider();
+    });
 
 
     // ********** التشغيل الأولي **********
