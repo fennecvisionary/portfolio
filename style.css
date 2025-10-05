@@ -1891,109 +1891,103 @@ html[dir="rtl"] .client-info {
     color: var(--dark-text-color);
 }
 /* ======================================
-   Logo Carousel
-   ======================================
-/* Styling for the Logo Carousel Section */
+    Logo Carousel Section - BASE STYLES
+    ======================================
+*/
 .logo-carousel-section {
-  background-color: var(--light-bg-color);
-  padding: 5rem 2rem;
-  text-align: center;
+    background-color: var(--light-bg-color);
+    padding: 5rem 2rem;
+    text-align: center;
+    /* تحسين الأداء: استخدام transform لتحريك العنصر */
+    will-change: transform; 
 }
 
 .dark-mode .logo-carousel-section {
-  background-color: var(--dark-bg-color);
+    background-color: var(--dark-bg-color);
 }
 
 .logo-carousel {
-  overflow: hidden; /* This hides the overflowing logos */
-  white-space: nowrap; /* Prevents logos from wrapping to the next line */
-  position: relative;
-  width: 100%;
-  margin-top: 2rem;
+    /* تحديد عرض الحاوية بشكل صريح */
+    width: 100%; 
+    overflow: hidden;
+    position: relative;
+    margin-top: 2rem;
+    /* تحسين الأداء: استخدام transform لتحريك العنصر */
+    will-change: transform; 
+    /* إمكانية الوصول: إخفاء التمرير من قارئات الشاشة (لأنه متكرر) */
+    aria-hidden: true; 
 }
 
 .logos-slide {
-  display: inline-flex;
-  animation: slide-logos 30s linear infinite; /* Adjust speed here */
+    display: flex; /* استخدام flex بدلاً من inline-flex لتحسين التخطيط */
+    align-items: center;
+    /* تمكين تحريك العناصـر بأداء عالٍ */
+    transform: translate3d(0, 0, 0); 
+    animation: slide-logos 30s linear infinite;
+    /* تعطيل انكماش/تضخم العناصر داخل flex */
+    flex-shrink: 0; 
 }
 
-/* Stop animation on hover */
+/* 1. التوقف عند التحويم */
 .logo-carousel:hover .logos-slide {
-  animation-play-state: paused;
+    animation-play-state: paused;
 }
 
 .logos-slide img {
-  height: 80px;
-  width: auto;
-  margin: 0 20px;
-  filter: grayscale(100%); /* Make logos grayscale by default */
-  transition: filter 0.3s ease;
+    height: 80px;
+    width: auto;
+    /* استخدام flex-grow: 0 لمنع تمدد الشعارات وتشويهها */
+    flex-grow: 0; 
+    flex-shrink: 0; 
+    /* استخدام gap أو padding بدلاً من margin على كل جانب لتحسين التحكم */
+    margin: 0 30px; 
+    padding: 10px 0; /* إضافة padding عمودي لمرونة أكثر في المحاذاة */
+
+    /* تأثيرات الألوان */
+    filter: grayscale(100%);
+    opacity: 0.6; /* تقليل الشفافية كإضافة جمالية */
+    transition: filter 0.3s ease, opacity 0.3s ease;
 }
 
 .logos-slide img:hover {
-  filter: grayscale(0%); /* Full color on hover */
+    filter: grayscale(0%);
+    opacity: 1;
 }
 
-/* Dark Mode styles for logos */
+/* Dark Mode styles */
 .dark-mode .logos-slide img {
-  filter: grayscale(100%) brightness(0.7); /* Adjust brightness for dark mode */
+    filter: grayscale(100%) brightness(0.8); /* تحسين الإضاءة لتكون أفتح قليلاً */
+    opacity: 0.7;
 }
 
 .dark-mode .logos-slide img:hover {
-  filter: grayscale(0%) brightness(1);
+    filter: grayscale(0%) brightness(1);
+    opacity: 1;
 }
 
 /* Keyframes for the continuous scrolling animation */
 @keyframes slide-logos {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+    from {
+        transform: translate3d(0, 0, 0); /* استخدام translate3d لتسريع الأجهزة */
+    }
+    to {
+        transform: translate3d(-50%, 0, 0); /* استخدام translate3d */
+    }
 }
+
+
 /* ======================================
-    التجاوب (Responsive Design)
+    الاستجابة (Responsive)
     ======================================
 */
-
-/* --------------------------------------
-    شاشات الأجهزة اللوحية (Tablet - 992px فأقل)
-    --------------------------------------
-*/
-@media (max-width: 992px) {
-    .logos-slide img {
-        height: 70px; /* تقليل حجم الشعار قليلاً */
-        margin: 0 15px; /* تقليل المسافة قليلاً */
-    }
-}
-
-/* --------------------------------------
-    شاشات الهواتف (Mobile - 768px فأقل)
-    --------------------------------------
-*/
 @media (max-width: 768px) {
-    .logo-carousel-section {
-        padding: 3rem 1rem; /* تقليل التباعد حول القسم */
-    }
-
     .logos-slide {
-        animation: slide-logos-mobile 20s linear infinite; /* زيادة سرعة التمرير للهواتف (20 ثانية) */
+        animation-duration: 20s; /* تسريع التمرير على الهواتف */
     }
 
     .logos-slide img {
-        height: 50px; /* تقليل حجم الشعار بشكل كبير */
-        margin: 0 25px; /* زيادة المسافة بين الشعارات */
-    }
-
-    /* Keyframes خاص بالهواتف لسرعة مختلفة */
-    @keyframes slide-logos-mobile {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-50%);
-        }
+        height: 45px; /* تقليل الارتفاع للهواتف */
+        margin: 0 15px; /* تقليل المسافة بين الشعارات */
     }
 }
 /* ======================================
