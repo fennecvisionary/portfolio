@@ -878,7 +878,18 @@ ul[role="list"] {
     background-color: transparent;
     color: var(--primary-color);
 }
-
+/* ======================================
+    Highlighting Texts
+    ======================================
+*/
+.highlight-primary {
+    /* تطبيق لون التمييز */
+    color: var(--primary-color); 
+    /* جعل النص أغمق لزيادة وضوحه */
+    font-weight: 700; 
+    /* تحسين صغير لضمان تجاوبية النص */
+    white-space: nowrap; 
+}
 
 /* ======================================
    How It Works Section 
