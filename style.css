@@ -1786,109 +1786,214 @@ html[dir="rtl"] .client-info {
     }
 }
 /* ======================================
-    FAQ Section 
+    FAQ Section (النسخة النهائية - كل سؤال في بطاقة)
     ======================================
 */
 .faq-section {
-    /* تم التعديل: flex: 1.2 ليكون أطول نسبياً من نموذج التواصل (0.8) */
-    flex: 1.2; 
-    
-    /* إزالة الخلفية والظلال */
-    background-color: transparent; /* جعل الخلفية شفافة */
-    padding: 0; /* إزالة الـ padding ليتم عرضه بدون بطاقة */
-    border-radius: 0; 
-    box-shadow: none; /* إزالة الظل */
-    
-    /* إزالة align-self: flex-start للسماح لها بأخذ الطول الكامل إذا لزم الأمر، 
-       ولكن مع flex: 1.2 فإنها ستحتل مساحة عرض أكبر فقط.
-       سنتركها كما كانت حتى لا تتمدد رأسياً إلا إذا كان محتواها أطول */
-    align-self: flex-start; 
+    flex: 1.2;
+    background-color: transparent; 
+    padding: 0; 
+    border-radius: 0;
+    box-shadow: none; 
+    align-self: flex-start;
 }
 .dark-mode .faq-section {
-    background-color: transparent; /* جعل الخلفية شفافة في الوضع الداكن */
-    box-shadow: none; 
+    background-color: transparent;
+    box-shadow: none;
 }
 
 .faq-section h3 {
-    font-size: 1.3rem;
+    font-size: 1.5rem; 
+    font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 20px;
-    text-align: right; /* تغيير محاذاة العنوان لليمين ليتناسب مع الأسئلة */
-    padding-right: 30px; /* إضافة تباعد لليمين ليتناسب مع padding العناصر */
+    margin-bottom: 25px;
+    /* تحديد التباعد الجانبي ليتوافق مع نصوص الأسئلة/الأجوبة */
+    padding-inline-start: 15px; 
+    padding-inline-end: 15px; 
+    text-align: initial; 
 }
 
-/* نمط كل سؤال في قائمة الأسئلة الشائعة */
+/* 🆕 نمط كل سؤال في قائمة الأسئلة الشائعة - CARD STYLE */
 .faq-item {
-    margin-bottom: 15px;
-    padding-right: 30px; /* إضافة تباعد للحافة */
-    padding-left: 30px; /* إضافة تباعد للحافة */
-    border-bottom: 1px solid #eee; 
-}
-.dark-mode .faq-item {
-    border-bottom: 1px solid #444;
+    /* 1. مسافة بين البطاقات */
+    margin-bottom: 12px; 
+    
+    /* 2. خلفية البطاقة والظل */
+    background-color: var(--light-bg-color); 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل خفيف للبطاقة */
+
+    /* إزالة الحدود القديمة التي كانت تفصل بين الأسئلة */
+    border-top: none; 
+    padding-top: 0; 
+    padding-bottom: 0; 
+    padding-inline-start: 0; 
+    padding-inline-end: 0;
+    
+    transition: all 0.3s;
+    overflow: hidden; /* لضمان أن الحواف المستديرة تعمل بشكل صحيح */
 }
 
-/* زر السؤال نفسه */
+.dark-mode .faq-item {
+    background-color: var(--dark-card-bg); /* خلفية داكنة */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+}
+
+/* 🆕 تمييز البطاقة النشطة (عند الفتح) */
+.faq-item.open {
+    /* تظليل أوضح وتأثير رفع خفيف */
+    box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.2); 
+    border: 1px solid var(--primary-color); /* إطار بلون أساسي */
+    transform: translateY(-2px); /* تأثير رفع خفيف */
+    background-color: var(--light-bg-color); 
+}
+.dark-mode .faq-item.open {
+    background-color: var(--dark-card-bg);
+    border: 1px solid var(--primary-color);
+}
+
+/* زر السؤال نفسه (النص) */
 .faq-question {
     background-color: transparent;
     color: var(--light-text-color);
     width: 100%;
-    text-align: right; 
-    padding: 12px 0;
     border: none;
     cursor: pointer;
     font-size: 1rem;
     font-weight: 600;
     transition: color 0.3s;
-    position: relative;
-    padding-left: 30px; 
+    position: relative; 
+    
+    /* هذا يضمن أن النص يبدأ من 15px */
+    padding-inline-start: 15px; 
+    padding-inline-end: 45px; /* حجز مساحة للأيقونة */
+    padding-top: 15px; 
+    padding-bottom: 15px; 
+
+    text-align: initial; 
 }
+
 .dark-mode .faq-question {
     color: var(--dark-text-color);
 }
 .faq-question:hover {
     color: var(--primary-color);
 }
-
-/* أيقونة القائمة المنسدلة */
-.faq-question::after {
-    content: '+'; 
-    font-size: 1.2rem;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: transform 0.3s;
+.faq-question.active {
     color: var(--primary-color);
-    font-weight: 400;
+}
+
+/* أيقونة القائمة المنسدلة (::after) - لا تغيير في الموضع */
+.faq-question::after {
+    font-family: 'Font Awesome 5 Free'; 
+    content: '\f078'; 
+    font-weight: 900; 
+    font-size: 0.75rem; 
+    color: var(--primary-color);
+    transition: transform 0.3s;
+    
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 15px; 
+    transform: translateY(-50%);
 }
 
 /* عند النقر على السؤال وفتحه */
 .faq-question.active::after {
-    content: '-'; 
+    transform: translateY(-50%) rotate(90deg); 
 }
 
 /* مربع الإجابة المخفي افتراضياً */
 .faq-answer {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-    padding: 0 0 0 0; 
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+    padding: 0;
 }
 
 /* عند فتح الإجابة */
 .faq-answer.open {
-    max-height: 300px; /* تم زيادة القيمة لضمان استيعاب النص */
-    padding: 5px 0 15px 0; 
+    max-height: 500px; 
+    padding-top: 5px; /* مسافة بين السؤال والإجابة */
+    padding-bottom: 20px;
+    
+    /* هذا يضمن أن الإجابة تبدأ من نفس النقطة 15px */
+    padding-inline-start: 15px; 
+    padding-inline-end: 15px;
 }
 
 .faq-answer p {
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.7; 
     color: var(--light-text-color);
+    text-align: initial; 
 }
 .dark-mode .faq-answer p {
     color: var(--dark-text-color);
+}
+/* ======================================
+    FAQ Section (تعديلات التجاوبية)
+    ======================================
+*/
+
+/* 💻 تنسيقات سطح المكتب (النسخة الأصلية) */
+.faq-section {
+    /* 1. الحفاظ على إعدادات Flex لسطح المكتب */
+    flex: 1.2; 
+    align-self: flex-start; /* هذا يحافظ عليه في الأعلى */
+    /* ... بقية التنسيقات ... */
+}
+
+/* 📱 استجابة الهاتف (Mobile Responsiveness) */
+@media (max-width: 768px) {
+    /*
+        يُفترض أن هذا الاستعلام يتم وضعه ضمن حاوية Grid/Flex 
+        التي تفصل بين قسم الأسئلة الشائعة وقسم التواصل.
+        يجب أن يتم إلغاء إعدادات Flex هنا.
+    */
+    .faq-section {
+        /* 1. إلغاء إعدادات Flex لتمكين العرض الكامل */
+        flex: 1 1 100%; /* تأكد من أنه يأخذ العرض الكامل */
+        width: 100%; /* تأكيد العرض الكامل */
+        
+        /* 2. إلغاء محاذاة البداية (Start Alignment) */
+        align-self: auto; 
+        
+        /* 3. تطبيق الهامش التلقائي للتوسيط العمودي في حال كان هناك مساحة (تعتمد على الحاوية الأبوية) */
+        /* إذا كانت الحاوية الأبوية تستخدم Flexbox عمودياً، فهذا سيضعه في الوسط */
+        margin-block: 20px auto; /* مسافة علوية وسفلية وتوسيط عمودي */
+    }
+
+    /* 🆕 جعل العنوان في الوسط على الهاتف */
+    .faq-section h3 {
+        text-align: center;
+        padding-inline-start: 0;
+        padding-inline-end: 0;
+        margin-bottom: 20px;
+    }
+
+    /* 🆕 توسيط بطاقات FAQ ضمن القسم */
+    /* لضمان توسيط البطاقات، يجب أن تكون الحاوية الأبوية تسمح بذلك (على سبيل المثال، باستخدام flex) */
+    .faq-section {
+        /* بما أننا نستخدم flex: 1.2 في سطح المكتب، قد تكون الحاوية الأبوية flex */
+        /* إذا كانت الحاوية الأبوية display: flex; وتتجه عمودياً، فإن margin: auto; سيوسّطه */
+    }
+
+    /* ضمان أن التباعدات الداخلية للبطاقة لا تطغى على العرض */
+    .faq-item {
+        margin-inline: 15px; /* إضافة هامش جانبي لتجنب الالتصاق بحواف الشاشة */
+    }
+
+    /* لضمان التوسيط الفعلي للقسم بالكامل (إذا كان محتواه قصيرًا)، يجب أن تكون الحاوية الأبوية هي التي توجه التوسيط. */
+    /* ولكن إذا كان قصدك توسيط القسم في وسط الصفحة أفقياً، فإن width: 100%; + margin-inline: auto; هو الحل: */
+
+    /* إذا كان محتوى FAQ لا يشغل كامل العرض، هذا يضمن توسيطه أفقياً */
+    .faq-section {
+        max-width: 600px; /* لتقييد العرض قليلاً على الشاشات الكبيرة/المتوسطة */
+        margin-inline: auto; /* التوسيط الأفقي */
+        
+        /* ... بقية التنسيقات ... */
+    }
 }
 /* ======================================
    Logo Carousel
