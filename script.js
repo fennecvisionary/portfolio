@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // ===================================
     // بيانات الترجمة (Translation Data) - 10 آراء للعملاء
     // ===================================
-    const translations = {
+     const translations = {
     ar: {
         skip_link: "تخطي إلى المحتوى الرئيسي",
         menu_toggle: "فتح القائمة",
@@ -181,6 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
         faq_a8: "الثعلب البرتقالي يرمز إلى **الذكاء** و**السرعة** و**الفطنة** في التصميم، وهي القيم التي نعتمد عليها لتقديم حلول إبداعية ومميزة لعملائنا.",
         carousel_title: "شركاء النجاح وثقة العملاء",
         carousel_subtitle: "نحن فخورون بالعمل مع علامات تجارية رائدة حول العالم.",
+      experienceTitle: "🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة",
     },
     en: {
         skip_link: "Skip to main content",
@@ -324,8 +325,10 @@ document.addEventListener("DOMContentLoaded", () => {
         faq_a8: "The orange fox symbolizes **intelligence**, **speed**, and **cunning** in design—values we rely on to deliver creative and distinctive solutions to our clients.",
        carousel_title: "Our Success Partners and Client Trust",
        carousel_subtitle: "We are proud to work with leading brands around the globe.",
+      experienceTitle:"🦊 Fennec Visionary | Visual Creativity that Builds Unique Identity",
     }
 };
+
 
     // ===================================
     // بيانات الأعمال ومحرك الفلترة والترقيم (لم يتم تغييرها)
