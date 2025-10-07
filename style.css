@@ -887,16 +887,29 @@ ul[role="list"] {
     color: var(--primary-color); 
     /* جعل النص أغمق لزيادة وضوحه */
     font-weight: 700; 
-    /* تحسين صغير لضمان تجاوبية النص */
+    /* 🔑 هذه الخاصية تمنع الالتفاف على سطر جديد */
     white-space: nowrap; 
 }
 
 /* ======================================
-   How It Works Section 
-   ======================================
+    📱 التجاوب مع الهاتف (Mobile Responsiveness)
+    ======================================
+*/
+@media (max-width: 768px) {
+    /* 🔑 إلغاء منع الالتفاف على الهواتف */
+    .highlight-primary {
+        white-space: normal;
+        /* هذا يسمح للكلمات الطويلة بالالتفاف بشكل طبيعي على سطر جديد
+           للحفاظ على ظهور المحتوى ضمن حدود الشاشة ومنع شريط التمرير الأفقي. */
+    }
+}
+/* ======================================
+    How It Works Section
+    ======================================
 */
 .how-it-works-section {
     background-color: var(--light-bg-color);
+    padding-bottom: 70px; 
 }
 .dark-mode .how-it-works-section {
     background-color: var(--dark-bg-color);
@@ -906,38 +919,33 @@ ul[role="list"] {
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 30px;
 }
+
+/* -------------------------------------- */
+/* أنماط بطاقة الخطوة (Step Card) */
+/* -------------------------------------- */
 .step-card {
     text-align: center;
     padding: 30px 20px;
     border-radius: 10px;
     position: relative;
+    /* الحفاظ على خط البطاقة القديم */
     border-bottom: 4px solid var(--primary-color);
     background-color: var(--light-card-bg);
     box-shadow: var(--light-shadow);
+    transition: box-shadow 0.3s, transform 0.3s;
 }
 .dark-mode .step-card {
     background-color: var(--dark-card-bg);
     box-shadow: var(--dark-shadow);
 }
+/* إخفاء الأرقام القديمة */
 .step-number {
-    position: absolute;
-    top: -15px;
-    right: 50%;
-    transform: translateX(50%);
-    width: 30px;
-    height: 30px;
-    background-color: var(--primary-color);
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: 700;
-    font-size: 1rem;
-    z-index: 10;
+    display: none !important; 
 }
+
+/* تكبير حجم الأيقونات */
 .step-icon {
-    font-size: 2.5rem;
+    font-size: 3.5rem; 
     color: var(--primary-color);
     margin-bottom: 15px;
 }
@@ -949,7 +957,100 @@ ul[role="list"] {
 .step-card p {
     line-height: 1.6;
 }
+.step-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+/* -------------------------------------- */
+/* 🔑 تنسيق الخط الزمني (Timeline) المصحح */
+/* -------------------------------------- */
+.steps-timeline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 30px; 
+    margin-top: 30px; 
+    /* الحفاظ على هذا البادينج */
+    padding: 0 15px; 
+    z-index: 10;
+    position: relative;
+}
+@media (max-width: 768px) {
+    .steps-timeline {
+        display: none; 
+    }
+}
 
+/* 🔑 الخط الخلفي الأساسي (Timeline Track) - التعديل هنا */
+.timeline-track {
+    position: absolute;
+    height: 12px; 
+    background-color: #ddd; 
+    top: 50px; 
+    z-index: 5;
+    
+    /* 🟢 تصحيح البداية: 
+       تم زيادة إزاحة البداية بـ 15px إضافية (لتصبح 30px) لتقصير الخط من البداية 
+       ليصل إلى مركز الدائرة الأولى بدقة أكبر */
+    inset-inline-start: 150px; 
+    
+    /* 🟢 تصحيح العرض:
+       تم تقليل العرض الإجمالي بـ 30px (لتصبح calc(100% - 60px)) 
+       ليتناسب مع الإزاحة الجديدة ويكون مركزه في الدائرة الأخيرة */
+    width: calc(78% - 30px); 
+}
+.dark-mode .timeline-track {
+    background-color: #555;
+}
+
+/* خط التعبئة المتحرك (Overlay) */
+.timeline-fill {
+    height: 100%;
+    width: 0%; 
+    background-color: var(--primary-color);
+    transition: width 1.5s ease-out; 
+    position: absolute;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    grid-column: span 1; 
+    z-index: 15; 
+    padding-top: 30px; 
+}
+
+/* نمط الدائرة (Circle) */
+.step-circle {
+    width: 50px; 
+    height: 50px; 
+    background-color: #eee; 
+    border: 4px solid #ccc; 
+    color: #888;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.1rem; 
+    transition: all 0.4s ease-in-out, background-color 0.4s;
+    z-index: 20; 
+    position: relative;
+    box-shadow: var(--light-shadow);
+}
+.dark-mode .step-circle {
+    background-color: #444; 
+    border-color: #555;
+    color: #ccc;
+}
+.step-circle.filled {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 0 0 8px rgba(var(--primary-color-rgb), 0.2);
+    transform: scale(1.1); 
+}
 
 /* ======================================
     Tools Section 🎨
@@ -1710,6 +1811,82 @@ html[dir="rtl"] .client-info {
 /* تيك توك */
 .social-icons-card a.tiktok:hover {
     color: #000000; 
+}
+/* ======================================
+    📱 التجاوب مع الهاتف (Mobile Responsiveness) - About Me
+    ======================================
+*/
+@media (max-width: 768px) {
+    /* 🔑 1. عكس الترتيب وعرض المحتوى عمودياً */
+    .about-content {
+        flex-direction: column; /* جعل الصورة والنص يتكدسان عمودياً */
+        gap: 30px; /* تقليل التباعد بين الصورة والنص */
+    }
+    
+    /* 🔑 2. جعل عمود الصورة يأخذ العرض الكامل ويكون في الأعلى */
+    .about-image {
+        /* إلغاء الـ max-width لـ flex: 1 لكي يأخذ كل العرض المتاح */
+        max-width: 100%; 
+        order: 1; /* التأكد من ظهوره أولاً */
+    }
+    
+    /* 🔑 3. جعل عمود النص يأخذ العرض الكامل ويكون أسفل الصورة */
+    .about-text {
+        width: 100%; /* ضمان العرض الكامل */
+        padding: 20px; /* تقليل البادينج قليلاً */
+        order: 2; /* ظهوره ثانياً */
+    }
+    
+    .about-text p {
+        /* إزالة المحاذاة الداخلية المفرطة إذا لزم الأمر */
+        text-align: justify; /* جعل النص يملأ العرض بشكل أفضل */
+        font-size: 1rem;
+    }
+    
+    /* 4. ضمان توسيط العناصر داخل عمود الصورة الذي أصبح عريضاً */
+    /* الصورة نفسها */
+    .about-image .image-wrapper {
+        width: 180px; /* تصغير حجم الصورة قليلاً */
+        height: 180px;
+        /* الخواص display: block; و margin: auto; موجودة بالفعل وتضمن التوسيط */
+    }
+    
+    /* الاسم الموثق وحالة الاتصال وجدول مواعيد العمل */
+    .verified-name-container,
+    .status-info-container,
+    .working-hours-table {
+        /* هذه العناصر بالفعل لها max-width وتوسيط كتلي (margin: auto) 
+           لذا ستظل متمركزة بشكل صحيح داخل الـ 100% width الجديد */
+        max-width: 280px; /* تحجيم مناسب للهاتف */
+    }
+
+    /* جدول المواعيد */
+    .working-hours-table {
+        font-size: 0.9rem; /* تصغير الخط قليلاً */
+    }
+    
+    .working-hours-table th, 
+    .working-hours-table td {
+        padding: 8px 10px; /* تقليل البادينج */
+    }
+    
+    /* أيقونات التواصل الاجتماعي */
+    .social-links-profile {
+        margin-top: 15px; /* تقليل المسافة */
+        margin-bottom: 15px;
+    }
+    
+    /* 5. تنسيقات قسم Contact (لضمان التجاوب في حالة وجوده) */
+    .contact-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .contact-form {
+        /* إزالة التحجيم المرن وجعله بعرض كامل */
+        flex: 1;
+        width: 100%;
+        align-self: auto;
+    }
 }
 /* ======================================
     Contact Section General Styles
