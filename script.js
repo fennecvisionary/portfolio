@@ -897,7 +897,10 @@ document.addEventListener("DOMContentLoaded", () => {
     initializeStats();
     loadWorks(); 
     updateTestimonialSlider();
-
+updateProgressSteps(); 
+    window.addEventListener('scroll', updateProgressSteps); 
+    
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
     // 🆕 تفعيل تمييز النصوص
     highlightTextMarkers(); 
 
@@ -1000,10 +1003,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ===================================
 // 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
-// ===================================
-
-// ===================================
-// 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
 // (تم تعديلها لتشمل كامل محتوى الموقع)
 // ===================================
 
@@ -1045,3 +1044,87 @@ function highlightTextMarkers() {
     });
 }
 // ===================================
+
+// ===================================
+// 🆕 دالة تحديث خط التقدم المتحرك (Timeline Logic)
+// ===================================
+// ... (في ملف script.js)
+
+function updateProgressSteps() {
+    const section = document.querySelector('.how-it-works-section');
+    const stepCards = document.querySelectorAll('.step-card');
+    const stepCircles = document.querySelectorAll('.step-circle');
+    const timelineFill = document.querySelector('.timeline-fill'); 
+
+    const totalSteps = 4; 
+
+    if (!section || stepCircles.length < totalSteps || !timelineFill) return;
+
+    const rect = section.getBoundingClientRect();
+    const viewportHeight = window.innerHeight;
+    
+    let activeStepIndex = 0;
+    
+    // 1. حساب الخطوة النشطة ونسبة الامتلاء
+    if (rect.top < viewportHeight && rect.bottom > 0) {
+        
+        let highestActivationStep = 0;
+        
+        stepCards.forEach((card, index) => {
+            const cardRect = card.getBoundingClientRect();
+            // نقطة التفعيل: عندما يصل الجزء العلوي للبطاقة إلى 60% من ارتفاع النافذة
+            const activationPoint = viewportHeight * 0.60; 
+
+            if (cardRect.top < activationPoint) {
+                highestActivationStep = index + 1;
+            }
+        });
+        
+        activeStepIndex = highestActivationStep;
+
+        // حساب نسبة الامتلاء للخط (الخطوة 2)
+        const scrolledDistance = (viewportHeight * 0.75) - rect.top; 
+        const totalEffectiveScroll = rect.height + (viewportHeight * 0.5); 
+        
+        let fillPercentage = 0;
+        if (totalEffectiveScroll > 0) {
+             fillPercentage = (scrolledDistance / totalEffectiveScroll) * 100;
+             fillPercentage = Math.max(0, Math.min(100, fillPercentage)); 
+        }
+
+        // تطبيق نسبة الامتلاء على خط التعبئة
+        timelineFill.style.width = `${fillPercentage}%`;
+
+
+    } else if (rect.bottom <= 0) {
+        // إذا كان القسم بالكامل أعلى الشاشة
+        activeStepIndex = totalSteps;
+        timelineFill.style.width = '100%'; 
+    } else {
+        // إذا كان القسم بالكامل أسفل الشاشة
+        activeStepIndex = 0;
+        timelineFill.style.width = '0%';
+    }
+    
+    // 3. تطبيق التعبئة على الدوائر وتمييز البطاقات
+    const currentFillWidth = parseFloat(timelineFill.style.width.replace('%', '')) || 0;
+
+    stepCircles.forEach((circle, index) => {
+        const step = index + 1;
+        
+        // نسبة امتلاء الدائرة المطلوبة لتلوينها (على افتراض 4 دوائر)
+        const circleActivationThreshold = (step / totalSteps) * 100; 
+
+        if (currentFillWidth >= (circleActivationThreshold - 1)) {
+             circle.classList.add('filled');
+        } else {
+             circle.classList.remove('filled');
+        }
+        
+        // البطاقة النشطة (فقط الخطوة الحالية)
+        stepCards[index].classList.remove('active');
+        if (step === activeStepIndex) {
+             stepCards[index].classList.add('active');
+        }
+    });
+}
