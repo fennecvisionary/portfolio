@@ -628,13 +628,31 @@ ul[role="list"] {
 }
 /* 📱 استعلام الوسائط: تصغير أزرار الترقيم على الهاتف */
 @media (max-width: 600px) {
+    /* 🔑 1. تصغير حجم الروابط (Page Link) */
     .page-link {
-        /* تقليل الحجم الداخلي للزر */
-        padding: 8px 12px; 
+        /* تقليل الحجم الداخلي للزر إلى الحد الأدنى */
+        padding: 6px 10px; 
         /* تقليل حجم الخط */
-        font-size: 0.9rem; 
+        font-size: 0.8rem; 
     }
+    
+    /* 🔑 2. جعل أزرار الترقيم مرنة وفعالة على مساحة ضيقة */
+    .pagination {
+        /* تقليل أو إلغاء الظل لتقليل المساحة التي يستهلكها العنصر */
+        box-shadow: none; 
+        /* التأكد من أن الترقيم لا يحتوي على حواف حادة تزيد عرضه */
+        border-radius: 0; 
+    }
+
+    /* 🔑 3. تقليل التباعد بين العناصر */
+    .page-link {
+        /* تقليل حجم الإطار إلى 0 لتقليل التباعد المزدوج */
+        border: 1px solid rgba(0, 0, 0, 0.05); 
+    }
+    
+    /* 💡 الترقيم يظل في سطر واحد بسبب خاصية display: flex على .pagination */
 }
+
 
 /* ======================================
    Responsive Design (Works Section)
@@ -1423,59 +1441,139 @@ html[dir="rtl"] .client-info {
     
     margin-bottom: 20px;
     
-    /* الإطار: إطار أساسي وآخر خارجي ديناميكي (shadow) */
-    box-shadow: 
+ box-shadow: 
         0 0 0 5px var(--light-card-bg), 
         0 0 0 10px var(--primary-color); 
     
     transition: all 0.3s ease; 
     position: relative; 
 }
-
-/* 💡 وضعية الوضع المظلم لإطار الصورة */
 .dark-mode .about-image .image-wrapper {
-    /* الطبقة الداخلية تصبح بلون خلفية الكارد المظلمة */
     box-shadow: 
         0 0 0 5px var(--dark-card-bg), 
         0 0 0 10px var(--primary-color); 
 }
 
-/* 💡 إطار الصورة في حالة الاتصال (الأخضر) */
+/* ======================================
+    🟢 حالة الاتصال (الأخضر - تطبيق حركة النبض)
+    ======================================
+*/
 .about-image .image-wrapper.is-online {
+    /* 🔑 القيم الأولية للإشعاع (زيادة القوة) */
     box-shadow: 
         0 0 0 5px var(--light-card-bg), 
         0 0 0 10px var(--secondary-color), 
-        0 0 20px var(--secondary-color); 
+        0 0 35px 8px rgba(46, 204, 113, 0.8); /* 🟢 استخدام RGB صريح للـ Glow */
+    /* 🔑 تطبيق حركة النبض بمدة أطول */
+    animation: pulse-glow-online-light 2.5s infinite ease-in-out; 
 }
 
-/* 💡 إطار الصورة في حالة عدم الاتصال (الأحمر) */
-.about-image .image-wrapper.is-offline {
-    box-shadow: 
-        0 0 0 5px var(--light-card-bg), 
-        0 0 0 10px #e74c3c; 
-}
-
-/* 💡 وضعية الوضع المظلم للحالات */
 .dark-mode .about-image .image-wrapper.is-online {
     box-shadow: 
         0 0 0 5px var(--dark-card-bg), 
         0 0 0 10px var(--secondary-color),
-        0 0 20px var(--secondary-color); 
+        0 0 35px 8px rgba(46, 204, 113, 0.7); /* 🟢 استخدام RGB صريح للـ Glow */
+    animation: pulse-glow-online-dark 2.5s infinite ease-in-out;
 }
+
+/* ======================================
+    🟡 حالة (Away - الأصفر/البرتقالي - تطبيق حركة النبض)
+    ======================================
+*/
+.about-image .image-wrapper.is-away {
+    box-shadow: 
+        0 0 0 5px var(--light-card-bg), 
+        0 0 0 10px #f39c12, 
+        0 0 35px 8px rgba(243, 156, 18, 0.8); /* 🟡 استخدام RGB صريح للـ Glow */
+    animation: pulse-glow-away-light 2.5s infinite ease-in-out; 
+}
+
+.dark-mode .about-image .image-wrapper.is-away {
+    box-shadow: 
+        0 0 0 5px var(--dark-card-bg),
+        0 0 0 10px #f39c12,
+        0 0 35px 8px rgba(243, 156, 18, 0.7); /* 🟡 استخدام RGB صريح للـ Glow */
+    animation: pulse-glow-away-dark 2.5s infinite ease-in-out;
+}
+
+/* ======================================
+    🔴 حالة عدم الاتصال (الأحمر - إشعاع ثابت)
+    ======================================
+*/
+.about-image .image-wrapper.is-offline {
+    box-shadow: 
+        0 0 0 5px var(--light-card-bg), 
+        0 0 0 10px #e74c3c,
+        0 0 30px 6px rgba(231, 76, 60, 0.7); /* 🔴 استخدام RGB صريح للـ Glow */
+    animation: none; 
+}
+
 .dark-mode .about-image .image-wrapper.is-offline {
     box-shadow: 
         0 0 0 5px var(--dark-card-bg),
-        0 0 0 10px #e74c3c;
+        0 0 0 10px #e74c3c,
+        0 0 30px 6px rgba(231, 76, 60, 0.6); /* 🔴 استخدام RGB صريح للـ Glow */
+    animation: none;
+}
+/* ======================================
+    Keyframes لحركة النبض (Glow Pulse)
+    ======================================
+*/
+/* 🟢 نبض الوضع الفاتح (Online - #2ecc71) */
+@keyframes pulse-glow-online-light {
+    0%, 100% {
+        box-shadow: 0 0 0 5px var(--light-card-bg), 
+                    0 0 0 10px var(--secondary-color), 
+                    0 0 20px 4px rgba(46, 204, 113, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 0 5px var(--light-card-bg), 
+                    0 0 0 10px var(--secondary-color), 
+                    0 0 50px 15px rgba(46, 204, 113, 1.0);
+    }
 }
 
-.about-image img {
-    width: 100%;
-    height: 100%; 
-    object-fit: cover; 
-    border-radius: 0; 
-    box-shadow: none;
+/* 🟢 نبض الوضع المظلم (Online - #2ecc71) */
+@keyframes pulse-glow-online-dark {
+    0%, 100% {
+        box-shadow: 0 0 0 5px var(--dark-card-bg), 
+                    0 0 0 10px var(--secondary-color), 
+                    0 0 20px 4px rgba(46, 204, 113, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 5px var(--dark-card-bg), 
+                    0 0 0 10px var(--secondary-color), 
+                    0 0 50px 15px rgba(46, 204, 113, 0.9);
+    }
 }
 
+/* 🟡 نبض الوضع الفاتح (Away - #f39c12) */
+@keyframes pulse-glow-away-light {
+    0%, 100% {
+        box-shadow: 0 0 0 5px var(--light-card-bg), 
+                    0 0 0 10px #f39c12, 
+                    0 0 20px 4px rgba(243, 156, 18, 0.6); 
+    }
+    50% {
+        box-shadow: 0 0 0 5px var(--light-card-bg), 
+                    0 0 0 10px #f39c12, 
+                    0 0 50px 15px rgba(243, 156, 18, 1.0); 
+    }
+}
+
+/* 🟡 نبض الوضع المظلم (Away - #f39c12) */
+@keyframes pulse-glow-away-dark {
+    0%, 100% {
+        box-shadow: 0 0 0 5px var(--dark-card-bg), 
+                    0 0 0 10px #f39c12, 
+                    0 0 20px 4px rgba(243, 156, 18, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 0 5px var(--dark-card-bg), 
+                    0 0 0 10px #f39c12, 
+                    0 0 50px 15px rgba(243, 156, 18, 0.9);
+    }
+}
 
 /* ======================================
     تنسيق الاسم الموثق (Fennec Visionary)
@@ -1485,7 +1583,6 @@ html[dir="rtl"] .client-info {
     text-align: center; /* لتوسيط الاسم بالكامل */
     margin-bottom: 20px;
     
-    /* 🟢 التوسيط الكتلي */
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;
@@ -1498,17 +1595,31 @@ html[dir="rtl"] .client-info {
     font-weight: normal; 
     color: var(--text-color);
     margin: 0;
+    /* 💡 الترتيب الافتراضي: row (LTR) أو row-reverse (RTL) - لا نغيرها هنا */
 }
 
 .profile-name strong {
     font-weight: bold;
     color: var(--text-color);
+    
+    /* 🔑 1. جعل الاسم يظهر أولاً دائماً (Order: -1) */
+    order: -1; 
+    
+    /* 🔑 2. تطبيق مسافة 10px بعد الاسم (باستخدام خاصية تعتمد على الاتجاه) */
+    /* margin-inline-end: يضع مسافة على الجانب "المنتهي" من عنصر النص. */
+    margin-inline-end: 10px; 
 }
 
 .verified-badge {
     color: #1877F2; 
     font-size: 1rem;
-    margin-right: 10px; 
+    
+    /* 🔑 1. جعل الشارة تظهر ثانياً دائماً (Order: 1 أو 0) */
+    order: 1; 
+    
+    /* 🔑 2. إلغاء أي هوامش سابقة قد تتعارض مع الترتيب الجديد */
+    margin-inline-end: 0; 
+    margin-inline-start: 0;
     margin-top: 3px;
 }
 /* تنسيق الوضع المظلم للأسماء والألوان */
@@ -1518,7 +1629,6 @@ html[dir="rtl"] .client-info {
 .dark-mode .profile-name strong {
     color: var(--dark-text-color);
 }
-
 /* 💡 تنسيق حاوية الحالة لتكون أسفل الصورة مباشرة */
 .status-info-container {
     display: flex;
