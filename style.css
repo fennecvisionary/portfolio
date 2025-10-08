@@ -138,125 +138,12 @@ ul[role="list"] {
 }
 
 /* ======================================
-   Header and Navigation Styles
-   ======================================
-*/
-.site-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--header-height);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  /* تقليل التباعد الأفقي الافتراضي للمرونة */
-  padding: 0 20px; 
-  background-color: var(--light-card-bg);
-  box-shadow: var(--light-shadow);
-  z-index: 100;
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-.dark-mode .site-header {
-  background-color: var(--dark-card-bg);
-  box-shadow: var(--dark-shadow);
-}
-
-.logo img {
-  height: 60px;
-  transition: opacity 0.3s;
-}
-.logo-dark {
-  display: none;
-}
-.dark-mode .logo-light {
-  display: none;
-}
-.dark-mode .logo-dark {
-  display: inline-block;
-}
-
-/* 1. إخفاء أزرار التحكم بالهاتف افتراضياً (لشاشات سطح المكتب) */
-.menu-toggle {
-  display: none;
-}
-
-.main-nav ul {
-  display: flex;
-  gap: 30px;
-}
-.main-nav a {
-  text-decoration: none;
-  color: var(--light-text-color);
-  font-weight: 500;
-  padding: 5px 0;
-  position: relative;
-  transition: color 0.3s;
-}
-.dark-mode .main-nav a {
-  color: var(--dark-text-color);
-}
-.main-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  right: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary-color);
-  transition: width 0.3s;
-}
-.main-nav a:hover,
-.main-nav a.active {
-  color: var(--primary-color);
-}
-.main-nav a:hover::after,
-.main-nav a.active::after {
-  width: 100%;
-  left: 0;
-}
-
-.header-controls {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-.lang-selector select {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid var(--light-text-color);
-  background-color: var(--light-card-bg);
-  color: var(--light-text-color);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-.dark-mode .lang-selector select {
-  border-color: var(--dark-text-color);
-  background-color: var(--dark-card-bg);
-  color: var(--dark-text-color);
-}
-.mode-toggle {
-  background: none;
-  border: none;
-  font-size: 1.2rem;
-  cursor: pointer;
-  color: var(--light-text-color);
-  transition: color 0.3s;
-}
-.dark-mode .mode-toggle {
-  color: var(--dark-text-color);
-}
-.mode-toggle:hover {
-  color: var(--primary-color);
-}
-
-/* ======================================
-  Hero Section (مُعدَّل لدعم الفيديو والتأثيرات الجديدة)
+  Hero Section (مُعدَّل لدعم الفيديو في الخلفية)
   ======================================
 */
 .hero-section {
-    position: relative;
-    overflow: hidden;
+    position: relative; /* 🔑 نقطة مرجعية للفيديو */
+    overflow: hidden; /* لإخفاء أي جزء زائد من الفيديو */
     
     /* الأنماط الأصلية */
     padding-top: calc(var(--header-height) + 100px); 
@@ -266,7 +153,7 @@ ul[role="list"] {
     align-items: center;
     justify-content: center;
     
-    /* مهم: لجعل الخلفية تبدو داكنة عند عدم تحميل الفيديو */
+    /* 🔑 مهم: لجعل الخلفية تبدو داكنة عند عدم تحميل الفيديو */
     background-color: #000000; 
 }
 
@@ -274,33 +161,27 @@ ul[role="list"] {
 .hero-section .container {
     position: relative;
     z-index: 3; /* أعلى من طبقة التعتيم والفيديو */
-    /* 💡 سنستخدم الآن اللون الأساسي للموقع (البرتقالي) */
-    color: var(--primary-color); 
-    /* 💡 ظل نص داكن لضمان وضوح النص البرتقالي على خلفية الفيديو الفاتحة/المضطربة */
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.9); 
+    color: white; /* 🔑 جعل النص أبيض ليتناسب مع الخلفية الداكنة */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* تحسين وضوح النص */
 }
-
-/* 🔑 تعديل لون H1 إلى اللون الأساسي (البرتقالي) */
+/* إزالة الألوان الأصلية من H1 ليتناسب مع الأبيض */
 .hero-section h1 {
     font-size: 3rem;
     margin-bottom: 20px;
     font-weight: 800;
     line-height: 1.2;
-    color: var(--primary-color); 
+    color: white; /* 🔑 تعديل اللون إلى الأبيض */
 }
 
-/* في وضع الداكن، نستخدم اللون الأساسي أيضاً */
+/* في وضع الداكن، لا داعي لتغيير لون H1 طالما هو أبيض */
 .dark-mode .hero-section h1 {
-    color: var(--primary-color);
+    color: white;
 }
-
-/* 🔑 تعديل لون الفقرة إلى اللون الأساسي (البرتقالي) */
 .hero-section p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 0 auto 30px;
     line-height: 1.6;
-    color: var(--primary-color);
 }
 .hero-actions {
     display: flex;
@@ -309,7 +190,7 @@ ul[role="list"] {
 }
 
 /* ======================================
-  أنماط الفيديو وطبقة الضباب/التعتيم
+  أنماط الفيديو وطبقة التعتيم (الضباب)
   ======================================
 */
 .video-background {
@@ -318,11 +199,12 @@ ul[role="list"] {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; 
+    z-index: 1; /* أسفل المحتوى النصي */
     overflow: hidden;
 }
 
 .video-background video {
+    /* 🔑 يجعل الفيديو يغطي الحاوية بالكامل (مثل خاصية background-size: cover) */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -332,15 +214,10 @@ ul[role="list"] {
     height: auto;
     transform: translate(-50%, -50%);
     object-fit: cover;
-    
-    /* 🔑 إضافة فلتر الضباب وتعتيم خفيف مباشرة على الفيديو */
-    /* فلتر الضباب (Blur Filter) */
-    filter: blur(2px) brightness(0.9); 
-    /* ملاحظة: قيمة 2px تعطي ضباباً خفيفاً، يمكن زيادتها حتى 5px إذا لزم الأمر */
 }
 
 /* 🔑 طبقة التعتيم الداكنة (Dark Overlay) */
-/* تضاف لتأمين وضوح النص بشكل أكبر */
+/* تستخدم عنصر زائف لضمان ظهور التعتيم فوق الفيديو مباشرة */
 .video-background::after {
     content: '';
     position: absolute;
@@ -348,14 +225,14 @@ ul[role="list"] {
     left: 0;
     width: 100%;
     height: 100%;
-    /* لون أسود بشفافية 40% فوق الفيديو المضبب */
+    /* 🔑 اللون الداكن هو الأسود بشفافية 40% (تأثير الضباب الخفيف) */
     background: rgba(0, 0, 0, 0.4); 
-    z-index: 2; 
+    z-index: 2; /* أعلى من الفيديو (1) وأسفل المحتوى (3) */
 }
 
 
 /* ======================================
-  التجاوبية (Responsive Design) - الحل لمشكلة الهاتف
+  التجاوبية (Responsive Design)
   ======================================
 */
 @media (max-width: 768px) {
@@ -375,22 +252,28 @@ ul[role="list"] {
         gap: 10px;
     }
 
-    /* 🔑 الحل لمشكلة الشاشة السوداء: إزالة خاصية display: none */
+    /* 🔑 يمكننا تعطيل الفيديو على الهواتف لتقليل استهلاك البيانات والتركيز على صورة البوستر */
     .video-background {
-        display: block; /* للتأكد من عرضه */
-        
-        /* 💡 على الهاتف، قد نرغب في ضباب أقل لتوفير موارد الجهاز */
-        /* يمكن تعديل الضباب هنا بشكل مخصص للهاتف إذا لزم الأمر */
-    }
-
-    /* 🔑 إلغاء تأثير الخلفية البديلة (background-image) إذا أردنا إظهار الفيديو */
-    .hero-section {
-        background-image: none; 
+        display: none;
     }
     
-    /* 🔑 لا نحتاج إلى ::before إذا كان الفيديو هو الخلفية */
+    /* إذا قمت بتعطيل الفيديو، تأكد من أن يكون لون الخلفية جيدًا (أو استخدم صورة البوستر) */
+    .hero-section {
+        background-image: url('images/hero-fallback.jpg'); /* يجب أن تكون هذه هي صورة البوستر */
+        background-size: cover;
+        background-position: center;
+    }
+    
+    /* 🔑 إضافة تعتيم داكن على الخلفية (صورة البوستر) لضمان وضوح النص في وضع الهاتف */
     .hero-section::before {
-        content: none;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* تعتيم أقوى قليلاً للصور الثابتة */
+        z-index: 2; 
     }
 }
 /* ======================================
