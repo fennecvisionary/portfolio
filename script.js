@@ -1128,3 +1128,25 @@ function updateProgressSteps() {
         }
     });
 }
+// ===================================
+// 🔑 وظيفة تشغيل رسوم Lottie المتحركة في الخلفية
+// ===================================
+
+function loadLottieAnimation() {
+    const lottieContainer = document.getElementById('lottie-background');
+    if (!lottieContainer) return;
+    
+    // إعدادات تشغيل الرسوم المتحركة
+    lottie.loadAnimation({
+        container: lottieContainer, // العنصر الذي سيتم وضع الرسوم داخله
+        renderer: 'svg',            // SVG هو الأفضل للتجاوبية والوضوح
+        loop: true,                 // التكرار باستمرار
+        autoplay: true,             // التشغيل التلقائي
+        path: 'videos/animation.json' // 🔑 رابط ملف JSON الخاص بك
+    });
+}
+
+// تشغيل الدالة عند تحميل الصفحة
+loadLottieAnimation();
+
+}); 
