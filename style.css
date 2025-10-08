@@ -251,37 +251,143 @@ ul[role="list"] {
 }
 
 /* ======================================
-   Hero Section 
-   ======================================
+  Hero Section (مُعدَّل لدعم الفيديو في الخلفية)
+  ======================================
 */
 .hero-section {
-  padding-top: calc(var(--header-height) + 100px); /* Adjust for fixed header */
-  padding-bottom: 100px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative; /* 🔑 نقطة مرجعية للفيديو */
+    overflow: hidden; /* لإخفاء أي جزء زائد من الفيديو */
+    
+    /* الأنماط الأصلية */
+    padding-top: calc(var(--header-height) + 100px); 
+    padding-bottom: 100px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* 🔑 مهم: لجعل الخلفية تبدو داكنة عند عدم تحميل الفيديو */
+    background-color: #000000; 
 }
+
+/* 🔑 تأكد من أن المحتوى النصي يظهر فوق الفيديو */
+.hero-section .container {
+    position: relative;
+    z-index: 3; /* أعلى من طبقة التعتيم والفيديو */
+    color: white; /* 🔑 جعل النص أبيض ليتناسب مع الخلفية الداكنة */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* تحسين وضوح النص */
+}
+/* إزالة الألوان الأصلية من H1 ليتناسب مع الأبيض */
 .hero-section h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: white; /* 🔑 تعديل اللون إلى الأبيض */
 }
+
+/* في وضع الداكن، لا داعي لتغيير لون H1 طالما هو أبيض */
 .dark-mode .hero-section h1 {
-  color: var(--primary-color);
+    color: white;
 }
 .hero-section p {
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
 }
 .hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ======================================
+  أنماط الفيديو وطبقة التعتيم (الضباب)
+  ======================================
+*/
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* أسفل المحتوى النصي */
+    overflow: hidden;
+}
+
+.video-background video {
+    /* 🔑 يجعل الفيديو يغطي الحاوية بالكامل (مثل خاصية background-size: cover) */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+/* 🔑 طبقة التعتيم الداكنة (Dark Overlay) */
+/* تستخدم عنصر زائف لضمان ظهور التعتيم فوق الفيديو مباشرة */
+.video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 🔑 اللون الداكن هو الأسود بشفافية 40% (تأثير الضباب الخفيف) */
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: 2; /* أعلى من الفيديو (1) وأسفل المحتوى (3) */
+}
+
+
+/* ======================================
+  التجاوبية (Responsive Design)
+  ======================================
+*/
+@media (max-width: 768px) {
+    .hero-section {
+        padding-top: calc(var(--header-height) + 50px);
+        padding-bottom: 50px;
+        min-height: 60vh;
+    }
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+    .hero-section p {
+        font-size: 1.1rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* 🔑 يمكننا تعطيل الفيديو على الهواتف لتقليل استهلاك البيانات والتركيز على صورة البوستر */
+    .video-background {
+        display: none;
+    }
+    
+    /* إذا قمت بتعطيل الفيديو، تأكد من أن يكون لون الخلفية جيدًا (أو استخدم صورة البوستر) */
+    .hero-section {
+        background-image: url('images/hero-fallback.jpg'); /* يجب أن تكون هذه هي صورة البوستر */
+        background-size: cover;
+        background-position: center;
+    }
+    
+    /* 🔑 إضافة تعتيم داكن على الخلفية (صورة البوستر) لضمان وضوح النص في وضع الهاتف */
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* تعتيم أقوى قليلاً للصور الثابتة */
+        z-index: 2; 
+    }
 }
 
 /* ======================================
