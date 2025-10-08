@@ -138,6 +138,119 @@ ul[role="list"] {
 }
 
 /* ======================================
+   Header and Navigation Styles
+   ======================================
+*/
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* تقليل التباعد الأفقي الافتراضي للمرونة */
+  padding: 0 20px; 
+  background-color: var(--light-card-bg);
+  box-shadow: var(--light-shadow);
+  z-index: 100;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+.dark-mode .site-header {
+  background-color: var(--dark-card-bg);
+  box-shadow: var(--dark-shadow);
+}
+
+.logo img {
+  height: 60px;
+  transition: opacity 0.3s;
+}
+.logo-dark {
+  display: none;
+}
+.dark-mode .logo-light {
+  display: none;
+}
+.dark-mode .logo-dark {
+  display: inline-block;
+}
+
+/* 1. إخفاء أزرار التحكم بالهاتف افتراضياً (لشاشات سطح المكتب) */
+.menu-toggle {
+  display: none;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 30px;
+}
+.main-nav a {
+  text-decoration: none;
+  color: var(--light-text-color);
+  font-weight: 500;
+  padding: 5px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+.dark-mode .main-nav a {
+  color: var(--dark-text-color);
+}
+.main-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  color: var(--primary-color);
+}
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+  left: 0;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.lang-selector select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--light-text-color);
+  background-color: var(--light-card-bg);
+  color: var(--light-text-color);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.dark-mode .lang-selector select {
+  border-color: var(--dark-text-color);
+  background-color: var(--dark-card-bg);
+  color: var(--dark-text-color);
+}
+.mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--light-text-color);
+  transition: color 0.3s;
+}
+.dark-mode .mode-toggle {
+  color: var(--dark-text-color);
+}
+.mode-toggle:hover {
+  color: var(--primary-color);
+}
+
+/* ======================================
   Hero Section (مُعدَّل لدعم الفيديو في الخلفية)
   ======================================
 */
@@ -276,6 +389,7 @@ ul[role="list"] {
         z-index: 2; 
     }
 }
+
 /* ======================================
    Services Section 
    ======================================
@@ -2630,15 +2744,4 @@ footer {
         padding: 20px;
     }
     
-}
-@media (max-width: 480px) {
-    .section-title {
-        font-size: 2rem;
-    }
-    .hero-section h1 {
-        font-size: 1.8rem;
-    }
-    .btn-lg {
-        width: 100%;
-    }
 }
