@@ -264,7 +264,11 @@ ul[role="list"] {
     min-height: 80vh; 
     display: flex;
     align-items: center;
-    justify-content: center;
+    /* 🔑 التعديل الأهم: محاذاة المحتوى لليسار */
+    justify-content: flex-start;
+    /* 🔑 هامش داخلي جانبي لتجنب ملامسة حافة الشاشة */
+    padding-left: 40px; 
+    padding-right: 40px;
     background-color: #111; 
 }
 
@@ -273,11 +277,14 @@ ul[role="list"] {
     position: relative;
     z-index: 5; /* لضمان ظهور المحتوى فوق النقاط */
     
-    /* ❌ إلغاء الظل بالكامل كما طلب المستخدم */
+    /* ❌ إلغاء الظل بالكامل */
     text-shadow: none; 
     
     /* محاذاة كل النص لليسار */
     text-align: left; 
+    
+    /* 🔑 تقييد عرض الحاوية لتشغل جزءاً من الشاشة فقط */
+    max-width: 500px; 
 }
 
 /* العنوان (H1) */
@@ -288,7 +295,7 @@ ul[role="list"] {
     font-weight: 800;
     line-height: 1.2;
     color: var(--primary-color); 
-    text-shadow: none; /* تأكيد إزالة الظل */
+    text-shadow: none; 
 }
 .dark-mode .hero-section h1 {
     color: var(--primary-color);
@@ -303,7 +310,7 @@ ul[role="list"] {
     margin: 0 0 25px 0; 
     line-height: 1.6;
     color: var(--primary-color); 
-    text-shadow: none; /* تأكيد إزالة الظل */
+    text-shadow: none; 
 }
 
 .hero-actions {
@@ -317,7 +324,7 @@ ul[role="list"] {
 .hero-actions a.btn {
     font-size: 1rem; 
     padding: 0.5rem 1.2rem; 
-    text-shadow: none !important; /* تأكيد إزالة الظل من الأزرار */
+    text-shadow: none !important; 
 }
 
 
@@ -341,7 +348,7 @@ ul[role="list"] {
     height: 100%;
     top: 0;
     left: 0;
-    /* object-fit: cover هو الوضع الذي طلبته في الكود الأخير، ويؤدي إلى قص الصورة */
+    /* object-fit: cover يؤدي إلى قص الصورة (للتغطية الكاملة) */
     object-fit: cover; 
     
     opacity: 0; 
@@ -367,7 +374,7 @@ ul[role="list"] {
 */
 .slideshow-pagination {
     position: absolute;
-    bottom: 50px; /* موضع النقاط */
+    bottom: 50px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 4; 
@@ -429,6 +436,9 @@ ul[role="list"] {
         min-height: 70vh;
         padding-top: calc(var(--header-height) + 50px);
         padding-bottom: 70px;
+        /* 🔑 تقليل الهامش الجانبي على الهاتف */
+        padding-left: 15px;
+        padding-right: 15px;
     }
     
     .hero-section h1 {
