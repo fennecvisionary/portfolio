@@ -893,11 +893,177 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // ===================================
+    // 🔑 وظيفة تشغيل رسوم Lottie المتحركة في الخلفية
+    // (تم إضافتها وتصحيح مكانها)
+    // ===================================
+    function loadLottieAnimation() {
+        // يجب أن تكون مكتبة Lottie.js محملة قبل استدعاء هذه الدالة
+        if (typeof lottie === 'undefined') return;
+        
+        const lottieContainer = document.getElementById('lottie-background');
+        if (!lottieContainer) return;
+        
+        // إعدادات تشغيل الرسوم المتحركة
+        lottie.loadAnimation({
+            container: lottieContainer, // العنصر الذي سيتم وضع الرسوم داخله
+            renderer: 'svg',            // SVG هو الأفضل للتجاوبية والوضوح
+            loop: true,                 // التكرار باستمرار
+            autoplay: true,             // التشغيل التلقائي
+            path: 'videos/animation.json' // 🔑 رابط ملف JSON الخاص بك
+        });
+    }
+
+
+    // ===================================
+    // 🆕 دالة تحديث خط التقدم المتحرك (Timeline Logic)
+    // ===================================
+    function updateProgressSteps() {
+        const section = document.querySelector('.how-it-works-section');
+        const stepCards = document.querySelectorAll('.step-card');
+        const stepCircles = document.querySelectorAll('.step-circle');
+        const timelineFill = document.querySelector('.timeline-fill'); 
+
+        const totalSteps = 4; 
+
+        if (!section || stepCircles.length < totalSteps || !timelineFill) return;
+
+        const rect = section.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        
+        let activeStepIndex = 0;
+        
+        // 1. حساب الخطوة النشطة ونسبة الامتلاء
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+            
+            let highestActivationStep = 0;
+            
+            stepCards.forEach((card, index) => {
+                const cardRect = card.getBoundingClientRect();
+                // نقطة التفعيل: عندما يصل الجزء العلوي للبطاقة إلى 60% من ارتفاع النافذة
+                const activationPoint = viewportHeight * 0.60; 
+
+                if (cardRect.top < activationPoint) {
+                    highestActivationStep = index + 1;
+                }
+            });
+            
+            activeStepIndex = highestActivationStep;
+
+            // حساب نسبة الامتلاء للخط (الخطوة 2)
+            const scrolledDistance = (viewportHeight * 0.75) - rect.top; 
+            const totalEffectiveScroll = rect.height + (viewportHeight * 0.5); 
+            
+            let fillPercentage = 0;
+            if (totalEffectiveScroll > 0) {
+                 fillPercentage = (scrolledDistance / totalEffectiveScroll) * 100;
+                 fillPercentage = Math.max(0, Math.min(100, fillPercentage)); 
+            }
+
+            // تطبيق نسبة الامتلاء على خط التعبئة
+            timelineFill.style.width = `${fillPercentage}%`;
+
+
+        } else if (rect.bottom <= 0) {
+            // إذا كان القسم بالكامل أعلى الشاشة
+            activeStepIndex = totalSteps;
+            timelineFill.style.width = '100%'; 
+        } else {
+            // إذا كان القسم بالكامل أسفل الشاشة
+            activeStepIndex = 0;
+            timelineFill.style.width = '0%';
+        }
+        
+        // 3. تطبيق التعبئة على الدوائر وتمييز البطاقات
+        const currentFillWidth = parseFloat(timelineFill.style.width.replace('%', '')) || 0;
+
+        stepCircles.forEach((circle, index) => {
+            const step = index + 1;
+            
+            // نسبة امتلاء الدائرة المطلوبة لتلوينها (على افتراض 4 دوائر)
+            const circleActivationThreshold = (step / totalSteps) * 100; 
+
+            if (currentFillWidth >= (circleActivationThreshold - 1)) {
+                 circle.classList.add('filled');
+            } else {
+                 circle.classList.remove('filled');
+            }
+            
+            // البطاقة النشطة (فقط الخطوة الحالية)
+            stepCards[index].classList.remove('active');
+            if (step === activeStepIndex) {
+                 stepCards[index].classList.add('active');
+            }
+        });
+    }
+
+    // ===================================
+    // 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
+    // ===================================
+    /**
+     * تبحث عن النصوص المحاطة بعلامات النجمة المزدوجة (**) داخل غالبية عناصر المحتوى 
+     * في الصفحة (p, h3, h4, li)، وتحولها إلى وسم <span> لتطبيق لون التمييز.
+     */
+    function highlightTextMarkers() {
+        // التعبير النمطي: يجد **نص**، ويستخدم الصيغة غير الجشعة لضمان التحديد الصحيح.
+        const highlightRegex = /\*\*([^\*]+)\*\*/g; 
+        const highlightClass = 'highlight-primary';
+
+        // محدد شامل لمعظم العناصر النصية في محتوى الصفحة
+        const selectors = 'p, h3, h4, h5, h6, li'; 
+
+        document.querySelectorAll(selectors).forEach(element => {
+            // لتجنب استهداف العناصر التي لا يجب تغييرها (مثل القوائم المنسدلة أو الإدخالات)
+            if (element.closest('.main-nav') || element.closest('#language-select') || element.tagName === 'BUTTON' || element.tagName === 'A') {
+                 return; // تجاهل عناصر التنقل والأزرار
+            }
+
+            let originalHTML = element.innerHTML;
+            
+            // تطبيق دالة الاستبدال مباشرة.
+            const newHTML = originalHTML.replace(highlightRegex, (match, textContent) => {
+                // textContent هو النص الملتقط داخل علامتي النجمة (مثل "الذكاء")
+                // نستخدم trim() لإزالة المسافات البيضاء الزائدة حول النص الملتقط
+                return `<span class="${highlightClass}">${textContent.trim()}</span>`;
+            });
+            
+            // تحديث محتوى العنصر فقط إذا حدث استبدال
+            if (newHTML !== originalHTML) {
+                 element.innerHTML = newHTML;
+            }
+        });
+    }
+
+    // ===================================
+    // وظائف الـ FAQ
+    // ===================================
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            
+            // إغلاق كل الإجابات المفتوحة الأخرى أولاً
+            faqQuestions.forEach(q => {
+                if (q !== question && q.classList.contains('active')) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('open');
+                }
+            });
+            
+            // تبديل حالة السؤال الحالي (فتح/إغلاق)
+            question.classList.toggle('active');
+            answer.classList.toggle('open');
+        });
+    });
+
+
     // ********** التشغيل الأولي **********
     initializeStats();
     loadWorks(); 
     updateTestimonialSlider();
-updateProgressSteps(); 
+    loadLottieAnimation(); // 🔑 استدعاء دالة Lottie هنا
+    updateProgressSteps(); 
     window.addEventListener('scroll', updateProgressSteps); 
     
     document.getElementById('currentYear').textContent = new Date().getFullYear();
@@ -975,178 +1141,3 @@ updateProgressSteps();
     });
 
 });
-
-
-// في ملف JavaScript الخاص بك (أو داخل <script> في نهاية <body>)
-
-document.addEventListener('DOMContentLoaded', () => {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            
-            // إغلاق كل الإجابات المفتوحة الأخرى أولاً
-            faqQuestions.forEach(q => {
-                if (q !== question && q.classList.contains('active')) {
-                    q.classList.remove('active');
-                    q.nextElementSibling.classList.remove('open');
-                }
-            });
-            
-            // تبديل حالة السؤال الحالي (فتح/إغلاق)
-            question.classList.toggle('active');
-            answer.classList.toggle('open');
-        });
-    });
-});
-
-// ===================================
-// 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
-// (تم تعديلها لتشمل كامل محتوى الموقع)
-// ===================================
-
-/**
- * تبحث عن النصوص المحاطة بعلامات النجمة المزدوجة (**) داخل غالبية عناصر المحتوى 
- * في الصفحة (p, h3, h4, li)، وتحولها إلى وسم <span> لتطبيق لون التمييز.
- */
-function highlightTextMarkers() {
-    // التعبير النمطي: يجد **نص**، ويستخدم الصيغة غير الجشعة لضمان التحديد الصحيح.
-    const highlightRegex = /\*\*([^\*]+)\*\*/g; 
-    const highlightClass = 'highlight-primary';
-
-    // 🔴 التعديل هنا: محدد شامل لمعظم العناصر النصية في محتوى الصفحة
-    const selectors = 'p, h3, h4, h5, h6, li'; 
-
-    document.querySelectorAll(selectors).forEach(element => {
-        // نتحقق أولاً مما إذا كان العنصر يحتوي على أي عناصر HTML أخرى (مثل وسم <a> داخل الوسم)
-        // إذا كان العنصر يحتوي فقط على نص، نستخدم innerHTML.
-        // إذا كان النص المراد استبداله هو النص الوحيد داخل العنصر، نستخدم innerHTML.
-
-        // لتجنب استهداف العناصر التي لا يجب تغييرها (مثل القوائم المنسدلة أو الإدخالات)
-        if (element.closest('.main-nav') || element.closest('#language-select') || element.tagName === 'BUTTON' || element.tagName === 'A') {
-             return; // تجاهل عناصر التنقل والأزرار
-        }
-
-        let originalHTML = element.innerHTML;
-        
-        // تطبيق دالة الاستبدال مباشرة.
-        const newHTML = originalHTML.replace(highlightRegex, (match, textContent) => {
-            // textContent هو النص الملتقط داخل علامتي النجمة (مثل "الذكاء")
-            // نستخدم trim() لإزالة المسافات البيضاء الزائدة حول النص الملتقط
-            return `<span class="${highlightClass}">${textContent.trim()}</span>`;
-        });
-        
-        // تحديث محتوى العنصر فقط إذا حدث استبدال
-        if (newHTML !== originalHTML) {
-             element.innerHTML = newHTML;
-        }
-    });
-}
-// ===================================
-
-// ===================================
-// 🆕 دالة تحديث خط التقدم المتحرك (Timeline Logic)
-// ===================================
-// ... (في ملف script.js)
-
-function updateProgressSteps() {
-    const section = document.querySelector('.how-it-works-section');
-    const stepCards = document.querySelectorAll('.step-card');
-    const stepCircles = document.querySelectorAll('.step-circle');
-    const timelineFill = document.querySelector('.timeline-fill'); 
-
-    const totalSteps = 4; 
-
-    if (!section || stepCircles.length < totalSteps || !timelineFill) return;
-
-    const rect = section.getBoundingClientRect();
-    const viewportHeight = window.innerHeight;
-    
-    let activeStepIndex = 0;
-    
-    // 1. حساب الخطوة النشطة ونسبة الامتلاء
-    if (rect.top < viewportHeight && rect.bottom > 0) {
-        
-        let highestActivationStep = 0;
-        
-        stepCards.forEach((card, index) => {
-            const cardRect = card.getBoundingClientRect();
-            // نقطة التفعيل: عندما يصل الجزء العلوي للبطاقة إلى 60% من ارتفاع النافذة
-            const activationPoint = viewportHeight * 0.60; 
-
-            if (cardRect.top < activationPoint) {
-                highestActivationStep = index + 1;
-            }
-        });
-        
-        activeStepIndex = highestActivationStep;
-
-        // حساب نسبة الامتلاء للخط (الخطوة 2)
-        const scrolledDistance = (viewportHeight * 0.75) - rect.top; 
-        const totalEffectiveScroll = rect.height + (viewportHeight * 0.5); 
-        
-        let fillPercentage = 0;
-        if (totalEffectiveScroll > 0) {
-             fillPercentage = (scrolledDistance / totalEffectiveScroll) * 100;
-             fillPercentage = Math.max(0, Math.min(100, fillPercentage)); 
-        }
-
-        // تطبيق نسبة الامتلاء على خط التعبئة
-        timelineFill.style.width = `${fillPercentage}%`;
-
-
-    } else if (rect.bottom <= 0) {
-        // إذا كان القسم بالكامل أعلى الشاشة
-        activeStepIndex = totalSteps;
-        timelineFill.style.width = '100%'; 
-    } else {
-        // إذا كان القسم بالكامل أسفل الشاشة
-        activeStepIndex = 0;
-        timelineFill.style.width = '0%';
-    }
-    
-    // 3. تطبيق التعبئة على الدوائر وتمييز البطاقات
-    const currentFillWidth = parseFloat(timelineFill.style.width.replace('%', '')) || 0;
-
-    stepCircles.forEach((circle, index) => {
-        const step = index + 1;
-        
-        // نسبة امتلاء الدائرة المطلوبة لتلوينها (على افتراض 4 دوائر)
-        const circleActivationThreshold = (step / totalSteps) * 100; 
-
-        if (currentFillWidth >= (circleActivationThreshold - 1)) {
-             circle.classList.add('filled');
-        } else {
-             circle.classList.remove('filled');
-        }
-        
-        // البطاقة النشطة (فقط الخطوة الحالية)
-        stepCards[index].classList.remove('active');
-        if (step === activeStepIndex) {
-             stepCards[index].classList.add('active');
-        }
-    });
-}
-// ===================================
-// 🔑 وظيفة تشغيل رسوم Lottie المتحركة في الخلفية
-// ===================================
-
-function loadLottieAnimation() {
-    const lottieContainer = document.getElementById('lottie-background');
-    if (!lottieContainer) return;
-    
-    // إعدادات تشغيل الرسوم المتحركة
-    lottie.loadAnimation({
-        container: lottieContainer, // العنصر الذي سيتم وضع الرسوم داخله
-        renderer: 'svg',            // SVG هو الأفضل للتجاوبية والوضوح
-        loop: true,                 // التكرار باستمرار
-        autoplay: true,             // التشغيل التلقائي
-        path: 'videos/animation.json' // 🔑 رابط ملف JSON الخاص بك
-    });
-}
-
-// تشغيل الدالة عند تحميل الصفحة
-loadLottieAnimation();
-
-}); 
