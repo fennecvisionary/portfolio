@@ -251,37 +251,189 @@ ul[role="list"] {
 }
 
 /* ======================================
-   Hero Section 
-   ======================================
+  Hero Section - Slideshow (الصور في الخلفية)
+  ======================================
 */
 .hero-section {
-  padding-top: calc(var(--header-height) + 100px); /* Adjust for fixed header */
-  padding-bottom: 100px;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: relative; 
+    overflow: hidden; 
+    
+    /* الأنماط القياسية التي أرسلتها */
+    padding-top: calc(var(--header-height) + 100px); 
+    padding-bottom: 100px;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #111; /* خلفية داكنة احتياطية */
 }
+
+/* 🔑 إعادة لون النص إلى اللون الأساسي (كما طلبت) */
+.hero-section .container {
+    position: relative;
+    z-index: 3; 
+    /* 🔑 تطبيق اللون الأساسي البرتقالي */
+    color: var(--primary-color); 
+    /* ظل نص قوي لضمان الوضوح على خلفية داكنة */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.9); 
+}
+
+/* 🔑 H1 و P باللون الأساسي البرتقالي */
 .hero-section h1 {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  font-weight: 800;
-  line-height: 1.2;
-  color: var(--primary-color);
+    font-size: 3rem;
+    margin-bottom: 20px;
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--primary-color);
 }
 .dark-mode .hero-section h1 {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 .hero-section p {
-  font-size: 1.3rem;
-  max-width: 700px;
-  margin: 0 auto 30px;
-  line-height: 1.6;
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    color: var(--primary-color); /* تأكيد اللون الأساسي */
 }
 .hero-actions {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* ======================================
+  أنماط حاوية الصور (Slideshow) والتغطية
+  ======================================
+*/
+.slideshow-background { 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; 
+    overflow: hidden;
+}
+
+.slideshow-background .slide-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
+    
+    /* 🔑 التعديل هنا: 40 ثانية إجمالي الدورة (5 صور * 8 ثوانٍ لكل صورة) */
+    animation: imageSlideshow 40s infinite; 
+}
+
+/* تحديد تأخير بدء كل صورة */
+.slideshow-background .slide-item:nth-child(1) { animation-delay: 0s; }
+.slideshow-background .slide-item:nth-child(2) { animation-delay: 8s; } 
+.slideshow-background .slide-item:nth-child(3) { animation-delay: 16s; } 
+.slideshow-background .slide-item:nth-child(4) { animation-delay: 24s; } 
+.slideshow-background .slide-item:nth-child(5) { animation-delay: 32s; } 
+
+/* طبقة التعتيم الداكنة (لضمان وضوح النص البرتقالي على الخلفيات الفاتحة) */
+.slideshow-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* تعتيم أقوى قليلاً لضمان وضوح النص البرتقالي */
+    z-index: 2; 
+}
+
+/* ======================================
+  أنماط نقاط الترقيم (Pagination Dots)
+  ======================================
+*/
+.slideshow-pagination {
+    position: absolute;
+    bottom: 30px; 
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4; 
+    display: flex;
+    gap: 10px;
+}
+
+.slideshow-pagination .dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* لون رمادي فاتح (غير نشط) */
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+
+/* تطبيق نفس مفاتيح الحركة على النقاط لتغيير اللون */
+/* نستخدم اللون الأبيض لتظهر النقطة بشكل واضح */
+.slideshow-pagination .dot:nth-child(1) { animation: dotActive 40s infinite; animation-delay: 0s; }
+.slideshow-pagination .dot:nth-child(2) { animation: dotActive 40s infinite; animation-delay: 8s; }
+.slideshow-pagination .dot:nth-child(3) { animation: dotActive 40s infinite; animation-delay: 16s; }
+.slideshow-pagination .dot:nth-child(4) { animation: dotActive 40s infinite; animation-delay: 24s; }
+.slideshow-pagination .dot:nth-child(5) { animation: dotActive 40s infinite; animation-delay: 32s; }
+
+
+/* ======================================
+  🔑 مفاتيح الحركة (Keyframes)
+  ======================================
+*/
+
+/* 1. حركة الصور */
+@keyframes imageSlideshow {
+    /* 19% من 40 ثانية (ما يقارب 8 ثواني) */
+    
+    /* الصورة 1 */
+    0%, 19% { opacity: 1; } 
+    20% { opacity: 0; }
+    
+    /* الصورة 2 */
+    20.001%, 39% { opacity: 1; }
+    40% { opacity: 0; }
+    
+    /* الصورة 3 */
+    40.001%, 59% { opacity: 1; }
+    60% { opacity: 0; }
+    
+    /* الصورة 4 */
+    60.001%, 79% { opacity: 1; }
+    80% { opacity: 0; }
+    
+    /* الصورة 5 */
+    80.001%, 99% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* 2. حركة النقاط (يتم تلوينها بالتزامن مع الصورة) */
+@keyframes dotActive {
+    /* النقطة النشطة تأخذ لون أبيض صلب */
+    0%, 19% { background-color: white; } 
+    /* النقطة غير النشطة تعود رمادية */
+    20%, 100% { background-color: rgba(255, 255, 255, 0.5); }
+}
+
+
+/* ======================================
+  التجاوبية (Responsive Design)
+  ======================================
+*/
+@media (max-width: 768px) {
+    .hero-section {
+        min-height: 60vh;
+    }
+    
+    /* تقليل المسافة في الهاتف */
+    .slideshow-pagination {
+        bottom: 20px; 
+    }
 }
 
 /* ======================================
