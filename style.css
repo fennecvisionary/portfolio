@@ -251,56 +251,67 @@ ul[role="list"] {
 }
 
 /* ======================================
-  Hero Section - Slideshow (الصور في الخلفية)
+  Hero Section - Slideshow & Content Styling
   ======================================
 */
 .hero-section {
     position: relative; 
     overflow: hidden; 
     
-    /* الأنماط القياسية التي أرسلتها */
+    /* الأنماط القياسية */
     padding-top: calc(var(--header-height) + 100px); 
     padding-bottom: 100px;
     min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #111; /* خلفية داكنة احتياطية */
+    background-color: #111; 
 }
 
-/* 🔑 إعادة لون النص إلى اللون الأساسي (كما طلبت) */
+/* 🔑 أنماط الحاوية: إزالة الظل من النص */
 .hero-section .container {
     position: relative;
     z-index: 3; 
-    /* 🔑 تطبيق اللون الأساسي البرتقالي */
-    color: var(--primary-color); 
-    /* ظل نص قوي لضمان الوضوح على خلفية داكنة */
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.9), 0 0 10px rgba(0, 0, 0, 0.9); 
+    /* ❌ إزالة الظل من نص الـ CONTAINER */
+    text-shadow: none; 
 }
 
-/* 🔑 H1 و P باللون الأساسي البرتقالي */
+/* العنوان (H1) يبقى باللون الأساسي البرتقالي */
 .hero-section h1 {
     font-size: 3rem;
     margin-bottom: 20px;
     font-weight: 800;
     line-height: 1.2;
-    color: var(--primary-color);
+    color: var(--primary-color); 
+    /* ❌ إزالة الظل من العنوان (إذا كان مطبقًا في مكان آخر) */
+    text-shadow: none;
 }
 .dark-mode .hero-section h1 {
     color: var(--primary-color);
 }
+
+/* 🔑 نص الوصف (P) الآن باللون الأساسي (Primary Color) */
 .hero-section p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 0 auto 30px;
     line-height: 1.6;
-    color: var(--primary-color); /* تأكيد اللون الأساسي */
+    color: var(--primary-color); /* 🔑 تم التعديل هنا: نص الوصف باللون الأساسي */
+    /* ❌ إزالة الظل من نص الوصف */
+    text-shadow: none;
 }
+
 .hero-actions {
     display: flex;
     justify-content: center;
     gap: 20px;
 }
+
+/* ❌ إزالة الظل من أزرار الإجراءات */
+.hero-actions .btn {
+    text-shadow: none !important;
+}
+
 
 /* ======================================
   أنماط حاوية الصور (Slideshow) والتغطية
@@ -326,7 +337,7 @@ ul[role="list"] {
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
     
-    /* 🔑 التعديل هنا: 40 ثانية إجمالي الدورة (5 صور * 8 ثوانٍ لكل صورة) */
+    /* 8 ثواني لكل صورة = 40 ثانية إجمالي الحركة */
     animation: imageSlideshow 40s infinite; 
 }
 
@@ -337,16 +348,9 @@ ul[role="list"] {
 .slideshow-background .slide-item:nth-child(4) { animation-delay: 24s; } 
 .slideshow-background .slide-item:nth-child(5) { animation-delay: 32s; } 
 
-/* طبقة التعتيم الداكنة (لضمان وضوح النص البرتقالي على الخلفيات الفاتحة) */
+/* ❌ إزالة طبقة التعتيم (::after) بالكامل */
 .slideshow-background::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* تعتيم أقوى قليلاً لضمان وضوح النص البرتقالي */
-    z-index: 2; 
+    content: none;
 }
 
 /* ======================================
@@ -368,13 +372,12 @@ ul[role="list"] {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5); /* لون رمادي فاتح (غير نشط) */
-    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5); /* لون غير نشط */
+    cursor: default; 
     transition: background-color 0.4s ease;
 }
 
-/* تطبيق نفس مفاتيح الحركة على النقاط لتغيير اللون */
-/* نستخدم اللون الأبيض لتظهر النقطة بشكل واضح */
+/* ربط الحركة بنقاط الترقيم */
 .slideshow-pagination .dot:nth-child(1) { animation: dotActive 40s infinite; animation-delay: 0s; }
 .slideshow-pagination .dot:nth-child(2) { animation: dotActive 40s infinite; animation-delay: 8s; }
 .slideshow-pagination .dot:nth-child(3) { animation: dotActive 40s infinite; animation-delay: 16s; }
@@ -387,42 +390,31 @@ ul[role="list"] {
   ======================================
 */
 
-/* 1. حركة الصور */
+/* 1. حركة الصور (ظهور كل 8 ثواني) - لم تتغير */
 @keyframes imageSlideshow {
-    /* 19% من 40 ثانية (ما يقارب 8 ثواني) */
-    
-    /* الصورة 1 */
     0%, 19% { opacity: 1; } 
     20% { opacity: 0; }
-    
-    /* الصورة 2 */
-    20.001%, 39% { opacity: 1; }
-    40% { opacity: 0; }
-    
-    /* الصورة 3 */
     40.001%, 59% { opacity: 1; }
     60% { opacity: 0; }
-    
-    /* الصورة 4 */
-    60.001%, 79% { opacity: 1; }
-    80% { opacity: 0; }
-    
-    /* الصورة 5 */
     80.001%, 99% { opacity: 1; }
     100% { opacity: 0; }
+    20.001%, 39% { opacity: 1; }
+    40% { opacity: 0; }
+    60.001%, 79% { opacity: 1; }
+    80% { opacity: 0; }
 }
 
-/* 2. حركة النقاط (يتم تلوينها بالتزامن مع الصورة) */
+/* 2. حركة النقاط (تلوين النقطة النشطة باللون الأساسي) */
 @keyframes dotActive {
-    /* النقطة النشطة تأخذ لون أبيض صلب */
-    0%, 19% { background-color: white; } 
+    /* 🔑 تم التعديل هنا: النقطة النشطة تأخذ اللون الأساسي */
+    0%, 19% { background-color: var(--primary-color); } 
     /* النقطة غير النشطة تعود رمادية */
     20%, 100% { background-color: rgba(255, 255, 255, 0.5); }
 }
 
 
 /* ======================================
-  التجاوبية (Responsive Design)
+  التجاوبية (Responsive Design) - لم تتغير
   ======================================
 */
 @media (max-width: 768px) {
@@ -430,12 +422,10 @@ ul[role="list"] {
         min-height: 60vh;
     }
     
-    /* تقليل المسافة في الهاتف */
     .slideshow-pagination {
         bottom: 20px; 
     }
 }
-
 /* ======================================
    Services Section 
    ======================================
