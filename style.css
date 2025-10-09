@@ -1558,10 +1558,6 @@ html[dir="rtl"] .client-info {
 .testimonials-grid.no-transition {
     transition: none !important;
 }
-/* ======================================
-    About Me Section 
-    ======================================
-*/
 .about-content {
     display: flex;
     align-items: center;
@@ -1590,11 +1586,8 @@ html[dir="rtl"] .client-info {
     font-size: 1.1rem;
     /* 💡 التعديل: تظبيط المحاذاة للوسط لكل اللغات */
     text-align: center; 
-    /* 💡 تم ترك اتجاه النص الافتراضي (rtl) لدعم أفضل للغة العربية إذا تم استخدامها، 
-       لكن المحاذاة هي الأهم لغرض التوسيط */
     direction: rtl; 
 }
-/* 💡 تم حذف كلاس .ltr-content بما أن المحاذاة أصبحت للوسط للجميع. */
 
 .about-text strong {
     color: var(--primary-color);
@@ -1611,7 +1604,7 @@ html[dir="rtl"] .client-info {
 .about-image {
     position: relative; 
     flex: 1;
-    max-width: 350px; /* زيادة قليلاً لتضمين الجدول 300px */
+    max-width: 350px; 
     
     /* 💡 التوسيط الاحتياطي (خاصة للعناصر المضمنة مثل image-wrapper في حال كان inline) */
     text-align: center; 
@@ -1631,13 +1624,23 @@ html[dir="rtl"] .client-info {
     
     margin-bottom: 20px;
     
- box-shadow: 
+    box-shadow: 
         0 0 0 5px var(--light-card-bg), 
         0 0 0 10px var(--primary-color); 
     
     transition: all 0.3s ease; 
     position: relative; 
 }
+
+/* 🔑 التعديل الحاسم: جعل الصورة تملأ الدائرة تماماً */
+.about-image .image-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    /* 🔑 يحافظ على نسبة العرض إلى الارتفاع ويملأ الـ 100%، ويقطع أي جزء زائد */
+    object-fit: cover; 
+}
+
 .dark-mode .about-image .image-wrapper {
     box-shadow: 
         0 0 0 5px var(--dark-card-bg), 
@@ -1660,7 +1663,7 @@ html[dir="rtl"] .client-info {
 
 .dark-mode .about-image .image-wrapper.is-online {
     box-shadow: 
-        0 0 0 5px var(--dark-card-bg), 
+        0 0 0 5px var(--dark-card-bg),
         0 0 0 10px var(--secondary-color),
         0 0 35px 8px rgba(46, 204, 113, 0.7); /* 🟢 استخدام RGB صريح للـ Glow */
     animation: pulse-glow-online-dark 2.5s infinite ease-in-out;
@@ -1764,7 +1767,6 @@ html[dir="rtl"] .client-info {
                     0 0 50px 15px rgba(243, 156, 18, 0.9);
     }
 }
-
 /* ======================================
     تنسيق الاسم الموثق (Fennec Visionary)
     ======================================
