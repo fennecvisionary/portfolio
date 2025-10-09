@@ -258,25 +258,22 @@ ul[role="list"] {
     position: relative; 
     overflow: hidden; 
     
-    /* 🔑 زيادة المسافة السفلية لاستيعاب النقاط والمحتوى */
+    /* الأنماط القياسية */
     padding-top: calc(var(--header-height) + 100px); 
-    padding-bottom: 120px; /* مسافة كافية فوق النقاط */
-    min-height: 80vh; /* العودة إلى 80vh كنقطة بداية */
+    padding-bottom: 100px;
+    min-height: 80vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #111; 
 }
 
-/* 🔑 أنماط الحاوية: إضافة ظل النص الأبيض المزدوج ورفع ترتيب الطبقة */
+/* 🔑 أنماط الحاوية: إزالة الظل من النص */
 .hero-section .container {
     position: relative;
-    z-index: 5; /* أعلى من النقاط (z-index: 4) */
-    
-    /* 🔑 ظل أبيض مزدوج للنص لضمان وضوح اللون الأساسي */
-    text-shadow: 
-        0 0 4px rgba(255, 255, 255, 0.8), 
-        0 0 8px rgba(255, 255, 255, 0.7); 
+    z-index: 3; 
+    /* ❌ إزالة الظل من نص الـ CONTAINER */
+    text-shadow: none; 
 }
 
 /* العنوان (H1) يبقى باللون الأساسي البرتقالي */
@@ -286,20 +283,22 @@ ul[role="list"] {
     font-weight: 800;
     line-height: 1.2;
     color: var(--primary-color); 
-    text-shadow: none; /* الظل يطبق من .container */
+    /* ❌ إزالة الظل من العنوان (إذا كان مطبقًا في مكان آخر) */
+    text-shadow: none;
 }
 .dark-mode .hero-section h1 {
     color: var(--primary-color);
 }
 
-/* نص الوصف (P) باللون الأساسي */
+/* 🔑 نص الوصف (P) الآن باللون الأساسي (Primary Color) */
 .hero-section p {
     font-size: 1.3rem;
     max-width: 700px;
     margin: 0 auto 30px;
     line-height: 1.6;
-    color: var(--primary-color); 
-    text-shadow: none; /* الظل يطبق من .container */
+    color: var(--primary-color); /* 🔑 تم التعديل هنا: نص الوصف باللون الأساسي */
+    /* ❌ إزالة الظل من نص الوصف */
+    text-shadow: none;
 }
 
 .hero-actions {
@@ -308,9 +307,9 @@ ul[role="list"] {
     gap: 20px;
 }
 
-/* 🔑 إزالة الظل من أزرار الإجراءات (الـ Buttons) */
-.hero-actions a.btn {
-    text-shadow: none !important; /* تجاوز أي وراثة للظل */
+/* ❌ إزالة الظل من أزرار الإجراءات */
+.hero-actions .btn {
+    text-shadow: none !important;
 }
 
 
@@ -334,14 +333,12 @@ ul[role="list"] {
     height: 100%;
     top: 0;
     left: 0;
-    /* 🔑 التعديل الأهم: يجعل الصورة تظهر بالكامل دون قطع */
-    object-fit: contain; 
-    /* 🔑 لضمان تكرار الصورة في الخلفية */
-    background-repeat: no-repeat; 
-    
+    object-fit: cover; 
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
-    animation: imageSlideshow 40s infinite; /* 5 صور * 8 ثواني */
+    
+    /* 8 ثواني لكل صورة = 40 ثانية إجمالي الحركة */
+    animation: imageSlideshow 40s infinite; 
 }
 
 /* تحديد تأخير بدء كل صورة */
@@ -362,10 +359,10 @@ ul[role="list"] {
 */
 .slideshow-pagination {
     position: absolute;
-    bottom: 50px; /* 🔑 رفع النقاط لتجنب التداخل مع المحتوى */
+    bottom: 30px; 
     left: 50%;
     transform: translateX(-50%);
-    z-index: 4; /* أسفل المحتوى النصي (5) */
+    z-index: 4; 
     display: flex;
     gap: 10px;
 }
@@ -375,7 +372,7 @@ ul[role="list"] {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5); /* لون غير نشط (رمادي فاتح) */
+    background-color: rgba(255, 255, 255, 0.5); /* لون غير نشط */
     cursor: default; 
     transition: background-color 0.4s ease;
 }
@@ -393,46 +390,40 @@ ul[role="list"] {
   ======================================
 */
 
-/* 1. حركة الصور (ظهور كل 8 ثواني) */
+/* 1. حركة الصور (ظهور كل 8 ثواني) - لم تتغير */
 @keyframes imageSlideshow {
     0%, 19% { opacity: 1; } 
     20% { opacity: 0; }
-    20.001%, 39% { opacity: 1; }
-    40% { opacity: 0; }
     40.001%, 59% { opacity: 1; }
     60% { opacity: 0; }
-    60.001%, 79% { opacity: 1; }
-    80% { opacity: 0; }
     80.001%, 99% { opacity: 1; }
     100% { opacity: 0; }
+    20.001%, 39% { opacity: 1; }
+    40% { opacity: 0; }
+    60.001%, 79% { opacity: 1; }
+    80% { opacity: 0; }
 }
 
 /* 2. حركة النقاط (تلوين النقطة النشطة باللون الأساسي) */
 @keyframes dotActive {
+    /* 🔑 تم التعديل هنا: النقطة النشطة تأخذ اللون الأساسي */
     0%, 19% { background-color: var(--primary-color); } 
+    /* النقطة غير النشطة تعود رمادية */
     20%, 100% { background-color: rgba(255, 255, 255, 0.5); }
 }
 
 
 /* ======================================
-  التجاوبية (Responsive Design)
+  التجاوبية (Responsive Design) - لم تتغير
   ======================================
 */
-@media (max-width: 992px) {
-    .hero-section {
-        min-height: 80vh; 
-        padding-bottom: 80px; 
-    }
-}
-
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 70vh; /* تقليل الارتفاع على الهاتف */
-        padding-bottom: 70px;
+        min-height: 60vh;
     }
     
     .slideshow-pagination {
-        bottom: 30px; 
+        bottom: 20px; 
     }
 }
 /* ======================================
