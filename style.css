@@ -261,14 +261,11 @@ ul[role="list"] {
     /* 🔑 زيادة المسافة السفلية لاستيعاب النقاط والمحتوى */
     padding-top: calc(var(--header-height) + 100px); 
     padding-bottom: 120px; /* مسافة كافية فوق النقاط */
+    min-height: 80vh; /* العودة إلى 80vh كنقطة بداية */
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #111; 
-
-    /* 🔑 رفع الارتفاع الأدنى ليتناسب مع صور 1080P */
-    min-height: 100vh;
-    max-height: 1000px; 
 }
 
 /* 🔑 أنماط الحاوية: إضافة ظل النص الأبيض المزدوج ورفع ترتيب الطبقة */
@@ -282,7 +279,7 @@ ul[role="list"] {
         0 0 8px rgba(255, 255, 255, 0.7); 
 }
 
-/* العنوان (H1) */
+/* العنوان (H1) يبقى باللون الأساسي البرتقالي */
 .hero-section h1 {
     font-size: 3rem;
     margin-bottom: 20px;
@@ -337,9 +334,10 @@ ul[role="list"] {
     height: 100%;
     top: 0;
     left: 0;
-    object-fit: cover; 
-    /* 🔑 تحديد موضع الصورة لتقليل الاقتطاع العلوي */
-    object-position: center center; 
+    /* 🔑 التعديل الأهم: يجعل الصورة تظهر بالكامل دون قطع */
+    object-fit: contain; 
+    /* 🔑 لضمان تكرار الصورة في الخلفية */
+    background-repeat: no-repeat; 
     
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
@@ -411,9 +409,7 @@ ul[role="list"] {
 
 /* 2. حركة النقاط (تلوين النقطة النشطة باللون الأساسي) */
 @keyframes dotActive {
-    /* 🔑 النقطة النشطة تأخذ اللون الأساسي */
     0%, 19% { background-color: var(--primary-color); } 
-    /* النقطة غير النشطة تعود رمادية */
     20%, 100% { background-color: rgba(255, 255, 255, 0.5); }
 }
 
@@ -425,17 +421,13 @@ ul[role="list"] {
 @media (max-width: 992px) {
     .hero-section {
         min-height: 80vh; 
-        max-height: 800px;
-        padding-top: calc(var(--header-height) + 50px); 
         padding-bottom: 80px; 
     }
 }
 
 @media (max-width: 768px) {
-    /* 🔑 تعديلات الهاتف لضمان ظهور السلايدر بشكل ممتاز */
     .hero-section {
-        min-height: 70vh; 
-        max-height: 600px;
+        min-height: 70vh; /* تقليل الارتفاع على الهاتف */
         padding-bottom: 70px;
     }
     
