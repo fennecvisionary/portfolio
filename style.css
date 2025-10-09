@@ -251,111 +251,37 @@ ul[role="list"] {
 }
 
 /* ======================================
-  Hero Section (بدون ضباب أو تعتيم)
-  ======================================
+   Hero Section 
+   ======================================
 */
 .hero-section {
-    position: relative; 
-    overflow: hidden; 
-    
-    /* الأنماط الأصلية */
-    padding-top: calc(var(--header-height) + 100px); 
-    padding-bottom: 100px;
-    min-height: 80vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    /* 🔑 إزالة الخلفية السوداء تماماً. سنعتمد على لون الرسوم المتحركة */
-    background-color: transparent; 
+  padding-top: calc(var(--header-height) + 100px); /* Adjust for fixed header */
+  padding-bottom: 100px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
-/* 🔑 تأكد من أن المحتوى النصي يظهر فوق الخلفية */
-.hero-section .container {
-    position: relative;
-    z-index: 3; 
-    /* 💡 تطبيق اللون الأساسي البرتقالي */
-    color: var(--primary-color); 
-    /* 🔑 ترك النص كما هو، وقد يحتاج إلى تعديل لضمان وضوحه على خلفية Lottie غير المضببة */
-    text-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* ظل خفيف لتحسين القراءة */
+.hero-section h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--primary-color);
 }
-
-/* 🔑 H1 و P باللون الأساسي البرتقالي (بدون تغيير) */
-.hero-section h1,
-.hero-section p {
-    color: var(--primary-color); 
-}
-
 .dark-mode .hero-section h1 {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
-/* ======================================
-  أنماط حاوية Lottie (تغطية كاملة)
-  ======================================
-*/
-.video-background { 
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1; /* أسفل المحتوى النصي */
-    overflow: hidden;
-    /* مهم: لضمان تغطية Lottie */
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
+.hero-section p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
 }
-
-/* 🔑 تطبيق الضباب والتحويلات على حاوية Lottie الجديدة */
-#lottie-background {
-    /* 🔑 يجعل العنصر يغطي الحاوية بالكامل */
-    width: 100%;
-    height: 100%;
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    transform: translate(-50%, -50%);
-    
-    /* ❌ إزالة فلتر الضباب والتعتيم */
-    filter: none; 
-    object-fit: cover; 
-}
-
-
-/* ❌ إزالة طبقة التعتيم الداكنة (Dark Overlay) بالكامل */
-.video-background::after {
-    content: none; /* أو حذف هذه الكتلة بالكامل */
-}
-
-
-/* ======================================
-  التجاوبية (Responsive Design) - الهاتف
-  ======================================
-*/
-@media (max-width: 768px) {
-    .hero-section {
-        padding-top: calc(var(--header-height) + 50px);
-        padding-bottom: 50px;
-        min-height: 60vh;
-        background-image: none !important; 
-    }
-    
-    .video-background {
-        display: block;
-    }
-    
-    /* ❌ إزالة فلتر الضباب على الهاتف أيضاً */
-    #lottie-background {
-         filter: none; 
-    }
-    
-    /* ❌ إزالة أي طبقة تعتيم احتياطية */
-    .hero-section::before {
-        content: none;
-    }
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 }
 
 /* ======================================
@@ -2712,4 +2638,15 @@ footer {
         padding: 20px;
     }
     
+}
+@media (max-width: 480px) {
+    .section-title {
+        font-size: 2rem;
+    }
+    .hero-section h1 {
+        font-size: 1.8rem;
+    }
+    .btn-lg {
+        width: 100%;
+    }
 }
