@@ -258,73 +258,58 @@ ul[role="list"] {
     position: relative; 
     overflow: hidden; 
     
+    /* الأنماط القياسية */
     padding-top: calc(var(--header-height) + 100px); 
-    padding-bottom: 120px; 
-    min-height: 80vh; 
+    padding-bottom: 100px;
+    min-height: 80vh;
     display: flex;
     align-items: center;
-    
-    /* 🔑 تثبيت اتجاه محاذاة العناصر على اليسار (LTR) ليدفع justify-content: flex-end المحتوى إلى اليسار الفعلي */
-    direction: ltr; 
-    justify-content: flex-end; /* تدفع المحتوى لليسار الفعلي */
-    
-    /* هوامش جانبية لتجنب ملامسة حافة الشاشة */
-    padding-right: 40px;
-    padding-left: 40px; 
+    justify-content: center;
     background-color: #111; 
 }
 
-/* 🔑 أنماط الحاوية: محاذاة لليسار وإزالة الظل */
+/* 🔑 أنماط الحاوية: إزالة الظل من النص */
 .hero-section .container {
     position: relative;
-    z-index: 5; 
+    z-index: 3; 
+    /* ❌ إزالة الظل من نص الـ CONTAINER */
     text-shadow: none; 
-    
-    /* 🔑 تقليل العرض لجعله أصغر */
-    max-width: 450px; 
-    
-    /* نرجع اتجاه النص والفقرات إلى اليمين ليتوافق مع اللغة العربية */
-    direction: rtl; 
-    text-align: right; 
 }
 
-/* العنوان (H1) */
+/* العنوان (H1) يبقى باللون الأساسي البرتقالي */
 .hero-section h1 {
-    /* 🔑 تصغير العنوان أكثر */
-    font-size: 2.2rem; 
-    margin-bottom: 12px; /* تقليل المسافة بينه وبين الوصف */
+    font-size: 3rem;
+    margin-bottom: 20px;
     font-weight: 800;
     line-height: 1.2;
     color: var(--primary-color); 
-    text-shadow: none; 
+    /* ❌ إزالة الظل من العنوان (إذا كان مطبقًا في مكان آخر) */
+    text-shadow: none;
 }
 .dark-mode .hero-section h1 {
     color: var(--primary-color);
 }
 
-/* 🔑 نص الوصف (P) باللون الأساسي */
+/* 🔑 نص الوصف (P) الآن باللون الأساسي (Primary Color) */
 .hero-section p {
-    /* 🔑 تصغير الوصف أكثر */
-    font-size: 1rem; 
-    max-width: 500px; 
-    margin: 0 0 20px 0; /* تقليل المسافة بينه وبين الأزرار */
-    line-height: 1.5;
-    color: var(--primary-color); 
-    text-shadow: none; 
+    font-size: 1.3rem;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.6;
+    color: var(--primary-color); /* 🔑 تم التعديل هنا: نص الوصف باللون الأساسي */
+    /* ❌ إزالة الظل من نص الوصف */
+    text-shadow: none;
 }
 
 .hero-actions {
     display: flex;
-    /* محاذاة الأزرار لليمين داخل حاوية RTL */
-    justify-content: flex-end; 
-    gap: 10px; /* تصغير المسافة بين الأزرار */
+    justify-content: center;
+    gap: 20px;
 }
 
-/* 🔑 تصغير حجم الأزرار أكثر */
-.hero-actions a.btn {
-    font-size: 0.9rem; 
-    padding: 0.4rem 1rem; 
-    text-shadow: none !important; 
+/* ❌ إزالة الظل من أزرار الإجراءات */
+.hero-actions .btn {
+    text-shadow: none !important;
 }
 
 
@@ -351,6 +336,8 @@ ul[role="list"] {
     object-fit: cover; 
     opacity: 0; 
     transition: opacity 1.5s ease-in-out; 
+    
+    /* 8 ثواني لكل صورة = 40 ثانية إجمالي الحركة */
     animation: imageSlideshow 40s infinite; 
 }
 
@@ -361,7 +348,7 @@ ul[role="list"] {
 .slideshow-background .slide-item:nth-child(4) { animation-delay: 24s; } 
 .slideshow-background .slide-item:nth-child(5) { animation-delay: 32s; } 
 
-/* إزالة طبقة التعتيم (::after) */
+/* ❌ إزالة طبقة التعتيم (::after) بالكامل */
 .slideshow-background::after {
     content: none;
 }
@@ -372,7 +359,7 @@ ul[role="list"] {
 */
 .slideshow-pagination {
     position: absolute;
-    bottom: 50px; 
+    bottom: 30px; 
     left: 50%;
     transform: translateX(-50%);
     z-index: 4; 
@@ -385,7 +372,7 @@ ul[role="list"] {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5); 
+    background-color: rgba(255, 255, 255, 0.5); /* لون غير نشط */
     cursor: default; 
     transition: background-color 0.4s ease;
 }
@@ -403,63 +390,40 @@ ul[role="list"] {
   ======================================
 */
 
+/* 1. حركة الصور (ظهور كل 8 ثواني) - لم تتغير */
 @keyframes imageSlideshow {
     0%, 19% { opacity: 1; } 
     20% { opacity: 0; }
-    20.001%, 39% { opacity: 1; }
-    40% { opacity: 0; }
     40.001%, 59% { opacity: 1; }
     60% { opacity: 0; }
-    60.001%, 79% { opacity: 1; }
-    80% { opacity: 0; }
     80.001%, 99% { opacity: 1; }
     100% { opacity: 0; }
+    20.001%, 39% { opacity: 1; }
+    40% { opacity: 0; }
+    60.001%, 79% { opacity: 1; }
+    80% { opacity: 0; }
 }
 
+/* 2. حركة النقاط (تلوين النقطة النشطة باللون الأساسي) */
 @keyframes dotActive {
+    /* 🔑 تم التعديل هنا: النقطة النشطة تأخذ اللون الأساسي */
     0%, 19% { background-color: var(--primary-color); } 
+    /* النقطة غير النشطة تعود رمادية */
     20%, 100% { background-color: rgba(255, 255, 255, 0.5); }
 }
 
 
 /* ======================================
-  التجاوبية (Responsive Design)
+  التجاوبية (Responsive Design) - لم تتغير
   ======================================
 */
 @media (max-width: 768px) {
     .hero-section {
-        min-height: 70vh;
-        padding-top: calc(var(--header-height) + 50px);
-        padding-bottom: 70px;
-        /* تقليل الهامش الجانبي على الهاتف */
-        padding-left: 15px;
-        padding-right: 15px;
-    }
-    
-    /* 🔑 نضمن محاذاة النص لليمين (لغة عربية) على الهاتف */
-    .hero-section .container {
-        text-align: right; 
-    }
-    
-    .hero-actions {
-        justify-content: flex-end; 
-    }
-
-    .hero-section h1 {
-        font-size: 1.8rem; /* تصغير إضافي على الهاتف */
-    }
-    
-    .hero-section p {
-        font-size: 0.9rem; /* تصغير إضافي للوصف */
-    }
-
-    .hero-actions a.btn {
-        font-size: 0.8rem; /* تصغير الأزرار على الهاتف */
-        padding: 0.35rem 0.9rem; 
+        min-height: 60vh;
     }
     
     .slideshow-pagination {
-        bottom: 30px; 
+        bottom: 20px; 
     }
 }
 /* ======================================
