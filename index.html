@@ -68,17 +68,36 @@
     
     <main id="main-content">
         
-    <section class="hero-section text-center">
-    
-    <div class="slideshow-background">
-        <img src="images/slideshow/slide1.jpg" alt="Background Slide 1" class="slide-item">
-        <img src="images/slideshow/slide2.jpg" alt="Background Slide 2" class="slide-item">
-        <img src="images/slideshow/slide3.jpg" alt="Background Slide 3" class="slide-item">
-        <img src="images/slideshow/slide4.jpg" alt="Background Slide 4" class="slide-item">
-        <img src="images/slideshow/slide5.jpg" alt="Background Slide 5" class="slide-item">
+<section class="hero-section text-center">
+
+    <div class="slideshow-animation-wrapper">
+        <div class="slide-item-wrapper active" data-slide-index="1">
+            <div class="lottie-container" data-lottie-path="videos/lottie-slide1.json"></div>
+            <img src="images/slideshow/slide1.jpg" alt="Background Slide 1" class="slide-image">
+        </div>
+        
+        <div class="slide-item-wrapper" data-slide-index="2">
+            <div class="lottie-container" data-lottie-path="videos/lottie-slide2.json"></div>
+            <img src="images/slideshow/slide2.jpg" alt="Background Slide 2" class="slide-image">
+        </div>
+        
+        <div class="slide-item-wrapper" data-slide-index="3">
+            <div class="lottie-container" data-lottie-path="videos/lottie-slide3.json"></div>
+            <img src="images/slideshow/slide3.jpg" alt="Background Slide 3" class="slide-image">
+        </div>
+        
+        <div class="slide-item-wrapper" data-slide-index="4">
+            <div class="lottie-container" data-lottie-path="videos/lottie-slide4.json"></div>
+            <img src="images/slideshow/slide4.jpg" alt="Background Slide 4" class="slide-image">
+        </div>
+        
+        <div class="slide-item-wrapper" data-slide-index="5">
+            <div class="lottie-container" data-lottie-path="videos/lottie-slide5.json"></div>
+            <img src="images/slideshow/slide5.jpg" alt="Background Slide 5" class="slide-image">
+        </div>
     </div>
     
-    <div class="container" data-aos="fade-up">
+    <div class="container hero-content-container" data-aos="fade-up">
         <h1 data-lang-key="hero_title">تصميمات بصرية تخطف الأنظار، وتحقق الأهداف</h1>
         <p data-lang-key="hero_description">أنا Fennec Visionary، مصمم جرافيك متخصص في بناء العلامات التجارية والهويات البصرية القوية التي تترك أثراً.</p>
         <div class="hero-actions">
@@ -88,7 +107,7 @@
     </div>
 
     <div class="slideshow-pagination">
-        <span class="dot"></span>
+        <span class="dot active"></span>
         <span class="dot"></span>
         <span class="dot"></span>
         <span class="dot"></span>
