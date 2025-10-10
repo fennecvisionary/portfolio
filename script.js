@@ -31,10 +31,99 @@ document.addEventListener("DOMContentLoaded", () => {
     // متغيرات التمرير اليدوي (Swiping)
     let isDragging = false;
     let startX = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    const SLIDER_SENSITIVITY = 100; // حساسية السحب بالبكسل لتغيير الشريحة
+    
     // ===================================
+    // 🔑 تحديد عناصر قسم Hero Slideshow الجديدة (Lottie)
+    // ===================================
+    const heroSection = document.querySelector('.hero-section');
+    const slideWrappers = document.querySelectorAll('.slide-item-wrapper');
+    const paginationDots = document.querySelectorAll('.slideshow-pagination .dot');
+    const totalSlides = slideWrappers.length;
+    let currentSlideIndex = 0;
+    const slideDuration = 8000; // 8 ثواني
+    let slideshowInterval;
+    const lottieAnimations = []; // لتخزين كائنات Lottie
+
+    // ===================================
+    // 🔑 وظيفة تهيئة وتحميل Lottie
+    // ===================================
+    function initLottieAnimations() {
+        if (typeof lottie === 'undefined') {
+            console.error("Lottie library is not loaded. Please include lottie.min.js.");
+            return;
+        }
+
+        slideWrappers.forEach((wrapper, index) => {
+            const lottieContainer = wrapper.querySelector('.lottie-container');
+            const lottiePath = lottieContainer.getAttribute('data-lottie-path');
+            
+            const anim = lottie.loadAnimation({
+                container: lottieContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: false, // لا تبدأ التشغيل تلقائيا
+                path: lottiePath
+            });
+
+            lottieAnimations.push(anim);
+            
+            // تشغيل الأنميشن الأول فقط عند البدء
+            if (index === 0) {
+                anim.play();
+            }
+        });
+    }
+
+    // ===================================
+    // 🔑 وظيفة تبديل الشرائح والتحكم في Lottie
+    // ===================================
+    function showSlide(index) {
+        // إيقاف تشغيل جميع أنميشن Lottie
+        lottieAnimations.forEach(anim => anim.stop());
+        
+        // إزالة كلاس active من الجميع
+        slideWrappers.forEach(wrapper => wrapper.classList.remove('active'));
+        paginationDots.forEach(dot => dot.classList.remove('active'));
+
+        // تعيين الشريحة الجديدة
+        currentSlideIndex = (index + totalSlides) % totalSlides;
+        
+        // تفعيل الشريحة والـ Dot
+        slideWrappers[currentSlideIndex].classList.add('active');
+        paginationDots[currentSlideIndex].classList.add('active');
+        
+        // تشغيل أنميشن Lottie الجديد
+        lottieAnimations[currentSlideIndex].play();
+        
+        // إعادة تشغيل المؤقت
+        startSlideshow(); 
+    }
+
+    // ===================================
+    // 🔑 وظيفة بدء السلايدر التلقائي
+    // ===================================
+    function startSlideshow() {
+        clearInterval(slideshowInterval);
+        slideshowInterval = setInterval(() => {
+            showSlide(currentSlideIndex + 1);
+        }, slideDuration);
+    }
+
+    // ===================================
+    // 🔑 ربط النقاط بالشرائح
+    // ===================================
+    paginationDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            showSlide(index);
+        });
+    });
+
+    // ===================================
+    // 🔑 تشغيل سلايدر Lottie عند تحميل DOM
+    // ===================================
+    initLottieAnimations();
+    startSlideshow();
+
 
     // ===================================
     // بيانات الترجمة (Translation Data) - 10 آراء للعملاء
@@ -683,7 +772,75 @@ document.addEventListener("DOMContentLoaded", () => {
             updateTestimonialSlider();
         });
     }
+ // ===================================
+    // معالجة شريط التقدم الزمني (لتتبع الخطوات)
+    // ===================================
+    const stepsSection = document.getElementById('timeline-section');
+    const stepCards = document.querySelectorAll('.step-card');
+    const stepCircles = document.querySelectorAll('.step-circle');
+    const timelineFill = document.querySelector('.timeline-fill');
+    const totalSteps = stepCircles.length;
 
+    function updateTimeline() {
+        if (!stepsSection) return; 
+
+        const rect = stepsSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight;
+        let activeStepIndex = 0; 
+        
+        // 1. حساب مدى تغلغل القسم في الشاشة
+        if (rect.top < viewportHeight && rect.bottom > 0) {
+            const scrolledDistance = viewportHeight - rect.top;
+            const totalEffectiveScroll = rect.height + (viewportHeight * 0.5); 
+            
+            let fillPercentage = 0;
+            if (totalEffectiveScroll > 0) {
+                 fillPercentage = (scrolledDistance / totalEffectiveScroll) * 100;
+                 fillPercentage = Math.max(0, Math.min(100, fillPercentage)); 
+            }
+
+            // تطبيق نسبة الامتلاء على خط التعبئة
+            timelineFill.style.width = `${fillPercentage}%`;
+
+
+        } else if (rect.bottom <= 0) {
+            // إذا كان القسم بالكامل أعلى الشاشة
+            activeStepIndex = totalSteps;
+            timelineFill.style.width = '100%'; 
+        } else {
+            // إذا كان القسم بالكامل أسفل الشاشة
+            activeStepIndex = 0;
+            timelineFill.style.width = '0%';
+        }
+        
+        // 3. تطبيق التعبئة على الدوائر وتمييز البطاقات
+        const currentFillWidth = parseFloat(timelineFill.style.width.replace('%', '')) || 0;
+
+        stepCircles.forEach((circle, index) => {
+            const step = index + 1;
+            
+            // نسبة امتلاء الدائرة المطلوبة لتلوينها (على افتراض 4 دوائر)
+            const circleActivationThreshold = (step / totalSteps) * 100; 
+
+            if (currentFillWidth >= (circleActivationThreshold - 1)) {
+                 circle.classList.add('filled');
+            } else {
+                 circle.classList.remove('filled');
+            }
+            
+            // البطاقة النشطة (فقط الخطوة الحالية)
+            stepCards[index].classList.remove('active');
+            if (step === activeStepIndex) {
+                 stepCards[index].classList.add('active');
+            }
+        });
+    }
+
+    // ربط الوظيفة بحدث التمرير
+    window.addEventListener('scroll', updateTimeline);
+    updateTimeline(); // لتشغيلها عند التحميل
+
+});
     // ===================================
     // وظائف الترجمة والقائمة الجانبية والمظهر
     // ===================================
