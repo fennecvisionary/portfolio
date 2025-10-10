@@ -2611,32 +2611,137 @@ html[dir="rtl"] .client-info {
     }
 }
 /* ======================================
-   Footer Styles 
-   ======================================
+  Footer Styles - تحديث شامل
+  ======================================
 */
-footer {
-    text-align: center;
-    padding: 20px 0;
+.main-footer {
+    position: relative;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    text-align: center; 
+    
+    /* دمج الأنماط القديمة */
     background-color: var(--light-card-bg);
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05);
-    position: relative;
-    font-size: 0.9rem;
 }
-.dark-mode footer {
+
+.dark-mode .main-footer {
+    /* دمج الأنماط القديمة */
     background-color: var(--dark-card-bg);
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    color: #f5f5f5;
 }
-/* القاعدة الأساسية لزر العودة للأعلى */
+.light-mode .main-footer {
+    color: var(--light-text-color); /* لضمان ظهور النص باللون المناسب */
+}
+
+/* حاوية المحتوى لتنظيم العناصر */
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap; 
+    gap: 30px; 
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* قسم حقوق الملكية */
+.footer-info {
+    text-align: start; /* المحاذاة الافتراضية للغة العربية */
+    max-width: 400px;
+}
+.logo-and-copy {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.footer-logo {
+    width: 35px; /* تصغير حجم اللوغو قليلاً */
+    height: 35px;
+    margin-inline-end: 10px;
+}
+.designed-by {
+    font-size: 0.8rem;
+    color: var(--light-text-color-faded); /* لون نص باهت */
+    margin-top: 5px;
+}
+.dark-mode .designed-by {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.designed-by a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+.designed-by a:hover {
+    color: var(--secondary-color);
+}
+
+/* قسم الاتصال السريع */
+.footer-contact h4 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+    text-align: start; /* المحاذاة الافتراضية للغة العربية */
+}
+
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-details a {
+    display: flex;
+    align-items: center;
+    color: var(--light-text-color);
+    text-decoration: none;
+    transition: color 0.3s;
+    text-align: start; /* المحاذاة الافتراضية للغة العربية */
+}
+.dark-mode .contact-details a {
+    color: #fff;
+}
+
+.contact-details a i {
+    color: var(--primary-color);
+    margin-inline-end: 10px;
+    font-size: 1.1rem;
+}
+
+.contact-details a:hover {
+    color: var(--secondary-color);
+}
+
+
+/* 🔄 التحكم في اتجاه المحاذاة للغة الإنجليزية (LTR) */
+body.ltr .footer-info,
+body.ltr .footer-contact h4,
+body.ltr .contact-details a {
+    text-align: left;
+}
+
+
+/* ======================================
+  زر العودة للأعلى (Back to Top Button) - الكود الذي زودتني به
+  ======================================
+*/
 .back-to-top {
     position: fixed;
     bottom: 20px;
     
-    /* استخدم 'inset-inline-end' لضمان التوافق مع RTL (العربية) و LTR */
+    /* 🔑 استخدام inset-inline-end لضمان التوافق مع RTL/LTR */
     inset-inline-end: 20px; 
-    right: unset; /* إلغاء خاصية right التقليدية */
+    right: unset; 
     
-    width: 40px; /* الحجم الافتراضي لسطح المكتب */
-    height: 40px; /* الحجم الافتراضي لسطح المكتب */
+    width: 40px; 
+    height: 40px; 
     background-color: var(--primary-color);
     color: white;
     border-radius: 50%;
@@ -2651,23 +2756,43 @@ footer {
     z-index: 90;
 }
 
-/* 📱 القاعدة الخاصة بالهواتف (لتصغير الحجم ومعالجة مشكلة العرض الزائد) */
+/* التجاوبية */
 @media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+    .footer-info, 
+    .footer-contact {
+        width: 100%; 
+        text-align: center; 
+    }
+    
+    .logo-and-copy {
+        justify-content: center;
+    }
+    
+    .footer-contact h4 {
+        text-align: center;
+        margin-top: 20px;
+    }
+    .contact-details {
+        align-items: center;
+    }
+    .contact-details a {
+        justify-content: center;
+    }
+    
+    /* زر العودة للأعلى (Mobile) */
     .back-to-top {
-        /* 1. تصغير حجم الزر */
         width: 35px;
         height: 35px;
-        
-        /* 2. تصغير حجم الأيقونة بداخله */
-        font-size: 1rem; 
-        
-        /* 3. تقليل المسافة من الحافة لمنع ظهور شريط التمرير الأفقي */
-        inset-inline-end: 10px; /* أقرب إلى حافة الشاشة */
-        bottom: 10px; /* أقرب إلى الأسفل */
+        font-size: 1rem;
+        inset-inline-end: 10px; 
+        bottom: 10px;
     }
 }
-
-
 /* ======================================
    Mobile/Tablet Responsiveness
    ======================================
