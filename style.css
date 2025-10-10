@@ -257,7 +257,7 @@ ul[role="list"] {
 .hero-section {
     position: relative; 
     overflow: hidden; 
-    /* تقليل التباعد ليصبح تحت الهيدر مباشرة */
+    /* 🔑 1. التعديل: جعله ينزل مباشرة تحت الهيدر مع تباعد طفيف */
     padding-top: calc(var(--header-height) + 10px); 
     padding-bottom: 100px; 
     min-height: 80vh; 
@@ -305,19 +305,20 @@ body.ltr .hero-section {
 }
 body.ltr .hero-content-container {
     text-align: left;
-    left: 0;
+    /* 🔑 التعديل: النص ينجرف لليسار كما كان مطلوبًا */
+    left: 0; 
     right: auto;
 }
 body.ltr .hero-actions {
     justify-content: flex-start;
 }
 body.ltr .slide-item-wrapper {
-    /* 🔑 التعديل: LTR (إنجليزية): Lottie (يسار) | صورة (يمين) */
+    /* 🔑 التعديل: Lottie (يسار) | صورة (يمين) */
     flex-direction: row; 
 }
 
 /* ======================================
-  أنماط حاوية Lottie والخلفية
+  أنماط حاوية Lottie والخلفية (سطح المكتب)
   ======================================
 */
 .slideshow-animation-wrapper { 
@@ -352,7 +353,7 @@ body.ltr .slide-item-wrapper {
 }
 
 .slide-item-wrapper .lottie-container {
-    width: 45%; 
+    width: 45%; /* نافذة Lottie أقل بقليل */
     height: 100%;
     background-color: transparent;
     z-index: 2;
@@ -360,14 +361,14 @@ body.ltr .slide-item-wrapper {
     align-items: center;
     justify-content: center;
     
-    /* حواف دائرية وتأثير إطار */
+    /* 🔑 التعديل: حواف دائرية وتأثير إطار */
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease-in-out;
     overflow: hidden; 
 }
 
-/* تأثير هوفر (Hover) */
+/* 🔑 التعديل: تأثير هوفر (Hover) */
 .slide-item-wrapper .lottie-container:hover {
     box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.4); 
     transform: translateY(-1px);
@@ -383,13 +384,10 @@ body.ltr .slide-item-wrapper {
     margin-bottom: 10px; 
     font-weight: 800;
     line-height: 1.2;
-    
-    /* 🔑 التعديل: استعادة اللون الافتراضي (سيعتمد على لون الثيم) */
     color: var(--light-text-color); 
     text-shadow: none; 
 }
 .dark-mode .hero-section h1 {
-    /* 🔑 التعديل: استعادة لون الثيم الغامق */
     color: var(--dark-text-color);
 }
 
@@ -398,13 +396,10 @@ body.ltr .slide-item-wrapper {
     max-width: 500px;
     margin: 0 auto 18px auto; 
     line-height: 1.5;
-    
-    /* 🔑 التعديل: استعادة اللون الافتراضي (سيعتمد على لون الثيم) */
     color: var(--light-text-color);
     text-shadow: none; 
 }
 .dark-mode .hero-section p {
-    /* 🔑 التعديل: استعادة لون الثيم الغامق */
     color: var(--dark-text-color);
 }
 
@@ -420,22 +415,35 @@ body.ltr .slide-item-wrapper {
   ======================================
 */
 
-/* الأجهزة اللوحية (Tablet - 768px إلى 601px) */
+/* 🔑 1. الأجهزة اللوحية (Tablet - 768px إلى 601px) */
 @media (max-width: 768px) {
-    /* ... أنماط التابلت لم تتغير ... */
+    .hero-section {
+        min-height: 70vh;
+        padding-top: calc(var(--header-height) + 50px);
+        padding-bottom: 70px;
+    }
+    .hero-content-container {
+        padding: 0 25px; 
+    }
+    
+    /* Lottie Animation & Image: تغيير النسب على التابلت (60/40) */
     .slide-item-wrapper .slide-image {
         width: 60%;
     }
     .slide-item-wrapper .lottie-container {
         width: 40%; 
     }
+
+    .slideshow-pagination {
+        bottom: 25px; 
+    }
 }
 
-/* 🔑 الهواتف (Mobile - 600px وما دون) */
+/* 🔑 2. الهواتف (Mobile - 600px وما دون) */
 @media (max-width: 600px) {
-    /* 🔑 التعديل: ضمان أقصى ارتفاع متاح */
+    /* 🔑 التعديل: ضمان ارتفاع 100% للشاشة تحت الهيدر */
     .hero-section {
-        min-height: 100vh; /* لضمان أقصى ارتفاع متاح */
+        min-height: 100vh; 
         height: 100vh;
         padding-top: var(--header-height); /* يبدأ مباشرة تحت الهيدر */
         padding-bottom: 0;
@@ -446,7 +454,7 @@ body.ltr .slide-item-wrapper {
         display: none; 
     }
     
-    /* 🔑 التعديل: Lottie يغطي كامل الإطار بدون قيود */
+    /* 🔑 Lottie يغطي كامل الإطار بدون قيود */
     .slide-item-wrapper .slide-image {
         display: none; 
     }
