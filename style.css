@@ -257,84 +257,61 @@ ul[role="list"] {
 .hero-section {
     position: relative; 
     overflow: hidden; 
-    
-    /* الأنماط القياسية للكمبيوتر */
     padding-top: calc(var(--header-height) + 100px); 
     padding-bottom: 100px; 
     min-height: 80vh; 
     display: flex;
     align-items: center;
-    
-    /* التوسيط الأفقي */
-    justify-content: center; 
-    
-    /* إزالة خصائص الاتجاه المخصصة لليسار */
-    padding-left: 0; 
-    padding-right: 0;
+    justify-content: center; /* توسيط المحتوى الأفقي للقسم */
     background-color: #111; 
 }
 
-/* أنماط الحاوية: التوسيط */
-.hero-section .container {
-    position: relative;
+/* 🔑 حاوية المحتوى (النص والأزرار) */
+.hero-content-container {
+    position: absolute; /* تحديد الموضع المطلق فوق الخلفية */
     z-index: 5; 
     text-shadow: none; 
-    
-    max-width: 600px; /* العرض الذي يحدد شكل المحتوى */
-    
-    text-align: center; 
-    direction: unset; 
+    max-width: 600px; 
+    width: 100%; /* لضمان أخذ العرض بالكامل مع الهوامش */
+    padding: 0 40px; /* هوامش جانبية للمحتوى */
 }
 
-/* العنوان (H1) */
-.hero-section h1 {
-    font-size: 2rem; /* حجم الكمبيوتر */
-    margin-bottom: 10px; 
-    font-weight: 800;
-    line-height: 1.2;
-    color: var(--primary-color); 
-    text-shadow: none; 
-}
-.dark-mode .hero-section h1 {
-    color: var(--primary-color);
-}
-
-/* نص الوصف (P) */
-.hero-section p {
-    font-size: 0.95rem; /* حجم الكمبيوتر */
-    max-width: 500px;
-    margin: 0 auto 18px auto; 
-    line-height: 1.5;
-    color: var(--primary-color); 
-    text-shadow: none; 
-}
-
-.hero-actions {
-    display: flex;
-    justify-content: center; 
-    gap: 8px; 
-}
-
-/* حجم الأزرار */
-.hero-actions a.btn {
-    font-size: 0.85rem; /* حجم الكمبيوتر */
-    padding: 0.4rem 0.9rem; 
-    text-shadow: none !important; 
-}
-
-
----
-
-### 2. أنماط الخلفية ونقاط الترقيم والحركة
-
-(لا تغيير هنا، حافظ على هذا الجزء كما هو).
-
-```css
 /* ======================================
-  أنماط حاوية الصور (Slideshow) والتغطية
+  التحكم في الاتجاه (RTL للعربية / LTR للإنجليزية)
   ======================================
 */
-.slideshow-background { 
+
+/* 🔑 الوضع الافتراضي (RTL - العربية) */
+.hero-section {
+    direction: rtl; /* تعيين الاتجاه للقسم بالكامل */
+}
+.hero-content-container {
+    text-align: right; /* محاذاة النص لليمين */
+    right: 0; /* المحتوى ينجرف لليمين */
+    left: auto;
+}
+.hero-actions {
+    justify-content: flex-end; /* الأزرار تنجرف لليمين */
+}
+
+/* 🔑 وضع LTR (الإنجليزية) - يتم تفعيله عبر إضافة body.ltr */
+body.ltr .hero-section {
+    direction: ltr;
+}
+body.ltr .hero-content-container {
+    text-align: left; /* محاذاة النص لليسار */
+    left: 0; /* المحتوى ينجرف لليسار */
+    right: auto;
+}
+body.ltr .hero-actions {
+    justify-content: flex-start; /* الأزرار تنجرف لليسار */
+}
+
+/* ======================================
+  أنماط حاوية Lottie والخلفية
+  ======================================
+*/
+.slideshow-animation-wrapper { 
     position: absolute;
     top: 0;
     left: 0;
@@ -343,30 +320,45 @@ ul[role="list"] {
     z-index: 1; 
     overflow: hidden;
 }
-/* ... باقي أنماط .slideshow-background و .slide-item ... */
 
-.slideshow-background .slide-item {
+.slide-item-wrapper {
     position: absolute;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
-    object-fit: cover; 
-    opacity: 0; 
-    transition: opacity 1.5s ease-in-out; 
-    animation: imageSlideshow 40s infinite; 
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    display: flex; /* لتقسيم المساحة بين Lottie والصورة */
+}
+.slide-item-wrapper.active {
+    opacity: 1;
 }
 
-/* تحديد تأخير بدء كل صورة */
-.slideshow-background .slide-item:nth-child(1) { animation-delay: 0s; }
-.slideshow-background .slide-item:nth-child(2) { animation-delay: 8s; } 
-.slideshow-background .slide-item:nth-child(3) { animation-delay: 16s; } 
-.slideshow-background .slide-item:nth-child(4) { animation-delay: 24s; } 
-.slideshow-background .slide-item:nth-child(5) { animation-delay: 32s; } 
+/* 🔑 Lottie Animation & Image تقسيم الشاشة 50/50 */
+.slide-item-wrapper .slide-image {
+    width: 50%; /* نصف الشاشة للخلفية */
+    height: 100%;
+    object-fit: cover; 
+}
+.slide-item-wrapper .lottie-container {
+    width: 50%; /* نصف الشاشة للـ Lottie */
+    height: 100%;
+    background-color: transparent; /* تأكد من الشفافية */
+    z-index: 2; /* لتكون فوق الخلفية إن وجدت */
+    display: flex; /* لتوسيط Lottie داخله */
+    align-items: center;
+    justify-content: center;
+}
 
-/* إزالة طبقة التعتيم (::after) */
-.slideshow-background::after {
-    content: none;
+/* 🔑 ترتيب Lottie & Image حسب الاتجاه: Lottie دائمًا على الجانب الأيمن */
+.slide-item-wrapper {
+    /* RTL (عربية): Lottie (يمين) | صورة (يسار) */
+    flex-direction: row-reverse; 
+}
+body.ltr .slide-item-wrapper {
+    /* LTR (إنجليزية): صورة (يسار) | Lottie (يمين) */
+    flex-direction: row; 
 }
 
 /* ======================================
@@ -382,99 +374,123 @@ ul[role="list"] {
     display: flex;
     gap: 10px;
 }
-/* ... باقي أنماط .slideshow-pagination ... */
-
 .slideshow-pagination .dot {
     display: block;
     width: 10px;
     height: 10px;
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.5); 
-    cursor: default; 
+    cursor: pointer; /* جعلها قابلة للنقر */
     transition: background-color 0.4s ease;
 }
-
-/* ربط الحركة بنقاط الترقيم */
-.slideshow-pagination .dot:nth-child(1) { animation: dotActive 40s infinite; animation-delay: 0s; }
-.slideshow-pagination .dot:nth-child(2) { animation: dotActive 40s infinite; animation-delay: 8s; }
-.slideshow-pagination .dot:nth-child(3) { animation: dotActive 40s infinite; animation-delay: 16s; }
-.slideshow-pagination .dot:nth-child(4) { animation: dotActive 40s infinite; animation-delay: 24s; }
-.slideshow-pagination .dot:nth-child(5) { animation: dotActive 40s infinite; animation-delay: 32s; }
+.slideshow-pagination .dot.active {
+    background-color: var(--primary-color);
+}
 
 
 /* ======================================
-  🔑 مفاتيح الحركة (Keyframes)
+  الأنماط الأساسية للعناوين والفقرات والأزرار (حافظ على قيم الكمبيوتر)
   ======================================
 */
-/* ... حركة الصور والنقاط ... */
-
-@keyframes imageSlideshow {
-    0%, 19% { opacity: 1; } 
-    20% { opacity: 0; }
-    20.001%, 39% { opacity: 1; }
-    40% { opacity: 0; }
-    40.001%, 59% { opacity: 1; }
-    60% { opacity: 0; }
-    60.001%, 79% { opacity: 1; }
-    80% { opacity: 0; }
-    80.001%, 99% { opacity: 1; }
-    100% { opacity: 0; }
+.hero-section h1 {
+    font-size: 2rem; 
+    margin-bottom: 10px; 
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--primary-color); 
+    text-shadow: none; 
+}
+.dark-mode .hero-section h1 {
+    color: var(--primary-color);
+}
+.hero-section p {
+    font-size: 0.95rem; 
+    max-width: 500px;
+    margin: 0 auto 18px auto; 
+    line-height: 1.5;
+    color: var(--primary-color); 
+    text-shadow: none; 
+}
+.hero-actions a.btn {
+    font-size: 0.85rem; 
+    padding: 0.4rem 0.9rem; 
+    text-shadow: none !important; 
 }
 
-@keyframes dotActive {
-    0%, 19% { background-color: var(--primary-color); } 
-    20%, 100% { background-color: rgba(255, 255, 255, 0.5); }
-}
 
-
----
-
-### 3. التجاوبية (Responsive Design)
-
-**هنا يتم التعديل الحاسم:** نقوم بإزالة التصغير ونعيد الأحجام إلى قيمها الأساسية للكمبيوتر.
-
-```css
 /* ======================================
   التجاوبية (Responsive Design)
   ======================================
 */
+
+/* 🔑 1. الأجهزة اللوحية (Tablet - 768px إلى 601px) */
 @media (max-width: 768px) {
     .hero-section {
         min-height: 70vh;
         padding-top: calc(var(--header-height) + 50px);
         padding-bottom: 70px;
-        
-        /* 🔑 أهم جزء: هوامش جانبية بسيطة لمنع الخروج عن الشاشة */
-        padding-left: 15px;
-        padding-right: 15px;
+    }
+    .hero-content-container {
+        padding: 0 25px; /* هوامش داخلية أقل */
     }
     
-    /* 🔑 العودة إلى الأحجام الأساسية للكمبيوتر */
+    /* تصغير طفيف للنصوص والأزرار للحفاظ على المساحة على التابلت */
     .hero-section h1 {
-        font-size: 2rem; /* حجم الكمبيوتر */
+        font-size: 1.8rem;
     }
-    
     .hero-section p {
-        font-size: 0.95rem; /* حجم الكمبيوتر */
+        font-size: 0.9rem;
     }
-
     .hero-actions a.btn {
-        font-size: 0.85rem; /* حجم الكمبيوتر */
-        padding: 0.4rem 0.9rem; /* حجم الكمبيوتر */
+        font-size: 0.8rem;
+        padding: 0.35rem 0.8rem;
+    }
+    
+    /* 🔑 Lottie Animation & Image: تغيير النسب على التابلت */
+    .slide-item-wrapper .slide-image {
+        width: 60%; /* الصورة تأخذ مساحة أكبر */
+    }
+    .slide-item-wrapper .lottie-container {
+        width: 40%; /* Lottie أصغر قليلاً */
     }
 
-    /* 🔑 ضمان توسيط المحتوى الأفقي */
-    .hero-section .container {
-        text-align: center; 
-    }
-    
-    .hero-actions {
-        justify-content: center; 
-    }
-    
-    /* الحفاظ على موضع نقاط الترقيم في الأسفل */
     .slideshow-pagination {
-        bottom: 20px; 
+        bottom: 25px; 
+    }
+}
+
+/* 🔑 2. الهواتف (Mobile - 600px وما دون) */
+@media (max-width: 600px) {
+    .hero-section {
+        min-height: 60vh; /* ارتفاع أقل */
+        padding-top: calc(var(--header-height) + 30px);
+        padding-bottom: 60px;
+    }
+    
+    /* 🔴 إخفاء النص والأزرار بالكامل على الهواتف */
+    .hero-content-container {
+        display: none; 
+    }
+    
+    /* 🔑 Lottie Animation: يتوسط الشاشة بالكامل */
+    .slide-item-wrapper .slide-image {
+        display: none; /* إخفاء الصورة الخلفية */
+    }
+    .slide-item-wrapper .lottie-container {
+        width: 100%; /* Lottie يأخذ عرض الشاشة بالكامل */
+        height: 100%;
+        position: absolute; /* للتأكد من توسيطه */
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        max-width: 300px; /* لتقييد حجم اللوتي إن كان كبيراً جداً */
+        max-height: 300px;
+    }
+
+    .slideshow-pagination {
+        bottom: 15px; /* نقاط الترقيم أقرب لأسفل الشاشة */
     }
 }
 /* ======================================
