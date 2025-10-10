@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_designed_by: "صُمم وطُوِّر بواسطة",
         footer_contact_title: "تواصل سريع",
         footer_email: "contact@fennecvisionary.com", // الإيميل لا يُترجم كنص، بل كقيمة مرئية
-         footer_phone: "895 749 696 (312+)",
+         footer_phone: "598 947 696 (213+)",
         developer_name: "برادعي عبدالرحمن",
     },
     en: {
