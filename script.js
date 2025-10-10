@@ -198,7 +198,8 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_designed_by: "صُمم وطُوِّر بواسطة",
         footer_contact_title: "تواصل سريع",
         footer_email: "contact@fennecvisionary.com", // الإيميل لا يُترجم كنص، بل كقيمة مرئية
-        footer_phone: "(+213) 696 947 598",            // الرقم لا يُترجم كنص، بل كقيمة مرئية
+        footer_phone: "895 749 696 )312+(",            // الرقم لا يُترجم كنص، بل كقيمة مرئية
+        developer_name: "برادعي عبدالرحمن",
     },
     en: {
         skip_link: "Skip to main content",
@@ -348,6 +349,7 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_contact_title: "Quick Contact",
         footer_email: "contact@fennecvisionary.com",
         footer_phone: "(+213) 696 947 598",
+        developer_name: "Bradai Abderrahmen"
         
     }
 };
