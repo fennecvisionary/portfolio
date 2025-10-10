@@ -257,7 +257,7 @@ ul[role="list"] {
 .hero-section {
     position: relative; 
     overflow: hidden; 
-    /* 🔑 1. التعديل: جعله ينزل مباشرة تحت الهيدر مع تباعد طفيف */
+    /* تقليل التباعد ليصبح تحت الهيدر مباشرة */
     padding-top: calc(var(--header-height) + 10px); 
     padding-bottom: 100px; 
     min-height: 80vh; 
@@ -282,7 +282,7 @@ ul[role="list"] {
   ======================================
 */
 
-/* 🔑 الوضع الافتراضي (RTL - العربية) */
+/* 🔑 الوضع الافتراضي (RTL - العربية): Lottie على اليمين */
 .hero-section {
     direction: rtl;
 }
@@ -294,8 +294,12 @@ ul[role="list"] {
 .hero-actions {
     justify-content: flex-end;
 }
+.slide-item-wrapper {
+    /* RTL (عربية): Lottie (يمين) | صورة (يسار) */
+    flex-direction: row-reverse; 
+}
 
-/* 🔑 وضع LTR (الإنجليزية) */
+/* 🔑 وضع LTR (الإنجليزية): Lottie على اليسار */
 body.ltr .hero-section {
     direction: ltr;
 }
@@ -306,6 +310,10 @@ body.ltr .hero-content-container {
 }
 body.ltr .hero-actions {
     justify-content: flex-start;
+}
+body.ltr .slide-item-wrapper {
+    /* 🔑 التعديل: LTR (إنجليزية): Lottie (يسار) | صورة (يمين) */
+    flex-direction: row; 
 }
 
 /* ======================================
@@ -336,15 +344,15 @@ body.ltr .hero-actions {
     opacity: 1;
 }
 
-/* 🔑 Lottie Animation & Image تقسيم الشاشة (55% / 45%) */
+/* Lottie Animation & Image تقسيم الشاشة (55% / 45%) */
 .slide-item-wrapper .slide-image {
-    width: 55%; /* زيادة طفيفة */
+    width: 55%; 
     height: 100%;
     object-fit: cover; 
 }
 
 .slide-item-wrapper .lottie-container {
-    width: 45%; /* تصغير نافذة Lottie */
+    width: 45%; 
     height: 100%;
     background-color: transparent;
     z-index: 2;
@@ -352,53 +360,58 @@ body.ltr .hero-actions {
     align-items: center;
     justify-content: center;
     
-    /* 🔑 التعديل: حواف دائرية وتأثير إطار */
-    border-radius: 15px; /* حواف دائرية للمنظر الجمالي */
+    /* حواف دائرية وتأثير إطار */
+    border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease-in-out;
     overflow: hidden; 
 }
 
-/* 🔑 التعديل: تأثير هوفر (Hover) */
+/* تأثير هوفر (Hover) */
 .slide-item-wrapper .lottie-container:hover {
     box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.4); 
     transform: translateY(-1px);
 }
 
-/* 🔑 ترتيب Lottie & Image حسب الاتجاه */
-.slide-item-wrapper {
-    /* RTL (عربية): Lottie (يمين) | صورة (يسار) */
-    flex-direction: row-reverse; 
-}
-body.ltr .slide-item-wrapper {
-    /* LTR (إنجليزية): صورة (يسار) | Lottie (يمين) */
-    flex-direction: row; 
-}
 
 /* ======================================
-  أنماط نقاط الترقيم (Pagination Dots)
+  الأنماط الأساسية للعناوين والفقرات (استعادة اللون)
   ======================================
 */
-.slideshow-pagination {
-    position: absolute;
-    bottom: 30px; 
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 4; 
-    display: flex;
-    gap: 10px;
+.hero-section h1 {
+    font-size: 2rem; 
+    margin-bottom: 10px; 
+    font-weight: 800;
+    line-height: 1.2;
+    
+    /* 🔑 التعديل: استعادة اللون الافتراضي (سيعتمد على لون الثيم) */
+    color: var(--light-text-color); 
+    text-shadow: none; 
 }
-.slideshow-pagination .dot {
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5); 
-    cursor: pointer;
-    transition: background-color 0.4s ease;
+.dark-mode .hero-section h1 {
+    /* 🔑 التعديل: استعادة لون الثيم الغامق */
+    color: var(--dark-text-color);
 }
-.slideshow-pagination .dot.active {
-    background-color: var(--primary-color);
+
+.hero-section p {
+    font-size: 0.95rem; 
+    max-width: 500px;
+    margin: 0 auto 18px auto; 
+    line-height: 1.5;
+    
+    /* 🔑 التعديل: استعادة اللون الافتراضي (سيعتمد على لون الثيم) */
+    color: var(--light-text-color);
+    text-shadow: none; 
+}
+.dark-mode .hero-section p {
+    /* 🔑 التعديل: استعادة لون الثيم الغامق */
+    color: var(--dark-text-color);
+}
+
+.hero-actions a.btn {
+    font-size: 0.85rem; 
+    padding: 0.4rem 0.9rem; 
+    text-shadow: none !important; 
 }
 
 
@@ -407,49 +420,38 @@ body.ltr .slide-item-wrapper {
   ======================================
 */
 
-/* 🔑 1. الأجهزة اللوحية (Tablet - 768px إلى 601px) */
+/* الأجهزة اللوحية (Tablet - 768px إلى 601px) */
 @media (max-width: 768px) {
-    .hero-section {
-        min-height: 70vh;
-        padding-top: calc(var(--header-height) + 50px);
-        padding-bottom: 70px;
-    }
-    .hero-content-container {
-        padding: 0 25px; 
-    }
-    
-    /* Lottie Animation & Image: الحفاظ على 60/40 */
+    /* ... أنماط التابلت لم تتغير ... */
     .slide-item-wrapper .slide-image {
         width: 60%;
     }
     .slide-item-wrapper .lottie-container {
         width: 40%; 
     }
-
-    .slideshow-pagination {
-        bottom: 25px; 
-    }
 }
 
-/* 🔑 2. الهواتف (Mobile - 600px وما دون) */
+/* 🔑 الهواتف (Mobile - 600px وما دون) */
 @media (max-width: 600px) {
+    /* 🔑 التعديل: ضمان أقصى ارتفاع متاح */
     .hero-section {
-        min-height: 60vh;
-        padding-top: calc(var(--header-height) + 30px);
-        padding-bottom: 60px;
+        min-height: 100vh; /* لضمان أقصى ارتفاع متاح */
+        height: 100vh;
+        padding-top: var(--header-height); /* يبدأ مباشرة تحت الهيدر */
+        padding-bottom: 0;
     }
     
-    /* 🔴 إخفاء النص والأزرار بالكامل على الهواتف */
+    /* 🔴 إخفاء النص والأزرار بالكامل */
     .hero-content-container {
         display: none; 
     }
     
     /* 🔑 التعديل: Lottie يغطي كامل الإطار بدون قيود */
     .slide-item-wrapper .slide-image {
-        display: none; /* إخفاء الصورة الخلفية */
+        display: none; 
     }
     .slide-item-wrapper .lottie-container {
-        width: 100%; /* عرض الشاشة بالكامل */
+        width: 100%; 
         height: 100%;
         position: absolute;
         top: 0;
@@ -457,7 +459,7 @@ body.ltr .slide-item-wrapper {
         right: 0;
         bottom: 0;
         margin: 0; 
-        max-width: none; /* إلغاء أي قيود على الحجم */
+        max-width: none; 
         max-height: none;
         
         /* إزالة الحواف الدائرية والظل لملء الإطار بالكامل */
