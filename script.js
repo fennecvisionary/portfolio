@@ -193,7 +193,12 @@ document.addEventListener("DOMContentLoaded", () => {
         faq_a8: "الثعلب البرتقالي يرمز إلى **الذكاء** و**السرعة** و**الفطنة** في التصميم، وهي القيم التي نعتمد عليها لتقديم حلول إبداعية ومميزة لعملائنا.",
         carousel_title: "شركاء النجاح وثقة العملاء",
         carousel_subtitle: "نحن فخورون بالعمل مع علامات تجارية رائدة حول العالم.",
-      experienceTitle: "🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة",
+        experienceTitle: "🦊 Fennec Visionary | إبداع بصري يصنع هوية مميزة",
+        footer_rights: "جميع الحقوق محفوظة.",
+        footer_designed_by: "صُمم وطُوِّر بواسطة",
+        footer_contact_title: "تواصل سريع",
+        footer_email: "contact@fennecvisionary.com", // الإيميل لا يُترجم كنص، بل كقيمة مرئية
+        footer_phone: "(+213) 696 947 598",            // الرقم لا يُترجم كنص، بل كقيمة مرئية
     },
     en: {
         skip_link: "Skip to main content",
@@ -335,9 +340,15 @@ document.addEventListener("DOMContentLoaded", () => {
         
         faq_q8: "What does the orange fox symbolize in your design?",
         faq_a8: "The orange fox symbolizes **intelligence**, **speed**, and **cunning** in design—values we rely on to deliver creative and distinctive solutions to our clients.",
-       carousel_title: "Our Success Partners and Client Trust",
-       carousel_subtitle: "We are proud to work with leading brands around the globe.",
-      experienceTitle:"🦊 Fennec Visionary | Visual Creativity that Builds Unique Identity",
+        carousel_title: "Our Success Partners and Client Trust",
+        carousel_subtitle: "We are proud to work with leading brands around the globe.",
+        experienceTitle:"🦊 Fennec Visionary | Visual Creativity that Builds Unique Identity",
+        footer_rights: "All Rights Reserved.",
+        footer_designed_by: "Designed and Developed by",
+        footer_contact_title: "Quick Contact",
+        footer_email: "contact@fennecvisionary.com",
+        footer_phone: "(+213) 696 947 598",
+        
     }
 };
 
