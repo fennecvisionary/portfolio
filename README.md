@@ -80,7 +80,7 @@ This is a personal, demonstration project built and maintained solely by **Brada
 
 ## 📝 License
 
-Distributed under the **MIT License**. See `LICENSE` for more information.
+Distributed under the **MIT License**. See the full license [here](https://github.com/fennecvisionary/portfolio/tree/main?tab=MIT-1-ov-file) for more information.
 
 ---
 
