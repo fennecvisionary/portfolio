@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const testimonialsContainer = document.querySelector(".testimonials-grid");
     const testimonialCards = document.querySelectorAll(".testimonial-card");
     const prevArrow = document.querySelector(".arrow-prev");
-    const nextArrow = document.querySelector(".arrow-next");
+    const nextArrow = document.querySelector(".arrow-arrow-next");
     
     let currentTestimonialIndex = 0;
     const totalTestimonials = testimonialCards.length;
@@ -1081,12 +1081,76 @@ document.addEventListener("DOMContentLoaded", () => {
             searchButton.click();
         }
     });
-});
+    
+    // ===================================
+    // 🔑 الإرسال الفعلي لنموذج التواصل عبر Formspree
+    // ===================================
+    const contactForm = document.getElementById('contactForm');
+    const successMessage = document.getElementById('formSuccessMessage'); 
+    
+    if (contactForm && successMessage) {
+        contactForm.addEventListener('submit', async function(event) {
+            // 🛑 منع الإرسال الافتراضي (للسماح لنا بالتعامل مع الإرسال عبر Fetch)
+            event.preventDefault(); 
 
+            const submitButton = this.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.textContent;
+            
+            // 1. عرض حالة التحميل وتعطيل الزر
+            submitButton.disabled = true;
+            submitButton.textContent = '... يتم الإرسال ...'; 
 
-// في ملف JavaScript الخاص بك (أو داخل <script> في نهاية <body>)
+            // 2. تجميع البيانات ونقطة النهاية (رابط Formspree)
+            const data = new FormData(event.target);
+            const formEndpoint = event.target.action; 
 
-document.addEventListener('DOMContentLoaded', () => {
+            try {
+                // 3. الإرسال الفعلي إلى Formspree عبر Fetch API
+                const response = await fetch(formEndpoint, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json' // مطلوب لـ Formspree
+                    }
+                });
+
+                // 4. معالجة الرد
+                if (response.ok) {
+                    // ✅ الإرسال الناجح: إخفاء النموذج وإظهار رسالة النجاح
+                    contactForm.style.opacity = '0';
+                    contactForm.style.height = '0';
+                    contactForm.style.overflow = 'hidden';
+                    
+                    successMessage.style.display = 'block';
+                    setTimeout(() => successMessage.style.opacity = '1', 50); 
+                    
+                    contactForm.reset(); // تفريغ حقول النموذج
+                    
+                    if (typeof AOS !== 'undefined') {
+                         AOS.refresh(); 
+                    }
+
+                } else {
+                    // ❌ فشل الإرسال
+                    const errorData = await response.json();
+                    alert(`عذراً، لم يتم إرسال رسالتك. ${errorData.error || 'حدث خطأ غير معروف.'} يرجى التأكد من ملء جميع الحقول والمحاولة مرة أخرى.`);
+                }
+            } catch (error) {
+                // 🌐 فشل الاتصال بالشبكة
+                alert('فشل في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.');
+            } finally {
+                // 5. استعادة الزر الأصلي عند الفشل
+                if (contactForm.style.opacity !== '0') {
+                    submitButton.disabled = false;
+                    submitButton.textContent = originalButtonText;
+                }
+            }
+        });
+    }
+
+    // ===================================
+    // 🔑 معالجة أسئلة FAQ (تم دمجها في هذا المستمع)
+    // ===================================
     const faqQuestions = document.querySelectorAll('.faq-question');
 
     faqQuestions.forEach(question => {
@@ -1106,11 +1170,10 @@ document.addEventListener('DOMContentLoaded', () => {
             answer.classList.toggle('open');
         });
     });
-});
+}); // نهاية دالة DOMContentLoaded الرئيسية
 
 // ===================================
 // 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
-// (تم تعديلها لتشمل كامل محتوى الموقع)
 // ===================================
 
 /**
