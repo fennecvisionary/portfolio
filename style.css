@@ -2043,21 +2043,38 @@ html[dir="rtl"] .client-info {
     gap: 50px;
     max-width: 900px;
     margin: 0 auto;
+    /* 🔑 التعديل الأول: تمديد العناصر الفرعية لملء الارتفاع */
+    align-items: stretch; /* تم التغيير من flex-start */
 }
+
+/* 🆕 كلاس جديد للحاوية الثابتة (يجب إضافته في HTML) */
+.contact-form-wrapper {
+    /* 🔑 التعديل الثاني: نقل خصائص Flex إلى الحاوية الجديدة */
+    flex: 0.8;
+    align-self: stretch; /* ليتمدد بارتفاع قسم FAQ */
+    display: flex; /* ليتكدس محتواه (البطاقة وروابط التواصل) عمودياً */
+    flex-direction: column;
+}
+
 .contact-form {
-    /* تم التعديل: flex: 1 لتقسيم المساحة بالتساوي */
-    flex: 0.8;  
+    /* ❌ تم حذف flex: 0.8; */
+    /* ❌ تم حذف align-self: flex-start; */
     
+    /* 🔑 .contact-form الآن هو مجرد بطاقة داخل الحاوية الجديدة */
     background-color: var(--light-card-bg);
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--light-shadow);
-    align-self: flex-start;
+    
+    /* لضمان أنه يملأ العرض داخل الحاوية الجديدة */
+    width: 100%; 
+    /* 🔑 إضافة هامش سفلي يفصل النموذج عن روابط التواصل */
+    margin-bottom: 0; 
 }
 .dark-mode .contact-form {
     background-color: var(--dark-card-bg);
     box-shadow: var(--dark-shadow);
-    align-self: flex-start;
+    /* ❌ تم حذف align-self: flex-start; */
 }
 .form-group {
     margin-bottom: 20px;
@@ -2092,8 +2109,9 @@ html[dir="rtl"] .client-info {
     Social Contact Links (تحت نموذج التواصل)
     ======================================
 */
+/* 🔑 تم نقل الـ margin-top لـ social-contact-links ليصبح خارج .contact-form */
 .social-contact-links {
-    margin-top: 30px; /* تباعد عن نموذج الإرسال */
+    margin-top: 30px; /* تباعد عن نموذج الإرسال/رسالة النجاح */
     padding-top: 20px;
     border-top: 1px solid #eee; /* خط فاصل */
     text-align: center;
@@ -2127,30 +2145,24 @@ html[dir="rtl"] .client-info {
 }
 
 /* تأثير التمرير: يتحول اللون إلى اللون الأصلي */
-
-/* واتساب */
 .social-icons-card a.whatsapp:hover {
-    color: #25D366; 
+    color: #25D366;  
 }
 
-/* الإيميل */
 .social-icons-card a.email:hover {
-    color: #D44638; 
+    color: #D44638;  
 }
 
-/* إنستغرام */
 .social-icons-card a.instagram:hover {
-    color: #E1306C; 
+    color: #E1306C;  
 }
 
-/* فيسبوك */
 .social-icons-card a.facebook:hover {
     color: #1877F2;
 }
 
-/* تيك توك */
 .social-icons-card a.tiktok:hover {
-    color: #000000; 
+    color: #000000;  
 }
 /* ======================================
     📱 التجاوب مع الهاتف (Mobile Responsiveness) - About Me
@@ -2166,7 +2178,7 @@ html[dir="rtl"] .client-info {
     /* 🔑 2. جعل عمود الصورة يأخذ العرض الكامل ويكون في الأعلى */
     .about-image {
         /* إلغاء الـ max-width لـ flex: 1 لكي يأخذ كل العرض المتاح */
-        max-width: 100%; 
+        max-width: 100%;  
         order: 1; /* التأكد من ظهوره أولاً */
     }
     
@@ -2195,8 +2207,8 @@ html[dir="rtl"] .client-info {
     .verified-name-container,
     .status-info-container,
     .working-hours-table {
-        /* هذه العناصر بالفعل لها max-width وتوسيط كتلي (margin: auto) 
-           لذا ستظل متمركزة بشكل صحيح داخل الـ 100% width الجديد */
+        /* هذه العناصر بالفعل لها max-width وتوسيط كتلي (margin: auto)  
+            لذا ستظل متمركزة بشكل صحيح داخل الـ 100% width الجديد */
         max-width: 280px; /* تحجيم مناسب للهاتف */
     }
 
@@ -2205,7 +2217,7 @@ html[dir="rtl"] .client-info {
         font-size: 0.9rem; /* تصغير الخط قليلاً */
     }
     
-    .working-hours-table th, 
+    .working-hours-table th,  
     .working-hours-table td {
         padding: 8px 10px; /* تقليل البادينج */
     }
@@ -2221,8 +2233,17 @@ html[dir="rtl"] .client-info {
         flex-direction: column;
         gap: 30px;
     }
-    .contact-form {
+    
+    /* 🔑 يجب الآن تطبيق التنسيق على .contact-form-wrapper بدلاً من .contact-form */
+    .contact-form-wrapper {
         /* إزالة التحجيم المرن وجعله بعرض كامل */
+        flex: 1;
+        width: 100%;
+        align-self: auto;
+    }
+    
+    /* إزالة الـ flex القديمة من .contact-form في وضع الهاتف لعدم التعارض */
+    .contact-form {
         flex: 1;
         width: 100%;
         align-self: auto;
@@ -2245,20 +2266,22 @@ html[dir="rtl"] .client-info {
     gap: 50px;
     max-width: 900px; /* تحديد عرض أقصى في المنتصف */
     margin: 0 auto;
-    align-items: flex-start;
+    /* 🔑 التعديل الهام */
+    align-items: stretch; /* لضمان تساوي ارتفاع العمودين */
 }
 
-/* 1. نموذج التواصل (Contact Form) */
-.contact-form {
+/* 1. نموذج التواصل (Contact Form) - الآن نستخدم الحاوية الجديدة */
+.contact-form-wrapper {
     flex: 0.8; /* عرض أصغر نسبياً */
-    align-self: flex-start;
-    /* ... باقي التنسيقات ... */
+    align-self: stretch; /* تمديد بارتفاع قسم الأسئلة الشائعة */
 }
+/* ⚠️ تم إزالة خصائص Flexbox من .contact-form هنا */
+
 
 /* 2. قسم الأسئلة الشائعة (FAQ Section) */
 .faq-section {
     flex: 1.2; /* عرض أطول نسبياً */
-    align-self: flex-start;
+    align-self: stretch; /* 🔑 التعديل الهام: ليتمدد بارتفاع الحاوية المجاورة */
     /* ... باقي التنسيقات ... */
 }
 
@@ -2278,21 +2301,22 @@ html[dir="rtl"] .client-info {
     }
 
     /* 3. جعل كلا القسمين يأخذان العرض الكامل */
-    .contact-form,
+    .contact-form-wrapper, /* 🔑 التعديل: تطبيق على الحاوية الجديدة */
     .faq-section {
         flex: 1 1 100%; /* اجعل flex يأخذ العرض الكامل 100% */
-        width: 100%; 
+        width: 100%;  
         max-width: none;
         align-self: stretch; /* للتأكد من التمدد داخل الحاوية الجديدة */
         margin-left: auto;
         margin-right: auto;
     }
+    /* ⚠️ تم إزالة التنسيق القديم لـ .contact-form هنا وتطبيقه على .contact-form-wrapper */
     
     /* 4. استعادة خلفية FAQ على الهاتف (اختياري) */
     /* إذا أردت أن تعود خلفية FAQ في وضع الهاتف لتبدو كبطاقة */
     /*
     .faq-section {
-        background-color: var(--light-card-bg); 
+        background-color: var(--light-card-bg);  
         padding: 30px;
         box-shadow: var(--light-shadow);
     }
@@ -2319,11 +2343,11 @@ html[dir="rtl"] .client-info {
 */
 .faq-section {
     flex: 1.2;
-    background-color: transparent; 
-    padding: 0; 
+    background-color: transparent;  
+    padding: 0;  
     border-radius: 0;
-    box-shadow: none; 
-    align-self: flex-start;
+    box-shadow: none;  
+    align-self: stretch; /* 🔑 التعديل الهام: ليتمدد بارتفاع الحاوية المجاورة */
 }
 .dark-mode .faq-section {
     background-color: transparent;
@@ -2331,31 +2355,31 @@ html[dir="rtl"] .client-info {
 }
 
 .faq-section h3 {
-    font-size: 1.5rem; 
+    font-size: 1.5rem;  
     font-weight: 700;
     color: var(--primary-color);
     margin-bottom: 25px;
     /* تحديد التباعد الجانبي ليتوافق مع نصوص الأسئلة/الأجوبة */
-    padding-inline-start: 15px; 
-    padding-inline-end: 15px; 
-    text-align: initial; 
+    padding-inline-start: 15px;  
+    padding-inline-end: 15px;  
+    text-align: initial;  
 }
 
 /* 🆕 نمط كل سؤال في قائمة الأسئلة الشائعة - CARD STYLE */
 .faq-item {
     /* 1. مسافة بين البطاقات */
-    margin-bottom: 12px; 
+    margin-bottom: 12px;  
     
     /* 2. خلفية البطاقة والظل */
-    background-color: var(--light-bg-color); 
-    border-radius: 12px; 
+    background-color: var(--light-bg-color);  
+    border-radius: 12px;  
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* ظل خفيف للبطاقة */
 
     /* إزالة الحدود القديمة التي كانت تفصل بين الأسئلة */
-    border-top: none; 
-    padding-top: 0; 
-    padding-bottom: 0; 
-    padding-inline-start: 0; 
+    border-top: none;  
+    padding-top: 0;  
+    padding-bottom: 0;  
+    padding-inline-start: 0;  
     padding-inline-end: 0;
     
     transition: all 0.3s;
@@ -2364,16 +2388,16 @@ html[dir="rtl"] .client-info {
 
 .dark-mode .faq-item {
     background-color: var(--dark-card-bg); /* خلفية داكنة */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  
 }
 
 /* 🆕 تمييز البطاقة النشطة (عند الفتح) */
 .faq-item.open {
     /* تظليل أوضح وتأثير رفع خفيف */
-    box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.2); 
+    box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.2);  
     border: 1px solid var(--primary-color); /* إطار بلون أساسي */
     transform: translateY(-2px); /* تأثير رفع خفيف */
-    background-color: var(--light-bg-color); 
+    background-color: var(--light-bg-color);  
 }
 .dark-mode .faq-item.open {
     background-color: var(--dark-card-bg);
@@ -2390,15 +2414,15 @@ html[dir="rtl"] .client-info {
     font-size: 1rem;
     font-weight: 600;
     transition: color 0.3s;
-    position: relative; 
+    position: relative;  
     
     /* هذا يضمن أن النص يبدأ من 15px */
-    padding-inline-start: 15px; 
+    padding-inline-start: 15px;  
     padding-inline-end: 45px; /* حجز مساحة للأيقونة */
-    padding-top: 15px; 
-    padding-bottom: 15px; 
+    padding-top: 15px;  
+    padding-bottom: 15px;  
 
-    text-align: initial; 
+    text-align: initial;  
 }
 
 .dark-mode .faq-question {
@@ -2413,22 +2437,22 @@ html[dir="rtl"] .client-info {
 
 /* أيقونة القائمة المنسدلة (::after) - لا تغيير في الموضع */
 .faq-question::after {
-    font-family: 'Font Awesome 5 Free'; 
-    content: '\f078'; 
-    font-weight: 900; 
-    font-size: 0.75rem; 
+    font-family: 'Font Awesome 5 Free';  
+    content: '\f078';  
+    font-weight: 900;  
+    font-size: 0.75rem;  
     color: var(--primary-color);
     transition: transform 0.3s;
     
     position: absolute;
     top: 50%;
-    inset-inline-end: 15px; 
+    inset-inline-end: 15px;  
     transform: translateY(-50%);
 }
 
 /* عند النقر على السؤال وفتحه */
 .faq-question.active::after {
-    transform: translateY(-50%) rotate(90deg); 
+    transform: translateY(-50%) rotate(90deg);  
 }
 
 /* مربع الإجابة المخفي افتراضياً */
@@ -2441,20 +2465,20 @@ html[dir="rtl"] .client-info {
 
 /* عند فتح الإجابة */
 .faq-answer.open {
-    max-height: 500px; 
+    max-height: 500px;  
     padding-top: 5px; /* مسافة بين السؤال والإجابة */
     padding-bottom: 20px;
     
     /* هذا يضمن أن الإجابة تبدأ من نفس النقطة 15px */
-    padding-inline-start: 15px; 
+    padding-inline-start: 15px;  
     padding-inline-end: 15px;
 }
 
 .faq-answer p {
     margin: 0;
-    line-height: 1.7; 
+    line-height: 1.7;  
     color: var(--light-text-color);
-    text-align: initial; 
+    text-align: initial;  
 }
 .dark-mode .faq-answer p {
     color: var(--dark-text-color);
@@ -2467,28 +2491,23 @@ html[dir="rtl"] .client-info {
 /* 💻 تنسيقات سطح المكتب (النسخة الأصلية) */
 .faq-section {
     /* 1. الحفاظ على إعدادات Flex لسطح المكتب */
-    flex: 1.2; 
-    align-self: flex-start; /* هذا يحافظ عليه في الأعلى */
+    flex: 1.2;  
+    align-self: stretch; /* 🔑 التعديل الهام: ليتمدد بارتفاع الحاوية المجاورة */
     /* ... بقية التنسيقات ... */
 }
 
 /* 📱 استجابة الهاتف (Mobile Responsiveness) */
 @media (max-width: 768px) {
-    /*
-        يُفترض أن هذا الاستعلام يتم وضعه ضمن حاوية Grid/Flex 
-        التي تفصل بين قسم الأسئلة الشائعة وقسم التواصل.
-        يجب أن يتم إلغاء إعدادات Flex هنا.
-    */
+    
     .faq-section {
         /* 1. إلغاء إعدادات Flex لتمكين العرض الكامل */
         flex: 1 1 100%; /* تأكد من أنه يأخذ العرض الكامل */
         width: 100%; /* تأكيد العرض الكامل */
         
         /* 2. إلغاء محاذاة البداية (Start Alignment) */
-        align-self: auto; 
+        align-self: auto;  
         
         /* 3. تطبيق الهامش التلقائي للتوسيط العمودي في حال كان هناك مساحة (تعتمد على الحاوية الأبوية) */
-        /* إذا كانت الحاوية الأبوية تستخدم Flexbox عمودياً، فهذا سيضعه في الوسط */
         margin-block: 20px auto; /* مسافة علوية وسفلية وتوسيط عمودي */
     }
 
@@ -2498,13 +2517,6 @@ html[dir="rtl"] .client-info {
         padding-inline-start: 0;
         padding-inline-end: 0;
         margin-bottom: 20px;
-    }
-
-    /* 🆕 توسيط بطاقات FAQ ضمن القسم */
-    /* لضمان توسيط البطاقات، يجب أن تكون الحاوية الأبوية تسمح بذلك (على سبيل المثال، باستخدام flex) */
-    .faq-section {
-        /* بما أننا نستخدم flex: 1.2 في سطح المكتب، قد تكون الحاوية الأبوية flex */
-        /* إذا كانت الحاوية الأبوية display: flex; وتتجه عمودياً، فإن margin: auto; سيوسّطه */
     }
 
     /* ضمان أن التباعدات الداخلية للبطاقة لا تطغى على العرض */
@@ -2537,7 +2549,7 @@ html[dir="rtl"] .client-info {
     /* 🛡️ الحدود والخلفية لتظهر كبطاقة مميزة */
     border: 1px solid var(--primary-color);
     border-radius: 12px; /* لتتماشى مع بطاقات FAQ */
-    background-color: var(--light-card-bg); 
+    background-color: var(--light-card-bg);  
     box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.15); /* ظل خفيف ملون */
     
     /* 👁️ للتحكم بالشفافية عبر JavaScript */
@@ -2547,13 +2559,13 @@ html[dir="rtl"] .client-info {
 
 .dark-mode .contact-form .success-message {
     background-color: var(--dark-card-bg);
-    box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.2); 
+    box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.2);  
 }
 
 /* 🟢 أيقونة علامة الصح */
 .success-message .success-icon {
     font-size: 3.5rem; /* حجم أكبر للأيقونة */
-    color: var(--primary-color); 
+    color: var(--primary-color);  
     margin-bottom: 10px;
     display: block;
 }
@@ -2562,7 +2574,7 @@ html[dir="rtl"] .client-info {
 .success-message h3 {
     color: var(--primary-color);
     margin-bottom: 8px;
-    font-size: 1.6rem; 
+    font-size: 1.6rem;  
     font-weight: 700;
 }
 .success-message p {
