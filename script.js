@@ -197,7 +197,7 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_rights: "جميع الحقوق محفوظة.",
         footer_designed_by: "صُمم وطُوِّر بواسطة",
         footer_contact_title: "تواصل سريع",
-        footer_email: "contact@fennecvisionary.com", // الإيميل لا يُترجم كنص، بل كقيمة مرئية
+        footer_email: "contact.fennecvisionary@gmail.com", // الإيميل لا يُترجم كنص، بل كقيمة مرئية
          footer_phone: "598 947 696 (213+)",
         developer_name: "برادعي عبدالرحمن",
     },
@@ -347,7 +347,7 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_rights: "All Rights Reserved.",
         footer_designed_by: "Designed and Developed by",
         footer_contact_title: "Quick Contact",
-        footer_email: "contact@fennecvisionary.com",
+        footer_email: "contact.fennecvisionary@gmail.com",
         footer_phone: "(+213) 696 947 598",
         developer_name: "Bradai Abderrahmen"
         
