@@ -1151,13 +1151,15 @@ function highlightTextMarkers() {
     });
 }
 // ===================================
- // ===================================
     // 🔑 الإرسال الفعلي لنموذج التواصل عبر Formspree
     // ===================================
     const contactForm = document.getElementById('contactForm');
     const successMessage = document.getElementById('formSuccessMessage'); 
     
     if (contactForm && successMessage) {
+        // 🚨 تأكد أن رسالة النجاح مخفية افتراضياً في الـ HTML أو CSS
+        // successMessage.style.opacity = '0'; // (يتم تعيينها في CSS)
+        
         contactForm.addEventListener('submit', async function(event) {
             // 🛑 منع الإرسال الافتراضي (للسماح لنا بالتعامل مع الإرسال عبر Fetch)
             event.preventDefault(); 
@@ -1186,19 +1188,30 @@ function highlightTextMarkers() {
                 // 4. معالجة الرد
                 if (response.ok) {
                     // ✅ الإرسال الناجح: إخفاء النموذج وإظهار رسالة النجاح
-                    contactForm.style.opacity = '0';
-                    contactForm.style.height = '0';
-                    contactForm.style.overflow = 'hidden';
                     
+                    // 🔑 1. بدء إخفاء النموذج تدريجياً عبر الشفافية
+                    contactForm.style.opacity = '0';
+                    
+                    // 🔑 2. إظهار رسالة النجاح
                     successMessage.style.display = 'block';
                     setTimeout(() => successMessage.style.opacity = '1', 50); 
                     
+                    // 🔑 3. تأجيل إزالة النموذج من التخطيط (Display: none) بعد اكتمال الشفافية
+                    // هذا يمنع الارتفاع من الانهيار المفاجئ الذي يدفع قسم الأسئلة الشائعة للقفز
+                    setTimeout(() => {
+                        // إزالة النموذج من التخطيط نهائياً
+                        contactForm.style.display = 'none';
+                        // مسح أي خصائص ارتفاع كانت مضافة سابقاً
+                        contactForm.style.height = ''; 
+                        contactForm.style.overflow = '';
+                        
+                        if (typeof AOS !== 'undefined') {
+                            AOS.refresh(); 
+                        }
+                    }, 500); // تأخير 500ms للسماح بانتقال opacity في CSS
+                    
                     contactForm.reset(); // تفريغ حقول النموذج
                     
-                    if (typeof AOS !== 'undefined') {
-                         AOS.refresh(); 
-                    }
-
                 } else {
                     // ❌ فشل الإرسال
                     const errorData = await response.json();
@@ -1209,14 +1222,13 @@ function highlightTextMarkers() {
                 alert('فشل في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.');
             } finally {
                 // 5. استعادة الزر الأصلي عند الفشل
-                if (contactForm.style.opacity !== '0') {
+                if (contactForm.style.display !== 'none') {
                     submitButton.disabled = false;
                     submitButton.textContent = originalButtonText;
                 }
             }
         });
     }
-
 // ===================================
 // 🆕 دالة تحديث خط التقدم المتحرك (Timeline Logic)
 // ===================================
