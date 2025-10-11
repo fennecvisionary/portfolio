@@ -1596,6 +1596,10 @@ html[dir="rtl"] .client-info {
 .testimonials-grid.no-transition {
     transition: none !important;
 }
+/* ======================================
+    About Me Section
+    ======================================
+*/
 .about-content {
     display: flex;
     align-items: center;
@@ -1604,15 +1608,15 @@ html[dir="rtl"] .client-info {
 .about-text {
     flex: 1;
     /* 🟢 الكود الذي وسّط زر "تواصل الآن" */
-    text-align: center; 
+    text-align: center; /* يحافظ على توسيط العناصر الكتلية مثل زر التواصل */
     
-    /* 🟢 التعديل الجديد: تنسيق البطاقة (Card) */
+    /* 🟢 تنسيق البطاقة (Card) */
     background-color: var(--light-card-bg);
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--light-shadow);
 }
-/* 🟢 التعديل الجديد: تنسيق البطاقة في الوضع المظلم */
+/* 🟢 تنسيق البطاقة في الوضع المظلم */
 .dark-mode .about-text {
     background-color: var(--dark-card-bg);
     box-shadow: var(--dark-shadow);
@@ -1622,29 +1626,24 @@ html[dir="rtl"] .client-info {
     line-height: 1.8;
     margin-bottom: 20px;
     font-size: 1.1rem;
-    /* 💡 التعديل: تظبيط المحاذاة للوسط لكل اللغات */
-    text-align: center; 
-    direction: rtl; 
+    
+    /* 🔑 التعديل الحاسم هنا */
+    /* 1. text-align: start; يجبر النص على المحاذاة إلى بداية السطر. */
+    /* (وهو اليمين في RTL واليسار في LTR) */
+    text-align: start; 
+    
+    /* 2. حذف direction: rtl; للسماح للاتجاه بالتكيف التلقائي مع لغة المستند. */
 }
 
 .about-text strong {
     color: var(--primary-color);
 }
-/* 💡 حذف تنسيق .social-links-about القديم الذي كان في عمود النص */
-.social-links-about {
-    display: flex;
-    gap: 15px;
-    margin-top: 20px;
-    /* 🔴 تم تغيير justify-content إلى center في الفئة الجديدة أدناه */
-}
-
 /* 🟢 التعديل: تطبيق التوسيط على العمود الأيمن بالكامل */
 .about-image {
     position: relative; 
     flex: 1;
     max-width: 350px; 
-    
-    /* 💡 التوسيط الاحتياطي (خاصة للعناصر المضمنة مثل image-wrapper في حال كان inline) */
+    /* 💡 التوسيط الاحتياطي */
     text-align: center; 
 }
 
@@ -1684,7 +1683,6 @@ html[dir="rtl"] .client-info {
         0 0 0 5px var(--dark-card-bg), 
         0 0 0 10px var(--primary-color); 
 }
-
 /* ======================================
     🟢 حالة الاتصال (الأخضر - تطبيق حركة النبض)
     ======================================
