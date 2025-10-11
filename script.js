@@ -200,6 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_email: "contact.fennecvisionary@gmail.com", // الإيميل لا يُترجم كنص، بل كقيمة مرئية
          footer_phone: "598 947 696 (213+)",
         developer_name: "برادعي عبدالرحمن",
+        success_title: "تم الإرسال بنجاح! 🎉",
+        success_text: "شكراً لك، لقد تم استلام رسالتك. سأقوم بالرد عليك في أقرب وقت ممكن. ✉️"
     },
     en: {
         skip_link: "Skip to main content",
@@ -350,6 +352,8 @@ document.addEventListener("DOMContentLoaded", () => {
         footer_email: "contact.fennecvisionary@gmail.com",
         footer_phone: "(+213) 696 947 598",
         developer_name: "Bradai Abderrahmen"
+        success_title: "Sent Successfully! 🎉",
+        success_text: "Thank you, your message has been received. I'll get back to you as soon as possible. ✉️"
         
     }
 };
