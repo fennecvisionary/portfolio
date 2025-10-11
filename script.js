@@ -1151,84 +1151,79 @@ function highlightTextMarkers() {
     });
 }
 // ===================================
-    // 🔑 الإرسال الفعلي لنموذج التواصل عبر Formspree
-    // ===================================
-    const contactForm = document.getElementById('contactForm');
-    const successMessage = document.getElementById('formSuccessMessage'); 
+// 🔑 الإرسال الفعلي لنموذج التواصل عبر Formspree
+// ===================================
+const contactForm = document.getElementById('contactForm');
+const successMessage = document.getElementById('formSuccessMessage'); 
+
+if (contactForm && successMessage) {
     
-    if (contactForm && successMessage) {
-        // 🚨 تأكد أن رسالة النجاح مخفية افتراضياً في الـ HTML أو CSS
-        // successMessage.style.opacity = '0'; // (يتم تعيينها في CSS)
+    contactForm.addEventListener('submit', async function(event) {
+        // 🛑 منع الإرسال الافتراضي
+        event.preventDefault(); 
+
+        const submitButton = this.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
         
-        contactForm.addEventListener('submit', async function(event) {
-            // 🛑 منع الإرسال الافتراضي (للسماح لنا بالتعامل مع الإرسال عبر Fetch)
-            event.preventDefault(); 
+        // 1. عرض حالة التحميل
+        submitButton.disabled = true;
+        submitButton.textContent = '... يتم الإرسال ...'; 
 
-            const submitButton = this.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.textContent;
-            
-            // 1. عرض حالة التحميل وتعطيل الزر
-            submitButton.disabled = true;
-            submitButton.textContent = '... يتم الإرسال ...'; 
+        const data = new FormData(event.target);
+        const formEndpoint = event.target.action; 
 
-            // 2. تجميع البيانات ونقطة النهاية (رابط Formspree)
-            const data = new FormData(event.target);
-            const formEndpoint = event.target.action; 
+        try {
+            // 3. الإرسال الفعلي
+            const response = await fetch(formEndpoint, {
+                method: 'POST',
+                body: data,
+                headers: {
+                    'Accept': 'application/json' 
+                }
+            });
 
-            try {
-                // 3. الإرسال الفعلي إلى Formspree عبر Fetch API
-                const response = await fetch(formEndpoint, {
-                    method: 'POST',
-                    body: data,
-                    headers: {
-                        'Accept': 'application/json' // مطلوب لـ Formspree
+            // 4. معالجة الرد
+            if (response.ok) {
+                // ✅ الإرسال الناجح
+                
+                // 🔑 1. بدء إخفاء النموذج تدريجياً عبر الشفافية
+                contactForm.style.opacity = '0';
+                
+                // 🔑 2. إظهار رسالة النجاح
+                successMessage.style.display = 'block';
+                setTimeout(() => successMessage.style.opacity = '1', 50); 
+                
+                // 🔑 3. تأجيل إزالة النموذج من التخطيط (Display: none) بعد انتهاء الانتقال (500ms)
+                setTimeout(() => {
+                    contactForm.style.display = 'none';
+                    // إزالة أي تغييرات سابقة على الارتفاع كانت تسبب مشاكل
+                    contactForm.style.height = ''; 
+                    contactForm.style.overflow = '';
+                    
+                    if (typeof AOS !== 'undefined') {
+                        AOS.refresh(); 
                     }
-                });
-
-                // 4. معالجة الرد
-                if (response.ok) {
-                    // ✅ الإرسال الناجح: إخفاء النموذج وإظهار رسالة النجاح
-                    
-                    // 🔑 1. بدء إخفاء النموذج تدريجياً عبر الشفافية
-                    contactForm.style.opacity = '0';
-                    
-                    // 🔑 2. إظهار رسالة النجاح
-                    successMessage.style.display = 'block';
-                    setTimeout(() => successMessage.style.opacity = '1', 50); 
-                    
-                    // 🔑 3. تأجيل إزالة النموذج من التخطيط (Display: none) بعد اكتمال الشفافية
-                    // هذا يمنع الارتفاع من الانهيار المفاجئ الذي يدفع قسم الأسئلة الشائعة للقفز
-                    setTimeout(() => {
-                        // إزالة النموذج من التخطيط نهائياً
-                        contactForm.style.display = 'none';
-                        // مسح أي خصائص ارتفاع كانت مضافة سابقاً
-                        contactForm.style.height = ''; 
-                        contactForm.style.overflow = '';
-                        
-                        if (typeof AOS !== 'undefined') {
-                            AOS.refresh(); 
-                        }
-                    }, 500); // تأخير 500ms للسماح بانتقال opacity في CSS
-                    
-                    contactForm.reset(); // تفريغ حقول النموذج
-                    
-                } else {
-                    // ❌ فشل الإرسال
-                    const errorData = await response.json();
-                    alert(`عذراً، لم يتم إرسال رسالتك. ${errorData.error || 'حدث خطأ غير معروف.'} يرجى التأكد من ملء جميع الحقول والمحاولة مرة أخرى.`);
-                }
-            } catch (error) {
-                // 🌐 فشل الاتصال بالشبكة
-                alert('فشل في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.');
-            } finally {
-                // 5. استعادة الزر الأصلي عند الفشل
-                if (contactForm.style.display !== 'none') {
-                    submitButton.disabled = false;
-                    submitButton.textContent = originalButtonText;
-                }
+                }, 500); 
+                
+                contactForm.reset(); 
+                
+            } else {
+                // ❌ فشل الإرسال
+                const errorData = await response.json();
+                alert(`عذراً، لم يتم إرسال رسالتك. ${errorData.error || 'حدث خطأ غير معروف.'}`);
             }
-        });
-    }
+        } catch (error) {
+            // 🌐 فشل الاتصال بالشبكة
+            alert('فشل في الاتصال بالإنترنت. يرجى التحقق من اتصالك والمحاولة مرة أخرى.');
+        } finally {
+            // 5. استعادة الزر الأصلي عند الفشل أو عدم الإخفاء
+            if (contactForm.style.display !== 'none') {
+                submitButton.disabled = false;
+                submitButton.textContent = originalButtonText;
+            }
+        }
+    });
+}
 // ===================================
 // 🆕 دالة تحديث خط التقدم المتحرك (Timeline Logic)
 // ===================================
