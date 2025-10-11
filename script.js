@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const testimonialsContainer = document.querySelector(".testimonials-grid");
     const testimonialCards = document.querySelectorAll(".testimonial-card");
     const prevArrow = document.querySelector(".arrow-prev");
-    const nextArrow = document.querySelector(".arrow-arrow-next");
+    const nextArrow = document.querySelector(".arrow-next");
     
     let currentTestimonialIndex = 0;
     const totalTestimonials = testimonialCards.length;
@@ -1081,8 +1081,77 @@ document.addEventListener("DOMContentLoaded", () => {
             searchButton.click();
         }
     });
-    
-    // ===================================
+});
+
+
+// في ملف JavaScript الخاص بك (أو داخل <script> في نهاية <body>)
+
+document.addEventListener('DOMContentLoaded', () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            
+            // إغلاق كل الإجابات المفتوحة الأخرى أولاً
+            faqQuestions.forEach(q => {
+                if (q !== question && q.classList.contains('active')) {
+                    q.classList.remove('active');
+                    q.nextElementSibling.classList.remove('open');
+                }
+            });
+            
+            // تبديل حالة السؤال الحالي (فتح/إغلاق)
+            question.classList.toggle('active');
+            answer.classList.toggle('open');
+        });
+    });
+});
+
+// ===================================
+// 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
+// (تم تعديلها لتشمل كامل محتوى الموقع)
+// ===================================
+
+/**
+ * تبحث عن النصوص المحاطة بعلامات النجمة المزدوجة (**) داخل غالبية عناصر المحتوى 
+ * في الصفحة (p, h3, h4, li)، وتحولها إلى وسم <span> لتطبيق لون التمييز.
+ */
+function highlightTextMarkers() {
+    // التعبير النمطي: يجد **نص**، ويستخدم الصيغة غير الجشعة لضمان التحديد الصحيح.
+    const highlightRegex = /\*\*([^\*]+)\*\*/g; 
+    const highlightClass = 'highlight-primary';
+
+    // 🔴 التعديل هنا: محدد شامل لمعظم العناصر النصية في محتوى الصفحة
+    const selectors = 'p, h3, h4, h5, h6, li'; 
+
+    document.querySelectorAll(selectors).forEach(element => {
+        // نتحقق أولاً مما إذا كان العنصر يحتوي على أي عناصر HTML أخرى (مثل وسم <a> داخل الوسم)
+        // إذا كان العنصر يحتوي فقط على نص، نستخدم innerHTML.
+        // إذا كان النص المراد استبداله هو النص الوحيد داخل العنصر، نستخدم innerHTML.
+
+        // لتجنب استهداف العناصر التي لا يجب تغييرها (مثل القوائم المنسدلة أو الإدخالات)
+        if (element.closest('.main-nav') || element.closest('#language-select') || element.tagName === 'BUTTON' || element.tagName === 'A') {
+             return; // تجاهل عناصر التنقل والأزرار
+        }
+
+        let originalHTML = element.innerHTML;
+        
+        // تطبيق دالة الاستبدال مباشرة.
+        const newHTML = originalHTML.replace(highlightRegex, (match, textContent) => {
+            // textContent هو النص الملتقط داخل علامتي النجمة (مثل "الذكاء")
+            // نستخدم trim() لإزالة المسافات البيضاء الزائدة حول النص الملتقط
+            return `<span class="${highlightClass}">${textContent.trim()}</span>`;
+        });
+        
+        // تحديث محتوى العنصر فقط إذا حدث استبدال
+        if (newHTML !== originalHTML) {
+             element.innerHTML = newHTML;
+        }
+    });
+}
+// ===================================
+ // ===================================
     // 🔑 الإرسال الفعلي لنموذج التواصل عبر Formspree
     // ===================================
     const contactForm = document.getElementById('contactForm');
@@ -1147,73 +1216,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
     }
-
-    // ===================================
-    // 🔑 معالجة أسئلة FAQ (تم دمجها في هذا المستمع)
-    // ===================================
-    const faqQuestions = document.querySelectorAll('.faq-question');
-
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', () => {
-            const answer = question.nextElementSibling;
-            
-            // إغلاق كل الإجابات المفتوحة الأخرى أولاً
-            faqQuestions.forEach(q => {
-                if (q !== question && q.classList.contains('active')) {
-                    q.classList.remove('active');
-                    q.nextElementSibling.classList.remove('open');
-                }
-            });
-            
-            // تبديل حالة السؤال الحالي (فتح/إغلاق)
-            question.classList.toggle('active');
-            answer.classList.toggle('open');
-        });
-    });
-}); // نهاية دالة DOMContentLoaded الرئيسية
-
-// ===================================
-// 🆕 دالة تلوين النصوص المميزة (Highlighting Function)
-// ===================================
-
-/**
- * تبحث عن النصوص المحاطة بعلامات النجمة المزدوجة (**) داخل غالبية عناصر المحتوى 
- * في الصفحة (p, h3, h4, li)، وتحولها إلى وسم <span> لتطبيق لون التمييز.
- */
-function highlightTextMarkers() {
-    // التعبير النمطي: يجد **نص**، ويستخدم الصيغة غير الجشعة لضمان التحديد الصحيح.
-    const highlightRegex = /\*\*([^\*]+)\*\*/g; 
-    const highlightClass = 'highlight-primary';
-
-    // 🔴 التعديل هنا: محدد شامل لمعظم العناصر النصية في محتوى الصفحة
-    const selectors = 'p, h3, h4, h5, h6, li'; 
-
-    document.querySelectorAll(selectors).forEach(element => {
-        // نتحقق أولاً مما إذا كان العنصر يحتوي على أي عناصر HTML أخرى (مثل وسم <a> داخل الوسم)
-        // إذا كان العنصر يحتوي فقط على نص، نستخدم innerHTML.
-        // إذا كان النص المراد استبداله هو النص الوحيد داخل العنصر، نستخدم innerHTML.
-
-        // لتجنب استهداف العناصر التي لا يجب تغييرها (مثل القوائم المنسدلة أو الإدخالات)
-        if (element.closest('.main-nav') || element.closest('#language-select') || element.tagName === 'BUTTON' || element.tagName === 'A') {
-             return; // تجاهل عناصر التنقل والأزرار
-        }
-
-        let originalHTML = element.innerHTML;
-        
-        // تطبيق دالة الاستبدال مباشرة.
-        const newHTML = originalHTML.replace(highlightRegex, (match, textContent) => {
-            // textContent هو النص الملتقط داخل علامتي النجمة (مثل "الذكاء")
-            // نستخدم trim() لإزالة المسافات البيضاء الزائدة حول النص الملتقط
-            return `<span class="${highlightClass}">${textContent.trim()}</span>`;
-        });
-        
-        // تحديث محتوى العنصر فقط إذا حدث استبدال
-        if (newHTML !== originalHTML) {
-             element.innerHTML = newHTML;
-        }
-    });
-}
-// ===================================
 
 // ===================================
 // 🆕 دالة تحديث خط التقدم المتحرك (Timeline Logic)
