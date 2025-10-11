@@ -511,34 +511,18 @@
     </div>
 </section>
 
-        <section class="contact-section" id="contact">
+       <section class="contact-section" id="contact">
     <div class="container">
         <h2 class="section-title" data-lang-key="contact_title">تواصل معي</h2>
         <p class="section-subtitle" data-lang-key="contact_subtitle">هل أنت مستعد لبدء مشروعك القادم؟ تواصل معي اليوم!</p>
 
         <div class="contact-content">
-            
             <div class="contact-form" data-aos="fade-up"> 
                 
-                <form action="#" method="POST"> 
+                <form action="#" method="POST" id="contactForm"> 
                     <div class="form-group">
                         <label for="name" class="visually-hidden" data-lang-key="form_name">الاسم الكامل</label>
                         <input type="text" id="name" name="name" placeholder="الاسم الكامل" data-lang-key="form_name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="visually-hidden" data-lang-key="form_email">البريد الإلكتروني</label>
-                        <input type="email" id="email" name="email" placeholder="البريد الإلكتروني" data-lang-key="form_email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service" class="visually-hidden" data-lang-key="form_service">الخدمة المطلوبة</label>
-                        <select id="service" name="service" aria-label="الخدمة المطلوبة" required>
-                            <option value="" disabled selected data-lang-key="form_service_select">اختر خدمة</option>
-                            <option value="logo" data-lang-key="service_logo">تصميم الشعارات</option>
-                            <option value="branding" data-lang-key="tag_branding">هوية بصرية</option>
-                            <option value="social-media" data-lang-key="tag_social_media">سوشيال ميديا</option>
-                            <option value="packaging" data-lang-key="tag_packaging">تغليف</option>
-                            <option value="other" data-lang-key="form_service_other">أخرى</option>
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="message" class="visually-hidden" data-lang-key="form_message">رسالتك</label>
@@ -546,28 +530,18 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-lg" data-lang-key="form_submit">إرسال الرسالة</button>
                 </form>
+                
+                <div id="formSuccessMessage" class="success-message" style="display: none;">
+                    <i class="fas fa-check-circle success-icon"></i>
+                    <h3 data-lang-key="success_title">تم الإرسال بنجاح!</h3>
+                    <p data-lang-key="success_text">شكراً لك، لقد تم استلام رسالتك. سأقوم بالرد عليك في أقرب وقت ممكن.</p>
+                </div>
 
                 <div class="social-contact-links">
-                    <h4 data-lang-key="contact_or_social">أو تواصل مباشرةً عبر:</h4> 
-                    <div class="social-icons-card">
-                        <a href="https://wa.me/xxxxxxxxxx" target="_blank" class="whatsapp" aria-label="WhatsApp">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
-                        <a href="mailto:your_email@example.com" class="email" aria-label="Email">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://instagram.com/your_profile" target="_blank" class="instagram" aria-label="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://facebook.com/your_page" target="_blank" class="facebook" aria-label="Facebook">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="https://tiktok.com/@your_profile" target="_blank" class="tiktok" aria-label="TikTok">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
                     </div>
-                </div>
             </div>
+        </div>
+    </div>
             
             <div class="faq-section" id="faq-section">
                 <h3 data-lang-key="faq_title">الأسئلة الشائعة والمتكررة (FAQ)</h3>
