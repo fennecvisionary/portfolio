@@ -2512,16 +2512,66 @@ html[dir="rtl"] .client-info {
         margin-inline: 15px; /* إضافة هامش جانبي لتجنب الالتصاق بحواف الشاشة */
     }
 
-    /* لضمان التوسيط الفعلي للقسم بالكامل (إذا كان محتواه قصيرًا)، يجب أن تكون الحاوية الأبوية هي التي توجه التوسيط. */
-    /* ولكن إذا كان قصدك توسيط القسم في وسط الصفحة أفقياً، فإن width: 100%; + margin-inline: auto; هو الحل: */
-
-    /* إذا كان محتوى FAQ لا يشغل كامل العرض، هذا يضمن توسيطه أفقياً */
     .faq-section {
         max-width: 600px; /* لتقييد العرض قليلاً على الشاشات الكبيرة/المتوسطة */
         margin-inline: auto; /* التوسيط الأفقي */
-        
-        /* ... بقية التنسيقات ... */
+
     }
+}
+/* ======================================
+  🔑 أنماط رسالة النجاح داخل .contact-form
+  ======================================
+*/
+
+/* ⏳ لتسهيل الانتقال السلس من النموذج إلى الرسالة */
+.contact-form form {
+    /* تسهيل الانتقال بين إظهار النموذج وإخفائه */
+    transition: opacity 0.5s ease-out, height 0.5s ease-out;
+}
+
+.contact-form .success-message {
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+    
+    /* 🛡️ الحدود والخلفية لتظهر كبطاقة مميزة */
+    border: 1px solid var(--primary-color);
+    border-radius: 12px; /* لتتماشى مع بطاقات FAQ */
+    background-color: var(--light-card-bg); 
+    box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.15); /* ظل خفيف ملون */
+    
+    /* 👁️ للتحكم بالشفافية عبر JavaScript */
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.dark-mode .contact-form .success-message {
+    background-color: var(--dark-card-bg);
+    box-shadow: 0 6px 15px rgba(var(--primary-rgb), 0.2); 
+}
+
+/* 🟢 أيقونة علامة الصح */
+.success-message .success-icon {
+    font-size: 3.5rem; /* حجم أكبر للأيقونة */
+    color: var(--primary-color); 
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* ✍️ تنسيق النص */
+.success-message h3 {
+    color: var(--primary-color);
+    margin-bottom: 8px;
+    font-size: 1.6rem; 
+    font-weight: 700;
+}
+.success-message p {
+    color: var(--light-text-color);
+    font-size: 1rem;
+    margin-top: 0;
+}
+.dark-mode .success-message p {
+    color: var(--dark-text-color);
 }
 /* ======================================
    Logo Carousel
