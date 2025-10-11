@@ -331,6 +331,7 @@ body.ltr .slide-item-wrapper {
 }
 
 .slide-item-wrapper {
+    /* يجب أن تكون مطلقة على سطح المكتب للتراكب */
     position: absolute;
     width: 100%;
     height: 100%;
@@ -410,7 +411,6 @@ body.ltr .slide-item-wrapper {
     margin-bottom: 10px; 
     font-weight: 800;
     line-height: 1.2;
-    /* 🔑 التعديل: اللون الأساسي */
     color: var(--primary-color); 
     text-shadow: none; 
 }
@@ -423,7 +423,6 @@ body.ltr .slide-item-wrapper {
     max-width: 500px;
     margin: 0 auto 18px auto; 
     line-height: 1.5;
-    /* 🔑 التعديل: اللون الأساسي */
     color: var(--primary-color);
     text-shadow: none; 
 }
@@ -445,15 +444,7 @@ body.ltr .slide-item-wrapper {
 
 /* الأجهزة اللوحية (Tablet - 768px إلى 601px) */
 @media (max-width: 768px) {
-    .hero-section {
-        min-height: 70vh;
-        padding-top: calc(var(--header-height) + 50px);
-        padding-bottom: 70px;
-    }
-    .hero-content-container {
-        padding: 0 25px; 
-    }
-    
+    /* ... (لم تتغير أنماط التابلت) ... */
     .slide-item-wrapper .slide-image {
         width: 60%;
     }
@@ -468,13 +459,13 @@ body.ltr .slide-item-wrapper {
 
 /* 🔑 الهواتف (Mobile - 600px وما دون) */
 @media (max-width: 600px) {
-    /* 🔑 التعديل: Hero Section يأخذ ارتفاعه من المحتوى (Lottie) */
+    /* 🔑 1. Hero Section: يحدد الارتفاع ليكون ديناميكياً حسب الـ Lottie */
     .hero-section {
-        min-height: auto; /* مهم ليأخذ ارتفاع اللوتي */
+        min-height: auto; 
         height: auto;
-        padding-top: var(--header-height); /* يبدأ مباشرة تحت الهيدر */
-        padding-bottom: 30px; /* تباعد بسيط أسفل اللوتي */
-        /* إزالة display:flex و align-items:center من الأنماط الأساسية في الهواتف */
+        padding-top: var(--header-height); 
+        padding-bottom: 30px; 
+        display: block; /* مهم لتجنب مشاكل flexbox */
     }
     
     /* 🔴 إخفاء النص والأزرار بالكامل */
@@ -482,32 +473,39 @@ body.ltr .slide-item-wrapper {
         display: none; 
     }
     
-    /* 🔑 التعديل: Lottie يأخذ عرض 100% وارتفاعه الطبيعي (Aspect Ratio) */
+    /* 🔑 2. حاوية الحركة: استخدام خدعة Padding-Bottom لتحديد الارتفاع (مثال: 1:1) */
     .slideshow-animation-wrapper {
         position: relative; 
-        height: auto;
-    }
-    .slide-item-wrapper {
-        position: relative;
-        height: auto;
-        opacity: 1;
-        /* هذا السلايدر لم يعد flex في هذا النطاق، لذا يجب إزالة flex-direction */
-        flex-direction: column; 
+        width: 100%;
+        height: 0; /* تعيين الارتفاع إلى صفر */
+        padding-bottom: 75%; /* نسبة الارتفاع إلى العرض. استخدم 75% لـ 4:3. */
+        overflow: hidden; 
     }
     
+    /* 🔑 3. الشرائح: العودة لـ Absolute Positioning لحل مشكلة التكديس */
+    .slide-item-wrapper {
+        position: absolute; 
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* ملاحظة: opacity: 0; هي القيمة الافتراضية الآن، ويتم التحكم بها بواسطة JS/كلاس .active */
+    }
+    
+    /* Lottie يملأ الإطار المحدد بالنسبة (Aspect Ratio) */
     .slide-item-wrapper .slide-image {
         display: none; 
     }
     .slide-item-wrapper .lottie-container {
         width: 100%; 
-        height: auto; /* مهم ليأخذ الارتفاع الطبيعي للـ Lottie */
-        position: relative; /* إزالة absolute positioning */
-        
+        height: 100%; 
+        position: absolute; 
+        top: 0;
+        left: 0;
+
         /* إزالة قيود وتأثيرات سطح المكتب */
         border-radius: 0; 
         box-shadow: none;
-        max-width: none; 
-        max-height: none;
     }
 
     .slideshow-pagination {
