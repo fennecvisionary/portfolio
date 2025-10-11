@@ -2250,7 +2250,7 @@ html[dir="rtl"] .client-info {
     }
 }
 /* ======================================
-    0. الإعدادات العالمية الأساسية (MUST BE AT THE TOP)
+    0. الإعدادات العالمية الأساسية (لحل مشاكل التخطيط)
     ======================================
 */
 *, *::before, *::after {
@@ -2265,7 +2265,6 @@ html[dir="rtl"] .client-info {
     overflow-wrap: break-word;
 }
 
-
 /* ======================================
     1. Contact Section General Styles (Desktop Fix)
     ======================================
@@ -2276,46 +2275,82 @@ html[dir="rtl"] .client-info {
 .dark-mode .contact-section {
     background-color: var(--dark-bg-color);
 }
-
 .contact-content {
     /* الخصائص الأصلية للشاشات الكبيرة */
     display: flex;
     gap: 50px;
     max-width: 900px; /* تحديد عرض أقصى في المنتصف */
     margin: 0 auto;
-    /* التأكد من تساوي ارتفاع العمودين */
+    /* 🔑 التأكد من تساوي ارتفاع العمودين أو المحاذاة لأعلى */
     align-items: stretch; 
 }
 
-/* 1. نموذج التواصل (Contact Form) - الحاوية الثابتة */
-/* 🔑 هذه الحاوية تتعامل ككتلة واحدة للنموذج والرسالة داخل Flexbox */
+/* 1. نموذج التواصل (Contact Form) - تم لفه في Wrapper للتحكم الدقيق */
 .contact-form-wrapper {
-    /* 🔑 التعديل الحاسم الثاني: flex: 0.8 (نمو) 1 (تقلص) 0 (عرض أساسي مرن) */
+    /* 🔑 التعديل الحاسم الثاني: الصيغة الكاملة لـ Flexbox لتجنب الانهيار */
+    /* flex-grow: 0.8, flex-shrink: 1 (مهم للتقلص), flex-basis: 0 */
     flex: 0.8 1 0; 
     align-self: stretch; 
-
-    /* 🔑 التعديل الحاسم الثالث: يمنع الانهيار ويثبت التخطيط في RTL/LTR */
+    
+    /* 🔑 التعديل الحاسم الثالث: يمنع المحتوى الداخلي من دفع عرض العمود */
     min-width: 0; 
-    /* ملاحظة: .contact-form داخلها يحمل ستايل البطاقة */
+    
+    /* لضمان تماسك النموذج والرسالة عمودياً داخل هذه الحاوية */
+    display: flex;
+    flex-direction: column;
 }
 
 .contact-form {
-    /* ستايل البطاقة (يجب أن يكون هنا) */
+    /* ستايل البطاقة */
     background-color: var(--light-card-bg);
     padding: 30px;
     border-radius: 10px;
     box-shadow: var(--light-shadow);
-    /* يجب أن تكون خصائص Flexbox الأساسية على .contact-form-wrapper وليس هنا */
+    /* 🔑 هذا يسمح للنموذج بملء الارتفاع داخل wrapper */
+    flex-grow: 1; 
+    align-self: stretch;
 }
-
-
+.dark-mode .contact-form {
+    background-color: var(--dark-card-bg);
+    box-shadow: var(--dark-shadow);
+}
+.form-group {
+    margin-bottom: 20px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form select,
+.contact-form textarea {
+    /* 🔑 التعديل الحاسم الرابع: ضمان أن حقول الإدخال لا تتجاوز عرض الحاوية */
+    width: 100%; 
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+    transition: border-color 0.3s, background-color 0.3s;
+}
+.dark-mode .contact-form input[type="text"],
+.dark-mode .contact-form input[type="email"],
+.dark-mode .contact-form select,
+.dark-mode .contact-form textarea {
+    border-color: #555;
+    background-color: #3e3e3e;
+    color: var(--dark-text-color);
+}
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
 /* 2. قسم الأسئلة الشائعة (FAQ Section) - التعديل الأساسي */
 .faq-section {
-    /* 🔑 التعديل الحاسم الثاني: flex: 1.2 (نمو) 1 (تقلص) 0 (عرض أساسي مرن) */
+    /* 🔑 التعديل الحاسم: flex: 1.2 (نمو) 1 (تقلص) 0 (عرض أساسي مرن) */
     flex: 1.2 1 0; 
     align-self: stretch;
 
-    /* 🔑 التعديل الحاسم الثالث: يمنع الانهيار ويثبت التخطيط في RTL/LTR */
+    /* 🔑 التعديل الحاسم: يمنع الانهيار ويثبت التخطيط في RTL/LTR */
     min-width: 0;
     
     background-color: transparent;  
@@ -2329,9 +2364,74 @@ html[dir="rtl"] .client-info {
     box-shadow: none;
 }
 
+/* ======================================
+    2. Social Contact Links
+    ======================================
+*/
+.social-contact-links {
+    margin-top: 30px; /* تباعد عن نموذج الإرسال */
+    padding-top: 20px;
+    border-top: 1px solid #eee; /* خط فاصل */
+    text-align: center;
+}
+.dark-mode .social-contact-links {
+    border-top: 1px solid #444;
+}
+
+.social-contact-links h4 {
+    font-size: 1rem;
+    color: var(--light-text-color);
+    margin-bottom: 15px;
+}
+.dark-mode .social-contact-links h4 {
+    color: var(--dark-text-color);
+}
+
+.social-icons-card {
+    display: flex;
+    justify-content: center; /* توسيط الأيقونات أفقياً */
+    gap: 15px;
+}
+
+.social-icons-card a {
+    font-size: 1.8rem;
+    color: var(--light-text-color); /* اللون الأساسي للأيقونة */
+    transition: color 0.3s;
+}
+.dark-mode .social-icons-card a {
+    color: var(--dark-text-color);
+}
+
+/* تأثير التمرير: يتحول اللون إلى اللون الأصلي */
+
+/* واتساب */
+.social-icons-card a.whatsapp:hover {
+    color: #25D366; 
+}
+
+/* الإيميل */
+.social-icons-card a.email:hover {
+    color: #D44638; 
+}
+
+/* إنستغرام */
+.social-icons-card a.instagram:hover {
+    color: #E1306C; 
+}
+
+/* فيسبوك */
+.social-icons-card a.facebook:hover {
+    color: #1877F2;
+}
+
+/* تيك توك */
+.social-icons-card a.tiktok:hover {
+    color: #000000; 
+}
+
 
 /* ======================================
-    2. FAQ Section (النسخة النهائية - كل سؤال في بطاقة)
+    3. FAQ Section Styles (Card Structure)
     ======================================
 */
 .faq-section h3 {
@@ -2344,7 +2444,6 @@ html[dir="rtl"] .client-info {
     text-align: initial;  
 }
 
-/* نمط كل سؤال في قائمة الأسئلة الشائعة - CARD STYLE */
 .faq-item {
     margin-bottom: 12px;  
     background-color: var(--light-bg-color);  
@@ -2364,7 +2463,6 @@ html[dir="rtl"] .client-info {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);  
 }
 
-/* تمييز البطاقة النشطة (عند الفتح) */
 .faq-item.open {
     box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.2);  
     border: 1px solid var(--primary-color); 
@@ -2376,7 +2474,6 @@ html[dir="rtl"] .client-info {
     border: 1px solid var(--primary-color);
 }
 
-/* زر السؤال نفسه (النص) */
 .faq-question {
     background-color: transparent;
     color: var(--light-text-color);
@@ -2404,7 +2501,6 @@ html[dir="rtl"] .client-info {
     color: var(--primary-color);
 }
 
-/* أيقونة القائمة المنسدلة (::after) */
 .faq-question::after {
     font-family: 'Font Awesome 5 Free';  
     content: '\f078';  
@@ -2418,12 +2514,10 @@ html[dir="rtl"] .client-info {
     transform: translateY(-50%);
 }
 
-/* عند النقر على السؤال وفتحه */
 .faq-question.active::after {
     transform: translateY(-50%) rotate(90deg);  
 }
 
-/* مربع الإجابة المخفي افتراضياً */
 .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -2431,7 +2525,6 @@ html[dir="rtl"] .client-info {
     padding: 0;
 }
 
-/* عند فتح الإجابة */
 .faq-answer.open {
     max-height: 500px;  
     padding-top: 5px; 
@@ -2452,9 +2545,10 @@ html[dir="rtl"] .client-info {
 
 
 /* ======================================
-    3. أنماط رسالة النجاح داخل .contact-form
+    4. أنماط رسالة النجاح داخل .contact-form (RE-ADDED)
     ======================================
 */
+
 /* ⏳ لتسهيل الانتقال السلس من النموذج إلى الرسالة */
 .contact-form form {
     /* تسهيل الانتقال بين إظهار النموذج وإخفائه (يعتمد على JS) */
@@ -2508,7 +2602,7 @@ html[dir="rtl"] .client-info {
 
 
 /* ======================================
-    4. MEDIA QUERY (للهاتف المحمول - العرض أقل من 768px)
+    5. MEDIA QUERY (للهاتف المحمول - العرض أقل من 768px)
     ======================================
 */
 @media (max-width: 768px) {
@@ -2524,6 +2618,7 @@ html[dir="rtl"] .client-info {
 
     /* 3. جعل كلا القسمين يأخذان العرض الكامل */
     .contact-form-wrapper, 
+    .contact-form,
     .faq-section {
         /* 🔑 إعادة التعيين للهاتف: flex: 1 (نمو) 1 (تقلص) 100% (العرض الأساسي) */
         flex: 1 1 100%; 
