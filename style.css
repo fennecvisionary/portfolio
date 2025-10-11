@@ -312,9 +312,7 @@ body.ltr .hero-actions {
     justify-content: flex-start;
 }
 body.ltr .slide-item-wrapper {
-    /* 🔑 التصحيح: LTR (إنجليزية): Lottie (يسار) | صورة (يمين) 
-       نستخدم row-reverse لعكس ترتيب عناصر الـ HTML (بافتراض أن الصورة قبل Lottie في الكود المصدري)
-    */
+    /* LTR (إنجليزية): Lottie (يسار) | صورة (يمين) */
     flex-direction: row-reverse; 
 }
 
@@ -404,7 +402,7 @@ body.ltr .slide-item-wrapper {
 
 
 /* ======================================
-  الأنماط الأساسية للعناوين والفقرات (استعادة اللون)
+  الأنماط الأساسية للعناوين والفقرات (اللون الأساسي)
   ======================================
 */
 .hero-section h1 {
@@ -412,11 +410,12 @@ body.ltr .slide-item-wrapper {
     margin-bottom: 10px; 
     font-weight: 800;
     line-height: 1.2;
-    color: var(--light-text-color); 
+    /* 🔑 التعديل: اللون الأساسي */
+    color: var(--primary-color); 
     text-shadow: none; 
 }
 .dark-mode .hero-section h1 {
-    color: var(--dark-text-color);
+    color: var(--primary-color);
 }
 
 .hero-section p {
@@ -424,11 +423,12 @@ body.ltr .slide-item-wrapper {
     max-width: 500px;
     margin: 0 auto 18px auto; 
     line-height: 1.5;
-    color: var(--light-text-color);
+    /* 🔑 التعديل: اللون الأساسي */
+    color: var(--primary-color);
     text-shadow: none; 
 }
 .dark-mode .hero-section p {
-    color: var(--dark-text-color);
+    color: var(--primary-color);
 }
 
 .hero-actions a.btn {
@@ -454,7 +454,6 @@ body.ltr .slide-item-wrapper {
         padding: 0 25px; 
     }
     
-    /* Lottie Animation & Image: تغيير النسب على التابلت (60/40) */
     .slide-item-wrapper .slide-image {
         width: 60%;
     }
@@ -469,12 +468,13 @@ body.ltr .slide-item-wrapper {
 
 /* 🔑 الهواتف (Mobile - 600px وما دون) */
 @media (max-width: 600px) {
-    /* ضمان ارتفاع 100% للشاشة تحت الهيدر */
+    /* 🔑 التعديل: Hero Section يأخذ ارتفاعه من المحتوى (Lottie) */
     .hero-section {
-        min-height: 100vh; 
-        height: 100vh;
+        min-height: auto; /* مهم ليأخذ ارتفاع اللوتي */
+        height: auto;
         padding-top: var(--header-height); /* يبدأ مباشرة تحت الهيدر */
-        padding-bottom: 0;
+        padding-bottom: 30px; /* تباعد بسيط أسفل اللوتي */
+        /* إزالة display:flex و align-items:center من الأنماط الأساسية في الهواتف */
     }
     
     /* 🔴 إخفاء النص والأزرار بالكامل */
@@ -482,25 +482,32 @@ body.ltr .slide-item-wrapper {
         display: none; 
     }
     
-    /* Lottie يغطي كامل الإطار بدون قيود */
+    /* 🔑 التعديل: Lottie يأخذ عرض 100% وارتفاعه الطبيعي (Aspect Ratio) */
+    .slideshow-animation-wrapper {
+        position: relative; 
+        height: auto;
+    }
+    .slide-item-wrapper {
+        position: relative;
+        height: auto;
+        opacity: 1;
+        /* هذا السلايدر لم يعد flex في هذا النطاق، لذا يجب إزالة flex-direction */
+        flex-direction: column; 
+    }
+    
     .slide-item-wrapper .slide-image {
         display: none; 
     }
     .slide-item-wrapper .lottie-container {
         width: 100%; 
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        margin: 0; 
-        max-width: none; 
-        max-height: none;
+        height: auto; /* مهم ليأخذ الارتفاع الطبيعي للـ Lottie */
+        position: relative; /* إزالة absolute positioning */
         
-        /* إزالة الحواف الدائرية والظل لملء الإطار بالكامل */
+        /* إزالة قيود وتأثيرات سطح المكتب */
         border-radius: 0; 
         box-shadow: none;
+        max-width: none; 
+        max-height: none;
     }
 
     .slideshow-pagination {
