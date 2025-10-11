@@ -257,7 +257,7 @@ ul[role="list"] {
 .hero-section {
     position: relative; 
     overflow: hidden; 
-    /* 🔑 1. التعديل: جعله ينزل مباشرة تحت الهيدر مع تباعد طفيف */
+    /* التعديل: جعله ينزل مباشرة تحت الهيدر مع تباعد طفيف */
     padding-top: calc(var(--header-height) + 10px); 
     padding-bottom: 100px; 
     min-height: 80vh; 
@@ -305,7 +305,6 @@ body.ltr .hero-section {
 }
 body.ltr .hero-content-container {
     text-align: left;
-    /* 🔑 التعديل: النص ينجرف لليسار كما كان مطلوبًا */
     left: 0; 
     right: auto;
 }
@@ -313,8 +312,10 @@ body.ltr .hero-actions {
     justify-content: flex-start;
 }
 body.ltr .slide-item-wrapper {
-    /* 🔑 التعديل: Lottie (يسار) | صورة (يمين) */
-    flex-direction: row; 
+    /* 🔑 التصحيح: LTR (إنجليزية): Lottie (يسار) | صورة (يمين) 
+       نستخدم row-reverse لعكس ترتيب عناصر الـ HTML (بافتراض أن الصورة قبل Lottie في الكود المصدري)
+    */
+    flex-direction: row-reverse; 
 }
 
 /* ======================================
@@ -353,7 +354,7 @@ body.ltr .slide-item-wrapper {
 }
 
 .slide-item-wrapper .lottie-container {
-    width: 45%; /* نافذة Lottie أقل بقليل */
+    width: 45%; 
     height: 100%;
     background-color: transparent;
     z-index: 2;
@@ -361,17 +362,44 @@ body.ltr .slide-item-wrapper {
     align-items: center;
     justify-content: center;
     
-    /* 🔑 التعديل: حواف دائرية وتأثير إطار */
+    /* حواف دائرية وتأثير إطار */
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); 
     transition: all 0.3s ease-in-out;
     overflow: hidden; 
 }
 
-/* 🔑 التعديل: تأثير هوفر (Hover) */
+/* تأثير هوفر (Hover) */
 .slide-item-wrapper .lottie-container:hover {
     box-shadow: 0 8px 25px rgba(var(--primary-rgb), 0.4); 
     transform: translateY(-1px);
+}
+
+
+/* ======================================
+  أنماط نقاط الترقيم (Pagination Dots)
+  ======================================
+*/
+.slideshow-pagination {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 4;    
+    display: flex;
+    gap: 10px;
+}
+.slideshow-pagination .dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); 
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+}
+.slideshow-pagination .dot.active {
+    background-color: var(--primary-color);
 }
 
 
@@ -415,7 +443,7 @@ body.ltr .slide-item-wrapper {
   ======================================
 */
 
-/* 🔑 1. الأجهزة اللوحية (Tablet - 768px إلى 601px) */
+/* الأجهزة اللوحية (Tablet - 768px إلى 601px) */
 @media (max-width: 768px) {
     .hero-section {
         min-height: 70vh;
@@ -439,9 +467,9 @@ body.ltr .slide-item-wrapper {
     }
 }
 
-/* 🔑 2. الهواتف (Mobile - 600px وما دون) */
+/* 🔑 الهواتف (Mobile - 600px وما دون) */
 @media (max-width: 600px) {
-    /* 🔑 التعديل: ضمان ارتفاع 100% للشاشة تحت الهيدر */
+    /* ضمان ارتفاع 100% للشاشة تحت الهيدر */
     .hero-section {
         min-height: 100vh; 
         height: 100vh;
@@ -454,7 +482,7 @@ body.ltr .slide-item-wrapper {
         display: none; 
     }
     
-    /* 🔑 Lottie يغطي كامل الإطار بدون قيود */
+    /* Lottie يغطي كامل الإطار بدون قيود */
     .slide-item-wrapper .slide-image {
         display: none; 
     }
