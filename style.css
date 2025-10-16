@@ -2689,17 +2689,17 @@ html[dir="rtl"] .client-info {
     width: auto;
     margin: 0 20px;
     filter: grayscale(100%); /* Make logos grayscale by default */
-    transition: filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* 🔑 أضفنا خصائص الانتقال للحدود */
+    transition: filter 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     
-    /* 🔑 إضافة الحدود الدائرية والكونتور الرقيق الافتراضي */
-    border-radius: 0%; /* لجعل الحدود دائرية */
+    /* ✅ التعديل المطلوب: جعل الحواف دائرية 16 بكسل */
+    border-radius: 16px; 
     border: 2px solid rgba(0, 0, 0, 0.1); /* كونتور رقيق افتراضي في الوضع الفاتح */
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.05); /* ظل خفيف جداً */
 }
 
 .logos-slide img:hover {
     filter: grayscale(0%); /* Full color on hover */
-    /* 🔑 تأثير الهوفر: حد أسمك بلون أساسي و ظل أقوى */
+    /* تأثير الهوفر: حد أسمك بلون أساسي و ظل أقوى */
     border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
 }
@@ -2707,13 +2707,13 @@ html[dir="rtl"] .client-info {
 /* Dark Mode styles for logos */
 .dark-mode .logos-slide img {
     filter: grayscale(100%) brightness(0.7); /* Adjust brightness for dark mode */
-    /* 🔑 كونتور رقيق في الوضع الداكن */
+    /* كونتور رقيق في الوضع الداكن */
     border: 2px solid rgba(255, 255, 255, 0.1); 
 }
 
 .dark-mode .logos-slide img:hover {
     filter: grayscale(0%) brightness(1);
-    /* 🔑 تأثير الهوفر في الوضع الداكن */
+    /* تأثير الهوفر في الوضع الداكن */
     border-color: var(--primary-color);
     box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.7);
 }
